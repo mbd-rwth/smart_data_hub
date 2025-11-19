@@ -7,16 +7,12 @@ which aims to provide innovative solutions in data-integrated simulation studies
 ## Data Hub Architecture
 The data-hub consists of a database integrated with a Graphic User Interface (GUI).
 1. **Database**: It provides material properties along with their uncertainty margins and sensible defaults 
-in YAML files. The material properties are grouped into synthetic, 
-reference, and candidate sites. All relevant files can be found in the [`data_hub/yaml-db`](./data_hub/yaml-db/readme.md) directory.
+in YAML files. All relevant files can be found in the [`database`](./database/README.md) directory.
 2. **GUI**: It was developed with [Plotly Dash](https://dash.plotly.com/)—a web-based application for interactive visualization. Simply run the Python program [SmartGUI.py](./SmartGUI.py), it will then start a local flask server.
 The GUI displays three sections:
    * Geomodel: provides a 3D structural geomodel for each site.
-   * Chronostratigraphic chart: indicates geological formation time of each stratum.
-   * Table: provides information on rock properties and attributes of sensible defaults.
-
-The following image showcases the GUI for a selected site:
-![](GUI.PNG)
+   * Chronostratigraphic chart & Table: The chart indicates geological formation time of each stratum. The table provides information on rock properties.
+   * Processing buttons: enables merging and tagging data, adding sensible defaults, and exporting files.
 
 ## Installation (For GUI)
 1. Download the zip file or clone the repository:
@@ -24,7 +20,7 @@ The following image showcases the GUI for a selected site:
 3. Activate the environment with ``conda activate smart_data_hub``.
 
 ## Credits
-The authors of this project are [@CQVera](https://github.com/CQVera), [@ninomenzel1](https://github.com/ninomenzel1) and 
+The authors of this project are [@CQ-QianChen](https://github.com/CQ-QianChen), [@ninomenzel1](https://github.com/ninomenzel1) and 
 [@mboxberg](https://github.com/mboxberg).
 
 ## License

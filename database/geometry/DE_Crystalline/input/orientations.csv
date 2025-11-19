@@ -1,0 +1,14 @@
+X,Y,Z,azimuth,dip,polarity,formation
+0,0,-10,90,0,1,Quaternary
+0,0,-150,90,0,1,Muschelkalk
+0,0,-450,90,0,1,Buntsandstein
+0,0,-500,90,0,1,Zechstein_Rocksalt_sequence1
+0,0,-510,90,0,1,Zechstein_Anhydrite_sequence1
+0,0,-600,90,0,1,Zechstein_Rocksalt_sequence2
+0,0,-620,90,0,1,Zechstein_Potash_sequence1
+0,0,-650,90,0,1,Zechstein_Rocksalt_sequence3
+0,0,-690,90,0,1,Zechstein_Anhydrite_sequence2
+0,0,-710,90,0,1,Zechstein_Potash_sequence2
+0,0,-860,90,0,1,Zechstein_Rocksalt_sequence4
+0,0,-886,90,0,1,Zechstein_Anhydrite_sequence3
+0,0,-1200,90,0,1,Granite

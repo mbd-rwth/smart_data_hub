@@ -1,0 +1,15 @@
+X,Y,Z,azimuth,dip,polarity,formation
+0,0,-50,0,0,1,Quaternary
+0,0,-350,0,5,1,Albian
+0,0,-450,0,5,1,Aptian
+0,0,-725,0,2.5,1,Barremian
+0,0,-1025,0,2.5,1,Hauterivian
+0,0,-1075,0,2.5,1,Valanginian
+0,0,-1175,0,2.5,1,Wealden
+0,0,-1400,0,0,1,Jurassic_Upper
+0,0,-2300,90,5,1,Jurassic_Middle
+0,0,-2650,90,7.5,1,Jurassic_Lower
+0,0,-3085,90,7.5,1,Keuper
+0,0,-3500,90,5,1,Buntsandstein_Muschelkalk
+0,0,-3950,90,5,1,Buntsandstein
+0,0,-4200,90,0,1,Zechstein

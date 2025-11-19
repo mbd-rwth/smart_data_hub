@@ -1,0 +1,329 @@
+density:
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 2520.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Wet density value based on laboratory measurement or theoretical 
+    derivations of the mineral content of Upper Jurassic in Lower Saxony 
+    according to Table A-7.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: dfc86403-7f1a-58fb-8e9a-8c0100b0b3db
+- source: alheid1986
+  type: scalar
+  value: 2500.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: density value for Malm formation in the area of the Konrad mine.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: f847016c-a82d-538d-be91-960c6bce9484
+porosity:
+- source: bfs2002
+  type: scalar
+  value: null
+  value_min: 0.001
+  value_max: 0.2
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Effective porosity for Oxfordian, Kimmeridgian and Tithonian 
+    (clayey and marly) formations gathered by NLfB in the area of the Konrad 
+    mine.
+  tag:
+    agency: [BfS/BGE]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: b423d832-cdd8-5ed9-ba78-7ae80f49eb3e
+hydraulic_conductivity:
+- source: bfs2002
+  type: scalar
+  value: null
+  value_min: 1.0e-10
+  value_max: 1.0e-07
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Oxfordian, Kimmeridgian and Tithonian (clayey and 
+    marly) formations gathered by NLfB in the area of the Konrad mine.
+  tag:
+    agency: [BfS/BGE]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: 2d096947-c573-5e61-b429-d4f3a2ace4b6
+p_wave_velocity:
+- source: schnier1987 and jahn2013
+  type: scalar
+  value: 3891.0
+  value_min: 2940.0
+  value_max: 4500.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Limestone computed by jahn2013. Ultrasonic measurement 
+    for Upper Korallenoolith formation in the area of the Konrad mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Limestone]
+    ID: 8245beec-4bd8-5281-b97b-e02b86f5b808
+- source: schnier1987 and jahn2013
+  type: scalar
+  value: 3450.0
+  value_min: 3330.0
+  value_max: 3570.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for clayey Marlstone computed by jahn2013. Ultrasonic 
+    measurement for Middle Korallenoolith formation in the area of the Konrad 
+    mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: fdc0575e-e0e4-5938-8184-99498ad302d7
+- source: alheid1986
+  type: scalar
+  value: 3780.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Malm formation from reflection seismic and borehole 
+    countersink measurement in the area of the Konrad mine.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: e49aeb54-9d9f-5b02-87c0-a55c33bd3a75
+s_wave_velocity:
+- source: schnier1987 and jahn2013
+  type: scalar
+  value: 2195.0
+  value_min: 1830.0
+  value_max: 2480.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Limestone computed by jahn2013. Ultrasonic measurement 
+    for Upper Korallenoolith formation in the area of the Konrad mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Limestone]
+    ID: 9fa5c858-c20c-5986-ad46-14f2bd471008
+- source: schnier1987 and jahn2013
+  type: scalar
+  value: 2085.0
+  value_min: 1890.0
+  value_max: 2280.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for clayey Marlstone computed by jahn2013. Ultrasonic 
+    measurement for Middle Korallenoolith formation in the area of the Konrad 
+    mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: ee329254-6a47-5168-bc75-648c87933c76
+- source: alheid1986
+  type: scalar
+  value: 2120.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Malm formation from reflection seismic and borehole 
+    countersink measurement in the area of the Konrad mine.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: fc0a622d-c0df-5318-9c54-8435ae505997
+specific_heat_capacity:
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 1400.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value based on laboratory measurement or theoretical derivations 
+    of the mineral content of Upper Jurassic in Lower Saxony according to Table 
+    A-7.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 5874248c-063c-5c1a-8608-619ad3fd5186
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 1000.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value based on laboratory measurement or theoretical derivations 
+    of the mineral content of Malm (clayey-marly to calcareous, partly 
+    anhydritic rock series) in Lower Saxony according to Table A-9.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: [Rocksalt, Mudstone, Limestone]
+    ID: bfdcd75c-b7d7-52fd-82e7-a434b26a7985
+thermal_conductivity:
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 2.5
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value in the direction of parallel to bedding based on laboratory
+    measurement or theoretical derivations of the mineral content of Upper 
+    Jurassic in Lower Saxony according to Table A-7.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 18905cb2-b618-560c-aa0c-935cab6e1fbe
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 2.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value based on laboratory measurement or theoretical derivations 
+    of the mineral content of Malm (clayey-marly to calcareous, partly 
+    anhydritic rock series) in Lower Saxony according to Table A-9.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: [Rocksalt, Mudstone, Limestone]
+    ID: 6af9f6a3-4ec5-5cde-abbc-4f2ff237c5f3
+electrical_resistivity:
+- source: null
+  type: scalar
+  value: null
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: null
+  tag:
+    agency: null
+    location: null
+    simplified_lithology: null
+    ID: null

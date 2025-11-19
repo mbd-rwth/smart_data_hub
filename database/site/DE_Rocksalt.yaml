@@ -1,0 +1,151 @@
+name: DE_Rocksalt
+description: A generic geological model for final repository system in host rock salt in Germany.
+geometry_input:
+  source: voelkner2017
+  description: The geological structural data is mainly based on the 3D model in Figure 4-3. Layer thicknesses less than 5 meters are combined with previous layers.
+  point_data_path: database/geometry/DE_Rocksalt/input/points.csv
+  orientation_data_path: database/geometry/DE_Rocksalt/input/orientations.csv
+Quaternary:
+  source: voelkner2017
+  geological_time:
+    eon: Phanerozoic
+    era: Cenozoic
+    period: Quaternary
+    epoch: null
+    age: null
+  description: It consists of sands and gravel deposits.
+  simplified_lithology: [Sandstone, Conglomerate]
+  property_path: database/rock_property/DE_Rocksalt/Quaternary.yaml
+  geometry_surface_output_path: [database/geometry/DE_Rocksalt/output/Quaternary.vtk]
+Tertiary:
+  source: voelkner2017
+  geological_time:
+    eon: Phanerozoic
+    era: Cenozoic
+    period: null
+    epoch: null
+    age: null
+  description: The marginal regions of the Upper Rhine Graben are characterized by coarse-clastic sediments, while the clayey to dolomitic-anhydritic marls and salt dominate the central part.
+  simplified_lithology: [Mudstone, Limestone]
+  property_path: database/rock_property/DE_Rocksalt/Tertiary.yaml
+  geometry_surface_output_path: [database/geometry/DE_Rocksalt/output/Tertiary.vtk]
+Buntsandstein:
+  source: voelkner2017
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Triassic
+    epoch: Lower
+    age: null
+  description: It consists of the lower Buntsandstein (sandstones with carbonate and oolitic layers), middle Buntsandstein (sandstone-claystone-siltstone cycles), and Ohre Formation.
+  simplified_lithology: [Sandstone]
+  property_path: database/rock_property/DE_Rocksalt/Buntsandstein.yaml
+  geometry_surface_output_path: [database/geometry/DE_Rocksalt/output/Buntsandstein.vtk]
+Aller:
+  source: liu2017
+  geological_time:
+    eon: Phanerozoic
+    era: Paleozoic
+    period: Permian
+    epoch: Lopingian
+    age: null
+  description: It contains rock salt deposits, and thin layers of Roter Salzton Formation and Pegmatitanhydrit Formation.
+  simplified_lithology: [Rocksalt]
+  property_path: database/rock_property/DE_Rocksalt/Aller.yaml
+  geometry_surface_output_path: [database/geometry/DE_Rocksalt/output/Aller.vtk]
+Leine_Anhydritmittelsalz:
+  source: liu2017
+  geological_time:
+    eon: Phanerozoic
+    era: Paleozoic
+    period: Permian
+    epoch: Lopingian
+    age: null
+  description: It consists of mainly anhydrite with a thin layer of clay-bearing rock salt.
+  simplified_lithology: [Rocksalt]
+  property_path: database/rock_property/DE_Rocksalt/Leine_Anhydritmittelsalz.yaml
+  geometry_surface_output_path: [database/geometry/DE_Rocksalt/output/Anhydritmittelsalz.vtk, database/geometry/DE_Rocksalt/output/Tonmittelsalz.vtk]
+Leine_Potash:
+  source: voelkner2017
+  geological_time:
+    eon: Phanerozoic
+    era: Paleozoic
+    period: Permian
+    epoch: Lopingian
+    age: null
+  description: It consists of sylvinite-rich potash seams like the Ronnenberg seam.
+  simplified_lithology: [Rocksalt]
+  property_path: database/rock_property/DE_Rocksalt/Leine_Potash.yaml
+  geometry_surface_output_path: [database/geometry/DE_Rocksalt/output/Leine_Potash.vtk]
+Leine_Rocksalt:
+  source: voelkner2017
+  geological_time:
+    eon: Phanerozoic
+    era: Paleozoic
+    period: Permian
+    epoch: Lopingian
+    age: null
+  description: It contains rock salt layers exceeding 100 meters in thickness.
+  simplified_lithology: [Rocksalt]
+  property_path: database/rock_property/DE_Rocksalt/Leine_Rocksalt.yaml
+  geometry_surface_output_path: [database/geometry/DE_Rocksalt/output/Leine_Rocksalt.vtk]
+Leine_Hauptanhydrit:
+  source: liu2017
+  geological_time:
+    eon: Phanerozoic
+    era: Paleozoic
+    period: Permian
+    epoch: Lopingian
+    age: null
+  description: It contains mainly anhydrite and a thin layer of gray saltclay.
+  simplified_lithology: [Rocksalt]
+  property_path: database/rock_property/DE_Rocksalt/Leine_Hauptanhydrit.yaml
+  geometry_surface_output_path: [database/geometry/DE_Rocksalt/output/Leine_Hauptanhydrit.vtk]
+Strassfurt_Potash:
+  source: voelkner2017
+  geological_time:
+    eon: Phanerozoic
+    era: Paleozoic
+    period: Permian
+    epoch: Lopingian
+    age: null
+  description: It deposits predominantly carnallite-rich potash.
+  simplified_lithology: [Rocksalt]
+  property_path: database/rock_property/DE_Rocksalt/Strassfurt_Potash.yaml
+  geometry_surface_output_path: [database/geometry/DE_Rocksalt/output/Strassfurt_Potash.vtk]
+Strassfurt_Rocksalt:
+  source: voelkner2017
+  geological_time:
+    eon: Phanerozoic
+    era: Paleozoic
+    period: Permian
+    epoch: Lopingian
+    age: null
+  description: It includes several hundred meters thick rock salt sequences.
+  simplified_lithology: [Rocksalt]
+  property_path: database/rock_property/DE_Rocksalt/Strassfurt_Rocksalt.yaml
+  geometry_surface_output_path: [database/geometry/DE_Rocksalt/output/Strassfurt_Rocksalt.vtk]
+Stassfurt_Anhydrite_Carbonate:
+  source: bollingerfehr2018
+  geological_time:
+    eon: Phanerozoic
+    era: Paleozoic
+    period: Permian
+    epoch: Lopingian
+    age: null
+  description: Anhydrite rock and calcareous layers (base of saline succession).
+  simplified_lithology: [Rocksalt]
+  property_path: database/rock_property/DE_Rocksalt/Stassfurt_Anhydrite_Carbonate.yaml
+  geometry_surface_output_path: [database/geometry/DE_Rocksalt/output/Anhydrite.vtk, database/geometry/DE_Rocksalt/output/Carbonate.vtk]
+Rotliegend:
+  source: liu2017 and voelkner2017
+  geological_time:
+    eon: Phanerozoic
+    era: Paleozoic
+    period: Permian
+    epoch: null
+    age: null
+  description: It consists of mainly sandstones, the rock salt deposits mostly in the fine-grained and clay-rich strata of the Upper Rotliegend.
+  simplified_lithology: [Sandstone]
+  property_path: database/rock_property/DE_Rocksalt/Rotliegend.yaml
+  geometry_surface_output_path: [database/geometry/DE_Rocksalt/output/Rotliegend.vtk]

@@ -1,0 +1,332 @@
+density:
+- source: gerardi2005 cited in jahn2013
+  type: scalar
+  value: 2290.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Wet density value for Upper Barremian in the area of the Konrad 
+    mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: ddb56341-aacf-5fb4-b36d-acdc49430586
+- source: gerardi2005 cited in jahn2013
+  type: scalar
+  value: 2210.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Wet density value for Middle Barremian in the area of the Konrad 
+    mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 7a2b2caa-b3d0-51ea-855f-9f51bdb7fcf2
+- source: wittke1991a cited in jahn2013
+  type: scalar
+  value: 2420.0
+  value_min: 2300.0
+  value_max: 2550.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Wet density value for Middle Barremian in the area of the Konrad 
+    mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: ebaff5bd-f404-5e1d-aa95-6250fe574649
+- source: gerardi2005 cited in jahn2013
+  type: scalar
+  value: 2250.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Wet density value for Upper Barremian in the area of the Konrad 
+    mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 8b920864-95b1-593a-aa03-f8f964db509a
+porosity:
+- source: mueller1987 and jahn2013
+  type: scalar
+  value: 0.126
+  value_min: 0.1
+  value_max: 0.153
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value computed by jahn2013. Effective porosity for Upper 
+    Barremian formation determined from laboratory test in the area of the 
+    Konrad mine. High values due to fractures in samples, the minimum value was 
+    therefore most reliable.
+  tag:
+    agency: [Others]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 921cca01-1b98-5208-b9df-26ff8e8ac06c
+- source: mueller1987 and jahn2013
+  type: scalar
+  value: 0.155
+  value_min: 0.134
+  value_max: 0.175
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value computed by jahn2013. Effective porosity for Middle 
+    Barremian formation determined from laboratory test in the area of the 
+    Konrad mine. High values due to fractures in samples, the minimum value was 
+    therefore most reliable.
+  tag:
+    agency: [Others]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 022f9191-a124-5455-8fce-270ca9fb090c
+- source: mueller1987 and jahn2013
+  type: scalar
+  value: 0.141
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value computed by jahn2013. Effective porosity for Lower 
+    Barremian formation determined from laboratory test in the area of the 
+    Konrad mine.
+  tag:
+    agency: [Others]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 1777ab89-13e2-5dbd-8072-a53fe1bcdd7d
+hydraulic_conductivity:
+- source: mueller1987 and jahn2013
+  type: scalar
+  value: null
+  value_min: 6.0e-14
+  value_max: 1.0e-10
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value computed by jahn2013. Value for Upper Barremian formation 
+    from laboratory test in the area of the Konrad mine. High values due to 
+    fractures in samples, the minimum value was therefore most reliable.
+  tag:
+    agency: [Others]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: b28c3bfc-857a-5bd7-90cb-b515890f46e0
+- source: mueller1987 and jahn2013
+  type: scalar
+  value: null
+  value_min: 2.0e-08
+  value_max: 5.0e-08
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value computed by jahn2013. Value for Middle Barremian formation 
+    from laboratory test in the area of the Konrad mine. High values due to 
+    fractures in samples, the minimum value was therefore most reliable.
+  tag:
+    agency: [Others]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 5974e0bb-b4b0-56ff-bffd-a6e088f4ad86
+p_wave_velocity:
+- source: schnier1986 and jahn2013
+  type: scalar
+  value: 2810.0
+  value_min: 2740.0
+  value_max: 2880.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Claystone computed by jahn2013. Ultrasonic measurement 
+    for Middle Barremian from K101 borehole in the area of the Konrad mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone]
+    ID: b20d06e8-7ba0-56d6-ab7c-f23b2e77bd6a
+- source: schnier1986 and jahn2013
+  type: scalar
+  value: 2980.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Claystone computed by jahn2013. Ultrasonic measurement 
+    for Lower Barremian from K101 borehole in the area of the Konrad mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone]
+    ID: 2d1e6c3e-65c3-5d60-873c-f4ea6dbf65d8
+s_wave_velocity:
+- source: schnier1986 and jahn2013
+  type: scalar
+  value: 1300.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Claystone computed by jahn2013. Ultrasonic measurement 
+    for Middle Barremian from K101 borehole in the area of the Konrad mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone]
+    ID: 50a143d1-f4b5-5f6d-bf7f-df01bfc3ad33
+specific_heat_capacity:
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 1429.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value based on laboratory measurement or theoretical derivations 
+    of the mineral content of Barremian (clays with high pyrite and corg 
+    contents with high hydrocarbon) in Lower Saxony according to Table A-7.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone]
+    ID: 8d843991-d638-5ee4-a1e0-4e6e53e25035
+thermal_conductivity:
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 2.27
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value in the direction of parallel to bedding based on laboratory
+    measurement or theoretical derivations of the mineral content of Barremian 
+    (clays with high pyrite and corg contents with high hydrocarbon) in Lower 
+    Saxony according to Table A-7.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone]
+    ID: 0d364ea3-922a-544e-bb36-6a8bbdba1118
+electrical_resistivity:
+- source: null
+  type: scalar
+  value: null
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: null
+  tag:
+    agency: null
+    location: null
+    simplified_lithology: null
+    ID: null

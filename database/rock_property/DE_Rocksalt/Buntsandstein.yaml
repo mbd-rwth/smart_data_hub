@@ -1,0 +1,319 @@
+density:
+- source: minkley2010
+  type: scalar
+  value: 2500.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Buntsandstein Formation for the German part of the 
+    North German Basin.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 6534ce02-e2b2-5f52-8de4-a1bf0f6bfe8d
+specific_heat_capacity:
+- source: nipp2000
+  type: scalar
+  value: 760.32
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Gorleben salt dome, derived value for Buntsandstein with 22 
+    W*d/(m^3)/K and density value of 2500 kg/(m^3).
+  tag:
+    agency: [BGR]
+    location: [Gorleben, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 9af6212d-745d-55dd-bef0-d73fd221ab7c
+thermal_conductivity:
+- source: bayer1997
+  type: scalar
+  value: 2.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: The area of investigation is located in the northeast German 
+    Basin.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: fe2ff333-c6dc-5213-8c51-8edbe0af02a6
+- source: nipp2000
+  type: scalar
+  value: 2.6
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Gorleben salt dome.
+  tag:
+    agency: [BGR]
+    location: [Gorleben, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 619b1e58-2368-5970-ac94-4cef30bac299
+porosity:
+- source: stork1998
+  type: scalar
+  value: null
+  value_min: 0.05
+  value_max: 0.15
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Effective porosity of clayey sandstones and siltstones in Solling
+    sequence (aquifer) in the areas of Morsleben.
+  tag:
+    agency: [BfS/BGE, BGR]
+    location: [Morsleben, Saxony-Anhalt, Germany]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: a3228fea-50b2-59c3-a02d-f18e7f253031
+- source: stork1998
+  type: scalar
+  value: null
+  value_min: 0.005
+  value_max: 0.05
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Effective porosity of clay and siltstones of the Volpriehausen 
+    alternation sequence in the areas of Morsleben.
+  tag:
+    agency: [BfS/BGE, BGR]
+    location: [Morsleben, Saxony-Anhalt, Germany]
+    simplified_lithology: [Mudstone]
+    ID: cd8658a1-b191-510a-ac0a-aa1860b7859d
+- source: stork1998
+  type: scalar
+  value: null
+  value_min: 0.005
+  value_max: 0.05
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: 'Morsleben: effective porosity of claystone, siltstone, and gypsum
+    karst areas in Weferlinger Triassic Plate.'
+  tag:
+    agency: [BfS/BGE, BGR]
+    location: [Morsleben, Saxony-Anhalt, Germany]
+    simplified_lithology: [Rocksalt, Mudstone]
+    ID: f781f4a9-403d-5ed9-ae16-6e37c39fa3e1
+hydraulic_conductivity:
+- source: stork1998
+  type: scalar
+  value: null
+  value_min: 1.0e-06
+  value_max: 1.0e-05
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for clayey sandstones and siltstones in Solling sequence 
+    (aquifer) in the areas of Morsleben.
+  tag:
+    agency: [BfS/BGE, BGR]
+    location: [Morsleben, Saxony-Anhalt, Germany]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: 3de51184-bc75-5c9e-bc47-6f617e3ec9d4
+- source: stork1998
+  type: scalar
+  value: 1.0e-10
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for clay and siltstones of the Volpriehausen alternation 
+    sequence in the areas of Morsleben.
+  tag:
+    agency: [BfS/BGE, BGR]
+    location: [Morsleben, Saxony-Anhalt, Germany]
+    simplified_lithology: [Mudstone]
+    ID: c5723efd-1880-50c0-8c02-f4d24b5dff19
+- source: stork1998
+  type: scalar
+  value: null
+  value_min: 1.0e-08
+  value_max: 1.0e-06
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: 'Morsleben: claystone, siltstone, and gypsum karst areas in Weferlinger
+    Triassic Plate.'
+  tag:
+    agency: [BfS/BGE, BGR]
+    location: [Morsleben, Saxony-Anhalt, Germany]
+    simplified_lithology: [Rocksalt, Mudstone]
+    ID: 6330ea20-dc3c-51b1-8257-b92bca804976
+p_wave_velocity:
+- source: alheid1986
+  type: scalar
+  value: 4770.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Buntsandstein formation from reflection seismic and 
+    borehole countersink measurement in the area of the Konrad mine.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 3ed75864-d812-5d0f-aadf-fb30cfb28fcd
+- source: mueller2019
+  type: scalar
+  value: 2519.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Sandstone in middle Buntsandstein.
+  tag:
+    agency: [Others]
+    location: [Germany]
+    simplified_lithology: [Sandstone]
+    ID: f3552e23-9896-51ce-bd2e-b6ade62623c5
+s_wave_velocity:
+- source: alheid1986
+  type: scalar
+  value: 2680.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Buntsandstein formation from reflection seismic and 
+    borehole countersink measurement in the area of the Konrad mine.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 4fdab2a9-79aa-5d61-876a-695f1ab0e01c
+- source: mueller2019
+  type: scalar
+  value: 1502.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Sandstone in middle Buntsandstein.
+  tag:
+    agency: [Others]
+    location: [Germany]
+    simplified_lithology: [Sandstone]
+    ID: ea3da890-deab-502b-a75a-d80d14e42773
+electrical_resistivity:
+- source: null
+  type: scalar
+  value: null
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: null
+  tag:
+    agency: null
+    location: null
+    simplified_lithology: null
+    ID: null

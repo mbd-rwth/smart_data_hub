@@ -1,0 +1,421 @@
+density:
+- source: gerardi2005 cited in jahn2013
+  type: scalar
+  value: 2160.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Wet density value for Upper Albian in the area of the Konrad 
+    mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 9e113f40-fee8-5d6e-b799-05e9c84e6dac
+- source: gerardi2005 cited in jahn2013
+  type: scalar
+  value: 2180.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Wet density value for Middle Albian in the area of the Konrad 
+    mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 92aee15a-4cac-5863-8f95-69a78c0f895e
+- source: gerardi2005 cited in jahn2013
+  type: scalar
+  value: 2150.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Wet density value for Lower Albian in the area of the Konrad 
+    mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 0cf2cb55-c35e-5ff0-beb5-71bfaa10a86b
+- source: wittke1991 cited in jahn2013
+  type: scalar
+  value: 2350.0
+  value_min: 2150.0
+  value_max: 2440.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Wet density value for Middle Albian in the area of the Konrad 
+    mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: e71dcce5-cf4c-53d0-82f7-7dc31a5fb294
+porosity:
+- source: mueller1987 and jahn2013
+  type: scalar
+  value: 0.165
+  value_min: 0.149
+  value_max: 0.174
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value computed by jahn2013. Effective porosity for Upper Albian 
+    formation determined from laboratory test in the area of the Konrad mine. 
+    High values due to fractures in samples, the minimum value was therefore 
+    most reliable.
+  tag:
+    agency: [Others]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 260f1d78-0e7f-5a11-b76c-5fe4651fbc14
+- source: mueller1987 and jahn2013
+  type: scalar
+  value: 0.178
+  value_min: 0.145
+  value_max: 0.204
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value computed by jahn2013. Effective porosity for Middle Albian 
+    formation determined from laboratory test in the area of the Konrad mine. 
+    High values due to fractures in samples, the minimum value was therefore 
+    most reliable.
+  tag:
+    agency: [Others]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: c9c0f8fa-e385-5652-99ee-06a7d99aa353
+- source: mueller1987 and jahn2013
+  type: scalar
+  value: 0.184
+  value_min: 0.147
+  value_max: 0.208
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value computed by jahn2013. Effective porosity for Lower Albian 
+    formation determined from laboratory test in the area of the Konrad mine. 
+    High values due to fractures in samples, the minimum value was therefore 
+    most reliable.
+  tag:
+    agency: [Others]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 51d657d0-f036-5196-90e1-33fca1104942
+- source: bfs2002
+  type: scalar
+  value: null
+  value_min: 0.02
+  value_max: 0.15
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Effective porosity for Albian formation (clayey) gathered by NLfB
+    in the area of the Konrad mine.
+  tag:
+    agency: [BfS/BGE]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone]
+    ID: 2d595c48-08ce-5ade-aff6-0e1dae65d855
+hydraulic_conductivity:
+- source: mueller1987 and jahn2013
+  type: scalar
+  value: null
+  value_min: 6.0e-13
+  value_max: 3.0e-12
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value computed by jahn2013. Value for Lower Albian formation from
+    laboratory test in the area of the Konrad mine. High values due to fractures
+    in samples, the minimum value was therefore most reliable.
+  tag:
+    agency: [Others]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 2c63b589-a15e-5448-ae32-18b13e9ee57a
+- source: hoth2007
+  type: scalar
+  value: 3.0e-12
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Lower Albian clayey formation with more than 80 percent
+    clay content from hydraulic tests in Konrad 101 borehole.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone]
+    ID: f52813f8-0e33-5453-8f85-30aebdae8498
+- source: hoth2007
+  type: scalar
+  value: 5.0e-13
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Middle Upper Albian to Middle Lower Albian clayey 
+    formation with 75 percent clay content from hydraulic tests in Konrad 101 
+    borehole.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone]
+    ID: acdc8487-2454-5d88-b372-c7e287f5c22d
+p_wave_velocity:
+- source: schnier1986 and jahn2013
+  type: scalar
+  value: 3117.0
+  value_min: 2810.0
+  value_max: 3470.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for clayey Marlstone computed by jahn2013. Ultrasonic 
+    measurement for Upper Albian from K101 borehole in the area of the Konrad 
+    mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: 559ab89a-a92f-5b26-8b63-8f2c19c97760
+- source: schnier1986 and jahn2013
+  type: scalar
+  value: 2800.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for clayey Marlstone computed by jahn2013. Ultrasonic 
+    measurement for Middle Albian from K101 borehole in the area of the Konrad 
+    mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: 76eed7ff-481e-5d94-9d3b-b55f74d19c75
+- source: schnier1986 and jahn2013
+  type: scalar
+  value: 2794.0
+  value_min: 2600.0
+  value_max: 3330.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Claystone and clayey Marlstone computed by jahn2013. 
+    Ultrasonic measurement for Lower Albian from K101 borehole in the area of 
+    the Konrad mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: d4685256-dae6-5c72-89db-d9a194456f12
+s_wave_velocity:
+- source: schnier1986 and jahn2013
+  type: scalar
+  value: 1660.0
+  value_min: 1420.0
+  value_max: 1850.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for clayey Marlstone computed by jahn2013. Ultrasonic 
+    measurement for Upper Albian from K101 borehole in the area of the Konrad 
+    mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: 2d82f2d5-3632-5e5d-b2fc-5a0838b50af4
+- source: schnier1986 and jahn2013
+  type: scalar
+  value: 1288.0
+  value_min: 1240.0
+  value_max: 1420.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Claystone and clayey Marlstone computed by jahn2013. 
+    Ultrasonic measurement for Lower Albian from K101 borehole in the area of 
+    the Konrad mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: 7722220a-fa39-59e0-8432-502e3693569d
+specific_heat_capacity:
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 1405.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value based on laboratory measurement or theoretical derivations 
+    of the mineral content of Albian (clayey-marly layers) in Lower Saxony 
+    according to Table A-7.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: 4788c713-b794-5637-b31d-9dcfd0181eed
+thermal_conductivity:
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 1.95
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value in the direction of parallel to bedding based on laboratory
+    measurement or theoretical derivations of the mineral content of Albian 
+    (clayey-marly layers) in Lower Saxony according to Table A-7.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: 66cd48aa-50b1-5838-9d96-f3a284d3ced6
+electrical_resistivity:
+- source: null
+  type: scalar
+  value: null
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: null
+  tag:
+    agency: null
+    location: null
+    simplified_lithology: null
+    ID: null

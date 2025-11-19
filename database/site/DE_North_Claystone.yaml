@@ -1,0 +1,175 @@
+name: DE_North_Claystone
+description: A generic geological model for final repository system in clay host rock in northern Germany.
+geometry_input:
+  source: reinhold2013
+  description: The geological structural data is mainly based on the 3D model in Figure 9 and the isocountour maps in section 3.3.
+  point_data_path: database/geometry/DE_North_Claystone/input/points.csv
+  orientation_data_path: database/geometry/DE_North_Claystone/input/orientations.csv
+Quaternary:
+  source: reinhold2013
+  geological_time:
+    eon: Phanerozoic
+    era: Cenozoic
+    period: Quaternary
+    epoch: null
+    age: null
+  description: It is dominated by fluviatile, glaciofluvial, and glacial sediments, including sands, glacial clay, marl, clays, and silts.
+  simplified_lithology: [Sandstone, Conglomerate, Mudstone]
+  property_path: database/rock_property/DE_North_Claystone/Quaternary.yaml
+  geometry_surface_output_path: [database/geometry/DE_North_Claystone/output/Quaternary.vtk]
+Albian:
+  source: reinhold2013
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Cretaceous
+    epoch: Lower
+    age: Albian
+  description: A marine clayey-marly facies with increasing limestone content towards the top and sandy interbedding.
+  simplified_lithology: [Mudstone, Limestone]
+  property_path: database/rock_property/DE_North_Claystone/Albian.yaml
+  geometry_surface_output_path: [database/geometry/DE_North_Claystone/output/Albian.vtk]
+Aptian:
+  source: reinhold2013
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Cretaceous
+    epoch: Lower
+    age: Aptian
+  description: It is characterized by a succession of bituminous marine claystone and marl with low carbonate content.
+  simplified_lithology: [Mudstone, Limestone]
+  property_path: database/rock_property/DE_North_Claystone/Aptian.yaml
+  geometry_surface_output_path: [database/geometry/DE_North_Claystone/output/Aptian.vtk]
+Barremian:
+  source: reinhold2013
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Cretaceous
+    epoch: Lower
+    age: Barremian
+  description: Marine partly bituminous claystone and clayey marlstones with organic components.
+  simplified_lithology: [Mudstone, Limestone]
+  property_path: database/rock_property/DE_North_Claystone/Barremian.yaml
+  geometry_surface_output_path: [database/geometry/DE_North_Claystone/output/Barremian.vtk]
+Hauterivian:
+  source: reinhold2013
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Cretaceous
+    epoch: Lower
+    age: Hauterivian
+  description: It is characterized by interbedding of limestone and marl layers containing illite and kaolinite-rich claystone, as well as slightly pyritic claystone and weakly bituminous marls.
+  simplified_lithology: [Mudstone, Limestone]
+  property_path: database/rock_property/DE_North_Claystone/Hauterivian.yaml
+  geometry_surface_output_path: [database/geometry/DE_North_Claystone/output/Hauterivian.vtk]
+Valanginian:
+  source: reinhold2013
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Cretaceous
+    epoch: Lower
+    age: Valanginian
+  description: It is characterized by marine clay and marl deposits with thin lenticular sand layers interbedded at the base
+  simplified_lithology: [Mudstone, Limestone]
+  property_path: database/rock_property/DE_North_Claystone/Valanginian.yaml
+  geometry_surface_output_path: [database/geometry/DE_North_Claystone/output/Valanginian.vtk]
+Wealden:
+  source: reinhold2013
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Cretaceous
+    epoch: Lower
+    age: Berriasian
+  description: It is characterized by the interbedding of claystone and sandstone, partly by bituminous claystone layers.
+  simplified_lithology: [Mudstone, Sandstone]
+  property_path: database/rock_property/DE_North_Claystone/Wealden.yaml
+  geometry_surface_output_path: [database/geometry/DE_North_Claystone/output/Wealden.vtk]
+Jurassic_Upper:
+  source: reinhold2013
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Jurassic
+    epoch: Upper
+    age: null
+  description: Limestone with thin-bedded anhydrite-evaporite layering.
+  simplified_lithology: [Limestone]
+  property_path: database/rock_property/DE_North_Claystone/Jurassic_Upper.yaml
+  geometry_surface_output_path: [database/geometry/DE_North_Claystone/output/Jurassic_Upper.vtk]
+Jurassic_Middle:
+  source: reinhold2013
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Jurassic
+    epoch: Middle
+    age: null
+  description: It consists mainly of clay and clayey marl and is locally interbedded with sandstones and calcareous sandstones.
+  simplified_lithology: [Mudstone, Limestone]
+  property_path: database/rock_property/DE_North_Claystone/Jurassic_Middle.yaml
+  geometry_surface_output_path: [database/geometry/DE_North_Claystone/output/Jurassic_Middle.vtk]
+Jurassic_Lower:
+  source: reinhold2013
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Jurassic
+    epoch: Lower
+    age: null
+  description: It is dominated by clay-rich marine sediments and consists of organic-rich claystone to marlstone.
+  simplified_lithology: [Mudstone, Limestone]
+  property_path: database/rock_property/DE_North_Claystone/Jurassic_Lower.yaml
+  geometry_surface_output_path: [database/geometry/DE_North_Claystone/output/Jurassic_Lower.vtk]
+Keuper:
+  source: reinhold2013
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Triassic
+    epoch: Upper
+    age: null
+  description: It consists of claystone intercalated with thin-bedded carbonate, sandstone, and evaporitic rocks.
+  simplified_lithology: [Mudstone]
+  property_path: database/rock_property/DE_North_Claystone/Keuper.yaml
+  geometry_surface_output_path: [database/geometry/DE_North_Claystone/output/Keuper.vtk]
+Buntsandstein_Muschelkalk:
+  source: reinhold2013
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Triassic
+    epoch: Middle
+    age: Anisian
+  description: A transition from predominantly clayey-marly sediments in the shallow marine Roet Formation to mainly marine limestone, dolomite, anhydrite, marl, and evaporite layers in Muschelkalk.
+  simplified_lithology: [Mudstone, Rocksalt, Limestone, Dolostone]
+  property_path: database/rock_property/DE_North_Claystone/Buntsandstein_Muschelkalk.yaml
+  geometry_surface_output_path: [database/geometry/DE_North_Claystone/output/Buntsandstein_Muschelkalk.vtk]
+Buntsandstein:
+  source: reinhold2013
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Triassic
+    epoch: Lower
+    age: null
+  description: The Lower Buntsandstein consists of clayey and fine sandy sediments. The Middle Buntsandstein is characterized by cyclic alternations of sandstones and claystones, forming a regionally extensive aquifer system.
+  simplified_lithology: [Mudstone, Sandstone]
+  property_path: database/rock_property/DE_North_Claystone/Buntsandstein.yaml
+  geometry_surface_output_path: [database/geometry/DE_North_Claystone/output/Buntsandstein.vtk]
+Zechstein:
+  source: reinhold2013
+  geological_time:
+    eon: Phanerozoic
+    era: Paleozoic
+    period: Permian
+    epoch: Lopingian
+    age: null
+  description: It is dominated by cyclically deposited marine evaporites, primarily anhydrite, rock salt, and potash salt, and interbedded with subordinate claystone and carbonates.
+  simplified_lithology: [Rocksalt]
+  property_path: database/rock_property/DE_North_Claystone/Zechstein.yaml
+  geometry_surface_output_path: [database/geometry/DE_North_Claystone/output/Zechstein.vtk]

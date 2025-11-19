@@ -1,0 +1,338 @@
+density:
+- source: nagra2001
+  type: scalar
+  value: 2144.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Measured dry rock density with sample in Trigonodus-Dolomit 
+    Formation (Dolomite, porous) from Benken borehole.
+  tag:
+    agency: [NAGRA]
+    location: [Benken, Zurich, Switzerland]
+    simplified_lithology: [Dolostone]
+    ID: 31977cf7-1025-5150-a446-60541e42d26a
+- source: nagra2001
+  type: scalar
+  value: 2665.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Measured dry rock density with sample in Hauptmuschelkalk 
+    Formation (Limestone, micritic) from Benken borehole.
+  tag:
+    agency: [NAGRA]
+    location: [Benken, Zurich, Switzerland]
+    simplified_lithology: [Limestone]
+    ID: bedf44c8-c19b-5346-8787-4b9806971dc7
+porosity:
+- source: reinhold2011
+  type: scalar
+  value: null
+  value_min: 0.11
+  value_max: 0.18
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Effective porosity of dolomitic limestone and limestones in upper
+    Muschelkalk in Baden-Wuerttemberg.
+  tag:
+    agency: [BGR]
+    location: [Baden-Wuerttemberg, Germany]
+    simplified_lithology: [Limestone]
+    ID: ff985dfd-35ca-5015-bf69-b62e318d84b6
+hydraulic_conductivity:
+- source: stober1997 cited in reinhold2016
+  type: scalar
+  value: null
+  value_min: 1.5e-06
+  value_max: 2.1e-06
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: In Upper-Muschelkalk near Siblingen (Switzerland).
+  tag:
+    agency: [BGR]
+    location: [Siblingen, Schaffhausen, Switzerland]
+    simplified_lithology: null
+    ID: 797acbfd-932c-5008-9a26-40e66d72bf33
+- source: stober1997 cited in reinhold2016
+  type: scalar
+  value: null
+  value_min: 1.0e-09
+  value_max: 5.0e-07
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: In Upper-Muschelkalk in the Pfullendorf-Fronhofen-Bad Wurzach 
+    area.
+  tag:
+    agency: [BGR]
+    location: [Baden-Wuerttemberg, Germany]
+    simplified_lithology: null
+    ID: 0b262358-4637-51cc-adb6-bd0e421fb343
+- source: nagra2001
+  type: scalar
+  value: 4.6e-07
+  value_min: 4.6e-08
+  value_max: 2.3e-06
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Hydraulic conductivity determined from the packer test in the 
+    Trigonodus-Dolomit at a depth of 819.51 m in the Benken borehole.
+  tag:
+    agency: [NAGRA]
+    location: [Benken, Zurich, Switzerland]
+    simplified_lithology: [Dolostone]
+    ID: 7b39dd43-3b33-5b4e-a33a-69fa78bdd997
+- source: nagra2001
+  type: scalar
+  value: 9.3e-08
+  value_min: 4.7e-08
+  value_max: 6.2e-07
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Hydraulic conductivity determined from the packer test in the 
+    Trigonodus-Dolomit at a depth of 845.10 m in the Benken borehole.
+  tag:
+    agency: [NAGRA]
+    location: [Benken, Zurich, Switzerland]
+    simplified_lithology: [Dolostone]
+    ID: 4a937326-4bb5-54fb-a7e5-aeaef3646bbf
+p_wave_velocity:
+- source: mueller2019
+  type: scalar
+  value: 5206.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for limestone from ultrasonic measurement for Upper 
+    Muschelkalk formation.
+  tag:
+    agency: [Others]
+    location: [Germany]
+    simplified_lithology: [Limestone]
+    ID: 86aefff7-eb0b-5b57-85d4-5ac4087c48d5
+- source: mueller2019
+  type: scalar
+  value: 6000.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Weakly crystalline limestone in upper Muschelkalk.
+  tag:
+    agency: [Others]
+    location: [Germany]
+    simplified_lithology: [Limestone]
+    ID: 3c97dbe6-0285-5c87-83b4-fc0df9cc3a08
+- source: gebrande1982a cited in jahn2016
+  type: scalar
+  value: 5710.0
+  value_min: null
+  value_max: null
+  value_std: 620.0
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for dolomite compiled from gebrande1982a and then 
+    transferred to the specific layer.
+  tag:
+    agency: [BGR, GRS]
+    location: [unknown]
+    simplified_lithology: [Dolostone]
+    ID: cef26f5a-4100-5f71-b0ad-38274c4a76c9
+s_wave_velocity:
+- source: mueller2019
+  type: scalar
+  value: 2532.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for limestone from ultrasonic measurement for Upper 
+    Muschelkalk formation.
+  tag:
+    agency: [Others]
+    location: [Germany]
+    simplified_lithology: [Limestone]
+    ID: 32c424cb-48d0-535f-8ddc-748d4a514e5c
+- source: mueller2019
+  type: scalar
+  value: 3095.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for weakly crystalline limestone in upper Muschelkalk.
+  tag:
+    agency: [Others]
+    location: [Germany]
+    simplified_lithology: [Limestone]
+    ID: e1e88d02-fae8-5524-b233-18308d1b92d4
+- source: gebrande1982a cited in jahn2016
+  type: scalar
+  value: 3320.0
+  value_min: null
+  value_max: null
+  value_std: 330.0
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for dolomite compiled from gebrande1982a and then 
+    transferred to the specific layer.
+  tag:
+    agency: [BGR, GRS]
+    location: [unknown]
+    simplified_lithology: [Dolostone]
+    ID: 012c73a9-dbf4-5e05-958c-b03c5103b3b8
+electrical_resistivity:
+- source: null
+  type: scalar
+  value: null
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: null
+  tag:
+    agency: null
+    location: null
+    simplified_lithology: null
+    ID: null
+specific_heat_capacity:
+- source: rath2005
+  type: scalar
+  value: 1020.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Muschelkalk formation in the Western Molasse.
+  tag:
+    agency: [BfS/BGE]
+    location: [Baden-Wuerttemberg, Bavaria, Germany]
+    simplified_lithology: null
+    ID: 28fc4c64-4d0c-5eb6-b1ef-8a3f36e1c0ac
+thermal_conductivity:
+- source: rath2005
+  type: scalar
+  value: 2.34
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Muschelkalk formation in the Western Molasse.
+  tag:
+    agency: [BfS/BGE]
+    location: [Baden-Wuerttemberg, Bavaria, Germany]
+    simplified_lithology: null
+    ID: 16734089-4c39-53cc-be8f-7ef919493b85

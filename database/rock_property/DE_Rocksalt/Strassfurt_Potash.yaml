@@ -1,0 +1,238 @@
+density:
+- source: heemann2014 cited in liu2017
+  type: scalar
+  value: 2141.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for potassium salt in general.
+  tag:
+    agency: [GRS, BGR]
+    location: [Germany]
+    simplified_lithology: [Rocksalt]
+    ID: 410100f8-9005-55e8-b175-4f89c5a492e8
+- source: heemann2014 cited in liu2017
+  type: scalar
+  value: 1834.0
+  value_min: 1600.0
+  value_max: 2200.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Carnallite.
+  tag:
+    agency: [GRS, BGR]
+    location: [Germany]
+    simplified_lithology: [Rocksalt]
+    ID: aa4a956f-0086-5fc2-b0c3-af2a271675b9
+specific_heat_capacity:
+- source: lerch2012
+  type: scalar
+  value: 903.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: 'Gorleben salt dome: Stassfurt Potash Seam in the temperature range
+    between 40 degree Celsius and 200 degree Celsius.'
+  tag:
+    agency: [GRS, BGR]
+    location: [Gorleben, Lower-Saxony, Germany]
+    simplified_lithology: [Rocksalt]
+    ID: 8bb62adf-6e19-5eca-aba6-d996033579c7
+thermal_conductivity:
+- source: lerch2012
+  type: scalar
+  value: 1.5
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: 'Gorleben salt dome: Stassfurt Potash Seam in the temperature range
+    between 40 degree Celsius and 200 degree Celsius.'
+  tag:
+    agency: [GRS, BGR]
+    location: [Gorleben, Lower-Saxony, Germany]
+    simplified_lithology: [Rocksalt]
+    ID: f35d0f22-b075-5f22-bd12-c93732213516
+- source: kopietz1995 cited in kock2012
+  type: scalar
+  value: null
+  value_min: 1.09
+  value_max: 3.3
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Measured value for Potash Seam at 35 degree Celsius in 
+    Stassfurt-formation in Gorleben.
+  tag:
+    agency: [GRS, BGR]
+    location: [Gorleben, Lower-Saxony, Germany]
+    simplified_lithology: [Rocksalt]
+    ID: 07d177a8-e934-5cfb-80e8-55a8c651baec
+porosity:
+- source: popp2008
+  type: scalar
+  value: null
+  value_min: 0.001
+  value_max: 0.002
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for salt rock from in-site test in Stassfurt-Formation in 
+    the Bernburg mine.
+  tag:
+    agency: [GMUG]
+    location: [Bernburg, Saxony-Anhalt, Germany]
+    simplified_lithology: [Rocksalt]
+    ID: d2b58721-b5b7-52a4-a33a-03380ce9c8e9
+hydraulic_conductivity:
+- source: null
+  type: scalar
+  value: null
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: null
+  tag:
+    agency: null
+    location: null
+    simplified_lithology: null
+    ID: null
+p_wave_velocity:
+- source: stork1998
+  type: scalar
+  value: 4250.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for carnallite of Stassfurt formation based on approx. 1000
+    test specimens in Morsleben.
+  tag:
+    agency: [BfS/BGE, BGR]
+    location: [Morsleben, Saxony-Anhalt, Germany]
+    simplified_lithology: [Rocksalt]
+    ID: c53b4970-e100-5411-8801-7423f6eb784e
+s_wave_velocity:
+- source: stork1998
+  type: scalar
+  value: 2400.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for carnallite of Stassfurt formation based on approx. 1000
+    test specimens in Morsleben.
+  tag:
+    agency: [BfS/BGE, BGR]
+    location: [Morsleben, Saxony-Anhalt, Germany]
+    simplified_lithology: [Rocksalt]
+    ID: 23501937-2bdc-517c-b50c-e0d8a5340231
+electrical_resistivity:
+- source: yaramanci1994
+  type: scalar
+  value: null
+  value_min: 110.0
+  value_max: 200.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for wet carnallite with 0.4 to 1.3 percent water content 
+    from in situ measurement with profile arrangment of the electrodes in Asse 
+    salt mine.
+  tag:
+    agency: [Others]
+    location: [Asse, Lower-Saxony, Germany]
+    simplified_lithology: [Rocksalt]
+    ID: 3dccce8f-e21b-5f02-bc1a-1253d19d00a0
+- source: yaramanci1994
+  type: scalar
+  value: null
+  value_min: 9000.0
+  value_max: 16000.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for dry carnallite with 0.15 to 0.25 percent water content 
+    from in situ measurement with profile arrangment of the electrodes in Asse 
+    salt mine.
+  tag:
+    agency: [Others]
+    location: [Asse, Lower-Saxony, Germany]
+    simplified_lithology: [Rocksalt]
+    ID: 545a9220-0596-5f98-a93b-90de80a7c139

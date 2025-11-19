@@ -1,0 +1,382 @@
+density:
+- source: nagra2001
+  type: scalar
+  value: 2628.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Measured dry rock density with sample in Wellengebirge Formation 
+    (Claystone, calcareous) from Benken borehole.
+  tag:
+    agency: [NAGRA]
+    location: [Benken, Zurich, Switzerland]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: 4afb4217-2557-5ef8-a7b3-dea6d48b769a
+- source: falcon-suarez2024
+  type: scalar
+  value: 2130.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Bulk density measurement for Triassic salt obtained from the Arm 
+    Hill-1 well in Northwest Lancashire, UK.
+  tag:
+    agency: [Others]
+    location: [Lancashire, UK]
+    simplified_lithology: [Rocksalt]
+    ID: e83737a0-2833-5a58-8010-fabe09faf1ec
+porosity:
+- source: falcon-suarez2024
+  type: scalar
+  value: 0.0171
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Total porosity estimated by the grain and bulk densities for 
+    Triassic salt from the Arm Hill-1 well in Northwest Lancashire, UK.
+  tag:
+    agency: [Others]
+    location: [Lancashire, UK]
+    simplified_lithology: [Rocksalt]
+    ID: ac5183aa-b446-5024-b7f9-1b8c6db40506
+- source: heap2019
+  type: scalar
+  value: 0.048
+  value_min: null
+  value_max: null
+  value_std: 0.0426
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: "Mean connected porsoity was calculated based on five laboratory data
+    in Table 2 from the Marnes Bariolées Formation at Soultz-sous-Forêts."
+  tag:
+    agency: [Others]
+    location: ["Soultz-sous-Forêts", Grand Est, France]
+    simplified_lithology: [Rocksalt]
+    ID: 56f55e7e-bda9-5df3-87b3-bd431cf0d507
+hydraulic_conductivity:
+- source: null
+  type: scalar
+  value: null
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: null
+  tag:
+    agency: null
+    location: null
+    simplified_lithology: null
+    ID: null
+p_wave_velocity:
+- source: gebrande1982a cited in jahn2016
+  type: scalar
+  value: 5500.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for anhydrite compiled from gebrande1982a and then 
+    transferred to the specific layer.
+  tag:
+    agency: [BGR, GRS]
+    location: [unknown]
+    simplified_lithology: [Rocksalt]
+    ID: 06badda2-8999-539a-bdc4-e3ee8c993dcd
+- source: heap2019
+  type: scalar
+  value: 4881.42857
+  value_min: null
+  value_max: null
+  value_std: 492.84679
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: "Mean dry P-wave velocity was calculated based on seven laboratory
+    data in Table 2 measured with piezoelectric sensors excited at a frequency of
+    700 kHz from the Marnes Bariolées Formation at Soultz-sous-Forêts."
+  tag:
+    agency: [Others]
+    location: ["Soultz-sous-Forêts", Grand Est, France]
+    simplified_lithology: [Rocksalt]
+    ID: 87056a2a-5438-5bda-b15a-c41aa45f587c
+- source: falcon-suarez2024
+  type: scalar
+  value: 4560.0
+  value_min: null
+  value_max: null
+  value_std: 41.45
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Mean velocity was calculated based on 11 test results measured at
+    600 kHz for Triassic salt from the Arm Hill-1 well in Northwest Lancashire, 
+    UK.
+  tag:
+    agency: [Others]
+    location: [Lancashire, UK]
+    simplified_lithology: [Rocksalt]
+    ID: 934be217-3d3d-510a-944b-8ad2920f912e
+s_wave_velocity:
+- source: falcon-suarez2024
+  type: scalar
+  value: 2558.27
+  value_min: null
+  value_max: null
+  value_std: 16.84
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Mean velocity was calculated based on 11 test results measured at
+    600kHz for Triassic salt from the Arm Hill-1 well in Northwest Lancashire, 
+    UK.
+  tag:
+    agency: [Others]
+    location: [Lancashire, UK]
+    simplified_lithology: [Rocksalt]
+    ID: 03d6b159-2fa7-5f0c-b608-166c5328b193
+electrical_resistivity:
+- source: null
+  type: scalar
+  value: null
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: null
+  tag:
+    agency: null
+    location: null
+    simplified_lithology: null
+    ID: null
+specific_heat_capacity:
+- source: rath2005
+  type: scalar
+  value: 1020.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Muschelkalk formation in the Western Molasse.
+  tag:
+    agency: [BfS/BGE]
+    location: [Baden-Wuerttemberg, Bavaria, Germany]
+    simplified_lithology: null
+    ID: 28fc4c64-4d0c-5eb6-b1ef-8a3f36e1c0ac
+- source: heap2019
+  type: scalar
+  value: 845.129
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: "Value derived with 2.221 MJ/m^3/K and density of 2628 kg/m^3 from
+    the Marnes Bariolées Formation at Soultz-sous-Forêts."
+  tag:
+    agency: [Others]
+    location: ["Soultz-sous-Forêts", Grand Est, France]
+    simplified_lithology: [Rocksalt]
+    ID: bab7c099-d075-545a-9919-b7a764e80bc4
+- source: heap2019
+  type: scalar
+  value: 888.128
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: "Value derived with 2.334 MJ/m^3/K and density of 2628 kg/m^3 from
+    the Marnes Bariolées Formation at Soultz-sous-Forêts."
+  tag:
+    agency: [Others]
+    location: ["Soultz-sous-Forêts", Grand Est, France]
+    simplified_lithology: [Rocksalt]
+    ID: cbd3b865-1570-5636-83e3-4efc588d8a25
+- source: heap2019
+  type: scalar
+  value: 925.799
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: "Value derived with 2.433 MJ/m^3/K and density of 2628 kg/m^3 from
+    the Marnes Bariolées Formation at Soultz-sous-Forêts."
+  tag:
+    agency: [Others]
+    location: ["Soultz-sous-Forêts", Grand Est, France]
+    simplified_lithology: [Rocksalt]
+    ID: 952f6d8a-18ed-5d00-86c3-762461d47dd1
+thermal_conductivity:
+- source: rath2005
+  type: scalar
+  value: 2.34
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Muschelkalk formation in the Western Molasse.
+  tag:
+    agency: [BfS/BGE]
+    location: [Baden-Wuerttemberg, Bavaria, Germany]
+    simplified_lithology: null
+    ID: 16734089-4c39-53cc-be8f-7ef919493b85
+- source: heap2019
+  type: scalar
+  value: 3.159
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: "Value for the Marnes Bariolées Formation at Soultz-sous-Forêts."
+  tag:
+    agency: [Others]
+    location: ["Soultz-sous-Forêts", Grand Est, France]
+    simplified_lithology: [Rocksalt]
+    ID: e6d887b5-ee30-523a-9a9c-00983dcee351
+- source: heap2019
+  type: scalar
+  value: 5.72
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: "Value for the Marnes Bariolées Formation at Soultz-sous-Forêts."
+  tag:
+    agency: [Others]
+    location: ["Soultz-sous-Forêts", Grand Est, France]
+    simplified_lithology: [Rocksalt]
+    ID: 620999fb-22da-5fa4-a963-7e7d9fabd022
+- source: heap2019
+  type: scalar
+  value: 4.932
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: "Value for the Marnes Bariolées Formation at Soultz-sous-Forêts."
+  tag:
+    agency: [Others]
+    location: ["Soultz-sous-Forêts", Grand Est, France]
+    simplified_lithology: [Rocksalt]
+    ID: 3481f460-7b52-5215-b67a-04f81e614c06

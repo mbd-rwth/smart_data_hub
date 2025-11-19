@@ -1,0 +1,17 @@
+X,Y,Z,azimuth,dip,polarity,formation
+0,0,515,90,0,1,Quaternary
+0,0,475,90,3.75,1,Tertiary
+0,0,200,90,1.25,1,Tithonian
+0,0,150,90,1.25,1,Kimmeridgian
+0,0,0,90,1.25,1,Oxfordian
+0,0,-20,90,2.75,1,Jurassic_Middle_sequence1
+0,0,-85,90,0.075,1,Jurassic_Middle_sequence2
+0,0,-200,90,1.25,1,Opalinus_Clay
+0,0,-260,90,1.25,1,Jurassic_Lower_sequence1
+0,0,-280,90,1.25,1,Jurassic_Lower_sequence2
+0,0,-325,90,1.5,1,Keuper_sequence1
+0,0,-350,90,1.5,1,Keuper_sequence2
+0,0,-450,90,1.5,1,Keuper_sequence3
+0,0,-500,90,1.5,1,Muschelkalk_Upper
+0,0,-550,90,0.5,1,Muschelkalk_Middle
+0,0,-575,90,0.5,1,Muschelkalk_Lower
