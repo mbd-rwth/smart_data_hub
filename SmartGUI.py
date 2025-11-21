@@ -373,8 +373,9 @@ site_geomodel = dbc.Card(
         dbc.CardHeader("3D Structural Geomodel"),
         html.Div(
             [
-                html.Iframe(id="3d_model", height=350, width=320),
-            ]
+                html.Iframe(id="3d_model", style={"height": "min(100%, calc(33.33vw - 25px))", "width": "calc(33.33vw - 25px)"}),
+            ],
+            style={"height": "calc(100vh - 316px)"},
         ),
     ]
 )
@@ -475,7 +476,7 @@ lithostratigraphy = dbc.Card(
         dbc.CardHeader("Lithostratigraphic Table"),
         html.Div(
             [
-                dcc.Graph(id="icicle_props", style={"height": 355}),
+                dcc.Graph(id="icicle_props", style={"height": "98%",}),
                 html.Div(
                     id="properties_table",
                     children=[
@@ -490,18 +491,18 @@ lithostratigraphy = dbc.Card(
                             style={
                                 "overflow-y": "auto",
                                 "overflow-x": "auto",
-                                "top": "28%",
-                                "height": "62%",
-                                "width": "90%",
+                                "top": "110px",
+                                "height": "calc(100vh - 280px - 110px)",
+                                "width": "calc(66.67vw - 25px - 80px)",
                                 "position": "absolute",
-                                "margin-left": "5%",
+                                "margin-left": "40px",
                             },
                         )
                     ],
                     style={"display": "none"},
                 ),
             ],
-            style={"height": 395},
+            style={"height": "calc(100vh - 280px)"},
         ),
     ],
 )
