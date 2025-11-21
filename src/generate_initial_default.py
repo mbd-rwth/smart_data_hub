@@ -33,7 +33,7 @@ def generate_initial_default():
             input_df_for_merging, source_type="default"
         )
         # Only maintainers can save the generated data to YAML files.
-        save_to_file = True
+        save_to_file = False
 
         if save_to_file:
             export2yaml(
