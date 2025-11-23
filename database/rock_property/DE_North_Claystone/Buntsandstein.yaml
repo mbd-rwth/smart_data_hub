@@ -1,0 +1,242 @@
+density:
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 2520.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Wet density value based on laboratory measurement or theoretical 
+    derivations of the mineral content of Buntsandstein (thick cycles of 
+    alternating sandstones and claystones) in Lower Saxony according to Table 
+    A-9.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: f98e0c8c-27ec-50e5-b4d0-0d7569518da8
+- source: alheid1986
+  type: scalar
+  value: 2500.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: density value for Buntsandstein formation in the area of the 
+    Konrad mine.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 6a54a262-f503-55f0-8cc3-de28d4133c86
+porosity:
+- source: stork1998
+  type: scalar
+  value: null
+  value_min: 0.05
+  value_max: 0.15
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Effective porosity of clayey sandstones and siltstones in Solling
+    sequence (aquifer) in the areas of Morsleben.
+  tag:
+    agency: [BfS/BGE, BGR]
+    location: [Morsleben, Saxony-Anhalt, Germany]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: a3228fea-50b2-59c3-a02d-f18e7f253031
+- source: stork1998
+  type: scalar
+  value: null
+  value_min: 0.005
+  value_max: 0.05
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Effective porosity of clay and siltstones of the Volpriehausen 
+    alternation sequence in the areas of Morsleben.
+  tag:
+    agency: [BfS/BGE, BGR]
+    location: [Morsleben, Saxony-Anhalt, Germany]
+    simplified_lithology: [Mudstone]
+    ID: cd8658a1-b191-510a-ac0a-aa1860b7859d
+hydraulic_conductivity:
+- source: stork1998
+  type: scalar
+  value: null
+  value_min: 1.0e-06
+  value_max: 1.0e-05
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for clayey sandstones and siltstones in Solling sequence 
+    (aquifer) in the areas of Morsleben.
+  tag:
+    agency: [BfS/BGE, BGR]
+    location: [Morsleben, Saxony-Anhalt, Germany]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: 3de51184-bc75-5c9e-bc47-6f617e3ec9d4
+- source: stork1998
+  type: scalar
+  value: 1.0e-10
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for clay and siltstones of the Volpriehausen alternation 
+    sequence in the areas of Morsleben.
+  tag:
+    agency: [BfS/BGE, BGR]
+    location: [Morsleben, Saxony-Anhalt, Germany]
+    simplified_lithology: [Mudstone]
+    ID: c5723efd-1880-50c0-8c02-f4d24b5dff19
+p_wave_velocity:
+- source: alheid1986
+  type: scalar
+  value: 4770.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Buntsandstein formation from reflection seismic and 
+    borehole countersink measurement in the area of the Konrad mine.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 3ed75864-d812-5d0f-aadf-fb30cfb28fcd
+s_wave_velocity:
+- source: alheid1986
+  type: scalar
+  value: 2680.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Buntsandstein formation from reflection seismic and 
+    borehole countersink measurement in the area of the Konrad mine.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 4fdab2a9-79aa-5d61-876a-695f1ab0e01c
+specific_heat_capacity:
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 1000.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value based on laboratory measurement or theoretical derivations 
+    of the mineral content of Buntsandstein (thick cycles of alternating 
+    sandstones and claystones) in Lower Saxony according to Table A-9.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: a1bb5f8b-37f3-50ab-9105-b1e86dc60857
+thermal_conductivity:
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 2.5
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value based on laboratory measurement or theoretical derivations 
+    of the mineral content of Buntsandstein (thick cycles of alternating 
+    sandstones and claystones) in Lower Saxony according to Table A-9.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: 43f1e040-78ea-5963-be6e-ec43b4f36263
+electrical_resistivity:
+- source: null
+  type: scalar
+  value: null
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: null
+  tag:
+    agency: null
+    location: null
+    simplified_lithology: null
+    ID: null

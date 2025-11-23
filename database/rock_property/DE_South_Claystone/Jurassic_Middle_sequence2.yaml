@@ -1,0 +1,257 @@
+density:
+- source: nagra2001
+  type: scalar
+  value: 2549.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Measured dry rock density with sample in Wedelsandstein Formation
+    (limestone, sandy) from Benken borehole.
+  tag:
+    agency: [NAGRA]
+    location: [Benken, Zurich, Switzerland]
+    simplified_lithology: [Sandstone, Limestone]
+    ID: 3f10dafa-056c-576c-9690-71b64b4e1c51
+porosity:
+- source: rvbo2008 cited in jahn2016
+  type: scalar
+  value: null
+  value_min: 0.12
+  value_max: 0.14
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Effective porosity of Middle Jurassic in the 
+    Bodensee-Oberschwaben region.
+  tag:
+    agency: [BGR, GRS]
+    location: [Bodensee, Oberschwaben, Baden-Wuerttemberg, Germany]
+    simplified_lithology: null
+    ID: 3aacbe86-85cd-59ea-878f-c18b5786322d
+intrinsic_permeability:
+- source: fehn2010 cited in reinhold2016
+  type: scalar
+  value: null
+  value_min: 1.18e-14
+  value_max: 1.88e-14
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m^2
+  unit_base: [0, 2, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Permeability value in Middle Jurassic in KW-Feldern Fronhofen.
+  tag:
+    agency: [BGR]
+    location: [Baden-Wuerttemberg, Germany]
+    simplified_lithology: null
+    ID: 337a1a1f-2edd-5fc3-adcd-924879bd3727
+- source: fehn2010 cited in reinhold2016
+  type: scalar
+  value: null
+  value_min: 2.96e-15
+  value_max: 9.87e-15
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m^2
+  unit_base: [0, 2, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Permeability value in Middle Jurassic in Illmensee.
+  tag:
+    agency: [BGR]
+    location: [Sigmaringen, Baden-Wuerttemberg, Germany]
+    simplified_lithology: null
+    ID: 7a308dfc-5764-59e7-80ee-c352e3113dfc
+- source: fehn2010 cited in reinhold2016
+  type: scalar
+  value: null
+  value_min: 2.96e-14
+  value_max: 4.44e-13
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m^2
+  unit_base: [0, 2, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Permeability value in Middle Jurassic in Pfullendorf.
+  tag:
+    agency: [BGR]
+    location: [Sigmaringen, Baden-Wuerttemberg, Germany]
+    simplified_lithology: null
+    ID: cc66adf7-bacd-5e27-9ca5-e35bc7a432a2
+p_wave_velocity:
+- source: gebrande1982a cited in jahn2016
+  type: scalar
+  value: 3630.0
+  value_min: null
+  value_max: null
+  value_std: 650.0
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for sandstone compiled from gebrande1982a and then 
+    transferred to the specific layer.
+  tag:
+    agency: [BGR, GRS]
+    location: [unknown]
+    simplified_lithology: [Sandstone]
+    ID: 62623900-a5e8-5370-b315-f87b7dff93a6
+s_wave_velocity:
+- source: gebrande1982a cited in jahn2016
+  type: scalar
+  value: 2260.0
+  value_min: null
+  value_max: null
+  value_std: 520.0
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for sandstone compiled from gebrande1982a and then 
+    transferred to the specific layer.
+  tag:
+    agency: [BGR, GRS]
+    location: [unknown]
+    simplified_lithology: [Sandstone]
+    ID: 27c28c9e-7e7b-5004-b7df-cf355a1288f9
+electrical_resistivity:
+- source: kneuker2021
+  type: scalar
+  value: null
+  value_min: 5.0
+  value_max: 20.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Derived from figure 2. In situ measurement of sandy facies 
+    Opalinus clay in Mont Terri laboratory.
+  tag:
+    agency: [Others]
+    location: [Mont Terri, Switzerland]
+    simplified_lithology: [Sandstone]
+    ID: 6b9748dd-c7d9-59f1-a77a-81c1eb139996
+- source: kneuker2021
+  type: scalar
+  value: null
+  value_min: 10.0
+  value_max: 50.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Derived from figure 2. In situ measurement of carbonate-rich 
+    sandy facies Opalinus clay in Mont Terri laboratory.
+  tag:
+    agency: [Others]
+    location: [Mont Terri, Switzerland]
+    simplified_lithology: [Sandstone, Limestone]
+    ID: 7401e4e2-6b5c-527c-87f5-1b3e80b5ba3f
+specific_heat_capacity:
+- source: rath2005
+  type: scalar
+  value: 1000.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Dogger (Middle Jurassic) formation in the Western 
+    Molasse.
+  tag:
+    agency: [BfS/BGE]
+    location: [Baden-Wuerttemberg, Bavaria, Germany]
+    simplified_lithology: null
+    ID: 2a34c621-949a-59e7-b747-823cecfc23dd
+thermal_conductivity:
+- source: rath2005
+  type: scalar
+  value: 2.61
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Dogger (Middle Jurassic) formation in the Western 
+    Molasse.
+  tag:
+    agency: [BfS/BGE]
+    location: [Baden-Wuerttemberg, Bavaria, Germany]
+    simplified_lithology: null
+    ID: d900e053-51ee-5354-ab9c-2e687a513700
+- source: clauser2002
+  type: scalar
+  value: 2.75
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Sandstone in Dogger (Middle Jurassic) formation near 
+    Bad Waldsee area.
+  tag:
+    agency: [BfS/BGE]
+    location: [Baden-Wuerttemberg, Bavaria, Germany]
+    simplified_lithology: [Sandstone]
+    ID: c0bfe083-56b7-586b-8fcd-bdec694bc9f3

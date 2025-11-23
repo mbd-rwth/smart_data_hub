@@ -7,13 +7,15 @@ dependencies:
   - python=3.10
   - pip
   - pip:
-    - dash==2.17.1
-    - gempy==2024.2.0.2
-    - gempy-viewer==2024.2.0
-    - pandas==2.2.2
-    - pyvista==0.43.10
-    - pyyaml==6.0.1
-    - trame==3.6.3
-    - trame-vtk==2.8.9
-    - trame-vuetify==2.6.0
-    - vtk==9.3.0
+    - dash==3.2.0
+    - dash-bootstrap-components==2.0.4
+    - gempy==2025.2.0
+    - pandas==2.3.3
+    - pyvista==0.45.3
+    - pyyaml==6.0.3
+    - scipy==1.15.3
+    - ruamel.yaml==0.18.16
+    - trame==3.12.0
+    - trame-vtk==2.10.0
+    - trame-vuetify==3.1.0
+    - vtk==9.4.2

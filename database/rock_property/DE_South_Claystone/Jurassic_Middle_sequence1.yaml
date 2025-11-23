@@ -1,0 +1,218 @@
+density:
+- source: nagra2001
+  type: scalar
+  value: 2490.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Measured dry rock density with sample in Varians-Schichten 
+    Formation (marl, silty, biogenic) from Benken borehole.
+  tag:
+    agency: [NAGRA]
+    location: [Benken, Zurich, Switzerland]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: 72399aa9-806c-50ec-8af4-14b1695d6348
+- source: schulz1989 cited in clauser2002
+  type: scalar
+  value: 2546.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Similar to the Value for Limestone and Marlstone in Malm (Upper 
+    Jurassic) due to comparable lithology in the southern German molasses basin.
+  tag:
+    agency: [BfS/BGE]
+    location: [Baden-Wuerttemberg, Bavaria, Germany]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: 823084ae-f803-544c-b3bd-8f5a6ec056db
+porosity:
+- source: nagra2001
+  type: scalar
+  value: 0.115
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Sample dried at 105 Celsius degree in Varians-Schichten Formation
+    (marl, silty, biogenic) from Benken borehole.
+  tag:
+    agency: [NAGRA]
+    location: [Benken, Zurich, Switzerland]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: 1da8d173-9f2e-549e-8299-24ecc1a5c4a9
+hydraulic_conductivity:
+- source: nagra2001
+  type: scalar
+  value: 1.6e-13
+  value_min: 1.9e-14
+  value_max: 3.9e-13
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Hydraulic conductivity of claystone determined from the packer 
+    test in the Dogger (Middle Jurassic) at a depth of 471.92 m in the Benken 
+    borehole.
+  tag:
+    agency: [NAGRA]
+    location: [Benken, Zurich, Switzerland]
+    simplified_lithology: [Mudstone]
+    ID: 639f9ebb-5b88-5e15-83cd-d23d0f93f05e
+p_wave_velocity:
+- source: gebrande1982a cited in jahn2016
+  type: scalar
+  value: 5680.0
+  value_min: null
+  value_max: null
+  value_std: 400.0
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for marl compiled from gebrande1982a and then transferred 
+    to the specific layer.
+  tag:
+    agency: [BGR, GRS]
+    location: [unknown]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: 14e2dcb1-423d-5c0a-be4b-c5f736b166e3
+s_wave_velocity:
+- source: null
+  type: scalar
+  value: null
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: null
+  tag:
+    agency: null
+    location: null
+    simplified_lithology: null
+    ID: null
+electrical_resistivity:
+- source: gelis2016
+  type: scalar
+  value: 4000.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Unfractured Bajocian limestone and dolomite layer in Tournemire 
+    plateau on the southern border of the French Massif Central.
+  tag:
+    agency: [Others]
+    location: [Massif-Central, France]
+    simplified_lithology: [Limestone, Dolostone]
+    ID: 33963ef9-72ca-53f6-aaac-24a971cc4f28
+- source: kneuker2021
+  type: scalar
+  value: null
+  value_min: 5.0
+  value_max: 10.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: In situ measurement of shaly facies Opalinus clay in Mont Terri 
+    laboratory.
+  tag:
+    agency: [Others]
+    location: [Mont Terri, Switzerland]
+    simplified_lithology: [Mudstone]
+    ID: 719f6b13-9c09-5807-9e80-44ae87e5bead
+specific_heat_capacity:
+- source: schulz1989 cited in clauser2002
+  type: scalar
+  value: 860.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Similar to the value for Limestone and Marlstone for Malm (Upper 
+    Jurassic) due to comparable lithology in the southern German molasses basin.
+  tag:
+    agency: [BfS/BGE]
+    location: [Baden-Wuerttemberg, Bavaria, Germany]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: 9a3b3f4e-ae39-52dd-913b-8f1f0dced576
+thermal_conductivity:
+- source: schulz1989 cited in clauser2002
+  type: scalar
+  value: 3.91
+  value_min: 3.0
+  value_max: 4.76
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Similar to the value for Limestone and Marlstone in Malm (Upper 
+    Jurassic) due to comparable lithology in the southern German molasses basin.
+  tag:
+    agency: [BfS/BGE]
+    location: [Baden-Wuerttemberg, Bavaria, Germany]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: 5d5eb91b-7b76-5901-81ea-cf1fc0203cb1

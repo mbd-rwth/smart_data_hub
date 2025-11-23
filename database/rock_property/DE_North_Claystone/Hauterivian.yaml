@@ -1,0 +1,287 @@
+density:
+- source: gerardi2005 cited in jahn2013
+  type: scalar
+  value: 2310.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Wet density value for Upper Hauterivian in the area of the Konrad
+    mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 42d6962b-df40-54a2-8371-6ca5e354ddf1
+- source: gerardi2005 cited in jahn2013
+  type: scalar
+  value: 2450.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Wet density value for Lower Hauterivian in the area of the Konrad
+    mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 57b5fab1-ab91-5106-9ec7-d6acaf24b398
+porosity:
+- source: mueller1987 and jahn2013
+  type: scalar
+  value: 0.136
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value computed by jahn2013. Effective porosity for Upper 
+    Hauterivian formation determined from laboratory test in the area of the 
+    Konrad mine.
+  tag:
+    agency: [Others]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 563f2765-aec4-59c2-8f6a-226fa7a01ddc
+- source: mueller1987 and jahn2013
+  type: scalar
+  value: null
+  value_min: 0.054
+  value_max: 0.068
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value computed by jahn2013. Effective porosity for Lower 
+    Hauterivian formation determined from laboratory test in the area of the 
+    Konrad mine. High values due to fractures in samples, the minimum value was 
+    therefore most reliable.
+  tag:
+    agency: [Others]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 69dd0a10-34c1-5d81-a736-d2a65c08f600
+hydraulic_conductivity:
+- source: mueller1987 and jahn2013
+  type: scalar
+  value: 5.0e-12
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value computed by jahn2013. Value for Upper Hauterivian formation
+    from laboratory test in the area of the Konrad mine.
+  tag:
+    agency: [Others]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: d6a0b9fa-7cfc-5dd8-9e28-b01165a3cce2
+- source: mueller1987 and jahn2013
+  type: scalar
+  value: 5.0e-11
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value computed by jahn2013. Value for Lower Hauterivian formation
+    from laboratory test in the area of the Konrad mine.
+  tag:
+    agency: [Others]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 2518fadc-1079-5c76-bfd9-77e89779a7c8
+p_wave_velocity:
+- source: schnier1986a and jahn2013
+  type: scalar
+  value: 2880.0
+  value_min: 2410.0
+  value_max: 3330.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for clayey Marlstone computed by jahn2013. Ultrasonic 
+    measurement for Upper Hauterivian in the area of the Konrad mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: 10685725-6602-5393-9af0-24386e3412cd
+- source: schnier1987 and jahn2013
+  type: scalar
+  value: 3465.0
+  value_min: 3200.0
+  value_max: 3900.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for clayey Marlstone computed by jahn2013. Ultrasonic 
+    measurement for Upper Hauterivian in the direction of parallel to bedding in
+    the area of the Konrad mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: 4b69689a-2d6b-5d19-95b3-748f86967779
+s_wave_velocity:
+- source: schnier1986a and jahn2013
+  type: scalar
+  value: 1740.0
+  value_min: 1370.0
+  value_max: 2050.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for clayey Marlstone computed by jahn2013. Ultrasonic 
+    measurement for Upper Hauterivian in the area of the Konrad mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: cdfe796e-c43f-5c0c-8ac6-d793e0d73a54
+- source: schnier1987 and jahn2013
+  type: scalar
+  value: 1970.0
+  value_min: 1750.0
+  value_max: 2100.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for clayey Marlstone computed by jahn2013. Ultrasonic 
+    measurement for Upper Hauterivian in the direction of parallel to bedding in
+    the area of the Konrad mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: 364a5b3f-f494-52c6-9fc4-8c2aeda2766f
+specific_heat_capacity:
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 1400.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value based on laboratory measurement or theoretical derivations 
+    of the mineral content of Hauterivian (clays) in Lower Saxony according to 
+    Table A-7.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone]
+    ID: ae3ddad3-647b-5c62-abd4-989dfefd985e
+thermal_conductivity:
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 2.12
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value in the direction of parallel to bedding based on laboratory
+    measurement or theoretical derivations of the mineral content of Hauterivian
+    (clays) in Lower Saxony according to Table A-7.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone]
+    ID: 468eb15b-b8d7-5c12-be11-690b3d5acc97
+electrical_resistivity:
+- source: null
+  type: scalar
+  value: null
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: null
+  tag:
+    agency: null
+    location: null
+    simplified_lithology: null
+    ID: null

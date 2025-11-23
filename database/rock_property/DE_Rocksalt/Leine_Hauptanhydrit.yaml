@@ -1,0 +1,319 @@
+density:
+- source: heemann2014 cited in liu2017
+  type: scalar
+  value: 2565.0
+  value_min: 2550.0
+  value_max: 2580.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for gray saltclay.
+  tag:
+    agency: [GRS, BGR]
+    location: [Germany]
+    simplified_lithology: [Mudstone]
+    ID: 669256e3-20d7-5d14-9ff9-40499a09c85a
+- source: heemann2014 cited in liu2017
+  type: scalar
+  value: 2745.0
+  value_min: 2350.0
+  value_max: 3000.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Anhydrite.
+  tag:
+    agency: [GRS, BGR]
+    location: [Germany]
+    simplified_lithology: [Rocksalt]
+    ID: 1294a71f-406c-5e76-bb97-de38ecfac4b7
+- source: minkley2010
+  type: scalar
+  value: 2700.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Hauptanhydrit and grey saltclay Formation for the 
+    German part of the North German Basin.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 69f0332e-fd2b-59cf-9b59-797595f0195e
+specific_heat_capacity:
+- source: lerch2012
+  type: scalar
+  value: 864.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: 'Gorleben salt dome: Hauptanhydrit in the temperature range between
+    40 degree Celsius and 200 degree Celsius.'
+  tag:
+    agency: [GRS, BGR]
+    location: [Gorleben, Lower-Saxony, Germany]
+    simplified_lithology: [Rocksalt]
+    ID: 31d0a5bd-07a0-59e6-a9cb-c426fbee8b68
+thermal_conductivity:
+- source: kopietz1995 cited in kock2012
+  type: scalar
+  value: null
+  value_min: 4.52
+  value_max: 5.5
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Measured value at 35 degree Celsius in Hauptanhydrit in Gorleben.
+  tag:
+    agency: [GRS, BGR]
+    location: [Gorleben, Lower-Saxony, Germany]
+    simplified_lithology: [Rocksalt]
+    ID: 3ffc51d4-b5f0-5795-a1b4-3ccb14e945fd
+- source: lerch2012
+  type: scalar
+  value: null
+  value_min: 3.2
+  value_max: 5.2
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: 'Gorleben salt dome: Hauptanhydrit in the temperature range between
+    40 degree Celsius and 200 degree Celsius.'
+  tag:
+    agency: [GRS, BGR]
+    location: [Gorleben, Lower-Saxony, Germany]
+    simplified_lithology: [Rocksalt]
+    ID: 4127bf69-dd84-58a1-ab96-c37ab4027837
+porosity:
+- source: stork1998
+  type: scalar
+  value: null
+  value_min: 0.01
+  value_max: 0.05
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: 'Morsleben: layer sequence of anhydrite/grey salt clay/carbonate in
+    Allertal zone in Morsleben.'
+  tag:
+    agency: [BfS/BGE, BGR]
+    location: [Morsleben, Saxony-Anhalt, Germany]
+    simplified_lithology: [Rocksalt]
+    ID: 5ea8cf5c-b1ce-5a06-8244-962a1afd7e54
+hydraulic_conductivity:
+- source: stork1998
+  type: scalar
+  value: null
+  value_min: 1.0e-11
+  value_max: 1.0e-08
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: 'Morsleben: layer sequence of anhydrite/grey salt clay/carbonate in
+    Allertal zone in Morsleben.'
+  tag:
+    agency: [BfS/BGE, BGR]
+    location: [Morsleben, Saxony-Anhalt, Germany]
+    simplified_lithology: [Rocksalt]
+    ID: bf275050-7c6d-54a9-8d16-9bac721b320e
+p_wave_velocity:
+- source: stork1998
+  type: scalar
+  value: 5750.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Anhydrite of Leine formation based on approx. 1000 test
+    specimens in Morsleben.
+  tag:
+    agency: [BfS/BGE, BGR]
+    location: [Morsleben, Saxony-Anhalt, Germany]
+    simplified_lithology: [Rocksalt]
+    ID: 853cbcf4-b759-5599-8335-78d09dbc5547
+- source: stork1998
+  type: scalar
+  value: 4350.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for saltclay of Leine formation based on approx. 1000 test 
+    specimens in Morsleben.
+  tag:
+    agency: [BfS/BGE, BGR]
+    location: [Morsleben, Saxony-Anhalt, Germany]
+    simplified_lithology: [Mudstone]
+    ID: bf315e23-2c85-5b35-8e92-d32833c6a967
+- source: mueller2019
+  type: scalar
+  value: 6047.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Anhydrite in Zechstein.
+  tag:
+    agency: [Others]
+    location: [Germany]
+    simplified_lithology: [Rocksalt]
+    ID: ce956836-1eec-57b2-92fa-56b2406fa4de
+s_wave_velocity:
+- source: stork1998
+  type: scalar
+  value: 3300.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Anhydrite of Leine formation based on approx. 1000 test
+    specimens in Morsleben.
+  tag:
+    agency: [BfS/BGE, BGR]
+    location: [Morsleben, Saxony-Anhalt, Germany]
+    simplified_lithology: [Rocksalt]
+    ID: 747eb7c5-f112-5476-9ff6-bcc0be1549f6
+- source: stork1998
+  type: scalar
+  value: 2550.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for saltclay of Leine formation based on approx. 1000 test 
+    specimens in Morsleben.
+  tag:
+    agency: [BfS/BGE, BGR]
+    location: [Morsleben, Saxony-Anhalt, Germany]
+    simplified_lithology: [Mudstone]
+    ID: ac6e7723-ad99-5b72-8fe6-e97390b74258
+- source: mueller2019
+  type: scalar
+  value: 2965.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Anhydrite in Zechstein.
+  tag:
+    agency: [Others]
+    location: [Germany]
+    simplified_lithology: [Rocksalt]
+    ID: 988f47b8-547c-570e-8afb-5898ca7c5d41
+electrical_resistivity:
+- source: yaramanci1994
+  type: scalar
+  value: null
+  value_min: 4000.0
+  value_max: 9000.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for wet rock salt in Stassfurt formation and anhydrite with
+    0.1 to 0.2 percent water content from in situ measurement with profile 
+    arrangment of the electrodes in Asse salt mine.
+  tag:
+    agency: [Others]
+    location: [Asse, Lower-Saxony, Germany]
+    simplified_lithology: [Rocksalt]
+    ID: a06b9bfc-54a5-572a-9c42-d09787777074

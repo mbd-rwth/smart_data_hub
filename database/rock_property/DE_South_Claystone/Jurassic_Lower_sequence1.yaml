@@ -1,0 +1,216 @@
+density:
+- source: nagra2001
+  type: scalar
+  value: 2407.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Measured dry rock density with sample in 
+    Murchisonae-Sch.Formation (claystone, silty, limy) from Benken borehole.
+  tag:
+    agency: [NAGRA]
+    location: [Benken, Zurich, Switzerland]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: d62744fe-375c-5bdd-aa92-7e1f8e54b181
+- source: nagra2001
+  type: scalar
+  value: 2653.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Measured dry rock density with sample in Jurensis-Mergel 
+    Formation (marl, clayey) from Benken borehole.
+  tag:
+    agency: [NAGRA]
+    location: [Benken, Zurich, Switzerland]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: fbd81d18-640b-525b-bba8-0f7256799893
+porosity:
+- source: nagra2001
+  type: scalar
+  value: 0.126
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Sample dried at 105 Celsius degree in Murchisonae-Sch.Formation 
+    (claystone, silty, limy) from Benken borehole.
+  tag:
+    agency: [NAGRA]
+    location: [Benken, Zurich, Switzerland]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: 4c987908-2554-551d-9f77-4056d2cbe718
+hydraulic_conductivity:
+- source: nagra2001
+  type: scalar
+  value: 3.0e-14
+  value_min: 1.9e-14
+  value_max: 7.0e-14
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Hydraulic conductivity of claystone determined from the packer 
+    test in the Obtususton-Formation (Lias, Lower Jurassic) at a depth of 677.39
+    m in the Benken borehole.
+  tag:
+    agency: [NAGRA]
+    location: [Benken, Zurich, Switzerland]
+    simplified_lithology: [Mudstone]
+    ID: 56870c54-94b3-572d-80c6-6e7376d1ad61
+p_wave_velocity:
+- source: gebrande1982a cited in jahn2016
+  type: scalar
+  value: 5680.0
+  value_min: null
+  value_max: null
+  value_std: 400.0
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for marl compiled from gebrande1982a and then transferred 
+    to the specific layer.
+  tag:
+    agency: [BGR, GRS]
+    location: [unknown]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: 14e2dcb1-423d-5c0a-be4b-c5f736b166e3
+s_wave_velocity:
+- source: null
+  type: scalar
+  value: null
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: null
+  tag:
+    agency: null
+    location: null
+    simplified_lithology: null
+    ID: null
+electrical_resistivity:
+- source: gelis2016
+  type: scalar
+  value: null
+  value_min: 90.0
+  value_max: 150.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Toarcian argillaceous formation in Tournemire plateau on the 
+    southern border of the French Massif Central.
+  tag:
+    agency: [Others]
+    location: [Massif-Central, France]
+    simplified_lithology: [Mudstone]
+    ID: f9b00128-998c-56f7-b6b0-229f8ff9c20b
+specific_heat_capacity:
+- source: rath2005
+  type: scalar
+  value: 840.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Lias (Lower Jurassic) formation in the Western Molasse.
+  tag:
+    agency: [BfS/BGE]
+    location: [Baden-Wuerttemberg, Bavaria, Germany]
+    simplified_lithology: null
+    ID: 718746cf-4c66-5be5-b033-d23e4552d73f
+thermal_conductivity:
+- source: rath2005
+  type: scalar
+  value: 2.26
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Lias (Lower Jurassic) formation in the Western Molasse.
+  tag:
+    agency: [BfS/BGE]
+    location: [Baden-Wuerttemberg, Bavaria, Germany]
+    simplified_lithology: null
+    ID: d2a2de2d-b112-56b0-a6ee-45b098a497a2
+- source: clauser2002
+  type: scalar
+  value: 2.38
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for claystone for Lias (Lower Jurassic) formation near Bad 
+    Waldsee area.
+  tag:
+    agency: [BfS/BGE]
+    location: [Baden-Wuerttemberg, Bavaria, Germany]
+    simplified_lithology: [Mudstone]
+    ID: 56baa924-a834-5def-be68-55dc4e301566

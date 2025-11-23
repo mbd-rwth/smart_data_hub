@@ -1,0 +1,224 @@
+density:
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 2520.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Wet density value based on laboratory measurement or theoretical 
+    derivations of the mineral content of Wealden (sandy) in Lower Saxony 
+    according to Table A-7.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: [Sandstone]
+    ID: 17c7adba-141d-5358-829a-056fc20fe810
+porosity:
+- source: bfs2002
+  type: scalar
+  value: null
+  value_min: 0.05
+  value_max: 0.2
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Effective porosity for Wealden (sandy and clayey) and Valanginian
+    (sandy) formations gathered by NLfB in the area of the Konrad mine.
+  tag:
+    agency: [BfS/BGE]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: a8e54707-9ac4-54ed-a5d8-8f987d3b5e22
+hydraulic_conductivity:
+- source: bfs2002
+  type: scalar
+  value: null
+  value_min: 1.0e-09
+  value_max: 1.0e-05
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Wealden (sandy and clayey) and Valanginian (sandy) 
+    formation gathered by NLfB in the area of the Konrad mine.
+  tag:
+    agency: [BfS/BGE]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: 7c2797f8-d263-5d2a-a244-f81fdff26d21
+p_wave_velocity:
+- source: alheid1986
+  type: scalar
+  value: 3070.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Lower Cretaceous at layer depth from 10 to 260 meters 
+    from reflection seismic and borehole countersink measurement in the area of 
+    the Konrad mine.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: de6a3df0-fcca-51a2-b78f-0a17e96dd554
+- source: alheid1986
+  type: scalar
+  value: 2430.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Lower Cretaceous at layer depth from 260 to 720 meters 
+    from reflection seismic and borehole countersink measurement in the area of 
+    the Konrad mine.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 08218925-5ccd-5303-81ce-2ffa265a026b
+s_wave_velocity:
+- source: alheid1986
+  type: scalar
+  value: 1720.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Lower Cretaceous at layer depth from 10 to 260 meters 
+    from reflection seismic and borehole countersink measurement in the area of 
+    the Konrad mine.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 69bbef74-d340-5302-825f-28541675a3c2
+- source: alheid1986
+  type: scalar
+  value: 1370.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Lower Cretaceous at layer depth from 260 to 720 meters 
+    from reflection seismic and borehole countersink measurement in the area of 
+    the Konrad mine.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 08c68b0d-5f71-5a95-a3c0-8ac267e88af8
+specific_heat_capacity:
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 1400.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value based on laboratory measurement or theoretical derivations 
+    of the mineral content of Wealden (sandy) in Lower Saxony according to Table
+    A-7.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: [Sandstone]
+    ID: d9609f39-dfe7-5561-8002-65f66f3d2c9a
+thermal_conductivity:
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 2.41
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value in the direction of parallel to bedding based on laboratory
+    measurement or theoretical derivations of the mineral content of Wealden 
+    (sandy) in Lower Saxony according to Table A-7.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: [Sandstone]
+    ID: 6954ae7c-9223-57eb-80fe-bc4fe196528b
+electrical_resistivity:
+- source: null
+  type: scalar
+  value: null
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: null
+  tag:
+    agency: null
+    location: null
+    simplified_lithology: null
+    ID: null

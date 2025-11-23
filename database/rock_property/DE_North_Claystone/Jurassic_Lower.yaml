@@ -1,0 +1,198 @@
+density:
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 2520.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Wet density value based on laboratory measurement or theoretical 
+    derivations of the mineral content of Lias (clay and marlstone with 
+    limestone) in Lower Saxony according to Table A-9.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: 68726564-f359-56d8-b75a-9dc8b2cc8f67
+- source: alheid1986
+  type: scalar
+  value: 2500.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: density value for Lias formation in the area of the Konrad mine.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 1f78a7f7-2419-5292-88b8-5c15b53c0b55
+porosity:
+- source: bfs2002
+  type: scalar
+  value: null
+  value_min: 0.005
+  value_max: 0.15
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Effective porosity of Lower Aalenian to Sinemurian formations 
+    (clayey layers) gathered by NLfB in the area of the Konrad mine.
+  tag:
+    agency: [BfS/BGE]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone]
+    ID: 177fca9f-6c31-5a59-a24b-2d3faa6e91bc
+hydraulic_conductivity:
+- source: bfs2002
+  type: scalar
+  value: null
+  value_min: 1.0e-12
+  value_max: 1.0e-09
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Lower Aalenian to Sinemurian formations (clayey layers)
+    gathered by NLfB in the area of the Konrad mine.
+  tag:
+    agency: [BfS/BGE]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone]
+    ID: 43a8b76c-26ff-58ee-abc4-c935cb3c14c6
+p_wave_velocity:
+- source: alheid1986
+  type: scalar
+  value: 3570.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Lias formation from reflection seismic and borehole 
+    countersink measurement in the area of the Konrad mine.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 38b0a42e-f83f-5730-a0c5-321608461d8b
+s_wave_velocity:
+- source: alheid1986
+  type: scalar
+  value: 2000.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Lias formation from reflection seismic and borehole 
+    countersink measurement in the area of the Konrad mine.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 25ad5235-53c1-5592-a923-66c56263cf38
+specific_heat_capacity:
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 1000.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value based on laboratory measurement or theoretical derivations 
+    of the mineral content of Lias (clay and marlstone with limestone) in Lower 
+    Saxony according to Table A-9.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: 7132e3bb-788f-5f2e-a55f-4a3c5037ecd0
+thermal_conductivity:
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 2.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value based on laboratory measurement or theoretical derivations 
+    of the mineral content of Lias (clay and marlstone with limestone) in Lower 
+    Saxony according to Table A-9.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: c254c5ae-83bc-59eb-bc82-5d16ab3cae4b
+electrical_resistivity:
+- source: null
+  type: scalar
+  value: null
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: null
+  tag:
+    agency: null
+    location: null
+    simplified_lithology: null
+    ID: null

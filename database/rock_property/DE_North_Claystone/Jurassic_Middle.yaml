@@ -1,0 +1,481 @@
+density:
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 2520.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Wet density value based on laboratory measurement or theoretical 
+    derivations of the mineral content of Middle Jurassic in Lower Saxony 
+    according to Table A-7.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: a4d74a45-45a6-5464-bd25-b784cb03d748
+- source: alheid1986
+  type: scalar
+  value: 2600.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: density value for Dogger formation in the area of the Konrad 
+    mine.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: d1336c12-b114-536d-addd-747d3bf22d68
+porosity:
+- source: bfs2002
+  type: scalar
+  value: null
+  value_min: 0.05
+  value_max: 0.25
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Effective porosity for Dogger beta-Sandstone unit gathered by 
+    NLfB in the area of the Konrad mine.
+  tag:
+    agency: [BfS/BGE]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Sandstone]
+    ID: 4ba29039-9174-5885-bd21-0911d00764b6
+- source: mueller1987 and jahn2013
+  type: scalar
+  value: 0.109
+  value_min: 0.059
+  value_max: 0.133
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value computed by jahn2013. Effective porosity of Middle 
+    Callovian formation from laboratory test in the area of the Konrad mine. 
+    High values due to fractures in samples, the minimum value was therefore 
+    most reliable.
+  tag:
+    agency: [Others]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: bc11e45a-6551-5166-928f-3269f532866a
+- source: mueller1987 and jahn2013
+  type: scalar
+  value: 0.111
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value computed by jahn2013. Effective porosity of Lower Callovian
+    formation from laboratory test in the area of the Konrad mine.
+  tag:
+    agency: [Others]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: f8b2d891-8372-5def-9fa9-c55f443e52a6
+- source: mueller1987 and jahn2013
+  type: scalar
+  value: 0.115
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value computed by jahn2013. Effective porosity of Upper Bathonian
+    formation from laboratory test in the area of the Konrad mine.
+  tag:
+    agency: [Others]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 726b112e-cde7-56fd-9f41-52088347cffd
+- source: bfs2002
+  type: scalar
+  value: null
+  value_min: 0.005
+  value_max: 0.15
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Effective porosity of Callovian and Bathonian formations gathered
+    by NLfB in the area of the Konrad mine.
+  tag:
+    agency: [BfS/BGE]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 2b912271-599b-5dd8-ad4e-74122cb68640
+hydraulic_conductivity:
+- source: hoth2007
+  type: scalar
+  value: 9.0e-13
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Middle Callovian to Upper Bathonian clayey formation 
+    with more than 80 percent clay content from hydraulic tests in Konrad 101 
+    borehole.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone]
+    ID: 12d0b62e-d9b2-58a6-a22e-308d544a6686
+- source: hoth2007
+  type: scalar
+  value: 4.0e-13
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Bajocian clayey formation with 75 percent clay content 
+    from hydraulic tests in Konrad 101 borehole.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone]
+    ID: bcc13892-dbf4-5667-a94f-c8cb3437074f
+- source: bfs2002
+  type: scalar
+  value: null
+  value_min: 1.0e-12
+  value_max: 1.0e-09
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Callovian and Bathonian formations gathered by NLfB in 
+    the area of the Konrad mine.
+  tag:
+    agency: [BfS/BGE]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: af998582-183c-55fd-b494-20ef8957e96d
+- source: bfs2002
+  type: scalar
+  value: null
+  value_min: 1.0e-09
+  value_max: 1.0e-05
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Dogger beta-Sandstone unit gathered by NLfB in the area
+    of the Konrad mine.
+  tag:
+    agency: [BfS/BGE]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Sandstone]
+    ID: 0ead4a3f-ddfd-5184-b207-ebdc83bb8831
+p_wave_velocity:
+- source: schnier1987 and jahn2013
+  type: scalar
+  value: 4150.0
+  value_min: 3840.0
+  value_max: 4460.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for limy sandstone and marlstone computed by jahn2013. 
+    Ultrasonic measurement for Lower Bathonian formation in the area of the 
+    Konrad mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Sandstone, Mudstone, Limestone]
+    ID: 25776732-14ef-5f83-8c93-2a415db5a616
+- source: schnier1987 and jahn2013
+  type: scalar
+  value: 3738.0
+  value_min: 3250.0
+  value_max: 4170.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for claystone computed by jahn2013. Ultrasonic measurement 
+    for Upper Bajocian formation in the area of the Konrad mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone]
+    ID: 9b54d286-27e9-5cfe-9168-5ac5b1444485
+- source: alheid1986
+  type: scalar
+  value: 3210.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Dogger formation from reflection seismic and borehole 
+    countersink measurement in the area of the Konrad mine.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 126516d5-940b-59d1-aa69-00c27fd4d28c
+s_wave_velocity:
+- source: schnier1987 and jahn2013
+  type: scalar
+  value: 2330.0
+  value_min: 2080.0
+  value_max: 2580.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for limy sandstone and marlstone computed by jahn2013. 
+    Ultrasonic measurement for Lower Bathonian formation in the area of the 
+    Konrad mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Sandstone, Mudstone, Limestone]
+    ID: 32ef9c0a-33d3-5ba6-b3c9-4de5b9994a5e
+- source: schnier1987 and jahn2013
+  type: scalar
+  value: 2055.0
+  value_min: 1760.0
+  value_max: 2330.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for claystone computed by jahn2013. Ultrasonic measurement 
+    for Upper Bajocian formation in the area of the Konrad mine.
+  tag:
+    agency: [BGR, GRS]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: [Mudstone]
+    ID: d2e6b87d-8cbd-5804-943b-49036f8deeb1
+- source: alheid1986
+  type: scalar
+  value: 1800.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Dogger formation from reflection seismic and borehole 
+    countersink measurement in the area of the Konrad mine.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 9a4f9a74-c1ad-5ece-be32-16c14af9b07f
+specific_heat_capacity:
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 1400.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value based on laboratory measurement or theoretical derivations 
+    of the mineral content of Middle Jurassic in Lower Saxony according to Table
+    A-7.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 0341db98-3e94-5614-bec7-8f9fa044894d
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 1000.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value based on laboratory measurement or theoretical derivations 
+    of the mineral content of Upper (claystones and marlstones with interbedded 
+    limestone) and Middle (calcareous and partly clayey sandstones, claystones, 
+    and marlstones) Dogger in Lower Saxony according to Table A-9.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: [Sandstone, Mudstone, Limestone]
+    ID: 2460737c-fb88-5fb1-bb26-1e2452426c32
+thermal_conductivity:
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: 2.5
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value in the direction of parallel to bedding based on laboratory
+    measurement or theoretical derivations of the mineral content of Middle 
+    Jurassic in Lower Saxony according to Table A-7.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 60856e3a-5a4c-5134-9117-059ced99c2fd
+- source: uhlig2006 and buntebarth2005 cited in jobmann2007
+  type: scalar
+  value: null
+  value_min: 1.75
+  value_max: 2.6
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value based on laboratory measurement or theoretical derivations 
+    of the mineral content of Upper (claystones and marlstones with interbedded 
+    limestone) and Middle (calcareous and partly clayey sandstones, claystones, 
+    and marlstones) Dogger in Lower Saxony according to Table A-9.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: [Sandstone, Mudstone, Limestone]
+    ID: 33a30914-5efe-59df-b9aa-4d09637b4f35
+electrical_resistivity:
+- source: null
+  type: scalar
+  value: null
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: null
+  tag:
+    agency: null
+    location: null
+    simplified_lithology: null
+    ID: null

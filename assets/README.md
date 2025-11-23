@@ -1,0 +1,1 @@
+This folder is intended for storing assets such as images, custom CSS, exported files, or other supporting files.

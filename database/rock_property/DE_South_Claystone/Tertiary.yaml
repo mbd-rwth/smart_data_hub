@@ -1,0 +1,190 @@
+density:
+- source: rath2005
+  type: scalar
+  value: 2706.0
+  value_min: 2618.0
+  value_max: 2887.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Measurement in the Lower freshwater Molasse.
+  tag:
+    agency: [BfS/BGE]
+    location: [Baden-Wuerttemberg, Bavaria, Germany]
+    simplified_lithology: null
+    ID: 7a216761-5713-5e0e-b781-092aa4d47a5a
+porosity:
+- source: jodocy2011
+  type: scalar
+  value: null
+  value_min: 0.03
+  value_max: 0.18
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: "Effective porosity for Tertiary in Baden-Württemberg."
+  tag:
+    agency: [LGRB]
+    location: [Baden-Wuerttemberg, Germany]
+    simplified_lithology: null
+    ID: 524aac61-e2cc-59c9-9b85-63ef7caf3595
+- source: rath2005
+  type: scalar
+  value: 0.1
+  value_min: 0.01
+  value_max: 0.3
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Measurement in the Lower freshwater Molasse.
+  tag:
+    agency: [BfS/BGE]
+    location: [Baden-Wuerttemberg, Bavaria, Germany]
+    simplified_lithology: null
+    ID: f0cbc207-b284-583b-ac79-f8bc3e9129f1
+intrinsic_permeability:
+- source: rath2005
+  type: scalar
+  value: 1.82e-15
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m^2
+  unit_base: [0, 2, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for lower freshwater molasse.
+  tag:
+    agency: [BfS/BGE]
+    location: [Baden-Wuerttemberg, Bavaria, Germany]
+    simplified_lithology: null
+    ID: d927a6b5-4e68-56a8-bc55-6f47082b2ab9
+p_wave_velocity:
+- source: gebrande1982a cited in jahn2016
+  type: scalar
+  value: 5680.0
+  value_min: null
+  value_max: null
+  value_std: 400.0
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for marl compiled from gebrande1982a and then transferred 
+    to the specific layer.
+  tag:
+    agency: [BGR, GRS]
+    location: [unknown]
+    simplified_lithology: [Mudstone, Limestone]
+    ID: 14e2dcb1-423d-5c0a-be4b-c5f736b166e3
+s_wave_velocity:
+- source: gebrande1982a cited in jahn2016
+  type: scalar
+  value: 3120.0
+  value_min: null
+  value_max: null
+  value_std: 450.0
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for limestone compiled from gebrande1982a and then 
+    transferred to the specific layer.
+  tag:
+    agency: [BGR, GRS]
+    location: [unknown]
+    simplified_lithology: [Limestone]
+    ID: 37d6ed75-3c34-53bf-ad29-fd98af2231ea
+electrical_resistivity:
+- source: null
+  type: scalar
+  value: null
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: null
+  tag:
+    agency: null
+    location: null
+    simplified_lithology: null
+    ID: null
+specific_heat_capacity:
+- source: rath2005
+  type: scalar
+  value: 1120.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for lower freshwater molasse.
+  tag:
+    agency: [BfS/BGE]
+    location: [Baden-Wuerttemberg, Bavaria, Germany]
+    simplified_lithology: null
+    ID: 9949b78d-acfe-5372-92ba-bd3a3e201a2b
+thermal_conductivity:
+- source: rath2005
+  type: scalar
+  value: 3.05
+  value_min: 1.8
+  value_max: 3.46
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Measurement in the Lower freshwater Molasse.
+  tag:
+    agency: [BfS/BGE]
+    location: [Baden-Wuerttemberg, Bavaria, Germany]
+    simplified_lithology: null
+    ID: 02636684-e096-5d91-ad02-6dc362cabbea

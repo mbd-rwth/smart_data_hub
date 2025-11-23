@@ -1,0 +1,175 @@
+name: DE_South_Claystone
+description: A generic geological model for final repository system in clay host rock in southern Germany.
+geometry_input:
+  source: reinhold2016
+  description: The geological structural data is mainly based on the 3D model in Figure 12 and the isocountour maps in section 3.3.
+  point_data_path: database/geometry/DE_South_Claystone/input/points.csv
+  orientation_data_path: database/geometry/DE_South_Claystone/input/orientations.csv
+Quaternary:
+  source: reinhold2016
+  geological_time:
+    eon: Phanerozoic
+    era: Cenozoic
+    period: Quaternary
+    epoch: null
+    age: null
+  description: It consists of fluvioglacial sands and gravels with varying fine sand and silt content, forming permeable pore groundwater aquifers.
+  simplified_lithology: [Sandstone, Conglomerate]
+  property_path: database/rock_property/DE_South_Claystone/Quaternary.yaml
+  geometry_surface_output_path: [database/geometry/DE_South_Claystone/output/Quaternary.vtk]
+Tertiary:
+  source: reinhold2016
+  geological_time:
+    eon: Phanerozoic
+    era: Cenozoic
+    period: null
+    epoch: null
+    age: null
+  description: It consists of limy, clayey, and slightly solidified marlstones and freshwater limestones.
+  simplified_lithology: [Mudstone, Limestone]
+  property_path: database/rock_property/DE_South_Claystone/Tertiary.yaml
+  geometry_surface_output_path: [database/geometry/DE_South_Claystone/output/Tertiary.vtk]
+Jurassic_Upper:
+  source: reinhold2016
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Jurassic
+    epoch: Upper
+    age: null
+  description: It consists of limestone-marl sequences with local dolomitization and karstification.
+  simplified_lithology: [Mudstone, Limestone]
+  property_path: database/rock_property/DE_South_Claystone/Jurassic_Upper.yaml
+  geometry_surface_output_path: [database/geometry/DE_South_Claystone/output/Tithonian.vtk, database/geometry/DE_South_Claystone/output/Kimmeridgian.vtk, database/geometry/DE_South_Claystone/output/Oxfordian.vtk]
+Jurassic_Middle_sequence1:
+  source: reinhold2016
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Jurassic
+    epoch: Middle
+    age: Bathonian
+  description: It consists of clayey marlstones with individual limestone layers.
+  simplified_lithology: [Mudstone, Limestone]
+  property_path: database/rock_property/DE_South_Claystone/Jurassic_Middle_sequence1.yaml
+  geometry_surface_output_path: [database/geometry/DE_South_Claystone/output/Jurassic_Middle_sequence1.vtk]
+Jurassic_Middle_sequence2:
+  source: reinhold2016
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Jurassic
+    epoch: Middle
+    age: Bajocian
+  description: It consists of fine sandy clay rocks, iron-rich fine sandstones (clayey calcareous), and a small proportion of fine-grained clay marlstones.
+  simplified_lithology: [Mudstone, Sandstone]
+  property_path: database/rock_property/DE_South_Claystone/Jurassic_Middle_sequence2.yaml
+  geometry_surface_output_path: [database/geometry/DE_South_Claystone/output/Jurassic_Middle_sequence2.vtk]
+Opalinus_Clay:
+  source: hoth2007
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Jurassic
+    epoch: Middle
+    age: Aalenian
+  description: A well-consolidated, micaceous silty claystone with only slight lateral variability in facies.
+  simplified_lithology: [Mudstone, Sandstone]
+  property_path: database/rock_property/DE_South_Claystone/Opalinus_Clay.yaml
+  geometry_surface_output_path: [database/geometry/DE_South_Claystone/output/Opalinus_Clay.vtk]
+Jurassic_Lower_sequence1:
+  source: reinhold2016
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Jurassic
+    epoch: Lower
+    age: Pliensbachian
+  description: It consists of calcareous, clayey to marly deposits, and bituminous clay and marlstones.
+  simplified_lithology: [Mudstone, Limestone]
+  property_path: database/rock_property/DE_South_Claystone/Jurassic_Lower_sequence1.yaml
+  geometry_surface_output_path: [database/geometry/DE_South_Claystone/output/Jurassic_Lower_sequence1.vtk]
+Jurassic_Lower_sequence2:
+  source: reinhold2016
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Jurassic
+    epoch: Lower
+    age: Sinemurian
+  description: Sandstone-dominated sequence. It also consists of sandy clay marlstone and limestone beds.
+  simplified_lithology: [Sandstone]
+  property_path: database/rock_property/DE_South_Claystone/Jurassic_Lower_sequence2.yaml
+  geometry_surface_output_path: [database/geometry/DE_South_Claystone/output/Jurassic_Lower_sequence2.vtk]
+Keuper_sequence1:
+  source: reinhold2016
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Triassic
+    epoch: Upper
+    age: Rhaetian
+  description: It consists of clayey and marly sediments and coarser-grained carbonate concretions.
+  simplified_lithology: [Mudstone, Limestone]
+  property_path: database/rock_property/DE_South_Claystone/Keuper_sequence1.yaml
+  geometry_surface_output_path: [database/geometry/DE_South_Claystone/output/Keuper_sequence1.vtk]
+Keuper_sequence2:
+  source: reinhold2016
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Triassic
+    epoch: Upper
+    age: Norian
+  description: Sandstone-dominated sequence with a small proportion of claystone layers.
+  simplified_lithology: [Sandstone]
+  property_path: database/rock_property/DE_South_Claystone/Keuper_sequence2.yaml
+  geometry_surface_output_path: [database/geometry/DE_South_Claystone/output/Keuper_sequence2.vtk]
+Keuper_sequence3:
+  source: reinhold2016
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Triassic
+    epoch: Upper
+    age: Carnian
+  description: Claystone and siltstone dominated, with occasional dolomite beds.
+  simplified_lithology: [Mudstone]
+  property_path: database/rock_property/DE_South_Claystone/Keuper_sequence3.yaml
+  geometry_surface_output_path: [database/geometry/DE_South_Claystone/output/Keuper_sequence3.vtk]
+Muschelkalk_Upper:
+  source: reinhold2016
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Triassic
+    epoch: Middle
+    age: Anisian
+  description: It consists of mainly fine-crystalline, porous to fissured dolomite, with a small proportion of claystone and fine-grained sandstones.
+  simplified_lithology: [Dolostone]
+  property_path: database/rock_property/DE_South_Claystone/Muschelkalk_Upper.yaml
+  geometry_surface_output_path: [database/geometry/DE_South_Claystone/output/Muschelkalk_Upper.vtk]
+Muschelkalk_Middle:
+  source: reinhold2016
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Triassic
+    epoch: Middle
+    age: Anisian
+  description: It consists of anhydrite rock with clay-rich layers and thin dolomite beds at the top and bottom.
+  simplified_lithology: [Rocksalt, Mudstone]
+  property_path: database/rock_property/DE_South_Claystone/Muschelkalk_Middle.yaml
+  geometry_surface_output_path: [database/geometry/DE_South_Claystone/output/Muschelkalk_Middle.vtk]
+Muschelkalk_Lower:
+  source: reinhold2016
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Triassic
+    epoch: Middle
+    age: Anisian
+  description: It consists of clayey fine- to coarse-grained arkoses and a small proportion of sandy claystone and dolomite beds.
+  simplified_lithology: [Sandstone]
+  property_path: database/rock_property/DE_South_Claystone/Muschelkalk_Lower.yaml
+  geometry_surface_output_path: [database/geometry/DE_South_Claystone/output/Muschelkalk_Lower.vtk]

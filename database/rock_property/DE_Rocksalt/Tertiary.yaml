@@ -1,0 +1,198 @@
+density:
+- source: minkley2010
+  type: scalar
+  value: 2100.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Tertiary Formation for the German part of the North 
+    German Basin.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 5dc728b2-c101-5589-a586-075383a82266
+specific_heat_capacity:
+- source: nipp2000
+  type: scalar
+  value: 905.6
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for the Tertiary Formation in Gorleben, derived value with 
+    22 W*d/(m^3)/K and density value of 2100 kg/(m^3).
+  tag:
+    agency: [BGR]
+    location: [Gorleben, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: b47e85b3-576f-5e7f-8042-da08631b85f5
+thermal_conductivity:
+- source: nipp2000
+  type: scalar
+  value: 2.1
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Tertiary formation in Gorleben.
+  tag:
+    agency: [BGR]
+    location: [Gorleben, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 9157c0b1-7a75-53dc-a02b-60e094f2415e
+porosity:
+- source: stork1998
+  type: scalar
+  value: null
+  value_min: 0.05
+  value_max: 0.15
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for sandstone, siltstone and claystone in Quaternary and 
+    Tertiary Formations in the Weferlinger Triassic Plate
+  tag:
+    agency: [BfS/BGE, BGR]
+    location: [Morsleben, Saxony-Anhalt, Germany]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: c7968d3b-14fe-53e0-bd0e-332fdb54990d
+hydraulic_conductivity:
+- source: stork1998
+  type: scalar
+  value: 1.0e-06
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for sandstone, siltstone and claystone in Quaternary and 
+    Tertiary Formations in the Weferlinger Triassic Plate
+  tag:
+    agency: [BfS/BGE, BGR]
+    location: [Morsleben, Saxony-Anhalt, Germany]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: 7d1ce243-4b99-52d1-aff4-cb69d439c764
+p_wave_velocity:
+- source: alheid1986
+  type: scalar
+  value: 1650.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value determined from reflection seismic and borehole countersink
+    measurements for Tertiary and Quaternary formations in the area of the 
+    Konrad mine.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 4833b891-c5fa-5b34-ab0c-e4d0c706765f
+s_wave_velocity:
+- source: alheid1986
+  type: scalar
+  value: 750.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value determined from reflection seismic and borehole countersink
+    measurements for Tertiary and Quaternary formations in the area of the 
+    Konrad mine.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 7507cdce-4366-50d1-826a-585677248739
+electrical_resistivity:
+- source: huysmans2006
+  type: scalar
+  value: 7.01
+  value_min: null
+  value_max: null
+  value_std: 2.41
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Mean resistivity value in Table 1 for Oligocene Boom Clay in the 
+    Mol-Dessel zone (province of Antwerp)
+  tag:
+    agency: [Others]
+    location: [Antwerp, Belgium]
+    simplified_lithology: [Mudstone]
+    ID: 85a4ff1f-0a98-50ae-a698-f7de954598e2
+- source: huysmans2006
+  type: scalar
+  value: 1.76
+  value_min: null
+  value_max: null
+  value_std: 0.22
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Mean resistivity value in Table 1 for Eocene Ypresian Clay in the
+    Doel nuclear zone (province of Antwerp)
+  tag:
+    agency: [Others]
+    location: [Antwerp, Belgium]
+    simplified_lithology: [Mudstone]
+    ID: bd01977a-a17c-52cc-84ca-1e7e85db1aac

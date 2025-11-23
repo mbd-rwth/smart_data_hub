@@ -1,0 +1,563 @@
+density:
+- source: minkley2010
+  type: scalar
+  value: 2500.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Rotliegend Formation for the German part of the North 
+    German Basin.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: da8c6f33-53e4-5b0b-9d0e-741530a7e227
+- source: alheid1986
+  type: scalar
+  value: 2700.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: density value for Prazechstein Formation in the area of the 
+    Konrad mine.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: b03f6608-63aa-5b01-bef3-95a8a602e0e6
+- source: trautwein2005
+  type: scalar
+  value: 2399.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Wet density for sandstone in the Rotliegend Formation was 
+    measured from sample GS10 from the Gross Schoenebeck site.
+  tag:
+    agency: [Others]
+    location: [Gross Schoenebeck, Brandenburg, Germany]
+    simplified_lithology: [Sandstone]
+    ID: ed88651d-a7d5-5ab0-aa20-49924139a8bb
+- source: trautwein2005
+  type: scalar
+  value: 2351.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Wet density for sandstone in the Rotliegend Formation was 
+    measured from sample GS19 from the Gross Schoenebeck site.
+  tag:
+    agency: [Others]
+    location: [Gross Schoenebeck, Brandenburg, Germany]
+    simplified_lithology: [Sandstone]
+    ID: 6f7bcdeb-078f-54e7-ae62-f9b778d5ab73
+- source: trautwein2005
+  type: scalar
+  value: 2491.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Wet density for sandstone in the Rotliegend Formation was 
+    measured from sample GS20 from the Gross Schoenebeck site.
+  tag:
+    agency: [Others]
+    location: [Gross Schoenebeck, Brandenburg, Germany]
+    simplified_lithology: [Sandstone]
+    ID: 05dbcb8e-ff2d-5cd9-94b5-af6b5bbd0203
+- source: trautwein2005
+  type: scalar
+  value: 2600.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Wet density for sandstone in the Rotliegend Formation was 
+    measured from sample GS26 from the Gross Schoenebeck site.
+  tag:
+    agency: [Others]
+    location: [Gross Schoenebeck, Brandenburg, Germany]
+    simplified_lithology: [Sandstone]
+    ID: be8c1d03-863a-5d42-b435-975b918af934
+specific_heat_capacity:
+- source: nipp2000
+  type: scalar
+  value: 760.32
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Gorleben salt dome, derived value for Rotliegend Formation with 
+    22 W*d/(m^3)/K and density value of 2500 kg/(m^3).
+  tag:
+    agency: [BGR]
+    location: [Gorleben, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: e0cfc645-3823-5bb2-98d7-14bbec9a81b7
+thermal_conductivity:
+- source: nipp2000
+  type: scalar
+  value: 2.7
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for the Rotliegend Formation in Gorleben.
+  tag:
+    agency: [BGR]
+    location: [Gorleben, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: c3472060-a33b-52a9-b6b1-2d9eef27af8b
+porosity:
+- source: trautwein2005
+  type: scalar
+  value: 0.149
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Porosity for sandstone in the Rotliegend Formation was measured 
+    under the in-situ pressure from sample GS10 from the Gross Schoenebeck site.
+  tag:
+    agency: [Others]
+    location: [Gross Schoenebeck, Brandenburg, Germany]
+    simplified_lithology: [Sandstone]
+    ID: 7eb4f129-c8a4-58ef-ac66-fb222072781e
+- source: trautwein2005
+  type: scalar
+  value: 0.177
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Porosity for sandstone in the Rotliegend Formation was measured 
+    under the in-situ pressure from sample GS19 from the Gross Schoenebeck site.
+  tag:
+    agency: [Others]
+    location: [Gross Schoenebeck, Brandenburg, Germany]
+    simplified_lithology: [Sandstone]
+    ID: d44e1083-4db2-5b36-8970-75328ea3f1f9
+- source: trautwein2005
+  type: scalar
+  value: 0.095
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Porosity for sandstone in the Rotliegend Formation was measured 
+    under the in-situ pressure from sample GS20 from the Gross Schoenebeck site.
+  tag:
+    agency: [Others]
+    location: [Gross Schoenebeck, Brandenburg, Germany]
+    simplified_lithology: [Sandstone]
+    ID: 8ce90678-2290-5279-99d2-918322f11cbb
+- source: trautwein2005
+  type: scalar
+  value: 0.041
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Porosity for sandstone in the Rotliegend Formation was measured 
+    under the in-situ pressure from sample GS26 from the Gross Schoenebeck site.
+  tag:
+    agency: [Others]
+    location: [Gross Schoenebeck, Brandenburg, Germany]
+    simplified_lithology: [Sandstone]
+    ID: 29c1631e-e5d6-59a9-bbfd-6677073f3cd3
+intrinsic_permeability:
+- source: trautwein2005
+  type: scalar
+  value: 2.15e-15
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m^2
+  unit_base: [0, 2, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Permeability for sandstone in the Rotliegend Formation was 
+    measured under the in-situ pressure from sample GS10 from the Gross 
+    Schoenebeck site.
+  tag:
+    agency: [Others]
+    location: [Gross Schoenebeck, Brandenburg, Germany]
+    simplified_lithology: [Sandstone]
+    ID: 40d1b422-d1d9-5132-9e10-81c8dce8377c
+- source: trautwein2005
+  type: scalar
+  value: 1.65e-14
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m^2
+  unit_base: [0, 2, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Permeability for sandstone in the Rotliegend Formation was 
+    measured under the in-situ pressure from sample GS19 from the Gross 
+    Schoenebeck site.
+  tag:
+    agency: [Others]
+    location: [Gross Schoenebeck, Brandenburg, Germany]
+    simplified_lithology: [Sandstone]
+    ID: 3dd49100-b201-51ac-b7f1-2b749eff07d9
+- source: trautwein2005
+  type: scalar
+  value: 1.4e-16
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m^2
+  unit_base: [0, 2, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Permeability for sandstone in the Rotliegend Formation was 
+    measured under the in-situ pressure from sample GS20 from the Gross 
+    Schoenebeck site.
+  tag:
+    agency: [Others]
+    location: [Gross Schoenebeck, Brandenburg, Germany]
+    simplified_lithology: [Sandstone]
+    ID: 2da309aa-118b-5630-a1bf-84361d7546f1
+p_wave_velocity:
+- source: alheid1986
+  type: scalar
+  value: 5500.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Prazechstein Formation from reflection seismic and 
+    borehole countersink measurement in the area of the Konrad mine.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 97331891-c540-551a-81d7-e453ec6b9f68
+- source: trautwein2005
+  type: scalar
+  value: 4321.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: P wave velocity measured at 500 kHz under the in-situ pressure 
+    for sandstone in the Rotliegend Formation from sample GS10 from the Gross 
+    Schoenebeck site.
+  tag:
+    agency: [Others]
+    location: [Gross Schoenebeck, Brandenburg, Germany]
+    simplified_lithology: [Sandstone]
+    ID: 35450ab8-501f-5ece-88ea-9aa0a0ea378e
+- source: trautwein2005
+  type: scalar
+  value: 4090.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: P wave velocity measured at 500 kHz under the in-situ pressure 
+    for sandstone in the Rotliegend Formation from sample GS19 from the Gross 
+    Schoenebeck site.
+  tag:
+    agency: [Others]
+    location: [Gross Schoenebeck, Brandenburg, Germany]
+    simplified_lithology: [Sandstone]
+    ID: 9ab39153-3db1-5b59-a86a-c98070253c02
+- source: trautwein2005
+  type: scalar
+  value: 4753.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: P wave velocity measured at 500 kHz under the in-situ pressure 
+    for sandstone in the Rotliegend Formation from sample GS20 from the Gross 
+    Schoenebeck site.
+  tag:
+    agency: [Others]
+    location: [Gross Schoenebeck, Brandenburg, Germany]
+    simplified_lithology: [Sandstone]
+    ID: 1b121b22-4f77-5e8b-8c12-1da0baf58aa0
+- source: trautwein2005
+  type: scalar
+  value: 5114.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: P wave velocity measured at 500 kHz under the in-situ pressure 
+    for sandstone in the Rotliegend Formation from sample GS26 from the Gross 
+    Schoenebeck site.
+  tag:
+    agency: [Others]
+    location: [Gross Schoenebeck, Brandenburg, Germany]
+    simplified_lithology: [Sandstone]
+    ID: 2ba1a030-ad07-538b-bef1-54d86732bbb3
+s_wave_velocity:
+- source: alheid1986
+  type: scalar
+  value: 3180.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Prazechstein Formation from reflection seismic and 
+    borehole countersink measurement in the area of the Konrad mine.
+  tag:
+    agency: [BGR]
+    location: [Salzgitter, Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: f55b19fb-4a0d-511b-9197-039d73c9b11e
+- source: trautwein2005
+  type: scalar
+  value: 2554.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: S wave velocity measured at 500 kHz under the in-situ pressure 
+    for sandstone in the Rotliegend Formation from sample GS10 from the Gross 
+    Schoenebeck site.
+  tag:
+    agency: [Others]
+    location: [Gross Schoenebeck, Brandenburg, Germany]
+    simplified_lithology: [Sandstone]
+    ID: 81bd0a0b-bc1b-5766-be8f-73bd335d7901
+- source: trautwein2005
+  type: scalar
+  value: 2371.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: S wave velocity measured at 500 kHz under the in-situ pressure 
+    for sandstone in the Rotliegend Formation from sample GS19 from the Gross 
+    Schoenebeck site.
+  tag:
+    agency: [Others]
+    location: [Gross Schoenebeck, Brandenburg, Germany]
+    simplified_lithology: [Sandstone]
+    ID: dbee83b9-f126-5f4b-853c-d2adca8bc1fb
+- source: trautwein2005
+  type: scalar
+  value: 2800.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: S wave velocity measured at 500 kHz under the in-situ pressure 
+    for sandstone in the Rotliegend Formation from sample GS20 from the Gross 
+    Schoenebeck site.
+  tag:
+    agency: [Others]
+    location: [Gross Schoenebeck, Brandenburg, Germany]
+    simplified_lithology: [Sandstone]
+    ID: f0a47539-18fc-5a4f-addf-82fdf3f9da51
+- source: trautwein2005
+  type: scalar
+  value: 3103.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: S wave velocity measured at 500 kHz under the in-situ pressure 
+    for sandstone in the Rotliegend Formation from sample GS26 from the Gross 
+    Schoenebeck site.
+  tag:
+    agency: [Others]
+    location: [Gross Schoenebeck, Brandenburg, Germany]
+    simplified_lithology: [Sandstone]
+    ID: 7412ef2a-39c9-5ef8-997d-293de5d855a0
+electrical_resistivity:
+- source: null
+  type: scalar
+  value: null
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: null
+  tag:
+    agency: null
+    location: null
+    simplified_lithology: null
+    ID: null

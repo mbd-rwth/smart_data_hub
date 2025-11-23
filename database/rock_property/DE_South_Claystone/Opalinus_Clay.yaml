@@ -1,0 +1,393 @@
+density:
+- source: nagra2001
+  type: scalar
+  value: 2430.0
+  value_min: null
+  value_max: null
+  value_std: 60.0
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Derived dry density value with sample from Benken borehole.
+  tag:
+    agency: [NAGRA]
+    location: [Benken, Zurich, Switzerland]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: f19591a9-e7ba-5c26-932c-4278a2443368
+- source: bock2009
+  type: scalar
+  value: 2330.0
+  value_min: null
+  value_max: null
+  value_std: 50.0
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Derived dry density value with sample from Mont Terri.
+  tag:
+    agency: [swisstopo]
+    location: [Mont Terri, Switzerland]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: 861f86a0-8f5f-5aa8-93ca-a3211b632cf5
+- source: bossart2008
+  type: scalar
+  value: 2310.0
+  value_min: 2280.0
+  value_max: 2320.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Derived dry density value with sample from Mont Terri.
+  tag:
+    agency: [swisstopo]
+    location: [Mont Terri, Switzerland]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: 9523b92e-cac2-5120-8c4b-92b0300e970d
+porosity:
+- source: bock2009
+  type: scalar
+  value: 0.137
+  value_min: null
+  value_max: null
+  value_std: 0.025
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Water loss porosity of the Opalinus Clay at Mont Terri.
+  tag:
+    agency: [swisstopo]
+    location: [Mont Terri, Switzerland]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: 8a0e00e4-852f-58f9-974c-3c22aa2bea4d
+- source: thury1999
+  type: scalar
+  value: null
+  value_min: 0.125
+  value_max: 0.188
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Sample from Mont Terri, weight loss due to evaporation of 
+    pore-water at 105 Celsius degree and low humidity.
+  tag:
+    agency: [SNHGS, NAGRA]
+    location: [Mont Terri, Switzerland]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: 682a6f0f-3118-5186-8b60-911c68534732
+- source: bossart2008
+  type: scalar
+  value: 0.162
+  value_min: 0.126
+  value_max: 0.211
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Calculated from weight loss at 105 Celsius degree and grain 
+    density in Mont Terri.
+  tag:
+    agency: [swisstopo]
+    location: [Mont Terri, Switzerland]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: 9bf6429b-2d68-5257-82c5-10f7881067ec
+hydraulic_conductivity:
+- source: bock2009
+  type: scalar
+  value: null
+  value_min: 1.3e-13
+  value_max: 2.0e-13
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: 'Mont Terri: derived with value in the direction of bedding.'
+  tag:
+    agency: [swisstopo]
+    location: [Mont Terri, Switzerland]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: 17d08781-096b-5f54-af0b-0eb5e82c6aeb
+- source: marschall2004
+  type: scalar
+  value: null
+  value_min: 2.0e-14
+  value_max: 2.0e-13
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Hydraulic conductivity of sandy facies based on packer test in 
+    Mont Terri.
+  tag:
+    agency: [BWG]
+    location: [Mont Terri, Switzerland]
+    simplified_lithology: [Sandstone]
+    ID: 2692ffdb-2641-5e1f-bb6a-19bf3ca7daf0
+- source: marschall2004
+  type: scalar
+  value: null
+  value_min: 2.0e-14
+  value_max: 2.0e-12
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Hydraulic conductivity of shaly facies based on packer test in 
+    Mont Terri.
+  tag:
+    agency: [BWG]
+    location: [Mont Terri, Switzerland]
+    simplified_lithology: [Mudstone]
+    ID: efda74c4-dd18-576f-9895-5eb450c7dbac
+p_wave_velocity:
+- source: bock2009
+  type: scalar
+  value: 3350.0
+  value_min: 3210.0
+  value_max: 3470.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: 'Mont Terri: recommended value in the direction of bedding.'
+  tag:
+    agency: [swisstopo]
+    location: [Mont Terri, Switzerland]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: 4374fd4c-7438-55d2-89cc-1382bf29d2b1
+- source: bossart2008
+  type: scalar
+  value: 3410.0
+  value_min: 3170.0
+  value_max: 3650.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: 'Mont Terri: Parallel to bedding.'
+  tag:
+    agency: [swisstopo]
+    location: [Mont Terri, Switzerland]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: e499300b-e994-5865-a279-a9ed6942ffe7
+s_wave_velocity:
+- source: bock2009
+  type: scalar
+  value: 1920.0
+  value_min: null
+  value_max: null
+  value_std: 100.0
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: 'Mont Terri: recommended value in the direction of bedding.'
+  tag:
+    agency: [swisstopo]
+    location: [Mont Terri, Switzerland]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: 7da018ea-6fb0-56ce-8cdb-efc3562f02f6
+- source: bossart2008
+  type: scalar
+  value: 1960.0
+  value_min: 1840.0
+  value_max: 2080.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: 'Mont Terri: recommended value in the direction of bedding.'
+  tag:
+    agency: [swisstopo]
+    location: [Mont Terri, Switzerland]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: 9b393315-b9a9-5807-8ecc-4218a088ce45
+electrical_resistivity:
+- source: kneuker2021
+  type: scalar
+  value: null
+  value_min: 5.0
+  value_max: 50.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: In situ measurement of Opalinus clay in Mont Terri laboratory.
+  tag:
+    agency: [Others]
+    location: [Mont Terri, Switzerland]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: b053b1c3-a87f-5ad2-b6be-8c66f0a5c3e9
+specific_heat_capacity:
+- source: bock2009
+  type: scalar
+  value: 1040.0
+  value_min: null
+  value_max: null
+  value_std: 170.0
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: 'Mont Terri: laboratory test at temperature of 20 degree Celsius.'
+  tag:
+    agency: [swisstopo]
+    location: [Mont Terri, Switzerland]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: 178dd6d6-b69c-579c-9010-c18ed204c850
+- source: bock2009
+  type: scalar
+  value: 1380.0
+  value_min: null
+  value_max: null
+  value_std: 10.0
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: 'Mont Terri: laboratory test at temperature of 80 degree Celsius.'
+  tag:
+    agency: [swisstopo]
+    location: [Mont Terri, Switzerland]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: c1b83d2d-0218-53dd-b2fd-5143a5c53f7f
+- source: bossart2008
+  type: scalar
+  value: 1155.0
+  value_min: 970.0
+  value_max: 1340.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Heat capacity of Opalinus Clay from Mont Terri.
+  tag:
+    agency: [swisstopo]
+    location: [Mont Terri, Switzerland]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: 9ae948c1-bd0c-5f2c-96f0-d6e9716e779e
+thermal_conductivity:
+- source: bock2009
+  type: scalar
+  value: 2.25
+  value_min: null
+  value_max: null
+  value_std: 0.4
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: 'Mont Terri: value in the direction of bedding.'
+  tag:
+    agency: [swisstopo]
+    location: [Mont Terri, Switzerland]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: b91ad4ec-96b5-5d4b-b6b4-03d327435001
+- source: bossart2008
+  type: scalar
+  value: 2.0
+  value_min: 1.0
+  value_max: 3.1
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: The minimum value is the value that perpendicular to bedding plan
+    and the maximum value is that parallel to bedding.
+  tag:
+    agency: [swisstopo]
+    location: [Mont Terri, Switzerland]
+    simplified_lithology: [Sandstone, Mudstone]
+    ID: 42e8c4ab-5d4e-59ba-832e-4ac9b26a3543

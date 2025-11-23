@@ -1,0 +1,91 @@
+name: DE_Crystalline
+description: A generic geological model for final repository system in crystalline host rock in Germany.
+geometry_input:
+  source: weitkamp2021
+  description: The geological structural data is mainly based on the drilling profile in Figure 26.
+  point_data_path: database/geometry/DE_Crystalline/input/points.csv
+  orientation_data_path: database/geometry/DE_Crystalline/input/orientations.csv
+Quaternary:
+  source: weitkamp2021
+  geological_time:
+    eon: Phanerozoic
+    era: Cenozoic
+    period: Quaternary
+    epoch: null
+    age: null
+  description: It consists of unconsolidated fluvial sediments, primarily sands with gravel and alluvial loam.
+  simplified_lithology: [Sandstone, Conglomerate]
+  property_path: database/rock_property/DE_Crystalline/Quaternary.yaml
+  geometry_surface_output_path: [database/geometry/DE_Crystalline/output/Quaternary.vtk]
+Muschelkalk:
+  source: weitkamp2021
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Triassic
+    epoch: Middle
+    age: Anisian
+  description: A marine carbonate facies with no saline inclusions. It consists of sequences of limestone, marlstone, and marly, partly karstified limestone.
+  simplified_lithology: [Mudstone, Limestone]
+  property_path: database/rock_property/DE_Crystalline/Muschelkalk.yaml
+  geometry_surface_output_path: [database/geometry/DE_Crystalline/output/Muschelkalk.vtk]
+Buntsandstein:
+  source: weitkamp2021
+  geological_time:
+    eon: Phanerozoic
+    era: Mesozoic
+    period: Triassic
+    epoch: Lower
+    age: null
+  description: It consists of a cyclical sequence of layers of clayey to sandy sediments.
+  simplified_lithology: [Mudstone, Sandstone]
+  property_path: database/rock_property/DE_Crystalline/Buntsandstein.yaml
+  geometry_surface_output_path: [database/geometry/DE_Crystalline/output/Buntsandstein.vtk]
+Zechstein_Rocksalt:
+  source: weitkamp2021
+  geological_time:
+    eon: Phanerozoic
+    era: Paleozoic
+    period: Permian
+    epoch: Lopingian
+    age: null
+  description: A chloride salt rock that comprises over 80 percent halite.
+  simplified_lithology: [Rocksalt]
+  property_path: database/rock_property/DE_Crystalline/Zechstein_Rocksalt.yaml
+  geometry_surface_output_path: [database/geometry/DE_Crystalline/output/Zechstein_Rocksalt_sequence1.vtk, database/geometry/DE_Crystalline/output/Zechstein_Rocksalt_sequence2.vtk, database/geometry/DE_Crystalline/output/Zechstein_Rocksalt_sequence3.vtk, database/geometry/DE_Crystalline/output/Zechstein_Rocksalt_sequence4.vtk]
+Zechstein_Potash:
+  source: weitkamp2021
+  geological_time:
+    eon: Phanerozoic
+    era: Paleozoic
+    period: Permian
+    epoch: Lopingian
+    age: null
+  description: It consists of minerals, including sylvite, carnallite, kainite, halite, and kieserite.
+  simplified_lithology: [Rocksalt]
+  property_path: database/rock_property/DE_Crystalline/Zechstein_Potash.yaml
+  geometry_surface_output_path: [database/geometry/DE_Crystalline/output/Zechstein_Potash_sequence1.vtk, database/geometry/DE_Crystalline/output/Zechstein_Potash_sequence2.vtk]
+Zechstein_Anhydrite:
+  source: weitkamp2021
+  geological_time:
+    eon: Phanerozoic
+    era: Paleozoic
+    period: Permian
+    epoch: Lopingian
+    age: null
+  description: A sulfate salt rock consists of more than 80 percent anhydrous calcium sulfate.
+  simplified_lithology: [Rocksalt]
+  property_path: database/rock_property/DE_Crystalline/Zechstein_Anhydrite.yaml
+  geometry_surface_output_path: [database/geometry/DE_Crystalline/output/Zechstein_Anhydrite_sequence1.vtk, database/geometry/DE_Crystalline/output/Zechstein_Anhydrite_sequence2.vtk, database/geometry/DE_Crystalline/output/Zechstein_Anhydrite_sequence3.vtk]
+Granite:
+  source: weitkamp2021
+  geological_time:
+    eon: Phanerozoic
+    era: Paleozoic
+    period: Carboniferous
+    epoch: Pennsylvanian
+    age: null
+  description: It displays a compact structure with mainly 1 to 5 mm grain sizes. Fractures within the granite may be filled with quartz, feldspar, calcite, and chlorite.
+  simplified_lithology: [Crystalline]
+  property_path: database/rock_property/DE_Crystalline/Granite.yaml
+  geometry_surface_output_path: [database/geometry/DE_Crystalline/output/Granite.vtk]

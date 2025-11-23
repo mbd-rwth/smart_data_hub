@@ -1,0 +1,196 @@
+density:
+- source: wohlenberg1982 cited in jahn2016
+  type: scalar
+  value: null
+  value_min: 2100.0
+  value_max: 2900.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: null
+  tag:
+    agency: [BGR, GRS]
+    location: [unknown]
+    simplified_lithology: null
+    ID: c00c2ab7-d57a-5496-ad68-03defd919d6d
+porosity:
+- source: jodocy2011
+  type: scalar
+  value: 0.14
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: A mean porosity value for the Middle and Lower Jurassic and Upper
+    and Middle Keuper formations derived from the Box-and-whisker plot in the 
+    South-West German Molasse Basin.
+  tag:
+    agency: [LGRB]
+    location: [Baden-Wuerttemberg, Germany]
+    simplified_lithology: null
+    ID: 542b5237-7804-5e6b-9c7b-300eb5873480
+intrinsic_permeability:
+- source: boigk1981 and fehn2010 cited in reinhold2016
+  type: scalar
+  value: null
+  value_min: 9.87e-15
+  value_max: 4.93e-14
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m^2
+  unit_base: [0, 2, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Permeability values in Lower Jurassic in the deeper western 
+    Molasse basin.
+  tag:
+    agency: [BGR]
+    location: [Baden-Wuerttemberg, Germany]
+    simplified_lithology: null
+    ID: ac30c087-953c-5255-81c3-79c27965cf9e
+p_wave_velocity:
+- source: gebrande1982a cited in jahn2016
+  type: scalar
+  value: 3630.0
+  value_min: null
+  value_max: null
+  value_std: 650.0
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for sandstone compiled from gebrande1982a and then 
+    transferred to the specific layer.
+  tag:
+    agency: [BGR, GRS]
+    location: [unknown]
+    simplified_lithology: [Sandstone]
+    ID: 62623900-a5e8-5370-b315-f87b7dff93a6
+s_wave_velocity:
+- source: gebrande1982a cited in jahn2016
+  type: scalar
+  value: 2260.0
+  value_min: null
+  value_max: null
+  value_std: 520.0
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for sandstone compiled from gebrande1982a and then 
+    transferred to the specific layer.
+  tag:
+    agency: [BGR, GRS]
+    location: [unknown]
+    simplified_lithology: [Sandstone]
+    ID: 27c28c9e-7e7b-5004-b7df-cf355a1288f9
+electrical_resistivity:
+- source: null
+  type: scalar
+  value: null
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: null
+  tag:
+    agency: null
+    location: null
+    simplified_lithology: null
+    ID: null
+specific_heat_capacity:
+- source: rath2005
+  type: scalar
+  value: 1000.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Similar to the value for Dogger (Middle Jurassic) formation due 
+    to comparable lithology in the Western Molasse.
+  tag:
+    agency: [BfS/BGE]
+    location: [Baden-Wuerttemberg, Bavaria, Germany]
+    simplified_lithology: null
+    ID: a12f7f46-86d3-5624-8fea-88ec73e8c297
+thermal_conductivity:
+- source: rath2005
+  type: scalar
+  value: 2.61
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Similar to the value for Dogger (Middle Jurassic) formation due 
+    to comparable lithology in the Western Molasse.
+  tag:
+    agency: [BfS/BGE]
+    location: [Baden-Wuerttemberg, Bavaria, Germany]
+    simplified_lithology: null
+    ID: bf9c451a-51a0-5112-a540-db7e8dc02761
+- source: clauser2002
+  type: scalar
+  value: 2.75
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Similar to the value for Sandstone in Dogger (Middle Jurassic) 
+    formation due to comparable lithology near Bad Waldsee area.
+  tag:
+    agency: [BfS/BGE]
+    location: [Baden-Wuerttemberg, Bavaria, Germany]
+    simplified_lithology: [Sandstone]
+    ID: cb59f19a-776a-5d2a-a918-4f53bc57eebd

@@ -1,0 +1,294 @@
+density:
+- source: heemann2014 cited in liu2017
+  type: scalar
+  value: 2182.0
+  value_min: 2100.0
+  value_max: 2385.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for rock salt in general.
+  tag:
+    agency: [GRS, BGR]
+    location: [Germany]
+    simplified_lithology: [Rocksalt]
+    ID: a66557c0-e77e-5611-ab4b-b31ffb26f035
+- source: minkley2010
+  type: scalar
+  value: 2160.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for rock salt for the German part of the North German 
+    Basin.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: ef122dde-6fdb-5e30-8ddb-c4969eb5a0a1
+- source: minkley2010
+  type: scalar
+  value: 2900.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: kg/m^3
+  unit_base: [1, -3, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for Hauptanhydrit Formation for the German part of the 
+    North German Basin.
+  tag:
+    agency: [Others]
+    location: [Lower-Saxony, Germany]
+    simplified_lithology: null
+    ID: 9581a50b-7d21-509e-aa1c-f53ab8eec263
+specific_heat_capacity:
+- source: olivella2007
+  type: scalar
+  value: 855.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for rock salt. In-situ test performed in ASSE mine.
+  tag:
+    agency: [Others]
+    location: [Asse, Lower-Saxony, Germany]
+    simplified_lithology: [Rocksalt]
+    ID: 6e93a5db-c554-535a-b865-f8e06a5bb0ad
+- source: minkley2010
+  type: scalar
+  value: 860.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: J/kg/K
+  unit_base: [0, 2, -2, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for rock salt and its backfilling was determined as part of
+    the BAMBUS II project conducted in the Asse salt mine.
+  tag:
+    agency: [Others]
+    location: [Asse, Lower-Saxony, Germany]
+    simplified_lithology: [Rocksalt]
+    ID: c4e469d0-a0b5-5299-852c-dc527a2f8dde
+thermal_conductivity:
+- source: olivella2007
+  type: scalar
+  value: 5.73
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: In-situ test performed in ASSE mine.
+  tag:
+    agency: [Others]
+    location: [Asse, Lower-Saxony, Germany]
+    simplified_lithology: [Rocksalt]
+    ID: c2881a84-6af3-5855-9dfa-ead53e7d8b18
+- source: minkley2010
+  type: scalar
+  value: 5.8
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for rock salt and its backfilling was determined as part of
+    the BAMBUS II project conducted in the Asse salt mine.
+  tag:
+    agency: [Others]
+    location: [Asse, Lower-Saxony, Germany]
+    simplified_lithology: [Rocksalt]
+    ID: 2068c984-6e9f-50e0-a129-703cfb1d427d
+- source: birch1940 and liu2017
+  type: expression
+  value: 6.1/(1+0.0045*(x-273.15))
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: W/m/K
+  unit_base: [1, 1, -3, -1, 0, 0, 0]
+  variable_name: temperature
+  variable_unit_str: K
+  variable_unit_base: [0, 0, 0, 1, 0, 0, 0]
+  description: temperature-dependent thermal conductivity for rock salt.
+  tag:
+    agency: [GRS, BGR]
+    location: [unknown]
+    simplified_lithology: [Rocksalt]
+    ID: a3d1ef7d-5f67-5285-aed1-140ec7baf76b
+porosity:
+- source: stork1998
+  type: scalar
+  value: null
+  value_min: 0.001
+  value_max: 0.005
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: null
+  unit_base: [0, 0, 0, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for anhydrite and gypsum in Hutgestein Formation in 
+    Allertal zone in Morsleben.
+  tag:
+    agency: [BfS/BGE, BGR]
+    location: [Morsleben, Saxony-Anhalt, Germany]
+    simplified_lithology: [Rocksalt]
+    ID: e7dd28b9-bafd-53bb-9ef4-b4d11f2a8196
+hydraulic_conductivity:
+- source: null
+  type: scalar
+  value: null
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: null
+  tag:
+    agency: null
+    location: null
+    simplified_lithology: null
+    ID: null
+- source: stork1998
+  type: scalar
+  value: 1.0e-11
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Value for anhydrite and gypsum in Hutgestein Formation in 
+    Allertal zone in Morsleben.
+  tag:
+    agency: [BfS/BGE, BGR]
+    location: [Morsleben, Saxony-Anhalt, Germany]
+    simplified_lithology: [Rocksalt]
+    ID: 13df9604-27a6-5280-8b23-388308465f3a
+p_wave_velocity:
+- source: mueller2019
+  type: scalar
+  value: 4084.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Rocksalt in Zechstein.
+  tag:
+    agency: [Others]
+    location: [Germany]
+    simplified_lithology: [Rocksalt]
+    ID: f4edbc77-d2f2-5b8b-a281-38a03bfb2305
+s_wave_velocity:
+- source: mueller2019
+  type: scalar
+  value: 2226.0
+  value_min: null
+  value_max: null
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: m/s
+  unit_base: [0, 1, -1, 0, 0, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: Rocksalt in Zechstein.
+  tag:
+    agency: [Others]
+    location: [Germany]
+    simplified_lithology: [Rocksalt]
+    ID: 2a5786d2-0260-56de-92a7-0d146d0dc5ff
+electrical_resistivity:
+- source: yaramanci2000
+  type: scalar
+  value: null
+  value_min: 100000.0
+  value_max: 1000000.0
+  value_std: null
+  probability_distribution:
+    sample_size: null
+    sampled_data: null
+  unit_str: ohmm
+  unit_base: [1, 3, -3, 0, -2, 0, 0]
+  variable_name: null
+  variable_unit_str: null
+  variable_unit_base: null
+  description: undisturbed and unmoistened rock salt in salt mine Asse.
+  tag:
+    agency: [Others]
+    location: [Asse, Lower-Saxony, Germany]
+    simplified_lithology: [Rocksalt]
+    ID: b5c55cda-685d-5305-ba2b-2484ee9f4c36

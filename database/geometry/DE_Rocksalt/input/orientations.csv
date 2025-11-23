@@ -1,0 +1,15 @@
+X,Y,Z,azimuth,dip,polarity,formation
+0,0,-70,0,0,1,Quaternary
+0,0,-160,0,0,1,Tertiary
+0,0,-280,0,0,1,Buntsandstein
+0,0,-335,0,0,1,Aller
+0,0,-350,0,0,1,Tonmittelsalz
+0,0,-425,0,0,1,Anhydritmittelsalz
+0,0,-443,0,0,1,Leine_Potash
+0,0,-475,0,0,1,Leine_Rocksalt
+0,0,-515,0,0,1,Leine_Hauptanhydrit
+0,0,-532,0,0,1,Strassfurt_Potash
+0,0,-682,0,0,1,Strassfurt_Rocksalt
+0,0,-697,0,0,1,Anhydrite
+0,0,-732,0,0,1,Carbonate
+0,0,-832,0,0,1,Rotliegend
