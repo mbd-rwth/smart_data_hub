@@ -43,19 +43,15 @@ def get_matching_default_df(lithologies, missing_prop_names):
     return matching_default_df
 
 
-def add_default_df(property_df, lithologies):
-    """Add default properties to the property DataFrame.
+def find_missing_properties(property_df):
+    """Find missing properties in the property DataFrame.
 
     Args:
         property_df (pd.DataFrame): DataFrame containing the properties to check
-        lithologies (list): list of lithologies to look for default properties
 
     Returns:
-        pd.DataFrame: DataFrame with default properties added
+        list: List of missing property names.
     """
-
-    if property_df.empty:
-        return load_default_df(lithologies)
     no_id_props = list(property_df.loc[property_df["ID"].isna()]["property"])
     # drop the missing id properties from the original DataFrame
     removed_missing_id_property_df = property_df[
@@ -81,8 +77,32 @@ def add_default_df(property_df, lithologies):
         ]
     )
     missing_props = list(required_property_names - set(all_properties))
+    return missing_props
 
-    matching_default_df = get_matching_default_df(lithologies, missing_props)
+
+def add_default_df(property_df, lithologies):
+    """Add default properties to the property DataFrame.
+
+    Args:
+        property_df (pd.DataFrame): DataFrame containing the properties to check
+        lithologies (list): list of lithologies to look for default properties
+
+    Returns:
+        pd.DataFrame: DataFrame with default properties added
+    """
+
+    if property_df.empty:
+        return load_default_df(lithologies)
+
+    no_id_props = list(property_df.loc[property_df["ID"].isna()]["property"])
+    # drop the missing id properties from the original DataFrame
+    removed_missing_id_property_df = property_df[
+        ~property_df["property"].isin(no_id_props)
+    ]
+
+    missing_prop_names = find_missing_properties(property_df).copy()
+
+    matching_default_df = get_matching_default_df(lithologies, missing_prop_names)
 
     add_default_property_df = pd.concat(
         [

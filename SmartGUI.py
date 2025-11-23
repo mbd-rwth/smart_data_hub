@@ -14,7 +14,7 @@ from src.property2dataframe import (
 )
 from src.data_tagging import get_tagged_data_mask
 from src.generate_id import get_list_from_sequence
-from src.add_default import add_default_df
+from src.add_default import add_default_df, find_missing_properties
 from src.merge_method import merge_property_value
 from src.dataframe2yaml import dataframe2yaml_str
 from src.generate_geomodel import generate_geomodel_for_site, export_gempy2grid
@@ -373,7 +373,13 @@ site_geomodel = dbc.Card(
         dbc.CardHeader("3D Structural Geomodel"),
         html.Div(
             [
-                html.Iframe(id="3d_model", style={"height": "min(100%, calc(33.33vw - 25px))", "width": "calc(33.33vw - 25px)"}),
+                html.Iframe(
+                    id="3d_model",
+                    style={
+                        "height": "min(100%, calc(33.33vw - 25px))",
+                        "width": "calc(33.33vw - 25px)",
+                    },
+                ),
             ],
             style={"height": "calc(100vh - 316px)"},
         ),
@@ -476,7 +482,12 @@ lithostratigraphy = dbc.Card(
         dbc.CardHeader("Lithostratigraphic Table"),
         html.Div(
             [
-                dcc.Graph(id="icicle_props", style={"height": "98%",}),
+                dcc.Graph(
+                    id="icicle_props",
+                    style={
+                        "height": "98%",
+                    },
+                ),
                 html.Div(
                     id="properties_table",
                     children=[
@@ -551,6 +562,8 @@ app.layout = dbc.Container(
         dcc.Store(id="strata_lithologies"),
         dcc.Download(id="export_props_data"),
         dcc.Download(id="export_geomodel_data"),
+        dcc.ConfirmDialog(id="default_confirm"),
+        dcc.ConfirmDialog(id="merge_confirm"),
     ],
     fluid=True,
 )
@@ -721,52 +734,98 @@ def filter_table(datatable_data, filter):
 
 
 @app.callback(
+    Output("default_confirm", "displayed"),
+    Output("default_confirm", "message"),
+    Input("btn_add_default", "n_clicks"),
+    State("datatable-interactivity", "data"),
+    prevent_initial_call=True,
+)
+def confirm_add_default(add_default_clicks, datatable_data):
+    # convert to pandas DataFrame
+    datatable_data_pd = str2list(pd.DataFrame.from_records(datatable_data)).copy()
+    # --- find missing properties --- #
+    added_properties = find_missing_properties(datatable_data_pd)
+
+    if added_properties:
+        confirm_message = (
+            f"{', '.join(added_properties)} will be added with default values."
+        )
+    else:
+        confirm_message = (
+            "All properties already have values. No default values will be added."
+        )
+
+    return True, confirm_message
+
+
+@app.callback(
     Output("datatable-interactivity", "data", allow_duplicate=True),
-    Output("btn_add_default", "n_clicks"),
     Output("datatable-interactivity", "filter_query", allow_duplicate=True),
     Output("current_datatable", "data", allow_duplicate=True),
     State("datatable-interactivity", "data"),
-    Input("btn_add_default", "n_clicks"),
+    Input("default_confirm", "submit_n_clicks"),
     State("datatable-interactivity", "filter_query"),
     State("strata_lithologies", "data"),
     prevent_initial_call=True,
 )
 def add_default(datatable_data, add_default_clicks, filter, lithologies):
-    if add_default_clicks:
-        update_property_df = add_default_df(
-            str2list(pd.DataFrame.from_records(datatable_data)), lithologies
-        ).copy()
+    # convert to pandas DataFrame and add default values
+    datatable_data_pd = str2list(pd.DataFrame.from_records(datatable_data)).copy()
+    update_property_df = add_default_df(datatable_data_pd, lithologies).copy()
 
-        datatable_data = list2str(update_property_df).to_dict("records")
+    # convert back to datatable format
+    datatable_data = list2str(update_property_df).to_dict("records")
 
-        add_default_clicks = 0
-        filter = ""
+    filter = ""
 
-    return datatable_data, add_default_clicks, filter, datatable_data
+    return datatable_data, filter, datatable_data
+
+
+@app.callback(
+    Output("merge_confirm", "displayed"),
+    Output("merge_confirm", "message"),
+    Input("btn_merge_data", "n_clicks"),
+    State("datatable-interactivity", "data"),
+    prevent_initial_call=True,
+)
+def confirm_merge_add(merge_data_clicks, datatable_data):
+    # convert to pandas DataFrame
+    datatable_data_merge_pd = str2list(pd.DataFrame.from_records(datatable_data)).copy()
+    # --- Check if there are any missing values in sampled_data --- #
+    # drop the missing id properties from the original DataFrame
+    datatable_data_merge_pd_id = datatable_data_merge_pd.dropna(subset=["ID"]).copy()
+    missing_sampled_data = datatable_data_merge_pd_id["sampled_data"].isna().any()
+    remain_properties = list(datatable_data_merge_pd_id["property"])
+    len_diff = len(remain_properties) - len(set(remain_properties))
+    if missing_sampled_data or (len_diff > 0):
+        confirm_message = (
+            "Merge data and add a truncated normal distribution for each property."
+        )
+    else:
+        confirm_message = "Merging data is not needed, as data is already merged, or no uncertainty is missing."
+
+    return True, confirm_message
 
 
 @app.callback(
     Output("datatable-interactivity", "data", allow_duplicate=True),
-    Output("btn_merge_data", "n_clicks"),
     Output("datatable-interactivity", "filter_query", allow_duplicate=True),
     Output("current_datatable", "data", allow_duplicate=True),
     State("datatable-interactivity", "data"),
-    Input("btn_merge_data", "n_clicks"),
+    Input("merge_confirm", "submit_n_clicks"),
     State("datatable-interactivity", "filter_query"),
     prevent_initial_call=True,
 )
 def merge_data(datatable_data, merge_data_clicks, filter):
-    if merge_data_clicks:
 
-        update_property_df = merge_property_value(
-            str2list(pd.DataFrame.from_records(datatable_data)), source_type="merged"
-        ).copy()
+    update_property_df = merge_property_value(
+        str2list(pd.DataFrame.from_records(datatable_data)), source_type="merged"
+    ).copy()
 
-        datatable_data = list2str(update_property_df).to_dict("records")
-        merge_data_clicks = 0
-        filter = ""
+    datatable_data = list2str(update_property_df).to_dict("records")
+    filter = ""
 
-    return datatable_data, merge_data_clicks, filter, datatable_data
+    return datatable_data, filter, datatable_data
 
 
 @app.callback(
