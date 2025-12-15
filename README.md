@@ -15,7 +15,7 @@ The GUI displays three sections:
    * Processing functions: enables customized scenarios by filtering data in the table, provides uncertainty distributions for each value via the "Merge data" button, and adds sensible defaults when data is missing via the "Add Default" button.  All relevant codes can be found in the [`src`](./src)directory.
   
 The following screenshot shows the GUI for the Buntsandstein layer at the DE_Rocksalt site. The highlighted, non-grey layer on the left-hand side is the currently selected layer, and the data table on the right-hand side shows the data after merging and adding default values.
-![](SDH_GUI.PNG)
+![](SDH_GUI.png)
 
 ## Installation (For GUI)
 1. Download the zip file or clone the repository:
