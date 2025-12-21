@@ -1,8 +1,12 @@
 # Smart Data Hub
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17939847.svg)](https://doi.org/10.5281/zenodo.17939847)
+
+
 Welcome to the smart data hub repository, developed by the [Methods for Model-based Development in Computational Engineering](https://www.mbd.rwth-aachen.de/) (MBD) and 
 [Geophysical Imaging and Monitoring](https://www.gim.rwth-aachen.de/) (GIM) groups at RWTH Aachen University. The smart 
-data hub is a product of the '[Smart-Monitoring](https://www.mbd.rwth-aachen.de/go/id/sxklc?lidx=1#aaaaaaaaaasxkoh)' project,
-which aims to provide innovative solutions in data-integrated simulation studies: scenario-based, uncertainty-integrated database.
+data hub is a product of the '[Smart-Monitoring](https://www.mbd.rwth-aachen.de/go/id/sxklc?lidx=1#aaaaaaaaaasxkoh)' project, 
+which aims to provide innovative solutions in data-integrated simulation studies. The Smart Data Hub bridges existing research limitations to enable efficient data compilation for specific simulations while incorporating uncertainty quantification. It is capable of providing reliable, reproducible output for data-driven decision-making processes.
 
 ## Data Hub Architecture
 The data-hub consists of a database integrated with a Graphic User Interface (GUI).
