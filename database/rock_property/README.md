@@ -23,9 +23,9 @@ field:
   variable_unit_base: LIST(INT)     # See above (must be used if type is tabulated or expression).
   description: STR                  # Free text metadata.
   tag:
-    agency: LIST[STR]              # List of agencies that provided the data.
-    location: LIST[STR]            # List of locations where the data applies.
-    simplified_lithology: LIST[STR]# List of simplified lithologies the data applies to.
-    ID: STR                        # A unique ID for the data entry. It can be generated via the helper function: ../../src/generate_id.py.           
+    agency: LIST[STR]               # List of agencies that provided the data.
+    location: LIST[STR]             # List of locations where the data applies.
+    simplified_lithology: LIST[STR] # List of simplified lithologies the data applies to.
+    ID: STR                         # A unique ID for the data entry. It can be generated via the helper function: ../../src/generate_id.py.           
 ``` 
 
