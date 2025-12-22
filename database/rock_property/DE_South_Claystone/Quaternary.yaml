@@ -35,12 +35,12 @@ porosity:
   variable_unit_str: null
   variable_unit_base: null
   description: Effective porosity for the fluvioglacial gravels and sands in the
-    Alpine foreland
+    Alpine foreland.
   tag:
     agency: [LGRB]
     location: [Baden-Wuerttemberg, Bavaria, Germany]
     simplified_lithology: [Sandstone, Conglomerate]
-    ID: a2e985b9-bf03-5f2b-96ff-6f9692dffd15
+    ID: 524b92f5-11e0-57e7-b176-f0893d418452
 hydraulic_conductivity:
 - source: plum2008
   type: scalar
@@ -57,12 +57,12 @@ hydraulic_conductivity:
   variable_unit_str: null
   variable_unit_base: null
   description: Geometric mean value with 217 measurements for the fluvioglacial 
-    gravels and sands in the Alpine foreland
+    gravels and sands in the Alpine foreland.
   tag:
     agency: [LGRB]
     location: [Baden-Wuerttemberg, Bavaria, Germany]
     simplified_lithology: [Sandstone, Conglomerate]
-    ID: 94f5a324-b200-57d0-958a-d51f309c1d79
+    ID: 07651deb-8e9a-5d60-bced-88f25db4e28e
 p_wave_velocity:
 - source: null
   type: scalar
@@ -121,12 +121,12 @@ electrical_resistivity:
   variable_unit_str: null
   variable_unit_base: null
   description: Mean resistivity value for conglomeratic formation in Oligocene 
-    epoch in Mombasiglio, Piedmont, Italy
+    epoch in Mombasiglio, Piedmont, Italy.
   tag:
     agency: [Others]
     location: [Mombasiglio, Piedmont, Italy]
     simplified_lithology: [Conglomerate]
-    ID: e3c6a49e-e2e3-514f-b7e7-0b371b698900
+    ID: 7c9a8ece-615b-5c37-8882-3d65c3857e5c
 specific_heat_capacity:
 - source: rath2005
   type: scalar

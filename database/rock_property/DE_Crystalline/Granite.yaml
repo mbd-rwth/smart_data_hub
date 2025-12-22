@@ -76,12 +76,12 @@ density:
   variable_unit_str: null
   variable_unit_base: null
   description: Bulk density for albite granite samples from Zinnwald at the 
-    border of Germany and the Czech Republic
+    border of Germany and the Czech Republic.
   tag:
     agency: [Others]
     location: [Altenberg, Saxony, Germany]
     simplified_lithology: [Crystalline]
-    ID: a47700c8-5d83-5de7-b18a-b60c15fc0b3f
+    ID: 112faa54-6a83-5192-a2a0-e4f2aa11789a
 porosity:
 - source: keusen1989
   type: scalar
@@ -119,12 +119,12 @@ porosity:
   variable_unit_str: null
   variable_unit_base: null
   description: Total porosity for albite granite samples from Zinnwald at the 
-    border of Germany and the Czech Republic
+    border of Germany and the Czech Republic.
   tag:
     agency: [Others]
     location: [Altenberg, Saxony, Germany]
     simplified_lithology: [Crystalline]
-    ID: 5fe2e5b2-44c0-56c0-9ce0-0b9b8f755783
+    ID: 8868efae-d3db-5aaf-8883-09df4b1d427c
 hydraulic_conductivity:
 - source: stober2009
   type: scalar
@@ -470,12 +470,12 @@ electrical_resistivity:
   variable_unit_str: null
   variable_unit_base: null
   description: Specific electrical resistivity for 75 percent of all albite 
-    granites samples from Zinnwald
+    granites samples from Zinnwald.
   tag:
     agency: [Others]
     location: [Altenberg, Saxony, Germany]
     simplified_lithology: [Crystalline]
-    ID: 39930e13-f5bd-52ba-bc43-b8ea657cbbe3
+    ID: d686bb2d-c5c6-5392-979f-aea268d4b06a
 specific_heat_capacity:
 - source: cermak1982
   type: scalar

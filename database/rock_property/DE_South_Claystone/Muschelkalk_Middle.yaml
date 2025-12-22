@@ -77,13 +77,13 @@ porosity:
   variable_name: null
   variable_unit_str: null
   variable_unit_base: null
-  description: "Mean connected porsoity was calculated based on five laboratory data
+  description: "Mean connected porosity was calculated based on five laboratory data
     in Table 2 from the Marnes Bariolées Formation at Soultz-sous-Forêts."
   tag:
     agency: [Others]
     location: ["Soultz-sous-Forêts", Grand Est, France]
     simplified_lithology: [Rocksalt]
-    ID: 56f55e7e-bda9-5df3-87b3-bd431cf0d507
+    ID: 45a9817e-bc1f-59ca-ab09-34c08e324db1
 hydraulic_conductivity:
 - source: null
   type: scalar

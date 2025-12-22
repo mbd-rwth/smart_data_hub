@@ -309,12 +309,12 @@ electrical_resistivity:
   variable_unit_base: null
   description: Value for wet rock salt in Stassfurt formation and anhydrite with
     0.1 to 0.2 percent water content from in situ measurement with profile 
-    arrangment of the electrodes in Asse salt mine.
+    arrangement of the electrodes in Asse salt mine.
   tag:
     agency: [Others]
     location: [Asse, Lower-Saxony, Germany]
     simplified_lithology: [Rocksalt]
-    ID: a06b9bfc-54a5-572a-9c42-d09787777074
+    ID: dafe3eec-9c45-5a5c-89f6-a98a50a75731
 specific_heat_capacity:
 - source: lerch2012
   type: scalar

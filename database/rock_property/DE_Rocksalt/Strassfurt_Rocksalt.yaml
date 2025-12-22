@@ -350,13 +350,13 @@ electrical_resistivity:
   variable_unit_str: null
   variable_unit_base: null
   description: Value for dry rock salt with 0.01 to 0.03 percent water content 
-    in Stassfurt formation from in situ measurement with array arrangment of the
-    electrodes in Asse salt mine.
+    in Stassfurt formation from in situ measurement with array arrangement of 
+    the electrodes in Asse salt mine.
   tag:
     agency: [Others]
     location: [Asse, Lower-Saxony, Germany]
     simplified_lithology: [Rocksalt]
-    ID: 917e7969-dcbc-5562-b6e7-d4128f74482b
+    ID: 829b64a9-f3ae-5cac-9dc1-d52c36991d4a
 - source: yaramanci1994
   type: scalar
   value: null
@@ -372,13 +372,13 @@ electrical_resistivity:
   variable_unit_str: null
   variable_unit_base: null
   description: Value for dry rock salt with 0.015 to 0.03 percent water content 
-    in Stassfurt formation from in situ measurement with profile arrangment of 
+    in Stassfurt formation from in situ measurement with profile arrangement of 
     the electrodes in Asse salt mine.
   tag:
     agency: [Others]
     location: [Asse, Lower-Saxony, Germany]
     simplified_lithology: [Rocksalt]
-    ID: 598d06f0-60d0-5d8f-bedd-b5cd86e99e8e
+    ID: 51fd0d7e-896e-521c-9929-3f6325dcce15
 - source: yaramanci1994
   type: scalar
   value: null
@@ -394,13 +394,13 @@ electrical_resistivity:
   variable_unit_str: null
   variable_unit_base: null
   description: Value for dry rock salt with 0.03 to 0.05 percent water content 
-    in Stassfurt formation from in situ measurement with profile arrangment of 
+    in Stassfurt formation from in situ measurement with profile arrangement of 
     the electrodes in Asse salt mine.
   tag:
     agency: [Others]
     location: [Asse, Lower-Saxony, Germany]
     simplified_lithology: [Rocksalt]
-    ID: 44af33e0-b6cc-58b8-8d98-150277009068
+    ID: dede2bc1-55e7-566a-8fa2-1a8bb1d09a2b
 - source: yaramanci1994
   type: scalar
   value: null
@@ -416,13 +416,13 @@ electrical_resistivity:
   variable_unit_str: null
   variable_unit_base: null
   description: Value for dry rock salt with 0.02 to 0.04 percent water content 
-    in Stassfurt formation from in situ measurement with profile arrangment of 
+    in Stassfurt formation from in situ measurement with profile arrangement of 
     the electrodes in Asse salt mine.
   tag:
     agency: [Others]
     location: [Asse, Lower-Saxony, Germany]
     simplified_lithology: [Rocksalt]
-    ID: 66a4aefd-4b45-5b31-b037-5b5f7a0f537d
+    ID: 818f63d0-303c-5987-90cc-6baa2b092cf0
 - source: yaramanci1994
   type: scalar
   value: null
@@ -438,13 +438,13 @@ electrical_resistivity:
   variable_unit_str: null
   variable_unit_base: null
   description: Value for moist rock salt with 0.06 to 0.08 percent water content
-    in Stassfurt formation from in situ measurement with profile arrangment of 
+    in Stassfurt formation from in situ measurement with profile arrangement of 
     the electrodes in Asse salt mine.
   tag:
     agency: [Others]
     location: [Asse, Lower-Saxony, Germany]
     simplified_lithology: [Rocksalt]
-    ID: ecaa1cf2-1efc-59a8-a10f-e54e178f710a
+    ID: c0b021ed-c5f0-5ead-b858-496085270298
 - source: yaramanci1994
   type: scalar
   value: null
@@ -460,13 +460,13 @@ electrical_resistivity:
   variable_unit_str: null
   variable_unit_base: null
   description: Value for moist rock salt with 0.06 to 0.1 percent water content 
-    in Stassfurt formation from in situ measurement with profile arrangment of 
+    in Stassfurt formation from in situ measurement with profile arrangement of 
     the electrodes in Asse salt mine.
   tag:
     agency: [Others]
     location: [Asse, Lower-Saxony, Germany]
     simplified_lithology: [Rocksalt]
-    ID: 66a1204a-327a-511f-a188-043bd1360a03
+    ID: 5f0619d1-c90b-530b-b94c-286df9620df3
 - source: yaramanci1994
   type: scalar
   value: null
@@ -483,9 +483,9 @@ electrical_resistivity:
   variable_unit_base: null
   description: Value for wet rock salt in Stassfurt formation and anhydrite with
     0.1 to 0.2 percent water content from in situ measurement with profile 
-    arrangment of the electrodes in Asse salt mine.
+    arrangement of the electrodes in Asse salt mine.
   tag:
     agency: [Others]
     location: [Asse, Lower-Saxony, Germany]
     simplified_lithology: [Rocksalt]
-    ID: a06b9bfc-54a5-572a-9c42-d09787777074
+    ID: dafe3eec-9c45-5a5c-89f6-a98a50a75731

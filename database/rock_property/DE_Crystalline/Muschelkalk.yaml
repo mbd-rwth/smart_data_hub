@@ -265,12 +265,12 @@ thermal_conductivity:
   variable_name: null
   variable_unit_str: null
   variable_unit_base: null
-  description: Value for Muschelkalk Formation in Gorleben
+  description: Value for Muschelkalk Formation in Gorleben.
   tag:
     agency: [BGR]
     location: [Gorleben, Lower-Saxony, Germany]
     simplified_lithology: null
-    ID: 29ebb4b1-049a-5ccc-902b-82071b03e6ca
+    ID: 5ff57da9-1d7d-5ada-af95-7e60d684e087
 - source: bayer1997
   type: scalar
   value: 1.9

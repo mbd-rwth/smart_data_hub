@@ -96,13 +96,12 @@ porosity:
   variable_name: null
   variable_unit_str: null
   variable_unit_base: null
-  description: 'Morsleben: effective porosity of clayey siltstone and rarely fine
-    sandstone.'
+  description: 'Morsleben: effective porosity of clayey siltstone and fine sandstone.'
   tag:
     agency: [BfS/BGE, BGR]
     location: [Morsleben, Saxony-Anhalt, Germany]
     simplified_lithology: [Sandstone, Mudstone]
-    ID: fce26eb8-ee39-5649-9a6a-152cf13214ca
+    ID: 56804a22-caea-59ec-8868-e4b4fd605c06
 hydraulic_conductivity:
 - source: stork1998
   type: scalar
@@ -160,12 +159,12 @@ hydraulic_conductivity:
   variable_name: null
   variable_unit_str: null
   variable_unit_base: null
-  description: 'Morsleben: clayey siltstone and rarely fine sandstone.'
+  description: 'Morsleben: clayey siltstone and fine sandstone.'
   tag:
     agency: [BfS/BGE, BGR]
     location: [Morsleben, Saxony-Anhalt, Germany]
     simplified_lithology: [Sandstone, Mudstone]
-    ID: e8831dda-e793-5138-afbb-ec3abca4b400
+    ID: e763e817-3658-50a5-ad06-8b5524a271d4
 - source: stober2009
   type: scalar
   value: null

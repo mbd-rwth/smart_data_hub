@@ -56,13 +56,13 @@ porosity:
   variable_name: null
   variable_unit_str: null
   variable_unit_base: null
-  description: Sample dried at 105 Celsius degree in Murchisonae-Sch.Formation 
+  description: Sample dried at 105 Celsius degree in Murchisonae-Sch. Formation 
     (claystone, silty, limy) from Benken borehole.
   tag:
     agency: [NAGRA]
     location: [Benken, Zurich, Switzerland]
     simplified_lithology: [Mudstone, Limestone]
-    ID: 4c987908-2554-551d-9f77-4056d2cbe718
+    ID: 50f6f3ea-bb36-5cfa-a8c2-6595c9a985c7
 hydraulic_conductivity:
 - source: nagra2001
   type: scalar

@@ -55,12 +55,12 @@ specific_heat_capacity:
   variable_name: null
   variable_unit_str: null
   variable_unit_base: null
-  description: Recommended value for the Anhydrite_Carbonate Formation
+  description: Recommended value for the Anhydrite_Carbonate Formation.
   tag:
     agency: [GRS, BGR]
     location: [Germany]
     simplified_lithology: [Rocksalt]
-    ID: 4314426d-35d2-5fa6-bfd8-38114b739def
+    ID: df4e2bc6-b3a9-549c-95f0-e22a7e104c0f
 thermal_conductivity:
 - source: liu2017
   type: scalar
@@ -76,12 +76,12 @@ thermal_conductivity:
   variable_name: null
   variable_unit_str: null
   variable_unit_base: null
-  description: Recommended value for the Anhydrite_Carbonate Formation
+  description: Recommended value for the Anhydrite_Carbonate Formation.
   tag:
     agency: [GRS, BGR]
     location: [Germany]
     simplified_lithology: [Rocksalt]
-    ID: 75908160-1add-5527-818a-563885382946
+    ID: a9faa814-ff8f-5c46-b634-00c2ccca7728
 porosity:
 - source: stork1998
   type: scalar
@@ -227,9 +227,9 @@ electrical_resistivity:
   variable_unit_base: null
   description: Value for wet rock salt in Stassfurt formation and anhydrite with
     0.1 to 0.2 percent water content from in situ measurement with profile 
-    arrangment of the electrodes in Asse salt mine.
+    arrangement of the electrodes in Asse salt mine.
   tag:
     agency: [Others]
     location: [Asse, Lower-Saxony, Germany]
     simplified_lithology: [Rocksalt]
-    ID: a06b9bfc-54a5-572a-9c42-d09787777074
+    ID: dafe3eec-9c45-5a5c-89f6-a98a50a75731

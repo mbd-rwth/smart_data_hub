@@ -169,12 +169,12 @@ electrical_resistivity:
   variable_unit_str: null
   variable_unit_base: null
   description: Mean resistivity value in Table 1 for Oligocene Boom Clay in the 
-    Mol-Dessel zone (province of Antwerp)
+    Mol-Dessel zone (province of Antwerp).
   tag:
     agency: [Others]
     location: [Antwerp, Belgium]
     simplified_lithology: [Mudstone]
-    ID: 85a4ff1f-0a98-50ae-a698-f7de954598e2
+    ID: 3cf7dbde-baa9-51e7-8f74-72af743f56c3
 - source: huysmans2006
   type: scalar
   value: 1.76
@@ -190,9 +190,9 @@ electrical_resistivity:
   variable_unit_str: null
   variable_unit_base: null
   description: Mean resistivity value in Table 1 for Eocene Ypresian Clay in the
-    Doel nuclear zone (province of Antwerp)
+    Doel nuclear zone (province of Antwerp).
   tag:
     agency: [Others]
     location: [Antwerp, Belgium]
     simplified_lithology: [Mudstone]
-    ID: bd01977a-a17c-52cc-84ca-1e7e85db1aac
+    ID: 75a3894e-3540-5cbb-b924-d264f5a1a33c

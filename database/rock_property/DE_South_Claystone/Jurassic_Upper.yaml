@@ -97,12 +97,12 @@ hydraulic_conductivity:
   variable_name: null
   variable_unit_str: null
   variable_unit_base: null
-  description: karst aquifer in Upper Jurassic.
+  description: Karst aquifer in Upper Jurassic.
   tag:
     agency: [BGR]
     location: [unknown]
     simplified_lithology: null
-    ID: 80096881-0f16-5cf8-b9db-90290263eef6
+    ID: 7cad7b1a-b29f-592f-a7db-ef9c83332db0
 intrinsic_permeability:
 - source: schulz1989 cited in clauser2002
   type: scalar

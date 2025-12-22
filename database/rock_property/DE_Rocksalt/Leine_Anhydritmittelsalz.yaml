@@ -34,12 +34,12 @@ specific_heat_capacity:
   variable_name: null
   variable_unit_str: null
   variable_unit_base: null
-  description: Recommended value for the Anhydritmittelsalz Formation
+  description: Recommended value for the Anhydritmittelsalz Formation.
   tag:
     agency: [GRS, BGR]
     location: [Germany]
     simplified_lithology: [Rocksalt]
-    ID: dd847f5c-2c01-5c79-afe1-a2af3eaf16e8
+    ID: 8a6bcdb8-5ec0-5b50-9a6c-b5a9df56cbca
 thermal_conductivity:
 - source: bollingerfehr2018
   type: scalar
@@ -244,10 +244,10 @@ electrical_resistivity:
   variable_unit_str: null
   variable_unit_base: null
   description: Value for dry rock salt with 0.02 to 0.04 percent water content 
-    in Leine formation from in situ measurement with profile arrangment of the 
+    in Leine formation from in situ measurement with profile arrangement of the 
     electrodes in Asse salt mine.
   tag:
     agency: [Others]
     location: [Asse, Lower-Saxony, Germany]
     simplified_lithology: [Rocksalt]
-    ID: cb61eab5-b4b9-569e-84d4-eee244ed98cd
+    ID: d710033c-a412-57d8-8f6f-0b6e0cd933ea

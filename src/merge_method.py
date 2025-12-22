@@ -668,13 +668,15 @@ def merge_property_value(input_property, sample_size=1000000, source_type="merge
                 "ID": None,
             }
             if (source_type == "default") or (source_type == "merged"):
+
+                property_dict["description"] = (
+                    f"A truncated normal distribution fitted from {number_of_datasets} {print_before_id} {ids_combined}."
+                )
+
                 property_dict["ID"] = str(
                     uuid.uuid5(
                         SDH_NAMESPACE, get_entry_str(property_dict, property_name)
                     )
-                )
-                property_dict["description"] = (
-                    f"A truncated normal distribution fitted from {number_of_datasets} {print_before_id} {ids_combined}."
                 )
             else:
                 raise ValueError(
