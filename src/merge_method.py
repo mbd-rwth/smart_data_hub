@@ -412,6 +412,8 @@ def generate_samples(
         if property_name == "porosity":
             samples = samples[samples <= 1]
 
+        # Remove negative samples
+        samples = samples[samples > 0]
         # Filter samples within three standard deviation of the mean
         samples_zscore = stats.zscore(samples)
         samples_filtered = samples[np.abs(samples_zscore) < 3]

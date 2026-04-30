@@ -21,7 +21,7 @@ def validate_property_data():
             for path in paths.split(", "):
                 surface_output_paths.append(os.path.join(*path.split(os.sep)[-3:]))
     # Get VTK paths in geometry folder
-    geometry_path = os.path.join("..", "database", "geometry")
+    geometry_path = os.path.join("..", "dataset", "geometry")
     geometry_file_paths = get_path_in_dir(geometry_path)
     geometry_vtk_paths = [
         os.path.join(*path.split(os.sep)[-3:])

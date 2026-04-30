@@ -9,9 +9,9 @@ data hub is a product of the '[Smart-Monitoring](https://www.mbd.rwth-aachen.de/
 which aims to provide innovative solutions in data-integrated simulation studies. The Smart Data Hub bridges existing research limitations to enable efficient data compilation for specific simulations while incorporating uncertainty quantification. It is capable of providing reliable, reproducible output for data-driven decision-making processes.
 
 ## Data Hub Architecture
-The data-hub consists of a database integrated with a Graphic User Interface (GUI).
-1. **Database**: It provides material properties along with their uncertainty margins and sensible defaults 
-in YAML files. All relevant files can be found in the [`database`](./database/README.md) directory.
+The data-hub consists of a dataset integrated with a Graphic User Interface (GUI).
+1. **Dataset**: It provides material properties along with their uncertainty margins and sensible defaults 
+in YAML files. All relevant files can be found in the [`dataset`](./dataset/README.md) directory.
 2. **GUI**: It was developed with [Plotly Dash](https://dash.plotly.com/)—a web-based application for interactive visualization. Simply run the Python program [SmartGUI.py](./SmartGUI.py), it will then start a local flask server.
 The GUI displays three sections:
    * Geomodel: provides a 3D structural geomodel for each site.
@@ -31,4 +31,4 @@ The authors of this project are [@CQ-QianChen](https://github.com/CQ-QianChen), 
 [@mboxberg](https://github.com/mboxberg).
 
 ## License
-`smart_data_hub` is released under the MIT License. See [LICENSE](LICENSE) file for details.
+`smart_data_hub` is released under the GNU General Public License v3.0. See [LICENSE](LICENSE) file for details.

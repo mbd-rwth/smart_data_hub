@@ -15,7 +15,7 @@ def load_default_df(lithologies):
     """
     # load default rock property from yaml files
     add_default_yaml_list = [
-        f"database/rock_property/default/{lithology}.yaml" for lithology in lithologies
+        f"dataset/rock_property/default/{lithology}.yaml" for lithology in lithologies
     ]
     default_df = load_rock_property(add_default_yaml_list)
     return default_df

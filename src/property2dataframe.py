@@ -162,7 +162,7 @@ def combine_rock_site_property():
         pd.DataFrame: A DataFrame containing the combined properties.
     """
     # load YAML file paths from the rock_property directory
-    property_path = os.path.join("..", "database", "rock_property")
+    property_path = os.path.join("..", "dataset", "rock_property")
     property_file_paths = get_path_in_dir(property_path)
     yaml_property_paths = [
         path for path in property_file_paths if path.endswith(".yaml")
@@ -173,7 +173,7 @@ def combine_rock_site_property():
     default_path = os.path.realpath(
         os.path.join(
             real_path,
-            os.path.join(os.path.join("..", "database", "rock_property", "default")),
+            os.path.join(os.path.join("..", "dataset", "rock_property", "default")),
         )
     )
     yaml_rock_property_paths = [
@@ -183,7 +183,7 @@ def combine_rock_site_property():
     property_df = load_rock_property(yaml_rock_property_paths)
 
     # load YAML file paths from the site directory
-    site_path = os.path.join("..", "database", "site")
+    site_path = os.path.join("..", "dataset", "site")
     site_file_paths = get_path_in_dir(site_path)
     yaml_site_paths = [path for path in site_file_paths if path.endswith(".yaml")]
     # load all site properties to a Pandas DataFrame

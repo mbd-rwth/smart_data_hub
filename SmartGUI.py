@@ -341,11 +341,11 @@ def load_vtkdata(
 
 
 hex_colors = RGBtxt_to_dict("RGB_stratigraphy.txt", color_type="to_hex")
-site_path = os.path.join("..", "database", "site")
+site_path = os.path.join("..", "dataset", "site")
 site_file_paths = get_path_in_dir(site_path)
 yaml_site_paths = [path for path in site_file_paths if path.endswith(".yaml")]
 
-geometry_path = os.path.join("database", "geometry")
+geometry_path = os.path.join("dataset", "geometry")
 geometry_folder_list = []
 for folder_file in os.listdir(geometry_path):
     folder_file_path = os.path.join(geometry_path, folder_file)

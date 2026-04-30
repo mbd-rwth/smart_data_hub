@@ -165,7 +165,7 @@ def generate_id_for_all():
     """Generate IDs for all YAML files in the rock_property directory"""
 
     # load YAML file paths from the rock_property directory
-    property_path = os.path.join("..", "database", "rock_property")
+    property_path = os.path.join("..", "dataset", "rock_property")
     property_file_paths = get_path_in_dir(property_path)
     yaml_property_paths = [
         path for path in property_file_paths if path.endswith(".yaml")
@@ -173,5 +173,4 @@ def generate_id_for_all():
 
     # Generate IDs for each data in all YAML files if IDs are missing
     for yaml_file_path in yaml_property_paths:
-        # for yaml_file_path in yaml_rock_property_paths:
         generate_property_id(yaml_file_path)

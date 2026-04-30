@@ -38,5 +38,5 @@ def generate_initial_default():
         if save_to_file:
             export2yaml(
                 merged_property_df,
-                output_file_path=f"database/rock_property/default/{layer_unqiue_lithology}.yaml",
+                output_file_path=f"dataset/rock_property/default/{layer_unqiue_lithology}.yaml",
             )
