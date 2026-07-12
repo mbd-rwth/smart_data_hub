@@ -6,18 +6,18 @@ import pandas as pd
 import numpy as np
 import pyvista as pv
 
-from src.load_path import get_path_in_dir
-from src.property2dataframe import (
+from src.smart_data_hub.load_path import get_path_in_dir
+from src.smart_data_hub.property2dataframe import (
     load_rock_property,
     load_site_property,
     preserve_value_type,
 )
-from src.data_tagging import get_tagged_data_mask
-from src.generate_id import get_list_from_sequence
-from src.add_default import add_default_df, find_missing_properties
-from src.merge_method import merge_property_value
-from src.dataframe2yaml import dataframe2yaml_str
-from src.generate_geomodel import generate_geomodel_for_site, export_gempy2grid
+from src.smart_data_hub.data_tagging import get_tagged_data_mask
+from src.smart_data_hub.generate_id import get_list_from_sequence
+from src.smart_data_hub.add_default import add_default_df, find_missing_properties
+from src.smart_data_hub.merge_method import merge_property_value
+from src.smart_data_hub.dataframe2yaml import dataframe2yaml_str
+from src.smart_data_hub.generate_geomodel import generate_geomodel_for_site, export_gempy2grid
 
 operators = [
     ["ge ", ">="],

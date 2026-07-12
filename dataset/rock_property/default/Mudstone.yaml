@@ -24,14 +24,14 @@ electrical_resistivity:
   value_std: 45.61
   probability_distribution:
     sample_size: 1000000
-    sampled_data: scipy.stats.truncnorm(-0.7, 2.57, loc=32.81, scale=45.61).rvs(size=1000000,
+    sampled_data: scipy.stats.lognorm(s=1.06, scale=18.1, loc=1.1).rvs(size=1000000,
       random_state=21)
   unit_str: ohmm
   unit_base: [1, 3, -3, 0, -2, 0, 0]
-  description: 'A truncated normal distribution fitted from 5 combined datasets with
-    ids: f9b00128-998c-56f7-b6b0-229f8ff9c20b,b053b1c3-a87f-5ad2-b6be-8c66f0a5c3e9,719f6b13-9c09-5807-9e80-44ae87e5bead,3cf7dbde-baa9-51e7-8f74-72af743f56c3,75a3894e-3540-5cbb-b924-d264f5a1a33c.'
+  description: 'A lognormal distribution fitted from 5 combined datasets with ids:
+    f9b00128-998c-56f7-b6b0-229f8ff9c20b,b053b1c3-a87f-5ad2-b6be-8c66f0a5c3e9,719f6b13-9c09-5807-9e80-44ae87e5bead,3cf7dbde-baa9-51e7-8f74-72af743f56c3,75a3894e-3540-5cbb-b924-d264f5a1a33c.'
   tag:
-    ID: 37985d2a-c64d-5616-aac8-abee5c1bb87a
+    ID: 4a9b945d-49b5-580e-a2b8-bd1dd531cf23
 intrinsic_permeability:
 - type: scalar
   source: default
@@ -41,14 +41,14 @@ intrinsic_permeability:
   value_std: 6.38e-12
   probability_distribution:
     sample_size: 1000000
-    sampled_data: scipy.stats.truncnorm(-0.18, 10.32, loc=1.16e-12, scale=6.38e-12).rvs(size=1000000,
+    sampled_data: scipy.stats.lognorm(s=1.86, scale=2.08e-13, loc=3.07e-24).rvs(size=1000000,
       random_state=21)
   unit_str: m^2
   unit_base: [0, 2, 0, 0, 0, 0, 0]
-  description: 'A truncated normal distribution fitted from 37 combined datasets with
-    ids: 08c6a174-f53a-58c5-ad56-32b7914fd55a,12d0b62e-d9b2-58a6-a22e-308d544a6686,bcc13892-dbf4-5667-a94f-c8cb3437074f,af998582-183c-55fd-b494-20ef8957e96d,7c2797f8-d263-5d2a-a244-f81fdff26d21,b28c3bfc-857a-5bd7-90cb-b515890f46e0,5974e0bb-b4b0-56ff-bffd-a6e088f4ad86,43a8b76c-26ff-58ee-abc4-c935cb3c14c6,2c63b589-a15e-5448-ae32-18b13e9ee57a,f52813f8-0e33-5453-8f85-30aebdae8498,acdc8487-2454-5d88-b372-c7e287f5c22d,2d096947-c573-5e61-b429-d4f3a2ace4b6,4b475d43-447b-521d-bd1d-70a12bae4640,31eaae86-8222-5844-9b5c-0620d87d6a2f,38ec0f5d-073b-5bba-80b8-77b0eaf04441,e7f670f1-b96a-58f1-afb7-6d9b9773d01a,a19b9b6b-cb1d-57fa-8c7b-e4be30e471fc,3de51184-bc75-5c9e-bc47-6f617e3ec9d4,c5723efd-1880-50c0-8c02-f4d24b5dff19,d6a0b9fa-7cfc-5dd8-9e28-b01165a3cce2,2518fadc-1079-5c76-bfd9-77e89779a7c8,56870c54-94b3-572d-80c6-6e7376d1ad61,bc48cf01-d143-50ae-81b5-38a343ec1abe,337a1a1f-2edd-5fc3-adcd-924879bd3727,7a308dfc-5764-59e7-80ee-c352e3113dfc,cc66adf7-bacd-5e27-9ca5-e35bc7a432a2,efda74c4-dd18-576f-9895-5eb450c7dbac,d5554a2d-408c-5c9e-8331-61176ea47448,9f06f9df-240e-54f9-bcf3-c46a81eb1e0a,639f9ebb-5b88-5e15-83cd-d23d0f93f05e,d927a6b5-4e68-56a8-bc55-6f47082b2ab9,7d1ce243-4b99-52d1-aff4-cb69d439c764,6330ea20-dc3c-51b1-8257-b92bca804976,b9f20a8c-4c06-5ae4-9b92-156d0cef5046,e763e817-3658-50a5-ad06-8b5524a271d4,0d854a14-f773-5d6b-9c1c-9c63d3517f95,1eebbbf1-c512-5fc6-865d-cca66bd2502d.'
+  description: 'A lognormal distribution fitted from 37 combined datasets with ids:
+    08c6a174-f53a-58c5-ad56-32b7914fd55a,12d0b62e-d9b2-58a6-a22e-308d544a6686,bcc13892-dbf4-5667-a94f-c8cb3437074f,af998582-183c-55fd-b494-20ef8957e96d,7c2797f8-d263-5d2a-a244-f81fdff26d21,b28c3bfc-857a-5bd7-90cb-b515890f46e0,5974e0bb-b4b0-56ff-bffd-a6e088f4ad86,43a8b76c-26ff-58ee-abc4-c935cb3c14c6,2c63b589-a15e-5448-ae32-18b13e9ee57a,f52813f8-0e33-5453-8f85-30aebdae8498,acdc8487-2454-5d88-b372-c7e287f5c22d,2d096947-c573-5e61-b429-d4f3a2ace4b6,4b475d43-447b-521d-bd1d-70a12bae4640,31eaae86-8222-5844-9b5c-0620d87d6a2f,38ec0f5d-073b-5bba-80b8-77b0eaf04441,e7f670f1-b96a-58f1-afb7-6d9b9773d01a,a19b9b6b-cb1d-57fa-8c7b-e4be30e471fc,3de51184-bc75-5c9e-bc47-6f617e3ec9d4,c5723efd-1880-50c0-8c02-f4d24b5dff19,d6a0b9fa-7cfc-5dd8-9e28-b01165a3cce2,2518fadc-1079-5c76-bfd9-77e89779a7c8,56870c54-94b3-572d-80c6-6e7376d1ad61,bc48cf01-d143-50ae-81b5-38a343ec1abe,337a1a1f-2edd-5fc3-adcd-924879bd3727,7a308dfc-5764-59e7-80ee-c352e3113dfc,cc66adf7-bacd-5e27-9ca5-e35bc7a432a2,efda74c4-dd18-576f-9895-5eb450c7dbac,d5554a2d-408c-5c9e-8331-61176ea47448,9f06f9df-240e-54f9-bcf3-c46a81eb1e0a,639f9ebb-5b88-5e15-83cd-d23d0f93f05e,d927a6b5-4e68-56a8-bc55-6f47082b2ab9,7d1ce243-4b99-52d1-aff4-cb69d439c764,6330ea20-dc3c-51b1-8257-b92bca804976,b9f20a8c-4c06-5ae4-9b92-156d0cef5046,e763e817-3658-50a5-ad06-8b5524a271d4,0d854a14-f773-5d6b-9c1c-9c63d3517f95,1eebbbf1-c512-5fc6-865d-cca66bd2502d.'
   tag:
-    ID: 18aca1e6-5195-5ace-afbd-38db60c63e7b
+    ID: 612e3d95-e425-556f-9416-952b4f0ce53f
 p_wave_velocity:
 - type: scalar
   source: default

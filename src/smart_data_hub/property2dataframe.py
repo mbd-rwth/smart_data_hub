@@ -3,7 +3,7 @@ import yaml
 import pandas as pd
 import numpy as np
 
-from src.load_path import get_path_in_dir
+from src.smart_data_hub.load_path import get_path_in_dir
 
 
 def preserve_value_type(value):

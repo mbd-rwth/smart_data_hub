@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-from src.property2dataframe import load_rock_property
+from src.smart_data_hub.property2dataframe import load_rock_property
 
 
 def load_default_df(lithologies):

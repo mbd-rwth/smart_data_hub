@@ -24,14 +24,14 @@ electrical_resistivity:
   value_std: 2638.86
   probability_distribution:
     sample_size: 1000000
-    sampled_data: scipy.stats.truncnorm(-0.48, 8.28, loc=1266.99, scale=2638.86).rvs(size=1000000,
+    sampled_data: scipy.stats.lognorm(s=1.3, scale=540.56, loc=10.0).rvs(size=1000000,
       random_state=21)
   unit_str: ohmm
   unit_base: [1, 3, -3, 0, -2, 0, 0]
-  description: 'A truncated normal distribution fitted from 3 combined datasets with
-    ids: 7401e4e2-6b5c-527c-87f5-1b3e80b5ba3f,8d75a097-79b4-5da4-9af2-bf06d3f57431,33963ef9-72ca-53f6-aaac-24a971cc4f28.'
+  description: 'A lognormal distribution fitted from 3 combined datasets with ids:
+    7401e4e2-6b5c-527c-87f5-1b3e80b5ba3f,8d75a097-79b4-5da4-9af2-bf06d3f57431,33963ef9-72ca-53f6-aaac-24a971cc4f28.'
   tag:
-    ID: a8d5bec2-1856-549d-8c05-286f58cc19ef
+    ID: e9d04051-0cb1-5614-b7b5-3eed736b1766
 intrinsic_permeability:
 - type: scalar
   source: default
@@ -41,14 +41,14 @@ intrinsic_permeability:
   value_std: 9.26e-12
   probability_distribution:
     sample_size: 1000000
-    sampled_data: scipy.stats.truncnorm(-0.25, 6.98, loc=2.35e-12, scale=9.26e-12).rvs(size=1000000,
+    sampled_data: scipy.stats.lognorm(s=1.67, scale=5.78e-13, loc=3.84e-23).rvs(size=1000000,
       random_state=21)
   unit_str: m^2
   unit_base: [0, 2, 0, 0, 0, 0, 0]
-  description: 'A truncated normal distribution fitted from 17 combined datasets with
-    ids: 08c6a174-f53a-58c5-ad56-32b7914fd55a,6f72cdc4-625c-58c7-9982-7f8b876ee901,af998582-183c-55fd-b494-20ef8957e96d,b28c3bfc-857a-5bd7-90cb-b515890f46e0,5974e0bb-b4b0-56ff-bffd-a6e088f4ad86,2c63b589-a15e-5448-ae32-18b13e9ee57a,2d096947-c573-5e61-b429-d4f3a2ace4b6,4b475d43-447b-521d-bd1d-70a12bae4640,e7f670f1-b96a-58f1-afb7-6d9b9773d01a,a19b9b6b-cb1d-57fa-8c7b-e4be30e471fc,d6a0b9fa-7cfc-5dd8-9e28-b01165a3cce2,2518fadc-1079-5c76-bfd9-77e89779a7c8,bc48cf01-d143-50ae-81b5-38a343ec1abe,d5554a2d-408c-5c9e-8331-61176ea47448,9f06f9df-240e-54f9-bcf3-c46a81eb1e0a,d927a6b5-4e68-56a8-bc55-6f47082b2ab9,1eebbbf1-c512-5fc6-865d-cca66bd2502d.'
+  description: 'A lognormal distribution fitted from 17 combined datasets with ids:
+    08c6a174-f53a-58c5-ad56-32b7914fd55a,6f72cdc4-625c-58c7-9982-7f8b876ee901,af998582-183c-55fd-b494-20ef8957e96d,b28c3bfc-857a-5bd7-90cb-b515890f46e0,5974e0bb-b4b0-56ff-bffd-a6e088f4ad86,2c63b589-a15e-5448-ae32-18b13e9ee57a,2d096947-c573-5e61-b429-d4f3a2ace4b6,4b475d43-447b-521d-bd1d-70a12bae4640,e7f670f1-b96a-58f1-afb7-6d9b9773d01a,a19b9b6b-cb1d-57fa-8c7b-e4be30e471fc,d6a0b9fa-7cfc-5dd8-9e28-b01165a3cce2,2518fadc-1079-5c76-bfd9-77e89779a7c8,bc48cf01-d143-50ae-81b5-38a343ec1abe,d5554a2d-408c-5c9e-8331-61176ea47448,9f06f9df-240e-54f9-bcf3-c46a81eb1e0a,d927a6b5-4e68-56a8-bc55-6f47082b2ab9,1eebbbf1-c512-5fc6-865d-cca66bd2502d.'
   tag:
-    ID: 6795801e-eb31-5950-80a2-2a5c7c324b57
+    ID: dd4fc118-87b4-5b46-bee8-86ffaf89ca2d
 p_wave_velocity:
 - type: scalar
   source: default

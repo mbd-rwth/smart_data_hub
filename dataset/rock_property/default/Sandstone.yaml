@@ -24,14 +24,14 @@ electrical_resistivity:
   value_std: 208.69
   probability_distribution:
     sample_size: 1000000
-    sampled_data: scipy.stats.truncnorm(-0.66, 2.43, loc=142.52, scale=208.69).rvs(size=1000000,
+    sampled_data: scipy.stats.lognorm(s=1.09, scale=75.67, loc=5.0).rvs(size=1000000,
       random_state=21)
   unit_str: ohmm
   unit_base: [1, 3, -3, 0, -2, 0, 0]
-  description: 'A truncated normal distribution fitted from 4 combined datasets with
-    ids: 524ab549-f437-5ae6-b27b-a7e81666ec49,6b9748dd-c7d9-59f1-a77a-81c1eb139996,7401e4e2-6b5c-527c-87f5-1b3e80b5ba3f,b053b1c3-a87f-5ad2-b6be-8c66f0a5c3e9.'
+  description: 'A lognormal distribution fitted from 4 combined datasets with ids:
+    524ab549-f437-5ae6-b27b-a7e81666ec49,6b9748dd-c7d9-59f1-a77a-81c1eb139996,7401e4e2-6b5c-527c-87f5-1b3e80b5ba3f,b053b1c3-a87f-5ad2-b6be-8c66f0a5c3e9.'
   tag:
-    ID: 78386212-da72-58e9-b849-840084993e74
+    ID: 5133cfd0-3684-5785-ad1c-47383cca3521
 intrinsic_permeability:
 - type: scalar
   source: default
@@ -41,14 +41,14 @@ intrinsic_permeability:
   value_std: 4.53e-11
   probability_distribution:
     sample_size: 1000000
-    sampled_data: scipy.stats.truncnorm(-0.2, 36.67, loc=9e-12, scale=4.53e-11).rvs(size=1000000,
+    sampled_data: scipy.stats.lognorm(s=1.81, scale=1.75e-12, loc=7.68e-22).rvs(size=1000000,
       random_state=21)
   unit_str: m^2
   unit_base: [0, 2, 0, 0, 0, 0, 0]
-  description: 'A truncated normal distribution fitted from 25 combined datasets with
-    ids: 0ead4a3f-ddfd-5184-b207-ebdc83bb8831,7c2797f8-d263-5d2a-a244-f81fdff26d21,25f074cf-f44e-50fd-a979-267d0a6e162b,31eaae86-8222-5844-9b5c-0620d87d6a2f,9834d50d-9679-5f0c-adbe-c20f4b00b1f8,38ec0f5d-073b-5bba-80b8-77b0eaf04441,96ee8d56-05d4-5356-a802-eef178b2885c,3de51184-bc75-5c9e-bc47-6f617e3ec9d4,337a1a1f-2edd-5fc3-adcd-924879bd3727,7a308dfc-5764-59e7-80ee-c352e3113dfc,cc66adf7-bacd-5e27-9ca5-e35bc7a432a2,2692ffdb-2641-5e1f-bb6a-19bf3ca7daf0,0e916db5-78b5-58e1-8b78-89d7865e2554,3b81cfef-c04e-56fd-a2d4-cddf8329ff42,2303d210-43c0-52d0-9281-275b8bc8505d,9dcb0f3a-92cf-551b-966f-138c3c876d0a,07651deb-8e9a-5d60-bced-88f25db4e28e,ac30c087-953c-5255-81c3-79c27965cf9e,40d1b422-d1d9-5132-9e10-81c8dce8377c,3dd49100-b201-51ac-b7f1-2b749eff07d9,2da309aa-118b-5630-a1bf-84361d7546f1,7d1ce243-4b99-52d1-aff4-cb69d439c764,b9f20a8c-4c06-5ae4-9b92-156d0cef5046,e763e817-3658-50a5-ad06-8b5524a271d4,0d854a14-f773-5d6b-9c1c-9c63d3517f95.'
+  description: 'A lognormal distribution fitted from 25 combined datasets with ids:
+    0ead4a3f-ddfd-5184-b207-ebdc83bb8831,7c2797f8-d263-5d2a-a244-f81fdff26d21,25f074cf-f44e-50fd-a979-267d0a6e162b,31eaae86-8222-5844-9b5c-0620d87d6a2f,9834d50d-9679-5f0c-adbe-c20f4b00b1f8,38ec0f5d-073b-5bba-80b8-77b0eaf04441,96ee8d56-05d4-5356-a802-eef178b2885c,3de51184-bc75-5c9e-bc47-6f617e3ec9d4,337a1a1f-2edd-5fc3-adcd-924879bd3727,7a308dfc-5764-59e7-80ee-c352e3113dfc,cc66adf7-bacd-5e27-9ca5-e35bc7a432a2,2692ffdb-2641-5e1f-bb6a-19bf3ca7daf0,0e916db5-78b5-58e1-8b78-89d7865e2554,3b81cfef-c04e-56fd-a2d4-cddf8329ff42,2303d210-43c0-52d0-9281-275b8bc8505d,9dcb0f3a-92cf-551b-966f-138c3c876d0a,07651deb-8e9a-5d60-bced-88f25db4e28e,ac30c087-953c-5255-81c3-79c27965cf9e,40d1b422-d1d9-5132-9e10-81c8dce8377c,3dd49100-b201-51ac-b7f1-2b749eff07d9,2da309aa-118b-5630-a1bf-84361d7546f1,7d1ce243-4b99-52d1-aff4-cb69d439c764,b9f20a8c-4c06-5ae4-9b92-156d0cef5046,e763e817-3658-50a5-ad06-8b5524a271d4,0d854a14-f773-5d6b-9c1c-9c63d3517f95.'
   tag:
-    ID: c4956adc-6bb5-58b3-a200-cbb05595f60c
+    ID: 1f384e00-2e0a-590b-9ddf-f5569d46f4ea
 p_wave_velocity:
 - type: scalar
   source: default
