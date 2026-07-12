@@ -3,10 +3,10 @@ import pandas as pd
 import uuid
 import scipy
 import scipy.stats as stats
-from scipy.stats import truncnorm, lognorm, beta, uniform
-from src.property2dataframe import preserve_value_type
-from src.hydraulic2intrinic import hydraulic2intrinic
-from src.generate_id import sdh_namespace, get_entry_str
+from scipy.stats import norm, truncnorm, lognorm, beta, uniform
+from src.smart_data_hub.property2dataframe import preserve_value_type
+from src.smart_data_hub.hydraulic2intrinic import hydraulic2intrinic
+from src.smart_data_hub.generate_id import sdh_namespace, get_entry_str
 
 
 # --- Create masks based on different inputs ---#
@@ -47,23 +47,53 @@ def value_invalid_mask(input_pd_df):
         & input_pd_df["value_std"].notna()
         & input_pd_df["sampled_data"].isna()
     )
-    # Only the minimum value is provided
-    invalid_mask_2 = (
-        input_pd_df["value"].isna()
-        & input_pd_df["value_min"].notna()
-        & input_pd_df["value_max"].isna()
-        & input_pd_df["value_std"].isna()
-        & input_pd_df["sampled_data"].isna()
-    )
-    # Only the maximum value is provided
-    invalid_mask_3 = (
-        input_pd_df["value"].isna()
-        & input_pd_df["value_min"].isna()
-        & input_pd_df["value_max"].notna()
-        & input_pd_df["value_std"].isna()
-        & input_pd_df["sampled_data"].isna()
-    )
-    is_invalid_mask = invalid_mask_1 | invalid_mask_2 | invalid_mask_3
+    # # Only the minimum value is provided
+    # invalid_mask_2 = (
+    #     input_pd_df["value"].isna()
+    #     & input_pd_df["value_min"].notna()
+    #     & input_pd_df["value_max"].isna()
+    #     & input_pd_df["value_std"].isna()
+    #     & input_pd_df["sampled_data"].isna()
+    # )
+    # # Only the maximum value is provided
+    # invalid_mask_3 = (
+    #     input_pd_df["value"].isna()
+    #     & input_pd_df["value_min"].isna()
+    #     & input_pd_df["value_max"].notna()
+    #     & input_pd_df["value_std"].isna()
+    #     & input_pd_df["sampled_data"].isna()
+    # )
+    # is_invalid_mask = invalid_mask_1 | invalid_mask_2 | invalid_mask_3
+    # Row does not satisfy value_min < value < value_max
+    has_value = input_pd_df["value"].notna()
+    has_min = input_pd_df["value_min"].notna()
+    has_max = input_pd_df["value_max"].notna()
+
+    mask = pd.Series(False, index=input_pd_df.index)
+    
+    # convert None to np.nan for comparison
+    value = input_pd_df["value"].where(input_pd_df["value"].notnull(), np.nan)
+    value_min = input_pd_df["value_min"].where(input_pd_df["value_min"].notnull(), np.nan)
+    value_max = input_pd_df["value_max"].where(input_pd_df["value_max"].notnull(), np.nan)
+
+    # value_min < value < value_max
+    mask |= has_value & has_min & has_max & (value_min <= value) & (value <= value_max)
+
+    # value_min < value  (value_max missing)
+    mask |= has_value & has_min & ~has_max & (value_min <= value)
+
+    # value < value_max  (value_min missing)
+    mask |= has_value & ~has_min & has_max & (value <= value_max)
+
+    # value missing, but value_min and value_max both present
+    mask |= ~has_value & has_min & has_max & (value_min <= value_max)
+
+    # value_min, value_max missing, but value present
+    mask |= has_value & ~has_min & ~has_max
+    
+    # This also includes the cases where only the minimum value or maximum value is provided
+    is_invalid_mask = invalid_mask_1 |  ~mask
+
     return is_invalid_mask
 
 
@@ -243,9 +273,34 @@ def value_PERT_mask(input_pd_df):
 
     return is_PERT_mask | is_PERT_mask_porosity
 
+# Present numbers with adaptive precision
+def format_number_adaptive(number):
+    """Format the number adaptively: If the number is smaller than 0.0001, use scientific notation and keep two significant digits.
+    If the number is between 0.001 and 0.1, use three significant digits. Otherwise, round to two decimal places.
+
+    Args:
+        number (float, None, np.nan): The number to format.
+
+    Returns:
+        float: The formatted number or None.
+    """
+    if number is None or np.isnan(number):
+        return None
+    # Keep two significant digits in scientific notation
+    if abs(number) < 0.0001:
+        return float(f"{number:.2e}")
+    # Keep three significant digits
+    elif abs(number) < 0.1:
+        return float(f"{number:.3g}")
+    elif abs(number) < 100000:
+        # Round to two decimal places
+        return float(f"{number:.2f}")
+    else:
+        return float(f"{number:.2e}")
+
 
 # --- Generate different distributions based on the input parameters---#
-def generate_truncnorm(value, value_std, value_min, value_max):
+def generate_truncnorm(value, value_std, value_min, value_max, as_string=False, **kwargs):
     """Generate a truncated normal distribution based on the given parameters.
 
     Args:
@@ -253,25 +308,31 @@ def generate_truncnorm(value, value_std, value_min, value_max):
         value_std (float): The standard deviation of the original dataset.
         value_min (float): The minimum value of the original dataset.
         value_max (float): The maximum value of the original dataset.
-
+        as_string (bool): If True, return a string representation of the truncated normal distribution. If False, return a frozen distribution object. Default is False.
+        **kwargs: Extra keyword arguments accepted for compatibility and ignored.
     Returns:
-        scipy.stats._distn_infrastructure.rv_continuous_frozen: A truncated normal distribution object.
+        scipy.stats._distn_infrastructure.rv_continuous_frozen | str: A truncated normal distribution object if `as_string` is False, otherwise a string representation.
     """
     a = (value_min - value) / value_std
     b = (value_max - value) / value_std
+    if as_string:
+        return f"scipy.stats.truncnorm({format_number_adaptive(a)}, {format_number_adaptive(b)}, loc={format_number_adaptive(value)}, scale={format_number_adaptive(value_std)})"
+    
     return truncnorm(a, b, loc=value, scale=value_std)
 
 
-def generate_PERT(value, value_min, value_max):
+def generate_PERT(value, value_min, value_max, as_string=False, **kwargs):
     """Generate a PERT distribution based on the given parameters.
 
     Args:
         value (float): The mean of the original dataset.
         value_min (float): The minimum value of the original dataset.
         value_max (float): The maximum value of the original dataset.
+        as_string (bool): If True, return a string representation of the PERT distribution. If False, return a beta distribution object. Default is False.
+        **kwargs: Extra keyword arguments accepted for compatibility and ignored.
 
     Returns:
-        scipy.stats._distn_infrastructure.rv_continuous_frozen: A beta distribution object.
+        scipy.stats._distn_infrastructure.rv_continuous_frozen | str: A beta distribution object if `as_string` is False, otherwise a string representation.
     """
     # PERT distribution parameters calculated based on the book Risk Analysis: A Quantitative Guide by David Vose
 
@@ -279,42 +340,75 @@ def generate_PERT(value, value_min, value_max):
     value_a = 1 + value_mu * ((value - value_min) / (value_max - value_min))
     value_b = 1 + value_mu * ((value_max - value) / (value_max - value_min))
 
+    if as_string:
+        return f"scipy.stats.beta({format_number_adaptive(value_a)}, {format_number_adaptive(value_b)}, loc={format_number_adaptive(value_min)}, scale={format_number_adaptive(value_max - value_min)})"
+
     return beta(value_a, value_b, loc=value_min, scale=value_max - value_min)
 
 
-def generate_lognorm(value, value_std, value_min):
+def generate_lognorm(value, value_std, value_min, as_string=False, **kwargs):
     """Generate a log-normal distribution based on the given parameters.
 
     Args:
         value (float): The mean of the original dataset.
         value_std (float): The standard deviation of the original dataset.
         value_min (float): Shift the distribution to start from the minimum value.
+        as_string (bool): If True, return a string representation of the log-normal distribution. If False, return a log-normal distribution object. Default is False.
+        **kwargs: Extra keyword arguments accepted for compatibility and ignored.
 
     Returns:
-        scipy.stats._distn_infrastructure.rv_continuous_frozen: A log-normal distribution object.
+        scipy.stats._distn_infrastructure.rv_continuous_frozen | str: A log-normal distribution object if `as_string` is False, otherwise a string representation.
     """
-    if value_min is None:
+    if pd.isna(value_min): # check both None and NaN
         value_min = 0.0
     adjusted_mean = value - value_min
     # lognorm parameters calculated based on  https://doi.org/10.5281/ZENODO.4305949
     log_std = np.sqrt(np.log(1 + (value_std / adjusted_mean) ** 2))
     log_mean = np.log(adjusted_mean) - 0.5 * log_std**2
 
+    if as_string:
+        return f"scipy.stats.lognorm(s={format_number_adaptive(log_std)}, scale={format_number_adaptive(np.exp(log_mean))}, loc={format_number_adaptive(value_min)})"
+
     return lognorm(s=log_std, scale=np.exp(log_mean), loc=value_min)
 
 
-def generate_uniform(value_min, value_max):
+def generate_uniform(value_min, value_max, as_string=False, **kwargs):
     """Generate a uniform distribution based on the given parameters.
 
     Args:
         value_min (float): The minimum value of the original dataset.
         value_max (float): The maximum value of the original dataset.
+        as_string (bool): If True, return a string representation of the uniform distribution. If False, return a uniform distribution object. Default is False.
+        **kwargs: Extra keyword arguments accepted for compatibility and ignored.
 
     Returns:
-        scipy.stats._distn_infrastructure.rv_continuous_frozen: A uniform distribution object.
+        scipy.stats._distn_infrastructure.rv_continuous_frozen | str: A uniform distribution object if `as_string` is False, otherwise a string representation.
     """
+    if as_string:
+        return f"scipy.stats.uniform(loc={format_number_adaptive(value_min)}, scale={format_number_adaptive(value_max - value_min)})"
+
     return uniform(loc=value_min, scale=value_max - value_min)
 
+def generate_norm(value, value_std, as_string=False, **kwargs):
+    """Generate a normal distribution based on the given parameters.
+
+    Args:
+        value (float): The mean of the original dataset.
+        value_std (float): The standard deviation of the original dataset.
+        as_string (bool): If True, return a string representation of the normal distribution. If False, return a normal distribution object. Default is False.
+        **kwargs: Extra keyword arguments accepted for compatibility and ignored.
+
+    Returns:
+        scipy.stats._distn_infrastructure.rv_continuous_frozen | str: A normal distribution object if `as_string` is False, otherwise a string representation.
+    """
+
+    norm_std = value_std
+    norm_mean = value
+
+    if as_string:
+        return f"scipy.stats.norm(loc={format_number_adaptive(norm_mean)}, scale={format_number_adaptive(norm_std)})"
+
+    return norm(loc=norm_mean, scale=norm_std)
 
 # Get the coefficient of variation (CV) for each property. Note: generated from recommended_CV.py
 dict_property_cv = {
@@ -381,7 +475,7 @@ def generate_samples(
             samples = uniform_samples
         elif df_pdf_type == "is_truncnorm_df":
 
-            if value_max is None:  # if the property is porosity
+            if (value_max is None) and (property_name == "porosity"):  # if the property is porosity, condition isproperty_name == "porosity" not necessary, just for safety check
                 value_max = 1.0
 
             truncnorm_samples = generate_truncnorm(
@@ -391,14 +485,16 @@ def generate_samples(
         elif df_pdf_type == "is_lognorm_df":
             if value_std is None:
                 value_std = value * dict_property_cv[property_name]
-
-            lognorm_samples = generate_lognorm(value, value_std, value_min).rvs(
-                size=sample_size, random_state=random_state
-            )
+            if value == 0.0 and value_std == 0.0:
+                lognorm_samples = np.zeros(sample_size)
+            else:
+                lognorm_samples = generate_lognorm(value, value_std, value_min).rvs(
+                    size=sample_size, random_state=random_state
+                )
             samples = lognorm_samples
         elif df_pdf_type == "is_PERT_df":
 
-            if value_max is None:  # if the property is porosity
+            if (value_max is None) and (property_name == "porosity"):  # if the property is porosity
                 value_max = 1.0
 
             PERT_samples = generate_PERT(value, value_min, value_max).rvs(
@@ -413,38 +509,15 @@ def generate_samples(
             samples = samples[samples <= 1]
 
         # Remove negative samples
-        samples = samples[samples > 0]
-        # Filter samples within three standard deviation of the mean
-        samples_zscore = stats.zscore(samples)
-        samples_filtered = samples[np.abs(samples_zscore) < 3]
-        samples_combined.append(samples_filtered)
+        samples = samples[samples >= 0]
+        if np.all(samples == 0):
+            samples_combined.append(samples)
+        else:
+            # Filter samples within three standard deviation of the mean
+            samples_zscore = stats.zscore(samples)
+            samples_filtered = samples[np.abs(samples_zscore) < 3]
+            samples_combined.append(samples_filtered)
     return np.concatenate(samples_combined)
-
-
-# Present numbers with adaptive precision
-def format_number_adaptive(number):
-    """Format the number adaptively: If the number is smaller than 0.0001, use scientific notation and keep two significant digits.
-    If the number is between 0.001 and 0.1, use three significant digits. Otherwise, round to two decimal places.
-
-    Args:
-        number (float, None, np.nan): The number to format.
-
-    Returns:
-        float: The formatted number or None.
-    """
-    if number is None or np.isnan(number):
-        return None
-    # Keep two significant digits in scientific notation
-    if abs(number) < 0.0001:
-        return float(f"{number:.2e}")
-    # Keep three significant digits
-    elif abs(number) < 0.1:
-        return float(f"{number:.3g}")
-    elif abs(number) < 100000:
-        # Round to two decimal places
-        return float(f"{number:.2f}")
-    else:
-        return float(f"{number:.2e}")
 
 
 def get_sample_statistics(input_property_group):
@@ -549,14 +622,23 @@ def generate_unit(property_name):
 
     return unit_str, unit_base
 
+# Distribution descriptions for merged dataset
+distribution_descriptions = {
+    generate_norm: "A normal distribution",
+    generate_lognorm: "A lognormal distribution",
+    generate_PERT: "A PERT distribution",
+    generate_truncnorm: "A truncated normal distribution",
+    generate_uniform: "A uniform distribution",
+}
 
-def merge_property_value(input_property, sample_size=1000000, source_type="merged"):
+def merge_property_value(input_property, sample_size=1000000, source_type="merged", sampling_functions_by_property=None):
     """Merge property values from multiple datasets into a single DataFrame with combined statistics. The merged results include summary statistics and truncated normal distribution parameters for each property, along with metadata such as description and combined IDs.
 
     Args:
         input_property (pd.DataFrame): DataFrame containing property values.
         sample_size (int): The number of samples to generate for each merged dataset. Default is 1000000.
         source_type (str): "merged" or "default". Default is "merged".
+        sampling_functions_by_property (dict): A dictionary mapping property names to desired sampling functions. If provided, the function will use the specified sampling functions for each property instead of the truncnorm.
 
     Returns:
         pd.DataFrame: DataFrame containing merged property values, summary statistics, distribution parameters, and metadata for each property.
@@ -630,14 +712,33 @@ def merge_property_value(input_property, sample_size=1000000, source_type="merge
                 samples_min,
                 samples_max,
             ) = get_sample_statistics(input_property_group)
-            # Assign the parameters for the truncated normal distribution
-            truncnorm_a = format_number_adaptive(
-                (samples_min - samples_mean) / samples_std
-            )
-            truncnorm_b = format_number_adaptive(
-                (samples_max - samples_mean) / samples_std
-            )
-            truncnorm_rvs = f"scipy.stats.truncnorm({truncnorm_a}, {truncnorm_b}, loc={samples_mean}, scale={samples_std}).rvs(size={sample_size}, random_state=21)"
+
+            sample_statistics_config = {"value": samples_mean, "value_std": samples_std, "value_min": samples_min, "value_max": samples_max}
+            property_name = property_group_keys[0]
+            # if all values are identical, then no sampling is needed
+            if len(set(sample_statistics_config.values())) == 1:
+                sampling_rvs = None
+                description_dist = "All values are identical. All samples are"
+                
+
+            else:
+                if (sampling_functions_by_property) and (property_name in sampling_functions_by_property):
+                    # use desired sampling functions
+                    
+                    sampling_function = sampling_functions_by_property[property_name]
+                    sampling_rvs = sampling_function(as_string=True,**sample_statistics_config) + f".rvs(size={sample_size}, random_state=21)"
+                    # get distribution description according to the sampling function
+                    description_dist = distribution_descriptions.get(
+                        sampling_function,
+                        "A distribution"
+                    )
+
+                else:
+                    # use truncated normal distribution as default sampling function
+                    sampling_rvs = generate_truncnorm(as_string=True,**sample_statistics_config) + f".rvs(size={sample_size}, random_state=21)"
+                    # get distribution description for truncated normal distribution
+                    description_dist = distribution_descriptions[generate_truncnorm]
+
             # Get meta information
             ids_list = list(input_property_group["ID"])
             ids_combined = ",".join(ids_list)
@@ -647,7 +748,7 @@ def merge_property_value(input_property, sample_size=1000000, source_type="merge
                 print_before_id = "dataset with id:"
 
             number_of_datasets = input_property_group.shape[0]
-            property_name = property_group_keys[0]
+            
             property_dict = {
                 "property": property_name,
                 "type": "scalar",
@@ -657,7 +758,7 @@ def merge_property_value(input_property, sample_size=1000000, source_type="merge
                 "value_max": samples_max,
                 "value_std": samples_std,
                 "sample_size": sample_size,
-                "sampled_data": truncnorm_rvs,
+                "sampled_data": sampling_rvs,
                 "unit_str": generate_unit(property_name)[0],
                 "unit_base": generate_unit(property_name)[1],
                 "variable_name": None,
@@ -670,9 +771,9 @@ def merge_property_value(input_property, sample_size=1000000, source_type="merge
                 "ID": None,
             }
             if (source_type == "default") or (source_type == "merged"):
-
+        
                 property_dict["description"] = (
-                    f"A truncated normal distribution fitted from {number_of_datasets} {print_before_id} {ids_combined}."
+                    f"{description_dist} fitted from {number_of_datasets} {print_before_id} {ids_combined}."
                 )
 
                 property_dict["ID"] = str(

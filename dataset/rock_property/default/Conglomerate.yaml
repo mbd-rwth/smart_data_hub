@@ -24,14 +24,14 @@ electrical_resistivity:
   value_std: 1457.88
   probability_distribution:
     sample_size: 1000000
-    sampled_data: scipy.stats.truncnorm(-0.75, 7.18, loc=1096.79, scale=1457.88).rvs(size=1000000,
+    sampled_data: scipy.stats.lognorm(s=1.01, scale=654.29, loc=5.17).rvs(size=1000000,
       random_state=21)
   unit_str: ohmm
   unit_base: [1, 3, -3, 0, -2, 0, 0]
-  description: 'A truncated normal distribution fitted from 2 combined datasets with
-    ids: 524ab549-f437-5ae6-b27b-a7e81666ec49,7c9a8ece-615b-5c37-8882-3d65c3857e5c.'
+  description: 'A lognormal distribution fitted from 2 combined datasets with ids:
+    524ab549-f437-5ae6-b27b-a7e81666ec49,7c9a8ece-615b-5c37-8882-3d65c3857e5c.'
   tag:
-    ID: 39f69231-dcfc-516e-b152-0f44de4a0082
+    ID: 95fa1828-6701-5022-970e-b30b43ba898c
 intrinsic_permeability:
 - type: scalar
   source: default
@@ -41,14 +41,14 @@ intrinsic_permeability:
   value_std: 1.38e-10
   probability_distribution:
     sample_size: 1000000
-    sampled_data: scipy.stats.truncnorm(-0.54, 11.56, loc=7.45e-11, scale=1.38e-10).rvs(size=1000000,
+    sampled_data: scipy.stats.lognorm(s=1.22, scale=3.54e-11, loc=9.99e-15).rvs(size=1000000,
       random_state=21)
   unit_str: m^2
   unit_base: [0, 2, 0, 0, 0, 0, 0]
-  description: 'A truncated normal distribution fitted from 2 combined datasets with
-    ids: 96ee8d56-05d4-5356-a802-eef178b2885c,07651deb-8e9a-5d60-bced-88f25db4e28e.'
+  description: 'A lognormal distribution fitted from 2 combined datasets with ids:
+    96ee8d56-05d4-5356-a802-eef178b2885c,07651deb-8e9a-5d60-bced-88f25db4e28e.'
   tag:
-    ID: 97d2e292-2808-500a-9e53-13e2b0d54879
+    ID: 1e218d8c-79dd-5027-87cf-f05418ee24ff
 p_wave_velocity:
 - type: scalar
   source: default

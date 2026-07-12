@@ -1,7 +1,7 @@
 import uuid
 from ruamel.yaml import YAML
 import os
-from src.load_path import get_path_in_dir
+from src.smart_data_hub.load_path import get_path_in_dir
 
 # Preserve quotes and save None to null in YAML
 yaml = YAML()

@@ -1,4 +1,4 @@
-from src.add_default import *
+from smart_data_hub.add_default import load_rock_property, add_default_df
 
 
 def test_add_default():
@@ -10,5 +10,8 @@ def test_add_default():
     add_default_property_df = add_default_df(property_df, lithologies)
 
     # check if there are still missing properties
-    assert (add_default_property_df.loc[add_default_property_df["ID"].isna()]).empty
-    print("All missing properties have been filled!")
+    missing = add_default_property_df.loc[add_default_property_df["ID"].isna()]
+    assert missing.empty, (
+        f"add_default_df did not fill all missing IDs. "
+        f"Rows with missing ID:\n{missing}"
+    )

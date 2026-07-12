@@ -1,6 +1,7 @@
-from src.merge_method import merge_property_value
-from src.dataframe2yaml import export2yaml
-from src.property2dataframe import combine_rock_site_property
+from src.smart_data_hub.merge_method import merge_property_value
+from src.smart_data_hub.merge_method import generate_lognorm, generate_PERT, generate_truncnorm, generate_uniform
+from src.smart_data_hub.dataframe2yaml import export2yaml
+from src.smart_data_hub.property2dataframe import combine_rock_site_property
 
 
 def generate_initial_default():
@@ -19,6 +20,7 @@ def generate_initial_default():
         merged_df["layer_simplified_lithology"].explode().unique().tolist()
     )
 
+    sampling_functions_by_property = {"electrical_resistivity": generate_lognorm, "intrinsic_permeability": generate_lognorm}
     for layer_unqiue_lithology in layer_unqiue_lithologies:
 
         input_df_for_merging = merged_df[
@@ -30,7 +32,7 @@ def generate_initial_default():
         input_df_for_merging = input_df_for_merging.drop_duplicates(subset=["ID"])
 
         merged_property_df = merge_property_value(
-            input_df_for_merging, source_type="default"
+            input_df_for_merging, source_type="default", sampling_functions_by_property=sampling_functions_by_property
         )
         # Only maintainers can save the generated data to YAML files.
         save_to_file = False

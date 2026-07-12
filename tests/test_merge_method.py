@@ -1,31 +1,88 @@
-from src.merge_method import *
+from smart_data_hub.merge_method import (
+    format_number_adaptive,
+    generate_PERT,
+    generate_lognorm,
+    generate_samples,
+    generate_truncnorm,
+    generate_uniform,
+    get_sample_statistics,
+    hydraulic2intrinic,
+    merge_property_value,
+    preserve_value_type,
+    value_PERT_mask,
+    value_empty_mask,
+    value_invalid_mask,
+    value_lognorm_mask,
+    value_pdf_mask,
+    value_truncnorm_mask,
+    value_uniform_mask,
+)
+
+import pandas as pd
+import pytest
 import numpy as np
 import scipy.constants as sc
 
+SAMPLE_SIZE = 2000000
+RANDOM_STATE = 21
 
-def test_merge_method():
+@pytest.fixture
+def velocity_parameters():
+    return {
+        "value": 2500.0,
+        "value_std": 100.0,
+        "value_min": 1200.0,
+        "value_max": 4000.0,
+        "tolerance": 10.0,
+    }
+
+@pytest.fixture
+def porosity_parameters():
+    return {
+        "value": 0.35,
+        "value_std": 0.10,
+        "value_min": 0.05,
+        "value_max": 1.00,
+        "tolerance": 0.01,
+    }
+
+@pytest.fixture
+def hydraulic_conductivity_parameters():
+    return {
+        "value": 1e-7,
+        "value_std": 1e-11,
+        "value_min": 1e-8,
+        "value_max": 1e-6,
+        "tolerance": 1e-10,
+    }
+
+@pytest.fixture
+def intrinsic_permeability_parameters():
+    return {
+        "value": 1e-14
+    }
+
+
+@pytest.fixture
+def test_masks_df():
     # test parameter settings
     # parameters for velocity
     value = 2500
     value_std = 100
     value_min = 1200
     value_max = 4000
-    sample_size = 100000000
-    tol = 10
-    sampled_data = f"scipy.stats.norm(loc={value}, scale={value_std}).rvs(size=1000000, random_state=21)"
+    sampled_data = f"scipy.stats.norm(loc={value}, scale={value_std}).rvs(size={SAMPLE_SIZE}, random_state={RANDOM_STATE})"
     # parameters for porosity
     value_rho = 0.35
     value_std_rho = 0.1
     value_min_rho = 0.05
-    value_max_rho = 1.0
-    tol_rho = 0.01
     # parameters for hydraulic conductivity
     value_hc = 1e-7
     value_std_hc = 1e-11
     value_min_hc = 1e-8
     value_max_hc = 1e-6
-    tol_hc = 1e-10
-    sampled_data_hc = f"scipy.stats.norm(loc={value_hc}, scale={value_std_hc}).rvs(size=1000000, random_state=21)"
+
+    sampled_data_hc = f"scipy.stats.norm(loc={value_hc}, scale={value_std_hc}).rvs(size={SAMPLE_SIZE}, random_state={RANDOM_STATE})"
     type_scalar = "scalar"
     type_expression = "expression"
     type_dict = "dictionary"
@@ -44,7 +101,7 @@ def test_merge_method():
             sampled_data,
             "s_wave_velocity",
             "is_pdf_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -55,7 +112,7 @@ def test_merge_method():
             sampled_data,
             "s_wave_velocity",
             "is_pdf_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -66,7 +123,7 @@ def test_merge_method():
             None,
             "s_wave_velocity",
             "is_truncnorm_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -77,7 +134,7 @@ def test_merge_method():
             None,
             "s_wave_velocity",
             "is_PERT_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -88,7 +145,7 @@ def test_merge_method():
             None,
             "s_wave_velocity",
             "is_lognorm_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -99,7 +156,7 @@ def test_merge_method():
             None,
             "s_wave_velocity",
             "is_lognorm_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -110,7 +167,7 @@ def test_merge_method():
             None,
             "s_wave_velocity",
             "is_invalid_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -121,7 +178,7 @@ def test_merge_method():
             None,
             "s_wave_velocity",
             "is_lognorm_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -132,7 +189,7 @@ def test_merge_method():
             None,
             "s_wave_velocity",
             "is_lognorm_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -143,7 +200,7 @@ def test_merge_method():
             None,
             "s_wave_velocity",
             "is_lognorm_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -154,7 +211,7 @@ def test_merge_method():
             None,
             "s_wave_velocity",
             "is_uniform_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -165,7 +222,7 @@ def test_merge_method():
             None,
             "s_wave_velocity",
             "is_uniform_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -176,7 +233,7 @@ def test_merge_method():
             None,
             "s_wave_velocity",
             "is_invalid_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -187,7 +244,7 @@ def test_merge_method():
             None,
             "s_wave_velocity",
             "is_invalid_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -198,7 +255,7 @@ def test_merge_method():
             None,
             "s_wave_velocity",
             "is_lognorm_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -209,7 +266,7 @@ def test_merge_method():
             None,
             "s_wave_velocity",
             "is_invalid_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -220,7 +277,7 @@ def test_merge_method():
             None,
             "s_wave_velocity",
             "is_invalid_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -231,7 +288,7 @@ def test_merge_method():
             None,
             "s_wave_velocity",
             "is_invalid_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -242,7 +299,7 @@ def test_merge_method():
             None,
             "s_wave_velocity",
             "empty",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -253,7 +310,7 @@ def test_merge_method():
             None,
             "porosity",
             "is_truncnorm_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -264,7 +321,7 @@ def test_merge_method():
             None,
             "porosity",
             "is_PERT_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -275,7 +332,7 @@ def test_merge_method():
             None,
             "porosity",
             "is_lognorm_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -286,7 +343,7 @@ def test_merge_method():
             None,
             "porosity",
             "is_truncnorm_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -297,7 +354,7 @@ def test_merge_method():
             None,
             "porosity",
             "is_PERT_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -308,7 +365,7 @@ def test_merge_method():
             None,
             "porosity",
             "is_lognorm_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -319,7 +376,7 @@ def test_merge_method():
             None,
             "porosity",
             "is_truncnorm_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -330,7 +387,7 @@ def test_merge_method():
             None,
             "porosity",
             "is_PERT_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -341,7 +398,7 @@ def test_merge_method():
             None,
             "porosity",
             "is_lognorm_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -352,7 +409,7 @@ def test_merge_method():
             None,
             "porosity",
             "is_truncnorm_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -363,7 +420,7 @@ def test_merge_method():
             None,
             "porosity",
             "is_PERT_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -374,7 +431,7 @@ def test_merge_method():
             sampled_data_hc,
             "hydraulic_conductivity",
             "is_pdf_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -385,7 +442,7 @@ def test_merge_method():
             None,
             "hydraulic_conductivity",
             "is_truncnorm_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -396,7 +453,7 @@ def test_merge_method():
             None,
             "hydraulic_conductivity",
             "is_lognorm_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -407,7 +464,7 @@ def test_merge_method():
             None,
             "hydraulic_conductivity",
             "is_PERT_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -418,7 +475,7 @@ def test_merge_method():
             None,
             "hydraulic_conductivity",
             "is_uniform_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -429,7 +486,7 @@ def test_merge_method():
             None,
             "intrinsic_permeability",
             "is_lognorm_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -440,7 +497,7 @@ def test_merge_method():
             sampled_data_hc,
             "hydraulic_conductivity",
             "is_pdf_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -451,7 +508,7 @@ def test_merge_method():
             None,
             "hydraulic_conductivity",
             "is_truncnorm_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -462,7 +519,7 @@ def test_merge_method():
             None,
             "hydraulic_conductivity",
             "is_lognorm_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -473,7 +530,7 @@ def test_merge_method():
             None,
             "hydraulic_conductivity",
             "is_PERT_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -484,7 +541,7 @@ def test_merge_method():
             None,
             "hydraulic_conductivity",
             "is_uniform_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -495,7 +552,7 @@ def test_merge_method():
             None,
             "intrinsic_permeability",
             "is_lognorm_df",
-            sample_size,
+            SAMPLE_SIZE,
             type_scalar,
         ],
         [
@@ -558,91 +615,141 @@ def test_merge_method():
     # Replace np.nan with None
     test_masks_df = test_masks_df.replace({np.nan: None})
 
-    # --- Test masks --- #
-    is_empty_mask = value_empty_mask(test_masks_df)
-    assert set(test_masks_df[is_empty_mask]["assumed_pdf"]) == {
-        "empty"
-    }, f"Incorrect empty mask detected!"
+    return test_masks_df
 
-    is_invalid_mask = value_invalid_mask(test_masks_df)
-    assert set(
-        test_masks_df[is_invalid_mask]["assumed_pdf"] == {"is_invalid_df"}
-    ), f"Incorrect invalid mask detected!"
 
-    is_sampled_data_mask = value_pdf_mask(test_masks_df)
-    assert set(
-        test_masks_df[is_sampled_data_mask]["assumed_pdf"] == {"is_pdf_df"}
-    ), f"Incorrect is_pdf_df mask detected!"
+@pytest.mark.parametrize(
+    ("mask_function", "expected_pdf"),
+    [
+        (value_empty_mask, "empty"),
+        (value_invalid_mask, "is_invalid_df"),
+        (value_pdf_mask, "is_pdf_df"),
+        (value_uniform_mask, "is_uniform_df"),
+        (value_truncnorm_mask, "is_truncnorm_df"),
+        (value_lognorm_mask, "is_lognorm_df"),
+        (value_PERT_mask, "is_PERT_df"),
+    ],
+)
+def test_value_masks_classify_expected_rows(
+    test_masks_df,
+    mask_function,
+    expected_pdf,
+):
+    mask = mask_function(test_masks_df)
+    actual_pdfs = set(test_masks_df.loc[mask, "assumed_pdf"])
 
-    is_uniform_mask = value_uniform_mask(test_masks_df)
-    assert set(
-        test_masks_df[is_uniform_mask]["assumed_pdf"] == {"is_uniform_df"}
-    ), f"Incorrect uniform mask detected!"
+    assert actual_pdfs == {expected_pdf}
 
-    is_truncnorm_mask = value_truncnorm_mask(test_masks_df)
-    assert set(
-        test_masks_df[is_truncnorm_mask]["assumed_pdf"] == {"is_truncnorm_df"}
-    ), f"Incorrect truncnorm mask detected!"
 
-    is_lognorm_mask = value_lognorm_mask(test_masks_df)
-    assert set(
-        test_masks_df[is_lognorm_mask]["assumed_pdf"] == {"is_lognorm_df"}
-    ), f"Incorrect lognorm mask detected!"
 
-    is_PERT_mask = value_PERT_mask(test_masks_df)
-    assert set(
-        test_masks_df[is_PERT_mask]["assumed_pdf"] == {"is_PERT_df"}
-    ), f"Incorrect PERT mask detected!"
+def test_generate_truncnorm_respects_bounds(velocity_parameters):
+    p = velocity_parameters
 
-    # --- Test different distributions --- #
-    # test truncated normal distribution
-    trunc_samples = generate_truncnorm(value, value_std, value_min, value_max).rvs(
-        size=sample_size
-    )
-    assert np.min(trunc_samples) >= value_min
-    assert np.max(trunc_samples) <= value_max
-    assert abs(np.std(trunc_samples) - value_std) < tol
-    assert abs(np.mean(trunc_samples) - value) < tol
-    # test PERT distribution
-    PERT_samples = generate_PERT(value, value_min, value_max).rvs(size=sample_size)
-    assert np.min(PERT_samples) >= value_min
-    assert np.max(PERT_samples) <= value_max
-    assert abs(np.mean(PERT_samples) - (value_min + 4 * value + value_max) / 6) < tol
-    assert (
-        abs(
-            np.std(PERT_samples)
-            - np.sqrt((value - value_min) * (value_max - value) / 7)
+    samples = generate_truncnorm(
+        p["value"],
+        p["value_std"],
+        p["value_min"],
+        p["value_max"],
+    ).rvs(size=SAMPLE_SIZE, random_state=RANDOM_STATE)
+
+    assert samples.min() >= p["value_min"]
+    assert samples.max() <= p["value_max"]
+    assert samples.mean() == pytest.approx(p["value"], abs=p["tolerance"])
+    assert samples.std() == pytest.approx(p["value_std"], abs=p["tolerance"])
+
+
+def test_generate_uniform_statistics(velocity_parameters):
+    p = velocity_parameters
+
+    samples = generate_uniform(
+        p["value_min"],
+        p["value_max"],
+    ).rvs(size=SAMPLE_SIZE, random_state=RANDOM_STATE)
+
+    expected_mean = (p["value_min"] + p["value_max"]) / 2
+    expected_std = np.sqrt((p["value_max"] - p["value_min"]) ** 2 / 12)
+
+    assert samples.min() >= p["value_min"]
+    assert samples.max() <= p["value_max"]
+    assert samples.mean() == pytest.approx(expected_mean, abs=p["tolerance"])
+    assert samples.std() == pytest.approx(expected_std, abs=p["tolerance"])
+
+
+def test_generate_pert_statistics(velocity_parameters):
+    p = velocity_parameters
+
+    samples = generate_PERT(
+        p["value"],
+        p["value_min"],
+        p["value_max"],
+    ).rvs(size=SAMPLE_SIZE, random_state=RANDOM_STATE)
+
+    expected_mean = (
+        p["value_min"] + 4 * p["value"] + p["value_max"]
+    ) / 6
+    expected_std = np.sqrt((p["value"] - p["value_min"]) * (p["value_max"]- p["value"]) / 7)
+
+    assert samples.min() >= p["value_min"]
+    assert samples.max() <= p["value_max"]
+    assert samples.mean() == pytest.approx(expected_mean, abs=p["tolerance"])
+    assert samples.std() == pytest.approx(expected_std, abs=p["tolerance"])
+
+
+def test_generate_lognorm_statistics(velocity_parameters):
+    p = velocity_parameters
+
+    samples = generate_lognorm(p["value"], p["value_std"], p["value_min"]).rvs(size=SAMPLE_SIZE, random_state=RANDOM_STATE)
+
+    expected_mean = p["value"]
+    expected_std = p["value_std"]
+
+    assert samples.min() >= p["value_min"]
+    assert samples.mean() == pytest.approx(expected_mean, abs=p["tolerance"])
+    assert samples.std() == pytest.approx(expected_std, abs=p["tolerance"])
+
+
+def samples_statistics(samples):
+        return (
+            format_number_adaptive(np.mean(samples)),
+            format_number_adaptive(np.std(samples)),
+            format_number_adaptive(np.min(samples)),
+            format_number_adaptive(np.max(samples)),
         )
-        < tol
-    )
-    # test lognormal distribution
-    lognorm_samples = generate_lognorm(value, value_std, value_min).rvs(
-        size=sample_size
-    )
-    assert np.min(lognorm_samples) >= value_min
-    assert abs(np.std(lognorm_samples) - value_std) < tol
-    assert abs(np.mean(lognorm_samples) - value) < tol
-    # test uniform distribution
-    uniform_samples = generate_uniform(value_min, value_max).rvs(size=sample_size)
-    assert np.min(uniform_samples) >= value_min
-    assert np.max(uniform_samples) <= value_max
-    assert abs(np.mean(uniform_samples) - (value_min + value_max) / 2) < tol
-    assert (
-        abs(np.std(uniform_samples) - np.sqrt((value_max - value_min) ** 2 / 12)) < tol
-    )
 
-    # --- Test function : generate_samples --- #
+def test_generate_samples(test_masks_df, velocity_parameters, hydraulic_conductivity_parameters, porosity_parameters):
+    
+    value = velocity_parameters["value"]
+    value_std = velocity_parameters["value_std"]
+    value_min = velocity_parameters["value_min"]
+    value_max = velocity_parameters["value_max"]
+    tol = velocity_parameters["tolerance"]
+
+    value_rho = porosity_parameters["value"]
+    value_std_rho = porosity_parameters["value_std"]
+    value_min_rho = porosity_parameters["value_min"]
+    value_max_rho = porosity_parameters["value_max"]
+    tol_rho = porosity_parameters["tolerance"]
+
+    value_hc = hydraulic_conductivity_parameters["value"]
+    value_std_hc = hydraulic_conductivity_parameters["value_std"]
+    value_min_hc = hydraulic_conductivity_parameters["value_min"]
+    value_max_hc = hydraulic_conductivity_parameters["value_max"]
+    tol_hc = hydraulic_conductivity_parameters["tolerance"]
+
+    value_ip = intrinsic_permeability_parameters["value"]
+
     # create property masks
     porosity_mask = test_masks_df["property"] == "porosity"
     velocity_mask = test_masks_df["property"] == "s_wave_velocity"
     hc_mask = test_masks_df["property"] == "hydraulic_conductivity"
     ip_mask = test_masks_df["property"] == "intrinsic_permeability"
     # test custom sampled data
+    is_sampled_data_mask = value_pdf_mask(test_masks_df)
     velocity_sampled_data_df = test_masks_df[is_sampled_data_mask & velocity_mask]
     velocity_sampled_data_df_samples = generate_samples(
         velocity_sampled_data_df,
         list(set(velocity_sampled_data_df["assumed_pdf"]))[0],
-        random_state=21,
+        random_state=RANDOM_STATE,
     )
 
     assert (
@@ -654,7 +761,7 @@ def test_merge_method():
     hc_sampled_data_df_samples = generate_samples(
         hc_sampled_data_df,
         list(set(hc_sampled_data_df["assumed_pdf"]))[0],
-        random_state=21,
+        random_state=RANDOM_STATE,
     )
 
     assert (
@@ -662,11 +769,12 @@ def test_merge_method():
     )  # samples were filtered within three standard deviation of the mean
     assert abs(np.mean(hc_sampled_data_df_samples) - value_hc) < tol_hc
     # test samples from uniform distribution
+    is_uniform_mask = value_uniform_mask(test_masks_df)
     velocity_uniform_df = test_masks_df[is_uniform_mask & velocity_mask]
     velocity_uniform_df_samples = generate_samples(
         velocity_uniform_df,
         list(set(velocity_uniform_df["assumed_pdf"]))[0],
-        random_state=21,
+        random_state=RANDOM_STATE,
     )
 
     assert np.min(velocity_uniform_df_samples) >= value_min
@@ -684,7 +792,7 @@ def test_merge_method():
     hc_uniform_df_samples = generate_samples(
         hc_uniform_df,
         list(set(hc_uniform_df["assumed_pdf"]))[0],
-        random_state=21,
+        random_state=RANDOM_STATE,
     )
 
     assert np.min(hc_uniform_df_samples) >= value_min_hc
@@ -700,11 +808,12 @@ def test_merge_method():
         < tol_hc
     )
     # test samples from truncated normal distribution
+    is_truncnorm_mask = value_truncnorm_mask(test_masks_df)
     velocity_truncnorm_df = test_masks_df[is_truncnorm_mask & velocity_mask]
     velocity_truncnorm_df_samples = generate_samples(
         velocity_truncnorm_df,
         list(set(velocity_truncnorm_df["assumed_pdf"]))[0],
-        random_state=21,
+        random_state=RANDOM_STATE,
     )
 
     assert np.min(velocity_truncnorm_df_samples) >= value_min
@@ -718,7 +827,7 @@ def test_merge_method():
     porosity_truncnorm_df_samples = generate_samples(
         porosity_truncnorm_df,
         list(set(porosity_truncnorm_df["assumed_pdf"]))[0],
-        random_state=21,
+        random_state=RANDOM_STATE,
     )
 
     assert np.min(porosity_truncnorm_df_samples) >= value_min_rho
@@ -732,7 +841,7 @@ def test_merge_method():
     hc_truncnorm_df_samples = generate_samples(
         hc_truncnorm_df,
         list(set(hc_truncnorm_df["assumed_pdf"]))[0],
-        random_state=21,
+        random_state=RANDOM_STATE,
     )
 
     assert np.min(hc_truncnorm_df_samples) >= value_min_hc
@@ -743,11 +852,12 @@ def test_merge_method():
     assert abs(np.mean(hc_truncnorm_df_samples) - value_hc) < tol_hc
 
     # test samples from lognormal distribution
+    is_lognorm_mask = value_lognorm_mask(test_masks_df)
     velocity_lognorm_df = test_masks_df[is_lognorm_mask & velocity_mask]
     velocity_lognorm_df_samples = generate_samples(
         velocity_lognorm_df,
         list(set(velocity_lognorm_df["assumed_pdf"]))[0],
-        random_state=21,
+        random_state=RANDOM_STATE,
     )
 
     assert np.min(velocity_lognorm_df_samples) >= 0.0
@@ -762,7 +872,7 @@ def test_merge_method():
     porosity_lognorm_df_samples = generate_samples(
         porosity_lognorm_df,
         list(set(porosity_lognorm_df["assumed_pdf"]))[0],
-        random_state=21,
+        random_state=RANDOM_STATE,
     )
 
     assert np.min(porosity_lognorm_df_samples) >= 0.0
@@ -777,7 +887,7 @@ def test_merge_method():
     ip_lognorm_df_samples = generate_samples(
         ip_lognorm_df,
         list(set(ip_lognorm_df["assumed_pdf"]))[0],
-        random_state=21,
+        random_state=RANDOM_STATE,
     )
 
     assert np.min(ip_lognorm_df_samples) >= 0.0
@@ -792,7 +902,7 @@ def test_merge_method():
     hc_lognorm_df_samples = generate_samples(
         hc_lognorm_df,
         list(set(hc_lognorm_df["assumed_pdf"]))[0],
-        random_state=21,
+        random_state=RANDOM_STATE,
     )
 
     assert np.min(hc_lognorm_df_samples) >= 0.0
@@ -803,11 +913,12 @@ def test_merge_method():
     assert abs(np.mean(hc_lognorm_df_samples) - value_hc) < value_std_hc
 
     # test samples from PERT distribution
+    is_PERT_mask = value_PERT_mask(test_masks_df)
     velocity_PERT_df = test_masks_df[is_PERT_mask & velocity_mask]
     velocity_PERT_df_samples = generate_samples(
         velocity_PERT_df,
         list(set(velocity_PERT_df["assumed_pdf"]))[0],
-        random_state=21,
+        random_state=RANDOM_STATE,
     )
 
     assert np.min(velocity_PERT_df_samples) >= value_min
@@ -828,7 +939,7 @@ def test_merge_method():
     porosity_PERT_df_samples = generate_samples(
         porosity_PERT_df,
         list(set(porosity_PERT_df["assumed_pdf"]))[0],
-        random_state=21,
+        random_state=RANDOM_STATE,
     )
 
     assert np.min(porosity_PERT_df_samples) >= value_min_rho
@@ -852,7 +963,7 @@ def test_merge_method():
     hc_PERT_df_samples = generate_samples(
         hc_PERT_df,
         list(set(hc_PERT_df["assumed_pdf"]))[0],
-        random_state=21,
+        random_state=RANDOM_STATE,
     )
 
     assert np.min(hc_PERT_df_samples) >= value_min_hc
@@ -864,15 +975,6 @@ def test_merge_method():
         np.std(hc_PERT_df_samples)
         - np.sqrt((value_hc - value_min_hc) * (value_max_hc - value_hc) / 7)
     ) < np.std(hc_PERT_df_samples)
-
-    # --- Test function : get_sample_statistics --- #
-    def samples_statistics(samples):
-        return (
-            format_number_adaptive(np.mean(samples)),
-            format_number_adaptive(np.std(samples)),
-            format_number_adaptive(np.min(samples)),
-            format_number_adaptive(np.max(samples)),
-        )
 
     # compare the statistics from get_sample_statistics and previously generated samples
     assert np.allclose(
@@ -934,9 +1036,31 @@ def test_merge_method():
         np.array(samples_statistics(ip_lognorm_df_samples)),
     )
 
+
+def select_case_samples(df, property_name, assumed_pdf):
+    selected = df.loc[
+        (df["property"] == property_name)
+        & (df["assumed_pdf"] == assumed_pdf)
+    ].copy()
+
+    assert not selected.empty, (
+        f"No test input found for property={property_name!r}, "
+        f"assumed_pdf={assumed_pdf!r}"
+    )
+
+    samples = generate_samples(
+        selected,
+        list(set(selected["assumed_pdf"]))[0],
+        random_state=RANDOM_STATE,
+    )
+
+    return selected, samples
+
+def test_merge_property_value(test_masks_df):
     # --- Test function : merge_property_value --- #
     # compare the statistics from merge_property_value and previously generated samples
     # test the custom sampled data
+    velocity_sampled_data_df, velocity_sampled_data_df_samples = select_case_samples(df=test_masks_df, property_name="s_wave_velocity", assumed_pdf="is_pdf_df")
     merged_velocity_sampled_data_df = merge_property_value(velocity_sampled_data_df)
     assert np.allclose(
         merged_velocity_sampled_data_df[
@@ -949,6 +1073,7 @@ def test_merge_method():
     water_density = 1000
     gravitational_acceleration = sc.g
     convert_ratio = water_vis / (water_density * gravitational_acceleration)
+    hc_sampled_data_df, hc_sampled_data_df_samples = select_case_samples(df=test_masks_df, property_name="hydraulic_conductivity", assumed_pdf="is_pdf_df")
     merged_hc_sampled_data_df = merge_property_value(hc_sampled_data_df)
     assert np.allclose(
         merged_hc_sampled_data_df[
@@ -957,6 +1082,7 @@ def test_merge_method():
         samples_statistics(hc_sampled_data_df_samples * convert_ratio),
     )
 
+    hc_truncnorm_df, hc_truncnorm_df_samples = select_case_samples(df=test_masks_df, property_name="hydraulic_conductivity", assumed_pdf="is_truncnorm_df")
     merged_hc_truncnorm_df = merge_property_value(hc_truncnorm_df)
     assert np.allclose(
         merged_hc_truncnorm_df[["value", "value_std", "value_min", "value_max"]].values[
@@ -966,6 +1092,7 @@ def test_merge_method():
     )
 
     # test merging with non-scalar types
+    hc_mask = test_masks_df["property"] == "hydraulic_conductivity"
     hc_nonscalar_df = test_masks_df.loc[(test_masks_df["type"] != "scalar") & (hc_mask)]
     hc_truncnorm_nonscalar_df = pd.concat(
         [hc_truncnorm_df, hc_nonscalar_df], ignore_index=True
@@ -998,9 +1125,3 @@ def test_merge_method():
         ip_nonscalar_df["value"].values.tolist()
         == merged_hc_truncnorm_nonscalar_df.iloc[1:3]["value"].values.tolist()
     )
-
-    print("All the tests for merging functions passed successfully!")
-
-
-if __name__ == "__main__":
-    test_merge_method()
