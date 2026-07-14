@@ -22,6 +22,16 @@ The following screenshot shows the GUI for the Buntsandstein layer at the DE_Roc
 ![](SDH_GUI.png)
 
 ## Installation (For GUI)
+To install smart_data_hub from GitHub repository, do:
+
+```console
+git clone git@github.com:CQ-QianChen/smart_data_hub.git
+cd smart_data_hub
+python -m pip install .
+```
+
+OR
+
 1. Download the zip file or clone the repository:
 2. Create a conda environment using ``environment.yml`` and running the following command ``conda env create -f environment.yml``, 
 3. Activate the environment with ``conda activate smart_data_hub``.
