@@ -1,7 +1,11 @@
-from src.smart_data_hub.merge_method import merge_property_value
-from src.smart_data_hub.merge_method import generate_lognorm, generate_PERT, generate_truncnorm, generate_uniform
-from src.smart_data_hub.dataframe2yaml import export2yaml
-from src.smart_data_hub.property2dataframe import combine_rock_site_property
+import os
+from pathlib import Path
+
+from smart_data_hub.merge_method import merge_property_value
+from smart_data_hub.merge_method import generate_lognorm, generate_PERT, generate_truncnorm, generate_uniform
+from smart_data_hub.dataframe2yaml import export2yaml
+from smart_data_hub.property2dataframe import combine_rock_site_property
+
 
 
 def generate_initial_default():
@@ -35,10 +39,12 @@ def generate_initial_default():
             input_df_for_merging, source_type="default", sampling_functions_by_property=sampling_functions_by_property
         )
         # Only maintainers can save the generated data to YAML files.
-        save_to_file = False
-
+        save_to_file = True
+    
         if save_to_file:
+
+            output_file_path = os.path.join(Path(__file__).resolve().parent.parent.parent, "dataset", "rock_property", "default", f"{layer_unqiue_lithology}.yaml")
             export2yaml(
                 merged_property_df,
-                output_file_path=f"dataset/rock_property/default/{layer_unqiue_lithology}.yaml",
+                output_file_path=output_file_path,
             )

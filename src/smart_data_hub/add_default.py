@@ -1,7 +1,9 @@
+import os
 import pandas as pd
 import numpy as np
+from pathlib import Path
 
-from src.smart_data_hub.property2dataframe import load_rock_property
+from smart_data_hub.property2dataframe import load_rock_property
 
 
 def load_default_df(lithologies):
@@ -15,7 +17,14 @@ def load_default_df(lithologies):
     """
     # load default rock property from yaml files
     add_default_yaml_list = [
-        f"dataset/rock_property/default/{lithology}.yaml" for lithology in lithologies
+        os.path.join(
+            Path(__file__).resolve().parent.parent.parent,
+            "dataset",
+            "rock_property",
+            "default",
+            f"{lithology}.yaml",
+        )
+        for lithology in lithologies
     ]
     default_df = load_rock_property(add_default_yaml_list)
     return default_df
@@ -52,6 +61,22 @@ def find_missing_properties(property_df):
     Returns:
         list: List of missing property names.
     """
+
+    required_property_names = set(
+        [
+            "density",
+            "porosity",
+            "intrinsic_permeability",
+            "p_wave_velocity",
+            "s_wave_velocity",
+            "specific_heat_capacity",
+            "thermal_conductivity",
+            "electrical_resistivity",
+        ]
+    )
+
+    if property_df.empty:
+        return list(required_property_names)
     no_id_props = list(property_df.loc[property_df["ID"].isna()]["property"])
     # drop the missing id properties from the original DataFrame
     removed_missing_id_property_df = property_df[

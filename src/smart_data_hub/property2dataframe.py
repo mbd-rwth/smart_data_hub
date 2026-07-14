@@ -2,8 +2,9 @@ import os
 import yaml
 import pandas as pd
 import numpy as np
+from pathlib import Path
 
-from src.smart_data_hub.load_path import get_path_in_dir
+from smart_data_hub.load_path import get_path_in_dir
 
 
 def preserve_value_type(value):
@@ -161,8 +162,9 @@ def combine_rock_site_property():
     Returns:
         pd.DataFrame: A DataFrame containing the combined properties.
     """
+
     # load YAML file paths from the rock_property directory
-    property_path = os.path.join("..", "dataset", "rock_property")
+    property_path = os.path.join(Path(__file__).resolve().parent.parent.parent, "dataset", "rock_property")
     property_file_paths = get_path_in_dir(property_path)
     yaml_property_paths = [
         path for path in property_file_paths if path.endswith(".yaml")
@@ -173,17 +175,18 @@ def combine_rock_site_property():
     default_path = os.path.realpath(
         os.path.join(
             real_path,
-            os.path.join(os.path.join("..", "dataset", "rock_property", "default")),
+            os.path.join(os.path.join(Path(__file__).resolve().parent.parent.parent, "dataset", "rock_property", "default")),
         )
     )
     yaml_rock_property_paths = [
         path for path in yaml_property_paths if default_path not in path
     ]
+    
     # load all rock layer properties to a Pandas DataFrame
     property_df = load_rock_property(yaml_rock_property_paths)
 
     # load YAML file paths from the site directory
-    site_path = os.path.join("..", "dataset", "site")
+    site_path = os.path.join(Path(__file__).resolve().parent.parent.parent, "dataset", "site")
     site_file_paths = get_path_in_dir(site_path)
     yaml_site_paths = [path for path in site_file_paths if path.endswith(".yaml")]
     # load all site properties to a Pandas DataFrame
@@ -194,3 +197,4 @@ def combine_rock_site_property():
         property_df, site_df, on=["site", "rock_layer"], how="left"
     )
     return merged_property_df
+    

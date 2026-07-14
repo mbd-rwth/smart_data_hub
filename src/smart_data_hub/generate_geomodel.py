@@ -2,6 +2,7 @@ import os
 import gempy as gp
 import pyvista as pv
 import numpy as np
+from pathlib import Path
 from gempy_engine.core.data.stack_relation_type import StackRelationType
 
 
@@ -194,8 +195,8 @@ def generate_geomodel_for_site(site_name, refinement, resolution):
         )
 
     geo_model = generate_geomodel(
-        site_orientation_path=f"dataset/geometry/{site_name}/input/orientations.csv",
-        site_points_path=f"dataset/geometry/{site_name}/input/points.csv",
+        site_orientation_path=os.path.join(Path(__file__).resolve().parent.parent.parent, "dataset", "geometry", site_name, "input", "orientations.csv"),
+        site_points_path=os.path.join(Path(__file__).resolve().parent.parent.parent, "dataset", "geometry", site_name, "input", "points.csv"),
         extent_geometry=extent_geometry,
         refinement=refinement,
         resolution=resolution,

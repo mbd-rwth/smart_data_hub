@@ -23,8 +23,9 @@ import pytest
 import numpy as np
 import scipy.constants as sc
 
-SAMPLE_SIZE = 2000000
+SAMPLE_SIZE = 10000000
 RANDOM_STATE = 21
+
 
 @pytest.fixture
 def velocity_parameters():
@@ -36,6 +37,7 @@ def velocity_parameters():
         "tolerance": 10.0,
     }
 
+
 @pytest.fixture
 def porosity_parameters():
     return {
@@ -46,6 +48,7 @@ def porosity_parameters():
         "tolerance": 0.01,
     }
 
+
 @pytest.fixture
 def hydraulic_conductivity_parameters():
     return {
@@ -53,14 +56,13 @@ def hydraulic_conductivity_parameters():
         "value_std": 1e-11,
         "value_min": 1e-8,
         "value_max": 1e-6,
-        "tolerance": 1e-10,
+        "tolerance": 1e-8,
     }
+
 
 @pytest.fixture
 def intrinsic_permeability_parameters():
-    return {
-        "value": 1e-14
-    }
+    return {"value": 1e-14}
 
 
 @pytest.fixture
@@ -285,6 +287,39 @@ def test_masks_df():
             None,
             None,
             value_std,
+            None,
+            "s_wave_velocity",
+            "is_invalid_df",
+            SAMPLE_SIZE,
+            type_scalar,
+        ],
+        [
+            1000,
+            1200,
+            1400,
+            value_std,
+            None,
+            "s_wave_velocity",
+            "is_invalid_df",
+            SAMPLE_SIZE,
+            type_scalar,
+        ],
+        [
+            1000,
+            700,
+            800,
+            value_std,
+            None,
+            "s_wave_velocity",
+            "is_invalid_df",
+            SAMPLE_SIZE,
+            type_scalar,
+        ],
+        [
+            None,
+            1400,
+            800,
+            None,
             None,
             "s_wave_velocity",
             "is_invalid_df",
@@ -641,7 +676,6 @@ def test_value_masks_classify_expected_rows(
     assert actual_pdfs == {expected_pdf}
 
 
-
 def test_generate_truncnorm_respects_bounds(velocity_parameters):
     p = velocity_parameters
 
@@ -684,10 +718,10 @@ def test_generate_pert_statistics(velocity_parameters):
         p["value_max"],
     ).rvs(size=SAMPLE_SIZE, random_state=RANDOM_STATE)
 
-    expected_mean = (
-        p["value_min"] + 4 * p["value"] + p["value_max"]
-    ) / 6
-    expected_std = np.sqrt((p["value"] - p["value_min"]) * (p["value_max"]- p["value"]) / 7)
+    expected_mean = (p["value_min"] + 4 * p["value"] + p["value_max"]) / 6
+    expected_std = np.sqrt(
+        (p["value"] - p["value_min"]) * (p["value_max"] - p["value"]) / 7
+    )
 
     assert samples.min() >= p["value_min"]
     assert samples.max() <= p["value_max"]
@@ -698,7 +732,9 @@ def test_generate_pert_statistics(velocity_parameters):
 def test_generate_lognorm_statistics(velocity_parameters):
     p = velocity_parameters
 
-    samples = generate_lognorm(p["value"], p["value_std"], p["value_min"]).rvs(size=SAMPLE_SIZE, random_state=RANDOM_STATE)
+    samples = generate_lognorm(p["value"], p["value_std"], p["value_min"]).rvs(
+        size=SAMPLE_SIZE, random_state=RANDOM_STATE
+    )
 
     expected_mean = p["value"]
     expected_std = p["value_std"]
@@ -709,15 +745,22 @@ def test_generate_lognorm_statistics(velocity_parameters):
 
 
 def samples_statistics(samples):
-        return (
-            format_number_adaptive(np.mean(samples)),
-            format_number_adaptive(np.std(samples)),
-            format_number_adaptive(np.min(samples)),
-            format_number_adaptive(np.max(samples)),
-        )
+    return (
+        format_number_adaptive(np.mean(samples)),
+        format_number_adaptive(np.std(samples)),
+        format_number_adaptive(np.min(samples)),
+        format_number_adaptive(np.max(samples)),
+    )
 
-def test_generate_samples(test_masks_df, velocity_parameters, hydraulic_conductivity_parameters, porosity_parameters):
-    
+
+def test_generate_samples(
+    test_masks_df,
+    velocity_parameters,
+    hydraulic_conductivity_parameters,
+    porosity_parameters,
+    intrinsic_permeability_parameters,
+):
+
     value = velocity_parameters["value"]
     value_std = velocity_parameters["value_std"]
     value_min = velocity_parameters["value_min"]
@@ -1039,8 +1082,7 @@ def test_generate_samples(test_masks_df, velocity_parameters, hydraulic_conducti
 
 def select_case_samples(df, property_name, assumed_pdf):
     selected = df.loc[
-        (df["property"] == property_name)
-        & (df["assumed_pdf"] == assumed_pdf)
+        (df["property"] == property_name) & (df["assumed_pdf"] == assumed_pdf)
     ].copy()
 
     assert not selected.empty, (
@@ -1056,11 +1098,14 @@ def select_case_samples(df, property_name, assumed_pdf):
 
     return selected, samples
 
+
 def test_merge_property_value(test_masks_df):
     # --- Test function : merge_property_value --- #
     # compare the statistics from merge_property_value and previously generated samples
     # test the custom sampled data
-    velocity_sampled_data_df, velocity_sampled_data_df_samples = select_case_samples(df=test_masks_df, property_name="s_wave_velocity", assumed_pdf="is_pdf_df")
+    velocity_sampled_data_df, velocity_sampled_data_df_samples = select_case_samples(
+        df=test_masks_df, property_name="s_wave_velocity", assumed_pdf="is_pdf_df"
+    )
     merged_velocity_sampled_data_df = merge_property_value(velocity_sampled_data_df)
     assert np.allclose(
         merged_velocity_sampled_data_df[
@@ -1073,7 +1118,11 @@ def test_merge_property_value(test_masks_df):
     water_density = 1000
     gravitational_acceleration = sc.g
     convert_ratio = water_vis / (water_density * gravitational_acceleration)
-    hc_sampled_data_df, hc_sampled_data_df_samples = select_case_samples(df=test_masks_df, property_name="hydraulic_conductivity", assumed_pdf="is_pdf_df")
+    hc_sampled_data_df, hc_sampled_data_df_samples = select_case_samples(
+        df=test_masks_df,
+        property_name="hydraulic_conductivity",
+        assumed_pdf="is_pdf_df",
+    )
     merged_hc_sampled_data_df = merge_property_value(hc_sampled_data_df)
     assert np.allclose(
         merged_hc_sampled_data_df[
@@ -1082,7 +1131,11 @@ def test_merge_property_value(test_masks_df):
         samples_statistics(hc_sampled_data_df_samples * convert_ratio),
     )
 
-    hc_truncnorm_df, hc_truncnorm_df_samples = select_case_samples(df=test_masks_df, property_name="hydraulic_conductivity", assumed_pdf="is_truncnorm_df")
+    hc_truncnorm_df, hc_truncnorm_df_samples = select_case_samples(
+        df=test_masks_df,
+        property_name="hydraulic_conductivity",
+        assumed_pdf="is_truncnorm_df",
+    )
     merged_hc_truncnorm_df = merge_property_value(hc_truncnorm_df)
     assert np.allclose(
         merged_hc_truncnorm_df[["value", "value_std", "value_min", "value_max"]].values[

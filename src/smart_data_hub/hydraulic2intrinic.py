@@ -35,6 +35,8 @@ def hydraulic2intrinic(input_df):
         pd.DataFrame: The modified DataFrame with intrinsic permeability values.
     """
 
+    input_df_h2i = input_df.copy()
+
     water_vis = 0.001
     water_density = 1000
     gravitational_acceleration = sc.g
@@ -42,16 +44,18 @@ def hydraulic2intrinic(input_df):
     convert_ratio = water_vis / (water_density * gravitational_acceleration)
 
     # Condition where property == 'hydraulic_conductivity'
-    mask = input_df["property"] == "hydraulic_conductivity"
+    mask = input_df_h2i["property"] == "hydraulic_conductivity"
     # Convert value_min, value_max, and value_std using the conversion ratio
-    input_df.loc[mask, ["value_min", "value_max", "value_std"]] = (
-        input_df.loc[mask, ["value_min", "value_max", "value_std"]] * convert_ratio
+    input_df_h2i.loc[mask, ["value_min", "value_max", "value_std"]] = (
+        input_df_h2i.loc[mask, ["value_min", "value_max", "value_std"]] * convert_ratio
     )
     # Convert value based on its type using the conversion ratio
-    input_df.loc[mask, ["value"]] = input_df.loc[mask, ["value", "type"]].apply(
+    input_df_h2i.loc[mask, ["value"]] = input_df_h2i.loc[mask, ["value", "type"]].apply(
         lambda row: convert_value(row["type"], convert_ratio, row["value"]), axis=1
     )
-    input_df.loc[mask, ["sampled_data"]] = input_df.loc[mask, ["sampled_data"]].map(
+    input_df_h2i.loc[mask, ["sampled_data"]] = input_df_h2i.loc[
+        mask, ["sampled_data"]
+    ].map(
         lambda sampled_data: (
             sampled_data  # if null
             if sampled_data is None
@@ -64,10 +68,10 @@ def hydraulic2intrinic(input_df):
     )
 
     # Change the property name, unit_str, and unit_base to be consistent with intrinsic permeability
-    input_df.loc[mask, ["property"]] = "intrinsic_permeability"
-    input_df.loc[mask, ["unit_str"]] = "m^2"
-    input_df.loc[mask, ["unit_base"]] = "[0, 2, 0, 0, 0, 0, 0]"
+    input_df_h2i.loc[mask, ["property"]] = "intrinsic_permeability"
+    input_df_h2i.loc[mask, ["unit_str"]] = "m^2"
+    input_df_h2i.loc[mask, ["unit_base"]] = "[0, 2, 0, 0, 0, 0, 0]"
     # Replace np.nan with None
-    input_df = input_df.replace({np.nan: None})
+    input_df_h2i = input_df_h2i.replace({np.nan: None})
 
-    return input_df
+    return input_df_h2i

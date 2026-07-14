@@ -1,8 +1,8 @@
 import scipy.stats as stats
 import numpy as np
 import pandas as pd
-from src.smart_data_hub.property2dataframe import combine_rock_site_property
-from src.smart_data_hub.hydraulic2intrinic import hydraulic2intrinic
+from smart_data_hub.property2dataframe import combine_rock_site_property
+from smart_data_hub.hydraulic2intrinic import hydraulic2intrinic
 
 
 def value_best_mask(input_pd_df):

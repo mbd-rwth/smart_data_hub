@@ -4,9 +4,9 @@ import uuid
 import scipy
 import scipy.stats as stats
 from scipy.stats import norm, truncnorm, lognorm, beta, uniform
-from src.smart_data_hub.property2dataframe import preserve_value_type
-from src.smart_data_hub.hydraulic2intrinic import hydraulic2intrinic
-from src.smart_data_hub.generate_id import sdh_namespace, get_entry_str
+from smart_data_hub.property2dataframe import preserve_value_type
+from smart_data_hub.hydraulic2intrinic import hydraulic2intrinic
+from smart_data_hub.generate_id import sdh_namespace, get_entry_str
 
 
 # --- Create masks based on different inputs ---#
@@ -47,52 +47,45 @@ def value_invalid_mask(input_pd_df):
         & input_pd_df["value_std"].notna()
         & input_pd_df["sampled_data"].isna()
     )
-    # # Only the minimum value is provided
-    # invalid_mask_2 = (
-    #     input_pd_df["value"].isna()
-    #     & input_pd_df["value_min"].notna()
-    #     & input_pd_df["value_max"].isna()
-    #     & input_pd_df["value_std"].isna()
-    #     & input_pd_df["sampled_data"].isna()
-    # )
-    # # Only the maximum value is provided
-    # invalid_mask_3 = (
-    #     input_pd_df["value"].isna()
-    #     & input_pd_df["value_min"].isna()
-    #     & input_pd_df["value_max"].notna()
-    #     & input_pd_df["value_std"].isna()
-    #     & input_pd_df["sampled_data"].isna()
-    # )
-    # is_invalid_mask = invalid_mask_1 | invalid_mask_2 | invalid_mask_3
-    # Row does not satisfy value_min < value < value_max
-    has_value = input_pd_df["value"].notna()
-    has_min = input_pd_df["value_min"].notna()
-    has_max = input_pd_df["value_max"].notna()
+    # Only the minimum value is provided
+    invalid_mask_2 = (
+        input_pd_df["value"].isna()
+        & input_pd_df["value_min"].notna()
+        & input_pd_df["value_max"].isna()
+        & input_pd_df["value_std"].isna()
+        & input_pd_df["sampled_data"].isna()
+    )
+    # Only the maximum value is provided
+    invalid_mask_3 = (
+        input_pd_df["value"].isna()
+        & input_pd_df["value_min"].isna()
+        & input_pd_df["value_max"].notna()
+        & input_pd_df["value_std"].isna()
+        & input_pd_df["sampled_data"].isna()
+    )
+
+    # Rows that satisfy value_min < value < value_max
+    is_scalar = input_pd_df["type"].eq("scalar")
+    scalar_df = input_pd_df.loc[is_scalar]
+
+    has_value = scalar_df["value"].notna()
+    has_min = scalar_df["value_min"].notna()
+    has_max = scalar_df["value_max"].notna()
+
+    # convert None to np.nan for comparison
+    value = scalar_df["value"].where(scalar_df["value"].notnull(), np.nan)
+    value_min = scalar_df["value_min"].where(scalar_df["value_min"].notnull(), np.nan)
+    value_max = scalar_df["value_max"].where(scalar_df["value_max"].notnull(), np.nan)
 
     mask = pd.Series(False, index=input_pd_df.index)
-    
-    # convert None to np.nan for comparison
-    value = input_pd_df["value"].where(input_pd_df["value"].notnull(), np.nan)
-    value_min = input_pd_df["value_min"].where(input_pd_df["value_min"].notnull(), np.nan)
-    value_max = input_pd_df["value_max"].where(input_pd_df["value_max"].notnull(), np.nan)
 
-    # value_min < value < value_max
-    mask |= has_value & has_min & has_max & (value_min <= value) & (value <= value_max)
+    mask.loc[is_scalar] = (
+        (has_value & has_min & (value < value_min))  # value < value_min
+        | (has_value & has_max & (value > value_max))  # value > value_max
+        | (has_min & has_max & (value_min > value_max))  # value_min > value_max
+    )
 
-    # value_min < value  (value_max missing)
-    mask |= has_value & has_min & ~has_max & (value_min <= value)
-
-    # value < value_max  (value_min missing)
-    mask |= has_value & ~has_min & has_max & (value <= value_max)
-
-    # value missing, but value_min and value_max both present
-    mask |= ~has_value & has_min & has_max & (value_min <= value_max)
-
-    # value_min, value_max missing, but value present
-    mask |= has_value & ~has_min & ~has_max
-    
-    # This also includes the cases where only the minimum value or maximum value is provided
-    is_invalid_mask = invalid_mask_1 |  ~mask
+    is_invalid_mask = invalid_mask_1 | invalid_mask_2 | invalid_mask_3 | mask
 
     return is_invalid_mask
 
@@ -109,8 +102,9 @@ def value_pdf_mask(input_pd_df):
     is_pdf_mask = input_pd_df["sampled_data"].notna() & (
         (input_pd_df["type"] == "scalar")
     )
+    invalid = value_invalid_mask(input_pd_df)
 
-    return is_pdf_mask
+    return is_pdf_mask & (~invalid)
 
 
 def value_uniform_mask(input_pd_df):
@@ -131,8 +125,9 @@ def value_uniform_mask(input_pd_df):
         & input_pd_df["sampled_data"].isna()
         & ((input_pd_df["type"] == "scalar"))
     )
+    invalid = value_invalid_mask(input_pd_df)
 
-    return is_uniform_mask
+    return is_uniform_mask & (~invalid)
 
 
 def value_truncnorm_mask(input_pd_df):
@@ -162,8 +157,9 @@ def value_truncnorm_mask(input_pd_df):
         & (input_pd_df["property"] == "porosity")
         & ((input_pd_df["type"] == "scalar"))
     )
+    invalid = value_invalid_mask(input_pd_df)
 
-    return is_truncnorm_mask | is_truncnorm_mask_porosity
+    return (is_truncnorm_mask | is_truncnorm_mask_porosity) & (~invalid)
 
 
 def value_lognorm_mask(input_pd_df):
@@ -232,6 +228,8 @@ def value_lognorm_mask(input_pd_df):
         & ((input_pd_df["type"] == "scalar"))
     )
 
+    invalid = value_invalid_mask(input_pd_df)
+
     return (
         is_lognorm_mask1
         | is_lognorm_mask2
@@ -239,7 +237,7 @@ def value_lognorm_mask(input_pd_df):
         | is_lognorm_mask4
         | is_lognorm_mask5
         | is_lognorm_mask_single
-    )
+    ) & (~invalid)
 
 
 def value_PERT_mask(input_pd_df):
@@ -271,7 +269,10 @@ def value_PERT_mask(input_pd_df):
         & ((input_pd_df["type"] == "scalar"))
     )
 
-    return is_PERT_mask | is_PERT_mask_porosity
+    invalid = value_invalid_mask(input_pd_df)
+
+    return (is_PERT_mask | is_PERT_mask_porosity) & (~invalid)
+
 
 # Present numbers with adaptive precision
 def format_number_adaptive(number):
@@ -300,7 +301,9 @@ def format_number_adaptive(number):
 
 
 # --- Generate different distributions based on the input parameters---#
-def generate_truncnorm(value, value_std, value_min, value_max, as_string=False, **kwargs):
+def generate_truncnorm(
+    value, value_std, value_min, value_max, as_string=False, **kwargs
+):
     """Generate a truncated normal distribution based on the given parameters.
 
     Args:
@@ -317,7 +320,7 @@ def generate_truncnorm(value, value_std, value_min, value_max, as_string=False, 
     b = (value_max - value) / value_std
     if as_string:
         return f"scipy.stats.truncnorm({format_number_adaptive(a)}, {format_number_adaptive(b)}, loc={format_number_adaptive(value)}, scale={format_number_adaptive(value_std)})"
-    
+
     return truncnorm(a, b, loc=value, scale=value_std)
 
 
@@ -359,7 +362,7 @@ def generate_lognorm(value, value_std, value_min, as_string=False, **kwargs):
     Returns:
         scipy.stats._distn_infrastructure.rv_continuous_frozen | str: A log-normal distribution object if `as_string` is False, otherwise a string representation.
     """
-    if pd.isna(value_min): # check both None and NaN
+    if pd.isna(value_min):  # check both None and NaN
         value_min = 0.0
     adjusted_mean = value - value_min
     # lognorm parameters calculated based on  https://doi.org/10.5281/ZENODO.4305949
@@ -389,6 +392,7 @@ def generate_uniform(value_min, value_max, as_string=False, **kwargs):
 
     return uniform(loc=value_min, scale=value_max - value_min)
 
+
 def generate_norm(value, value_std, as_string=False, **kwargs):
     """Generate a normal distribution based on the given parameters.
 
@@ -409,6 +413,7 @@ def generate_norm(value, value_std, as_string=False, **kwargs):
         return f"scipy.stats.norm(loc={format_number_adaptive(norm_mean)}, scale={format_number_adaptive(norm_std)})"
 
     return norm(loc=norm_mean, scale=norm_std)
+
 
 # Get the coefficient of variation (CV) for each property. Note: generated from recommended_CV.py
 dict_property_cv = {
@@ -475,7 +480,9 @@ def generate_samples(
             samples = uniform_samples
         elif df_pdf_type == "is_truncnorm_df":
 
-            if (value_max is None) and (property_name == "porosity"):  # if the property is porosity, condition isproperty_name == "porosity" not necessary, just for safety check
+            if (value_max is None) and (
+                property_name == "porosity"
+            ):  # if the property is porosity, condition isproperty_name == "porosity" not necessary, just for safety check
                 value_max = 1.0
 
             truncnorm_samples = generate_truncnorm(
@@ -494,7 +501,9 @@ def generate_samples(
             samples = lognorm_samples
         elif df_pdf_type == "is_PERT_df":
 
-            if (value_max is None) and (property_name == "porosity"):  # if the property is porosity
+            if (value_max is None) and (
+                property_name == "porosity"
+            ):  # if the property is porosity
                 value_max = 1.0
 
             PERT_samples = generate_PERT(value, value_min, value_max).rvs(
@@ -622,6 +631,7 @@ def generate_unit(property_name):
 
     return unit_str, unit_base
 
+
 # Distribution descriptions for merged dataset
 distribution_descriptions = {
     generate_norm: "A normal distribution",
@@ -631,7 +641,13 @@ distribution_descriptions = {
     generate_uniform: "A uniform distribution",
 }
 
-def merge_property_value(input_property, sample_size=1000000, source_type="merged", sampling_functions_by_property=None):
+
+def merge_property_value(
+    input_property,
+    sample_size=1000000,
+    source_type="merged",
+    sampling_functions_by_property=None,
+):
     """Merge property values from multiple datasets into a single DataFrame with combined statistics. The merged results include summary statistics and truncated normal distribution parameters for each property, along with metadata such as description and combined IDs.
 
     Args:
@@ -713,29 +729,40 @@ def merge_property_value(input_property, sample_size=1000000, source_type="merge
                 samples_max,
             ) = get_sample_statistics(input_property_group)
 
-            sample_statistics_config = {"value": samples_mean, "value_std": samples_std, "value_min": samples_min, "value_max": samples_max}
+            sample_statistics_config = {
+                "value": samples_mean,
+                "value_std": samples_std,
+                "value_min": samples_min,
+                "value_max": samples_max,
+            }
             property_name = property_group_keys[0]
             # if all values are identical, then no sampling is needed
             if len(set(sample_statistics_config.values())) == 1:
                 sampling_rvs = None
                 description_dist = "All values are identical. All samples are"
-                
 
             else:
-                if (sampling_functions_by_property) and (property_name in sampling_functions_by_property):
+                if (sampling_functions_by_property) and (
+                    property_name in sampling_functions_by_property
+                ):
                     # use desired sampling functions
-                    
+
                     sampling_function = sampling_functions_by_property[property_name]
-                    sampling_rvs = sampling_function(as_string=True,**sample_statistics_config) + f".rvs(size={sample_size}, random_state=21)"
+                    sampling_rvs = (
+                        sampling_function(as_string=True, **sample_statistics_config)
+                        + f".rvs(size={sample_size}, random_state=21)"
+                    )
                     # get distribution description according to the sampling function
                     description_dist = distribution_descriptions.get(
-                        sampling_function,
-                        "A distribution"
+                        sampling_function, "A distribution"
                     )
 
                 else:
                     # use truncated normal distribution as default sampling function
-                    sampling_rvs = generate_truncnorm(as_string=True,**sample_statistics_config) + f".rvs(size={sample_size}, random_state=21)"
+                    sampling_rvs = (
+                        generate_truncnorm(as_string=True, **sample_statistics_config)
+                        + f".rvs(size={sample_size}, random_state=21)"
+                    )
                     # get distribution description for truncated normal distribution
                     description_dist = distribution_descriptions[generate_truncnorm]
 
@@ -748,7 +775,7 @@ def merge_property_value(input_property, sample_size=1000000, source_type="merge
                 print_before_id = "dataset with id:"
 
             number_of_datasets = input_property_group.shape[0]
-            
+
             property_dict = {
                 "property": property_name,
                 "type": "scalar",
@@ -771,7 +798,7 @@ def merge_property_value(input_property, sample_size=1000000, source_type="merge
                 "ID": None,
             }
             if (source_type == "default") or (source_type == "merged"):
-        
+
                 property_dict["description"] = (
                     f"{description_dist} fitted from {number_of_datasets} {print_before_id} {ids_combined}."
                 )

@@ -27,6 +27,7 @@ def property_df():
 
     return pd.DataFrame(data)
 
+
 @pytest.fixture
 def test_tag_dict():
     tag_lithology = ["Mudstone", "Rocksalt"]
@@ -42,7 +43,7 @@ def test_tag_dict():
 
 
 def test_data_tagging(property_df, test_tag_dict):
-    
+
     # Apply the filter_tagged_data function
     filtered_df = filter_tagged_data(property_df, test_tag_dict)
 
@@ -50,9 +51,9 @@ def test_data_tagging(property_df, test_tag_dict):
     expected_data = {
         "ID": ["1fgh"],
         "property": ["permeability"],
-        "agency": ["BGR, BGE"],
-        "location": ["Morsleben, Germany"],
-        "simplified_lithology": ["Mudstone"],
+        "agency": [["BGR", "BGE"]],
+        "location": [["Morsleben", "Germany"]],
+        "simplified_lithology": [["Mudstone"]],
     }
     expected_df = pd.DataFrame(expected_data)
 

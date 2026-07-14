@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from dash import Dash, html, dcc, callback, Output, Input, dash_table, State
 import dash_bootstrap_components as dbc
 import plotly.graph_objects as go
@@ -6,18 +7,21 @@ import pandas as pd
 import numpy as np
 import pyvista as pv
 
-from src.smart_data_hub.load_path import get_path_in_dir
-from src.smart_data_hub.property2dataframe import (
+from smart_data_hub.load_path import get_path_in_dir
+from smart_data_hub.property2dataframe import (
     load_rock_property,
     load_site_property,
     preserve_value_type,
 )
-from src.smart_data_hub.data_tagging import get_tagged_data_mask
-from src.smart_data_hub.generate_id import get_list_from_sequence
-from src.smart_data_hub.add_default import add_default_df, find_missing_properties
-from src.smart_data_hub.merge_method import merge_property_value
-from src.smart_data_hub.dataframe2yaml import dataframe2yaml_str
-from src.smart_data_hub.generate_geomodel import generate_geomodel_for_site, export_gempy2grid
+from smart_data_hub.data_tagging import get_tagged_data_mask
+from smart_data_hub.generate_id import get_list_from_sequence
+from smart_data_hub.add_default import add_default_df, find_missing_properties
+from smart_data_hub.merge_method import merge_property_value, generate_lognorm
+from smart_data_hub.dataframe2yaml import dataframe2yaml_str
+from smart_data_hub.generate_geomodel import (
+    generate_geomodel_for_site,
+    export_gempy2grid,
+)
 
 operators = [
     ["ge ", ">="],
@@ -341,11 +345,11 @@ def load_vtkdata(
 
 
 hex_colors = RGBtxt_to_dict("RGB_stratigraphy.txt", color_type="to_hex")
-site_path = os.path.join("..", "dataset", "site")
+site_path = os.path.join(Path(__file__).resolve().parent, "dataset", "site")
 site_file_paths = get_path_in_dir(site_path)
 yaml_site_paths = [path for path in site_file_paths if path.endswith(".yaml")]
 
-geometry_path = os.path.join("dataset", "geometry")
+geometry_path = os.path.join(Path(__file__).resolve().parent, "dataset", "geometry")
 geometry_folder_list = []
 for folder_file in os.listdir(geometry_path):
     folder_file_path = os.path.join(geometry_path, folder_file)
@@ -726,10 +730,10 @@ def filter_table(datatable_data, filter):
         return datatable_data
     else:
 
-        update_property_df = filter_table_df(
+        update_property_df_filter = filter_table_df(
             filter, str2list(pd.DataFrame.from_records(datatable_data))
         )
-        datatable_data = list2str(update_property_df).to_dict("records")
+        datatable_data = list2str(update_property_df_filter).to_dict("records")
         return datatable_data
 
 
@@ -742,9 +746,11 @@ def filter_table(datatable_data, filter):
 )
 def confirm_add_default(add_default_clicks, datatable_data):
     # convert to pandas DataFrame
-    datatable_data_pd = str2list(pd.DataFrame.from_records(datatable_data)).copy()
+    datatable_data_pd_confirm_default = str2list(
+        pd.DataFrame.from_records(datatable_data)
+    ).copy()
     # --- find missing properties --- #
-    added_properties = find_missing_properties(datatable_data_pd)
+    added_properties = find_missing_properties(datatable_data_pd_confirm_default)
 
     if added_properties:
         confirm_message = (
@@ -770,11 +776,15 @@ def confirm_add_default(add_default_clicks, datatable_data):
 )
 def add_default(datatable_data, add_default_clicks, filter, lithologies):
     # convert to pandas DataFrame and add default values
-    datatable_data_pd = str2list(pd.DataFrame.from_records(datatable_data)).copy()
-    update_property_df = add_default_df(datatable_data_pd, lithologies).copy()
+    datatable_data_pd_add_default = str2list(
+        pd.DataFrame.from_records(datatable_data)
+    ).copy()
+    update_property_df_add_default = add_default_df(
+        datatable_data_pd_add_default, lithologies
+    ).copy()
 
     # convert back to datatable format
-    datatable_data = list2str(update_property_df).to_dict("records")
+    datatable_data = list2str(update_property_df_add_default).to_dict("records")
 
     filter = ""
 
@@ -818,11 +828,16 @@ def confirm_merge_add(merge_data_clicks, datatable_data):
 )
 def merge_data(datatable_data, merge_data_clicks, filter):
 
-    update_property_df = merge_property_value(
-        str2list(pd.DataFrame.from_records(datatable_data)), source_type="merged"
+    update_property_df_merge_data = merge_property_value(
+        str2list(pd.DataFrame.from_records(datatable_data)),
+        source_type="merged",
+        sampling_functions_by_property={
+            "electrical_resistivity": generate_lognorm,
+            "intrinsic_permeability": generate_lognorm,
+        },
     ).copy()
 
-    datatable_data = list2str(update_property_df).to_dict("records")
+    datatable_data = list2str(update_property_df_merge_data).to_dict("records")
     filter = ""
 
     return datatable_data, filter, datatable_data
