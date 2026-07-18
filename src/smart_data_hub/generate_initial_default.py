@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-
+from importlib.resources import files
 from smart_data_hub.merge_method import merge_property_value
 from smart_data_hub.merge_method import generate_lognorm, generate_PERT, generate_truncnorm, generate_uniform
 from smart_data_hub.dataframe2yaml import export2yaml
@@ -43,7 +43,7 @@ def generate_initial_default():
     
         if save_to_file:
 
-            output_file_path = os.path.join(Path(__file__).resolve().parent.parent.parent, "dataset", "rock_property", "default", f"{layer_unqiue_lithology}.yaml")
+            output_file_path = files("smart_data_hub") / "dataset" / "rock_property" / "default" / f"{layer_unqiue_lithology}.yaml"
             export2yaml(
                 merged_property_df,
                 output_file_path=output_file_path,

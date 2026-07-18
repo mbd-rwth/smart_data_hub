@@ -3,6 +3,7 @@ import pyvista as pv
 import pandas as pd
 from pathlib import Path
 import pytest
+from importlib.resources import files
 from smart_data_hub.property2dataframe import combine_rock_site_property
 from smart_data_hub.load_path import get_path_in_dir
 from smart_data_hub.merge_method import value_empty_mask, value_invalid_mask
@@ -30,9 +31,8 @@ def merged_df():
 
 def geometry_file_paths():
     # Get VTK paths in geometry folder
-    geometry_path = os.path.join(
-        Path(__file__).resolve().parent.parent, "dataset", "geometry"
-    )
+    
+    geometry_path = files("smart_data_hub") / "dataset" / "geometry"
     return get_path_in_dir(geometry_path)
 
 

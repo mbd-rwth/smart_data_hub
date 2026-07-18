@@ -4,7 +4,7 @@ import pyvista as pv
 import numpy as np
 from pathlib import Path
 from gempy_engine.core.data.stack_relation_type import StackRelationType
-
+from importlib.resources import files
 
 def generate_geomodel(
     site_orientation_path,
@@ -40,7 +40,7 @@ def generate_geomodel(
             path_to_surface_points=site_points_path,
         ),
     )
-
+    
     gp.map_stack_to_surfaces(geo_data, mapping_object=structural_group)
 
     for i in range(len(geo_data.structural_frame.structural_groups)):
@@ -195,8 +195,8 @@ def generate_geomodel_for_site(site_name, refinement, resolution):
         )
 
     geo_model = generate_geomodel(
-        site_orientation_path=os.path.join(Path(__file__).resolve().parent.parent.parent, "dataset", "geometry", site_name, "input", "orientations.csv"),
-        site_points_path=os.path.join(Path(__file__).resolve().parent.parent.parent, "dataset", "geometry", site_name, "input", "points.csv"),
+        site_orientation_path=os.path.join(files("smart_data_hub") / "dataset" / "geometry" / site_name / "input" / "orientations.csv"),
+        site_points_path=os.path.join(files("smart_data_hub") / "dataset" / "geometry" / site_name / "input" / "points.csv"),
         extent_geometry=extent_geometry,
         refinement=refinement,
         resolution=resolution,

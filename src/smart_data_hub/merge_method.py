@@ -490,7 +490,7 @@ def generate_samples(
             ).rvs(size=sample_size, random_state=random_state)
             samples = truncnorm_samples
         elif df_pdf_type == "is_lognorm_df":
-            if value_std is None:
+            if pd.isna(value_std): # check both None and NaN
                 value_std = value * dict_property_cv[property_name]
             if value == 0.0 and value_std == 0.0:
                 lognorm_samples = np.zeros(sample_size)
@@ -737,8 +737,8 @@ def merge_property_value(
             }
             property_name = property_group_keys[0]
             # if all values are identical, then no sampling is needed
-            if len(set(sample_statistics_config.values())) == 1:
-                sampling_rvs = None
+            if samples_std == 0.0:
+                samples_min, samples_max, sampling_rvs = None, None, None
                 description_dist = "All values are identical. All samples are"
 
             else:
@@ -841,7 +841,16 @@ def merge_property_value(
         )
     # Replace np.nan with None
     merged_property = merged_property.replace({np.nan: None, "": None})
-    # Drop columns where all values are None
-    merged_property = merged_property.dropna(axis=1, how="all")
 
-    return merged_property
+    # Drop unnecessary columns where all values are None
+    minimum_required_columns = {
+        "property", "source", "type",
+        "value", "value_min", "value_max", "value_std", "sample_size",
+        "sampled_data", "unit_str", "unit_base", "description", "ID"}
+
+    # Columns where every value is None/NaN
+    empty_columns = merged_property.columns[merged_property.isna().all()]
+
+    # Drop only the empty columns that are not required
+    cols_to_drop = [col for col in empty_columns if col not in minimum_required_columns]
+    return merged_property.drop(columns=cols_to_drop)

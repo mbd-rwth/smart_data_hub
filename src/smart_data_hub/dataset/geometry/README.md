@@ -1,0 +1,2 @@
+This folder contains the basic files needed to generate a 3D structural-geological model for each site. 
+The geomodel is constructed using [GemPy](https://www.gempy.org/), and the VTK files for each rock formation are generated with the help of [`../../generate_geomodel.py`](../../generate_geomodel.py).

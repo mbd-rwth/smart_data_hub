@@ -1,25 +1,36 @@
 import os
 
+def get_path_in_dir(directory):
+    """Return list of file paths in a directory (recursively)."""
+    directory = os.fspath(directory) if hasattr(directory, "__fspath__") else str(directory)
+    paths = []
+    if not os.path.isdir(directory):
+        return paths
+    for root, _, files_ in os.walk(directory):
+        for f in files_:
+            paths.append(os.path.join(root, f))
+    return paths
 
-def get_path_in_dir(dir_name):
-    """Get the absolute paths of all files in the specified directory and its subdirectories.
 
-    Args:
-        dir_name (str): path to a folder.
+# def get_path_in_dir(dir_name):
+#     """Get the absolute paths of all files in the specified directory and its subdirectories.
 
-    Returns:
-        list: a list of absolute paths to files.
-    """
+#     Args:
+#         dir_name (str): path to a folder.
 
-    real_path = os.path.realpath(os.path.dirname(__file__))
-    dir_path = os.path.join(real_path, os.path.join(dir_name))
+#     Returns:
+#         list: a list of absolute paths to files.
+#     """
 
-    file_paths = []
-    # Walk through the directories to find files
-    for root, _, files in os.walk(dir_path):
-        for file_name in files:
-            # Get the absolute path to the directory
-            abs_path = os.path.realpath(os.path.join(root, file_name))
-            file_paths.append(abs_path)
+#     real_path = os.path.realpath(os.path.dirname(__file__))
+#     dir_path = os.path.join(real_path, os.path.join(dir_name))
 
-    return file_paths
+#     file_paths = []
+#     # Walk through the directories to find files
+#     for root, _, files in os.walk(dir_path):
+#         for file_name in files:
+#             # Get the absolute path to the directory
+#             abs_path = os.path.realpath(os.path.join(root, file_name))
+#             file_paths.append(abs_path)
+
+#     return file_paths

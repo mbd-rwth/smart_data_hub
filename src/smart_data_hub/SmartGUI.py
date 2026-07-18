@@ -6,6 +6,7 @@ import plotly.graph_objects as go
 import pandas as pd
 import numpy as np
 import pyvista as pv
+from importlib.resources import files
 
 from smart_data_hub.load_path import get_path_in_dir
 from smart_data_hub.property2dataframe import (
@@ -326,7 +327,7 @@ def load_vtkdata(
 
             if isinstance(stratum_props_file_paths, list):  # not None or nan
                 for stratum_props_file_path in stratum_props_file_paths:
-                    stratum_ply = pv.read(stratum_props_file_path)
+                    stratum_ply = pv.read(os.path.join(files("smart_data_hub"),stratum_props_file_path))
                     stratum_opacity = 1
                     # highlight the clicked layer
                     if clicked_layer_name in stratum_colors_dict.keys():
@@ -344,12 +345,13 @@ def load_vtkdata(
         return plotter_strata.export_html(None)
 
 
-hex_colors = RGBtxt_to_dict("RGB_stratigraphy.txt", color_type="to_hex")
-site_path = os.path.join(Path(__file__).resolve().parent, "dataset", "site")
+hex_colors = RGBtxt_to_dict(files("smart_data_hub") / "dataset" / "RGB_stratigraphy.txt", color_type="to_hex")
+site_path = files("smart_data_hub") / "dataset" / "site"
 site_file_paths = get_path_in_dir(site_path)
 yaml_site_paths = [path for path in site_file_paths if path.endswith(".yaml")]
 
-geometry_path = os.path.join(Path(__file__).resolve().parent, "dataset", "geometry")
+
+geometry_path = files("smart_data_hub") / "dataset" / "geometry"
 geometry_folder_list = []
 for folder_file in os.listdir(geometry_path):
     folder_file_path = os.path.join(geometry_path, folder_file)
@@ -671,10 +673,11 @@ def load_stratum_table(
             # load the properties table
             clicked_layer_df = load_rock_property(
                 [
-                    site_strata_df.loc[
+                    os.path.join(files("smart_data_hub"), site_strata_df.loc[
                         site_strata_df["rock_layer"] == clicked_layer_name,
                         "property_path",
-                    ].iloc[0]
+                    ].iloc[0])
+                    
                 ]
             )
             lithologies = site_strata_df.loc[
@@ -953,13 +956,18 @@ def display_geomodel(
     prevent_initial_call=True,
 )
 def export_geomodel(btn_export_geomodel, export_model_type, site_name):
-
+    
     if export_model_type == "VTK":
         geo_model = generate_geomodel_for_site(
             site_name, refinement=4, resolution=[50, 50, 50]
         )
         # export the regular grid of the model
-        save_output_folder_path = "assets"
+
+        save_output_folder_path = os.path.join("assets")
+
+        if not os.path.exists(save_output_folder_path):
+            os.makedirs(save_output_folder_path)
+        
         export_gempy2grid(
             geo_model,
             save_output_folder_path,
@@ -980,4 +988,4 @@ if __name__ == "__main__":
         initial_call=True,
     )
 
-    app.run(debug=False)
+    app.run(debug=True)

@@ -1,5 +1,4 @@
 # YAML 1.2
----
 cff-version: "1.2.0"
 title: "smart_data_hub"
 authors:
@@ -7,6 +6,10 @@ authors:
     given-names: Qian
     orcid: "https://orcid.org/0000-0001-7103-9330"
 date-released: 2026-07-14
+identifiers:
+  - description: This DOI refers to all version
+    type: doi
+    value: "10.5281/zenodo.17939847"
 version: "1.0.3"
 repository-code: "https://github.com/CQ-QianChen/smart_data_hub"
 keywords:

@@ -1,1 +1,1 @@
-This folder is intended for storing assets such as images, custom CSS, exported files, or other supporting files.
+This folder is connected with the GUI. It is intended for storing assets such as images, custom CSS, exported files, or other supporting files.

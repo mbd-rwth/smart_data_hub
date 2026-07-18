@@ -15,6 +15,7 @@ classifiers = [
     "Development Status :: 2 - Pre-Alpha",
     "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
+    "",
     "Natural Language :: English",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
@@ -74,6 +75,16 @@ Repository = "https://github.com/CQ-QianChen/smart_data_hub"
 Issues = "https://github.com/CQ-QianChen/smart_data_hub/issues"
 Changelog = "https://github.com/CQ-QianChen/smart_data_hub/CHANGELOG.md"
 ReadTheDocs = "https://smart_data_hub.readthedocs.io"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+smart_data_hub = [
+"dataset/**/*.yaml",
+"dataset/**/*.csv",
+"dataset/**/*.vtk",
+"dataset/**/*.txt",]
 
 [tool.setuptools.packages.find]
 where = ["src"]

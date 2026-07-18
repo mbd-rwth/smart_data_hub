@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import numpy as np
 from pathlib import Path
+from importlib.resources import files
 
 from smart_data_hub.property2dataframe import load_rock_property
 
@@ -15,15 +16,9 @@ def load_default_df(lithologies):
     Returns:
         pd.DataFrame: Default rock property DataFrame.
     """
-    # load default rock property from yaml files
+    # load default rock property from yaml files 
     add_default_yaml_list = [
-        os.path.join(
-            Path(__file__).resolve().parent.parent.parent,
-            "dataset",
-            "rock_property",
-            "default",
-            f"{lithology}.yaml",
-        )
+        files("smart_data_hub") / "dataset" / "rock_property" / "default" / f"{lithology}.yaml"
         for lithology in lithologies
     ]
     default_df = load_rock_property(add_default_yaml_list)
@@ -89,18 +84,7 @@ def find_missing_properties(property_df):
         all_properties[all_properties.index("hydraulic_conductivity")] = (
             "intrinsic_permeability"
         )
-    required_property_names = set(
-        [
-            "density",
-            "porosity",
-            "intrinsic_permeability",
-            "p_wave_velocity",
-            "s_wave_velocity",
-            "specific_heat_capacity",
-            "thermal_conductivity",
-            "electrical_resistivity",
-        ]
-    )
+   
     missing_props = list(required_property_names - set(all_properties))
     return missing_props
 

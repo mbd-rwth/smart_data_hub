@@ -1,4 +1,5 @@
 import uuid
+from importlib.resources import files
 from ruamel.yaml import YAML
 import os
 from pathlib import Path
@@ -166,7 +167,7 @@ def generate_id_for_all():
     """Generate IDs for all YAML files in the rock_property directory"""
 
     # load YAML file paths from the rock_property directory
-    property_path = os.path.join(Path(__file__).resolve().parent.parent.parent, "dataset", "rock_property")
+    property_path = files("smart_data_hub") / "dataset" / "rock_property"
     property_file_paths = get_path_in_dir(property_path)
     yaml_property_paths = [
         path for path in property_file_paths if path.endswith(".yaml")
