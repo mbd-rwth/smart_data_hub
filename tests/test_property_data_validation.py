@@ -31,7 +31,7 @@ def merged_df():
 
 def geometry_file_paths():
     # Get VTK paths in geometry folder
-    
+
     geometry_path = files("smart_data_hub") / "dataset" / "geometry"
     return get_path_in_dir(geometry_path)
 
@@ -40,7 +40,12 @@ def test_referenced_geometry_files_exist(merged_df):
     # --- Check if geometry data are complete ---#
     geometry_surface_output_paths_list = list(merged_df["geometry_surface_output_path"])
     geometry_surface_output_paths = list(
-        set(path for sublist in geometry_surface_output_paths_list for path in sublist)
+        set(
+            path
+            for sublist in geometry_surface_output_paths_list
+            if isinstance(sublist, list)  # skip NaN / non-list entries
+            for path in sublist
+        )
     )
     surface_output_paths = []
     for paths in geometry_surface_output_paths:
