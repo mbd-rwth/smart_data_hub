@@ -1,7 +1,18 @@
+"""Script to read a site configuration YAML file.
+
+Usage:
+    python read_site_config.py --config path/to/site_config.yaml \
+        --path_to_save_rock_yaml output/DE_South_Claystone/rock_data \
+        --path_to_save_site_yaml output/DE_South_Claystone/site_data \
+        --path_to_save_site_geometry output/DE_South_Claystone/geometry
+"""
+
 from pathlib import Path
 import yaml
 import os
 import pandas as pd
+import argparse
+import sys
 
 from smart_data_hub.property2dataframe import combine_rock_site_property
 from smart_data_hub.data_tagging import filter_tagged_data
@@ -97,6 +108,7 @@ def default_depth_for_merged_rock_units():
             'Zechstein_bottom': -886.0,
             'Granite_bottom': -1200.0}}
 
+
 def export_site_merged_rock_units_yaml(
     site_name,
     merge_unit_rock_prop,
@@ -132,8 +144,7 @@ def export_site_merged_rock_units_yaml(
         df5 = add_default_df(df4, lithologies)
         # merge the rock property data for the merged unit
         df6 = merge_property_value(df5, source_type="merged", sampling_functions_by_property = sampling_functions_by_property)
-        if not os.path.exists(path_to_save_rock_yaml):
-            os.makedirs(path_to_save_rock_yaml)
+        
         export2yaml(df6, f"{path_to_save_rock_yaml}/{merge_unit}.yaml")
 
 
@@ -175,8 +186,6 @@ def export_site_merged_yaml(site_name, merge_unit_rock_prop, path_to_save_site_y
             "source": sources[0] if len(sources) == 1 else sources,
             "simplified_lithology": lithologies
         }
-    if not os.path.exists(path_to_save_site_yaml):
-            os.makedirs(path_to_save_site_yaml)
 
     with open(f'{path_to_save_site_yaml}/{site_name}.yaml', 'w') as f:
         yaml.dump(yaml_dict, f, sort_keys=False, default_flow_style=None)
@@ -191,7 +200,155 @@ def export_site_depth_yaml(merge_unit_depth, path_to_save_site_geometry):
         path_to_save_site_geometry (str): Directory path where the resulting YAML file will be saved.
     """
 
-    if not os.path.exists(path_to_save_site_geometry):
-        os.makedirs(path_to_save_site_geometry)
+    
     with open(os.path.join(path_to_save_site_geometry, "units.yaml"), "w") as f:
         yaml.safe_dump(merge_unit_depth, f, sort_keys=False)
+
+
+REQUIRED_FIELDS = [
+    "site_name",
+    "tag_dict",
+    "sampling_functions_by_property",
+]
+
+def parse_args():
+   
+    parser = argparse.ArgumentParser(
+        description="Read a site configuration YAML file."
+    )
+
+    parser.add_argument(
+        "--config", 
+        type=str, 
+        required=True, 
+        help="Path to the site configuration YAML file.")
+    parser.add_argument(
+        "--path_to_save_rock_yaml",
+        type=str,
+        required=True,
+        help="Output directory for the merged rock property YAML files."
+    )
+    parser.add_argument(
+        "--path_to_save_site_yaml",
+        type=str,
+        required=True,
+        help="Output directory for the generated site YAML file (a summary of rock unit lithologies).",
+    )
+    parser.add_argument(
+        "--path_to_save_site_geometry",
+        type=str,
+        required=True,
+        help="Output directory for the generated site geometry file.",
+    )
+
+    return parser.parse_args()
+
+
+def load_site_yaml_config(config_path):
+    """Load a YAML configuration file
+
+    Args:
+        config_path (str): _description_
+
+    Raises:
+        FileNotFoundError: not found message.
+        ValueError: empty config file message.
+
+    Returns:
+        dict: configuration dictionary.
+    """
+    config_path = Path(config_path)
+    if not config_path.exists():
+        raise FileNotFoundError(f"Config file not found: {config_path}")
+
+    with open(config_path, "r", encoding="utf-8") as f:
+        config = yaml.safe_load(f)
+
+    if config is None:
+        raise ValueError(f"Config file is empty: {config_path}")
+
+    return config
+
+
+def validate_config(config):
+    """Validate that all required fields are present in the config.
+
+    Args:
+        config (dict): configuration dictionary
+
+    Raises:
+        ValueError: missing required field message.
+    """
+
+    missing = [field for field in REQUIRED_FIELDS if field not in config]
+    if missing:
+        raise ValueError(f"Missing required config field(s): {missing}")
+    
+def build_site_config(config_path, path_to_save_rock_yaml, path_to_save_site_yaml, path_to_save_site_geometry):
+    """Load and validate, a site configuration file. Save rock, site, geometry data with output paths given via CLI.
+
+    Args:
+        config_path (str): path to the configuration file.
+        path_to_save_rock_yaml (str): output directory for the merged rock property YAML files.
+        path_to_save_site_yaml (str): output directory for the generated site YAML file.
+        path_to_save_site_geometry (str): output directory for the generated site geometry file.
+
+    Returns:
+        _type_: _description_
+    """
+
+    raw_config = load_site_yaml_config(config_path)
+    validate_config(raw_config)
+
+    site_name = raw_config["site_name"]
+
+    site_config = {
+        "site_name": raw_config["site_name"],
+        "tag_dict": raw_config["tag_dict"],
+        "sampling_functions_by_property": {prop: eval(func) for prop, func in raw_config['sampling_functions_by_property'].items()},
+        "merge_unit_rock_prop": raw_config.get("merge_unit_rock_prop", default_merge_rock_unit()[site_name]),
+        "merge_unit_depth": raw_config.get("merge_unit_depth", default_depth_for_merged_rock_units()[site_name]),
+        "path_to_save_rock_yaml": path_to_save_rock_yaml,
+        "path_to_save_site_yaml": path_to_save_site_yaml,
+        "path_to_save_site_geometry": path_to_save_site_geometry,
+    }
+
+    return site_config
+
+def main():
+    args = parse_args()
+    try:
+        site_config = build_site_config(
+            args.config,
+            args.path_to_save_rock_yaml,
+            args.path_to_save_site_yaml,
+            args.path_to_save_site_geometry,
+        )
+    except (FileNotFoundError, ValueError) as e:
+        print(f"Error: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    for path_key in ["path_to_save_rock_yaml", "path_to_save_site_yaml", "path_to_save_site_geometry"]:
+        Path(site_config[path_key]).mkdir(parents=True, exist_ok=True)
+
+    site_name = site_config['site_name']
+    tag_dict = site_config['tag_dict']
+    sampling_functions_by_property = site_config['sampling_functions_by_property']
+    merge_unit_rock_prop = site_config['merge_unit_rock_prop']
+    merge_unit_depth = site_config['merge_unit_depth']
+
+    path_to_save_rock_yaml = site_config['path_to_save_rock_yaml']
+    path_to_save_site_yaml = site_config['path_to_save_site_yaml']
+    path_to_save_site_geometry = site_config['path_to_save_site_geometry']
+
+    export_site_merged_rock_units_yaml(site_name,
+    merge_unit_rock_prop,
+    tag_dict,
+    sampling_functions_by_property,
+    path_to_save_rock_yaml)
+    export_site_merged_yaml(site_name, merge_unit_rock_prop, path_to_save_site_yaml)
+    export_site_depth_yaml(merge_unit_depth, path_to_save_site_geometry)
+
+
+if __name__ == "__main__":
+    main()

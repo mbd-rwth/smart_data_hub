@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17939847.svg)](https://doi.org/10.5281/zenodo.17939847) [![github repo badge](https://img.shields.io/badge/github-repo-000.svg?logo=github&labelColor=gray&color=blue)](https://github.com/CQ-QianChen/smart_data_hub) [![github license badge](https://img.shields.io/github/license/CQ-QianChen/smart_data_hub)](https://github.com/CQ-QianChen/smart_data_hub) [![Documentation Status](https://readthedocs.org/projects/smart_data_hub/badge/?version=latest)](https://smart_data_hub.readthedocs.io/en/latest/?badge=latest) [![build](https://github.com/CQ-QianChen/smart_data_hub/actions/workflows/build.yml/badge.svg)](https://github.com/CQ-QianChen/smart_data_hub/actions/workflows/build.yml) [![cffconvert](https://github.com/CQ-QianChen/smart_data_hub/actions/workflows/cffconvert.yml/badge.svg)](https://github.com/CQ-QianChen/smart_data_hub/actions/workflows/cffconvert.yml) [![link-check](https://github.com/CQ-QianChen/smart_data_hub/actions/workflows/link-check.yml/badge.svg)](https://github.com/CQ-QianChen/smart_data_hub/actions/workflows/link-check.yml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17939847.svg)](https://doi.org/10.5281/zenodo.17939847) [![github repo badge](https://img.shields.io/badge/github-repo-000.svg?logo=github&labelColor=gray&color=blue)](https://github.com/CQ-QianChen/smart_data_hub) [![github license badge](https://img.shields.io/github/license/mbd-rwth/smart_data_hub)](https://github.com/mbd-rwth/smart_data_hub) [![Documentation Status](https://readthedocs.org/projects/smart_data_hub/badge/?version=latest)](https://smart_data_hub.readthedocs.io/en/latest/?badge=latest) [![build](https://github.com/mbd-rwth/smart_data_hub/actions/workflows/build.yml/badge.svg)](https://github.com/mbd-rwth/smart_data_hub/actions/workflows/build.yml) [![cffconvert](https://github.com/mbd-rwth/smart_data_hub/actions/workflows/cffconvert.yml/badge.svg)](https://github.com/mbd-rwth/smart_data_hub/actions/workflows/cffconvert.yml) [![link-check](https://github.com/mbd-rwth/smart_data_hub/actions/workflows/link-check.yml/badge.svg)](https://github.com/mbd-rwth/smart_data_hub/actions/workflows/link-check.yml)
 
 # Smart Data Hub
 
@@ -30,21 +30,26 @@ The data-hub consists of a dataset integrated with a Graphic User Interface (GUI
 in YAML files. All relevant files can be found in the [`dataset`](./src/smart_data_hub/dataset/README.md) directory. We provide the static dataset in [Zenodo](https://doi.org/10.5281/zenodo.19886769).
 ### Exporting Site Data
 
-Use `export_data.py` to extract data for a specific site and model configuration. Please provide a YAML configuration file that specifies which site to extract, sampling behavior, units to merge, geometry, as well as output paths for the different data types.
+Use `export_data.py` to extract data for a specific site and model configuration. The script reads a YAML configuration file that specifies which site to extract, sampling behavior, units to merge, geometry, as well as output paths for the different data types.
 
 #### Site Configuration File Format 
 
 | Field | Description                                                                                                                                                                                                                                                                                              |
 |---|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `site_name` | Identifier for the candidate site (e.g., `DE_South_Claystone`).                                                                                                                                                                                                                                          |
-| `site_scenario_name` | Identifier for the specific site scenario. Used as the folder name under which output YAML files are saved.                                                                                                                                                                                              |
 | `tag_dict` | Dictionary of tags used to filter the source dataset. Keys are tag types (e.g., `location`, `agency`, `simplified_lithology`); values are lists of tag names to match.                                                                                                                                   |
 | `sampling_functions_by_property` | Maps a property name to the probability distribution function used when sampling/merging its values. Supported functions: `generate_lognorm`, `generate_PERT`, `generate_truncnorm`, `generate_uniform`, `generate_norm`. If a property is not listed here, a default sampling function is used instead. |
-| `merge_unit_rock_prop` | Groups multiple detailed rock unit/sequence names into a single merged rock unit. Keys are the merged unit name; values are lists of the original rock unit names to combine under that name. |
-| `merge_unit_depth` | Defines the top/bottom depth (in meters) for each merged rock unit boundary, used to build the site's stratigraphic geometry. |
 | `path_to_save_rock_yaml` | Output directory for the merged rock property YAML files. | 
 | `path_to_save_site_yaml` | Output directory for the generated site YAML file. | 
 | `path_to_save_site_geometry` | Output directory for the generated site geometry file. | 
+
+#### Optional fields
+
+| Field | Description | Default behavior if omitted |
+|---|---|---|
+| `merge_unit_rock_prop` | Groups multiple detailed rock unit/sequence names into a single merged rock unit. Keys are the merged unit name; values are lists of the original rock unit names to combine under that name. | If no merging is provided — apply the provided merged rock units |
+| `merge_unit_depth` | Defines the top/bottom depth (in meters) for each merged rock unit boundary, used to build the site's stratigraphic geometry. | If no depth is provided - apply the provided depths for merged units |
+
 
 **Note:** `merge_unit_rock_prop` and `merge_unit_depth` are typically used together — `merge_unit_rock_prop` defines *which* rock units to combine, while `merge_unit_depth` defines *where* (at what depth) each merged unit's boundaries lie.
 
@@ -89,6 +94,14 @@ path_to_save_rock_yaml: output/rock_data/DE_South_Claystone
 path_to_save_site_yaml: output/site_data/DE_South_Claystone
 
 path_to_save_site_geometry: output/geometry/DE_South_Claystone
+```
+
+Usage:
+```
+python export_data.py --config path/to/site_config.yaml \
+    --path_to_save_rock_yaml output/path/to/rock_data \
+    --path_to_save_site_yaml output/path/to/site_data \
+    --path_to_save_site_geometry output/path/to/geometry
 ```
 
 2. **GUI**: It was developed with [Plotly Dash](https://dash.plotly.com/) —a web-based application for interactive visualization. 
