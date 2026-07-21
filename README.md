@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17939847.svg)](https://doi.org/10.5281/zenodo.17939847) [![github repo badge](https://img.shields.io/badge/github-repo-000.svg?logo=github&labelColor=gray&color=blue)](https://github.com/CQ-QianChen/smart_data_hub) [![github license badge](https://img.shields.io/github/license/mbd-rwth/smart_data_hub)](https://github.com/mbd-rwth/smart_data_hub) [![Documentation Status](https://readthedocs.org/projects/smart_data_hub/badge/?version=latest)](https://smart_data_hub.readthedocs.io/en/latest/?badge=latest) [![build](https://github.com/mbd-rwth/smart_data_hub/actions/workflows/build.yml/badge.svg)](https://github.com/mbd-rwth/smart_data_hub/actions/workflows/build.yml) [![cffconvert](https://github.com/mbd-rwth/smart_data_hub/actions/workflows/cffconvert.yml/badge.svg)](https://github.com/mbd-rwth/smart_data_hub/actions/workflows/cffconvert.yml) [![link-check](https://github.com/mbd-rwth/smart_data_hub/actions/workflows/link-check.yml/badge.svg)](https://github.com/mbd-rwth/smart_data_hub/actions/workflows/link-check.yml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17939847.svg)](https://doi.org/10.5281/zenodo.17939847) [![github repo badge](https://img.shields.io/badge/github-repo-000.svg?logo=github&labelColor=gray&color=blue)](https://github.com/mbd-rwth/smart_data_hub) [![github license badge](https://img.shields.io/github/license/mbd-rwth/smart_data_hub)](https://github.com/mbd-rwth/smart_data_hub) [![Documentation Status](https://readthedocs.org/projects/smart_data_hub/badge/?version=latest)](https://smart_data_hub.readthedocs.io/en/latest/?badge=latest) [![build](https://github.com/mbd-rwth/smart_data_hub/actions/workflows/build.yml/badge.svg)](https://github.com/mbd-rwth/smart_data_hub/actions/workflows/build.yml) [![cffconvert](https://github.com/mbd-rwth/smart_data_hub/actions/workflows/cffconvert.yml/badge.svg)](https://github.com/mbd-rwth/smart_data_hub/actions/workflows/cffconvert.yml) [![link-check](https://github.com/mbd-rwth/smart_data_hub/actions/workflows/link-check.yml/badge.svg)](https://github.com/mbd-rwth/smart_data_hub/actions/workflows/link-check.yml)
 
 # Smart Data Hub
 
@@ -30,7 +30,7 @@ The data-hub consists of a dataset integrated with a Graphic User Interface (GUI
 in YAML files. All relevant files can be found in the [`dataset`](./src/smart_data_hub/dataset/README.md) directory. We provide the static dataset in [Zenodo](https://doi.org/10.5281/zenodo.19886769).
 ### Exporting Site Data
 
-Use `export_data.py` to extract data for a specific site and model configuration. The script reads a YAML configuration file that specifies which site to extract, sampling behavior, units to merge, geometry, as well as output paths for the different data types.
+Use `export_data.py` to extract data for a specific site and model configuration. The script reads a YAML configuration file that specifies which site to extract, sampling behavior, units to merge, and geometry.
 
 #### Site Configuration File Format 
 
@@ -39,11 +39,8 @@ Use `export_data.py` to extract data for a specific site and model configuration
 | `site_name` | Identifier for the candidate site (e.g., `DE_South_Claystone`).                                                                                                                                                                                                                                          |
 | `tag_dict` | Dictionary of tags used to filter the source dataset. Keys are tag types (e.g., `location`, `agency`, `simplified_lithology`); values are lists of tag names to match.                                                                                                                                   |
 | `sampling_functions_by_property` | Maps a property name to the probability distribution function used when sampling/merging its values. Supported functions: `generate_lognorm`, `generate_PERT`, `generate_truncnorm`, `generate_uniform`, `generate_norm`. If a property is not listed here, a default sampling function is used instead. |
-| `path_to_save_rock_yaml` | Output directory for the merged rock property YAML files. | 
-| `path_to_save_site_yaml` | Output directory for the generated site YAML file. | 
-| `path_to_save_site_geometry` | Output directory for the generated site geometry file. | 
 
-#### Optional fields
+##### Optional fields
 
 | Field | Description | Default behavior if omitted |
 |---|---|---|
@@ -52,6 +49,24 @@ Use `export_data.py` to extract data for a specific site and model configuration
 
 
 **Note:** `merge_unit_rock_prop` and `merge_unit_depth` are typically used together — `merge_unit_rock_prop` defines *which* rock units to combine, while `merge_unit_depth` defines *where* (at what depth) each merged unit's boundaries lie.
+
+##### Output path
+
+In addition, users must provide output paths for different data types.
+
+| Path | Description                                                                                                                                                                                                                                                                 |
+|------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `path_to_save_rock_yaml`     | Output directory for the merged rock property YAML files.                                                                                                                                                                                                                   | 
+| `path_to_save_site_yaml`     | Output directory for the generated site YAML file.                                                                                                                                                                                                                          | 
+| `path_to_save_site_geometry` | Output directory for the generated site geometry file.                                                                                                                                                                                                                      | 
+
+#### Usage:
+```
+python export_data.py --config path/to/site_config.yaml \
+    --path_to_save_rock_yaml output/path/to/rock_data \
+    --path_to_save_site_yaml output/path/to/site_data \
+    --path_to_save_site_geometry output/path/to/geometry
+```
 
 #### Example
 ```yaml
@@ -88,20 +103,16 @@ merge_unit_depth:
   Jurassic_Lower_bottom: -280.0
   Keuper_bottom: -450.0
   Muschelkalk_bottom: -575.0
-
-path_to_save_rock_yaml: output/rock_data/DE_South_Claystone
-
-path_to_save_site_yaml: output/site_data/DE_South_Claystone
-
-path_to_save_site_geometry: output/geometry/DE_South_Claystone
 ```
 
-Usage:
+##### Running the script
+
 ```
-python export_data.py --config path/to/site_config.yaml \
-    --path_to_save_rock_yaml output/path/to/rock_data \
-    --path_to_save_site_yaml output/path/to/site_data \
-    --path_to_save_site_geometry output/path/to/geometry
+python -m smart_data_hub.export_data \
+--config ./communication_sdh/input/config_DE_South_Claystone_Germany.yaml \
+--path_to_save_rock_yaml output/DE_South_Claystone_Germany/rock_data \
+--path_to_save_site_yaml output/DE_South_Claystone_Germany/site_data \
+--path_to_save_site_geometry output/DE_South_Claystone_Germany/geometry
 ```
 
 2. **GUI**: It was developed with [Plotly Dash](https://dash.plotly.com/) —a web-based application for interactive visualization. 

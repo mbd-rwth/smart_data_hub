@@ -248,7 +248,7 @@ def load_site_yaml_config(config_path):
     """Load a YAML configuration file
 
     Args:
-        config_path (str): _description_
+        config_path (str): Path to the input YAML configuration file
 
     Raises:
         FileNotFoundError: not found message.
@@ -294,7 +294,7 @@ def build_site_config(config_path, path_to_save_rock_yaml, path_to_save_site_yam
         path_to_save_site_geometry (str): output directory for the generated site geometry file.
 
     Returns:
-        _type_: _description_
+        dict: configuration dictionary with output paths given via CLI.
     """
 
     raw_config = load_site_yaml_config(config_path)
