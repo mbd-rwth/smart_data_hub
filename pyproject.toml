@@ -150,7 +150,7 @@ force-single-line = true
 no-lines-before = ["future","standard-library","third-party","first-party","local-folder"]
 
 [tool.bumpversion]
-current_version = "1.0.3"
+current_version = "2.0.0"
 
 [[tool.bumpversion.files]]
 filename = "src/smart_data_hub/__init__.py"

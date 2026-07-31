@@ -6,4 +6,4 @@ logging.getLogger(__name__).addHandler(logging.NullHandler())
 
 __author__ = "Qian Chen"
 __email__ = "qian.chen1@rwth-aachen.de"
-__version__ = "1.0.3"
+__version__ = "2.0.0"
