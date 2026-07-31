@@ -17,6 +17,7 @@ from smart_data_hub.add_default import add_default_df
 from smart_data_hub.data_tagging import filter_tagged_data
 from smart_data_hub.dataframe2yaml import export2yaml
 from smart_data_hub.merge_method import merge_property_value
+from smart_data_hub.merge_method import generate_lognorm, generate_PERT, generate_truncnorm, generate_uniform
 from smart_data_hub.property2dataframe import combine_rock_site_property
 
 
