@@ -29,9 +29,9 @@ electrical_resistivity:
   unit_str: ohmm
   unit_base: [1, 3, -3, 0, -2, 0, 0]
   description: 'A lognormal distribution fitted from 2 combined datasets with ids:
-    8d75a097-79b4-5da4-9af2-bf06d3f57431,33963ef9-72ca-53f6-aaac-24a971cc4f28.'
+    33963ef9-72ca-53f6-aaac-24a971cc4f28,8d75a097-79b4-5da4-9af2-bf06d3f57431.'
   tag:
-    ID: 00822701-88d1-5c7a-a440-29450133ad09
+    ID: 2933b315-e9d8-5104-800b-b4751e2ed6cc
 intrinsic_permeability:
 - type: scalar
   source: default
@@ -46,9 +46,9 @@ intrinsic_permeability:
   unit_str: m^2
   unit_base: [0, 2, 0, 0, 0, 0, 0]
   description: 'A lognormal distribution fitted from 6 combined datasets with ids:
-    e7f670f1-b96a-58f1-afb7-6d9b9773d01a,63759449-18c2-5feb-a499-0c391adc7cbb,23a03712-74c1-5acb-be0d-8b20e349f6ee,7b39dd43-3b33-5b4e-a33a-69fa78bdd997,4a937326-4bb5-54fb-a7e5-aeaef3646bbf,c5aa64ff-12f5-5b25-834b-831286fab0df.'
+    23a03712-74c1-5acb-be0d-8b20e349f6ee,4a937326-4bb5-54fb-a7e5-aeaef3646bbf,63759449-18c2-5feb-a499-0c391adc7cbb,7b39dd43-3b33-5b4e-a33a-69fa78bdd997,c5aa64ff-12f5-5b25-834b-831286fab0df,e7f670f1-b96a-58f1-afb7-6d9b9773d01a.'
   tag:
-    ID: e20f5bda-97cd-5a0a-a426-745800e1c7e0
+    ID: 23b75186-f6e2-5fdd-8c2a-b3862d78b872
 p_wave_velocity:
 - type: scalar
   source: default

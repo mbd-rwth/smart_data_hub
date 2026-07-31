@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import uuid
 import scipy
+from uuid import UUID
 import scipy.stats as stats
 from scipy.stats import norm, truncnorm, lognorm, beta, uniform
 from smart_data_hub.property2dataframe import preserve_value_type
@@ -768,7 +769,7 @@ def merge_property_value(
 
             # Get meta information
             ids_list = list(input_property_group["ID"])
-            ids_combined = ",".join(ids_list)
+            ids_combined = ",".join(sorted(ids_list, key=UUID))
             if len(ids_list) > 1:
                 print_before_id = "combined datasets with ids:"
             else:

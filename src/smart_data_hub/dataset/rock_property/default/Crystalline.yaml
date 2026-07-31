@@ -12,9 +12,9 @@ density:
   unit_str: kg/m^3
   unit_base: [1, -3, 0, 0, 0, 0, 0]
   description: 'A truncated normal distribution fitted from 4 combined datasets with
-    ids: 3fcad096-1882-513d-afe1-ab78b5a965bd,27b40fe1-f0f1-54de-8399-8f388f09b4e6,000a434e-604f-56f0-9011-847104305820,112faa54-6a83-5192-a2a0-e4f2aa11789a.'
+    ids: 000a434e-604f-56f0-9011-847104305820,112faa54-6a83-5192-a2a0-e4f2aa11789a,27b40fe1-f0f1-54de-8399-8f388f09b4e6,3fcad096-1882-513d-afe1-ab78b5a965bd.'
   tag:
-    ID: 33b87858-6f4b-5beb-93f5-54ea52d1c5fc
+    ID: f835ae38-b365-5ee0-8746-1bcd3299c967
 electrical_resistivity:
 - type: scalar
   source: default
@@ -45,9 +45,9 @@ intrinsic_permeability:
   unit_str: m^2
   unit_base: [0, 2, 0, 0, 0, 0, 0]
   description: 'A lognormal distribution fitted from 5 combined datasets with ids:
-    472587b3-2ead-52c2-a7c3-b7188875bc59,8b4e53a5-0376-5780-bf27-4851e950e257,71399a01-b8f7-52b6-991c-ce97d50a3b4b,0baf8b4d-4cca-554a-b4a2-bd6b00cd5098,4aa8e260-3788-5dc8-91dd-68c3819ebcc8.'
+    0baf8b4d-4cca-554a-b4a2-bd6b00cd5098,472587b3-2ead-52c2-a7c3-b7188875bc59,4aa8e260-3788-5dc8-91dd-68c3819ebcc8,71399a01-b8f7-52b6-991c-ce97d50a3b4b,8b4e53a5-0376-5780-bf27-4851e950e257.'
   tag:
-    ID: 5fa9b987-ac0b-533e-b504-3ad2ac4abfff
+    ID: 76de1e63-33fb-55e9-9460-6ed4b6caab40
 p_wave_velocity:
 - type: scalar
   source: default
@@ -62,9 +62,9 @@ p_wave_velocity:
   unit_str: m/s
   unit_base: [0, 1, -1, 0, 0, 0, 0]
   description: 'A truncated normal distribution fitted from 8 combined datasets with
-    ids: 7cd75673-f1cc-5219-bebc-d2a80a717a91,dbd050a8-58eb-5a70-b1e0-dcd26e68b295,9133dc67-9ea4-5ea4-bfd6-62ea62d05014,e31c19ee-c7cb-5959-92f4-d31aa9be3206,96ed3a2b-e6f1-55c1-aab9-e8d208a79912,d129ed06-41d9-520f-9da2-3203e1aa9f67,937b06b1-5713-5957-8f2c-eb8bd97eb89c,c3fc24ac-0a42-5ee0-a313-562f44a254c6.'
+    ids: 7cd75673-f1cc-5219-bebc-d2a80a717a91,9133dc67-9ea4-5ea4-bfd6-62ea62d05014,937b06b1-5713-5957-8f2c-eb8bd97eb89c,96ed3a2b-e6f1-55c1-aab9-e8d208a79912,c3fc24ac-0a42-5ee0-a313-562f44a254c6,d129ed06-41d9-520f-9da2-3203e1aa9f67,dbd050a8-58eb-5a70-b1e0-dcd26e68b295,e31c19ee-c7cb-5959-92f4-d31aa9be3206.'
   tag:
-    ID: 2cbbfd9d-53eb-5e91-8323-f0b04c6f73bc
+    ID: 7a554678-eefc-570f-897f-3abe774e692f
 porosity:
 - type: scalar
   source: default
@@ -96,9 +96,9 @@ s_wave_velocity:
   unit_str: m/s
   unit_base: [0, 1, -1, 0, 0, 0, 0]
   description: 'A truncated normal distribution fitted from 3 combined datasets with
-    ids: 14eb4543-2d4e-5832-b004-095bb45c79b4,fa363cab-9c14-58c2-b20d-6ea412f6fe48,8f3a9174-81b5-5a5e-929f-7961f9127bfc.'
+    ids: 14eb4543-2d4e-5832-b004-095bb45c79b4,8f3a9174-81b5-5a5e-929f-7961f9127bfc,fa363cab-9c14-58c2-b20d-6ea412f6fe48.'
   tag:
-    ID: d3ba3320-f314-5145-ac4e-9f7ecde2a636
+    ID: 73d4f678-b170-5596-bf65-4730bd3cffb4
 specific_heat_capacity:
 - type: scalar
   source: default
@@ -129,6 +129,6 @@ thermal_conductivity:
   unit_str: W/m/K
   unit_base: [1, 1, -3, -1, 0, 0, 0]
   description: 'A truncated normal distribution fitted from 4 combined datasets with
-    ids: 53233be9-adaa-5878-a878-bc856d33f6c6,09742e2d-b4df-5bd3-b66c-5767136414d1,7f961df9-149d-5aee-9653-24a7594bd60a,5dad755e-e2fc-592f-935b-b1525c37e234.'
+    ids: 09742e2d-b4df-5bd3-b66c-5767136414d1,53233be9-adaa-5878-a878-bc856d33f6c6,5dad755e-e2fc-592f-935b-b1525c37e234,7f961df9-149d-5aee-9653-24a7594bd60a.'
   tag:
-    ID: dae5be9f-2f3d-5982-beec-434cc4a1a063
+    ID: cb094b9e-9f8c-52be-af50-c25e50748820

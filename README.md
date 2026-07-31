@@ -62,7 +62,7 @@ In addition, users must provide output paths for different data types.
 
 #### Usage:
 ```
-python export_data.py --config path/to/site_config.yaml \
+python smart_data_hub.export_data --config path/to/site_config.yaml \
     --path_to_save_rock_yaml output/path/to/rock_data \
     --path_to_save_site_yaml output/path/to/site_data \
     --path_to_save_site_geometry output/path/to/geometry

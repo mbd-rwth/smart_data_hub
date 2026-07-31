@@ -79,7 +79,7 @@ def default_depth_for_merged_rock_units():
             'Tertiary_bottom': 475.0,
             'Jurassic_Upper_bottom': 0.0,
             'Jurassic_Middle_bottom': -85.0,
-            'Opalinus_Clay_bottom': -200.0,
+            'Host_rock_bottom': -200.0,
             'Jurassic_Lower_bottom': -280.0,
             'Keuper_bottom': -450.0,
             'Muschelkalk_bottom': -575.0},
@@ -99,14 +99,14 @@ def default_depth_for_merged_rock_units():
             'Quaternary_bottom': -70.0,
             'Tertiary_bottom': -220.0,
             'Buntsandstein_bottom': -745.0,
-            'Rocksalt_bottom': -1390.0,
+            'Host_rock_bottom': -1390.0,
             'Rotliegend_bottom': -1490.0},
             'DE_Crystalline': {'Quaternary_top': 20.0,
             'Quaternary_bottom': -10.0,
             'Muschelkalk_bottom': -150.0,
             'Buntsandstein_bottom': -450.0,
             'Zechstein_bottom': -886.0,
-            'Granite_bottom': -1200.0}}
+            'Host_rock_bottom': -1200.0}}
 
 
 def export_site_merged_rock_units_yaml(
