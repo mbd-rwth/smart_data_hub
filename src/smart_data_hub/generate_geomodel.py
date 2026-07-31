@@ -1,10 +1,10 @@
 import os
-import gempy as gp
-import pyvista as pv
-import numpy as np
-from pathlib import Path
-from gempy_engine.core.data.stack_relation_type import StackRelationType
 from importlib.resources import files
+import gempy as gp
+import numpy as np
+import pyvista as pv
+from gempy_engine.core.data.stack_relation_type import StackRelationType
+
 
 def generate_geomodel(
     site_orientation_path,
@@ -29,7 +29,6 @@ def generate_geomodel(
     Returns:
         gempy.core.data.geo_model.GeoModel: The computed GemPy 3D structural model.
     """
-
     geo_data = gp.create_geomodel(
         project_name="site",
         extent=extent_geometry,
@@ -40,34 +39,30 @@ def generate_geomodel(
             path_to_surface_points=site_points_path,
         ),
     )
-    
+
     gp.map_stack_to_surfaces(geo_data, mapping_object=structural_group)
 
     for i in range(len(geo_data.structural_frame.structural_groups)):
-        geo_data.structural_frame.structural_groups[i].structural_relation = (
-            stack_relation
-        )
+        geo_data.structural_frame.structural_groups[i].structural_relation = stack_relation
 
     # Compute the geological model
     gp.compute_model(geo_data)
     return geo_data
 
 
-def export_gempy2vtk(geo_model, save_output_folder_path):
+def export_gempy2vtk(geo_model, save_output_folder_path) -> None:
     """Export each fromation surface as a VTK file.
 
     Args:
         geo_model (gempy.core.data.geo_model.GeoModel): A GemPy 3D structural model.
         save_output_folder_path (str): Path to the output folder.
     """
-
     formation_list = list(geo_model.structural_frame.element_id_name_map.values())
     formation_list.remove("basement")
 
     # Get vertices and edges for each surface
     surface_meshes_vertices = [
-        geo_model.input_transform.apply_inverse(mesh.vertices)
-        for mesh in geo_model.solutions.dc_meshes
+        geo_model.input_transform.apply_inverse(mesh.vertices) for mesh in geo_model.solutions.dc_meshes
     ]
     surface_meshes_edges = [mesh.edges for mesh in geo_model.solutions.dc_meshes]
 
@@ -77,15 +72,18 @@ def export_gempy2vtk(geo_model, save_output_folder_path):
             np.insert(surface_meshes_edges[i], 0, 3, axis=1).ravel(),
         )
         surface_mesh.save(
-            os.path.join(save_output_folder_path, f"{formation_list[i]}.vtk")
+            os.path.join(save_output_folder_path, f"{formation_list[i]}.vtk"),
         )
         print(f"Saved {formation_list[i]}.vtk !")
 
 
 def export_gempy2grid(
-    geo_model, save_output_folder_path, output_filename="3D_model.vtk"
-):
+    geo_model,
+    save_output_folder_path,
+    output_filename="3D_model.vtk",
+) -> None:
     """Export the regular grid of the model as a VTK file.
+
     Args:
         geo_model (gempy.core.data.geo_model.GeoModel): A GemPy 3D structural model.
         save_output_folder_path (str): Path to the output folder.
@@ -111,7 +109,6 @@ def generate_geomodel_for_site(site_name, refinement, resolution):
     Returns:
         gempy.core.data.geo_model.GeoModel: The computed GemPy 3D structural model for the given site.
     """
-
     if site_name == "DE_Crystalline":
         extent_geometry = [0, 2000, 0, 2000, -1400, 10]
         structural_group = {
@@ -129,7 +126,7 @@ def generate_geomodel_for_site(site_name, refinement, resolution):
                 "Zechstein_Rocksalt_sequence4",
                 "Zechstein_Anhydrite_sequence3",
                 "Granite",
-            ]
+            ],
         }
         stack_relation = StackRelationType.ONLAP
     elif site_name == "DE_North_Claystone":
@@ -186,21 +183,25 @@ def generate_geomodel_for_site(site_name, refinement, resolution):
                 "Anhydrite",
                 "Carbonate",
                 "Rotliegend",
-            ]
+            ],
         }
         stack_relation = StackRelationType.ONLAP
     else:
+        msg = f"Please use generate_geomodel to create the GemPy model for the {site_name} site."
         raise ValueError(
-            f"Please use generate_geomodel to create the GemPy model for the {site_name} site."
+            msg,
         )
 
-    geo_model = generate_geomodel(
-        site_orientation_path=os.path.join(files("smart_data_hub") / "dataset" / "geometry" / site_name / "input" / "orientations.csv"),
-        site_points_path=os.path.join(files("smart_data_hub") / "dataset" / "geometry" / site_name / "input" / "points.csv"),
+    return generate_geomodel(
+        site_orientation_path=os.path.join(
+            files("smart_data_hub") / "dataset" / "geometry" / site_name / "input" / "orientations.csv",
+        ),
+        site_points_path=os.path.join(
+            files("smart_data_hub") / "dataset" / "geometry" / site_name / "input" / "points.csv",
+        ),
         extent_geometry=extent_geometry,
         refinement=refinement,
         resolution=resolution,
         structural_group=structural_group,
         stack_relation=stack_relation,
     )
-    return geo_model

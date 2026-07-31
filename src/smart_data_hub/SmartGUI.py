@@ -1,28 +1,30 @@
 import os
-from pathlib import Path
-from dash import Dash, html, dcc, callback, Output, Input, dash_table, State
-import dash_bootstrap_components as dbc
-import plotly.graph_objects as go
-import pandas as pd
-import numpy as np
-import pyvista as pv
 from importlib.resources import files
-
-from smart_data_hub.load_path import get_path_in_dir
-from smart_data_hub.property2dataframe import (
-    load_rock_property,
-    load_site_property,
-    preserve_value_type,
-)
+import dash_bootstrap_components as dbc
+import numpy as np
+import pandas as pd
+import plotly.graph_objects as go
+import pyvista as pv
+from dash import Dash
+from dash import Input
+from dash import Output
+from dash import State
+from dash import dash_table
+from dash import dcc
+from dash import html
+from smart_data_hub.add_default import add_default_df
+from smart_data_hub.add_default import find_missing_properties
 from smart_data_hub.data_tagging import get_tagged_data_mask
-from smart_data_hub.generate_id import get_list_from_sequence
-from smart_data_hub.add_default import add_default_df, find_missing_properties
-from smart_data_hub.merge_method import merge_property_value, generate_lognorm
 from smart_data_hub.dataframe2yaml import dataframe2yaml_str
-from smart_data_hub.generate_geomodel import (
-    generate_geomodel_for_site,
-    export_gempy2grid,
-)
+from smart_data_hub.generate_geomodel import export_gempy2grid
+from smart_data_hub.generate_geomodel import generate_geomodel_for_site
+from smart_data_hub.generate_id import get_list_from_sequence
+from smart_data_hub.load_path import get_path_in_dir
+from smart_data_hub.merge_method import generate_lognorm
+from smart_data_hub.merge_method import merge_property_value
+from smart_data_hub.property2dataframe import load_rock_property
+from smart_data_hub.property2dataframe import load_site_property
+from smart_data_hub.property2dataframe import preserve_value_type
 
 operators = [
     ["ge ", ">="],
@@ -91,7 +93,7 @@ def list2str(property_df):
     for header in property_df_columns:
         if header in to_convert_headers:
             table_property_df[header] = table_property_df[header].map(
-                lambda row: ", ".join(map(str, get_list_from_sequence(row)))
+                lambda row: ", ".join(map(str, get_list_from_sequence(row))),
             )
     return table_property_df
 
@@ -116,25 +118,19 @@ def str2list(property_df):
     property_df_columns = list(export_property_df)
     for header in property_df_columns:
         if header in to_convert_headers:
-            if (header == "unit_base") or (header == "variable_unit_base"):
+            if header in {"unit_base", "variable_unit_base"}:
                 export_property_df[header] = export_property_df[header].map(
-                    lambda row: (
-                        [int(i) for i in row.split(", ")]
-                        if (pd.notna(row) and row != "")
-                        else None
-                    )
+                    lambda row: [int(i) for i in row.split(", ")] if (pd.notna(row) and row != "") else None,
                 )
             else:
                 export_property_df[header] = export_property_df[header].map(
-                    lambda row: (
-                        row.split(", ") if (pd.notna(row) and row != "") else None
-                    )
+                    lambda row: row.split(", ") if (pd.notna(row) and row != "") else None,
                 )
     return export_property_df
 
 
 def RGBtxt_to_dict(file_path, color_type):
-    """_summary_
+    """Convert RGB txt to dictionary.
 
     Args:
         file_path (str): Path to the rgb text file for the Geological Time Scale.
@@ -148,7 +144,7 @@ def RGBtxt_to_dict(file_path, color_type):
         dict: Dictionary with keys as geological time scale and values as hex color or rgb color.
     """
     result_dict = {}
-    with open(file_path, "r") as file:
+    with open(file_path) as file:
         for line in file:
             parts = line.split(maxsplit=1)
             if len(parts) == 2:  # Ensure there are at least 2 parts (key and value)
@@ -157,15 +153,17 @@ def RGBtxt_to_dict(file_path, color_type):
                 # Convert RGB to hex
                 rgb = tuple(map(int, rgb_value.split("/")))
                 if color_type == "to_hex":
-                    hex_value = "#{:02x}{:02x}{:02x}".format(rgb[0], rgb[1], rgb[2])
+                    hex_value = f"#{rgb[0]:02x}{rgb[1]:02x}{rgb[2]:02x}"
                     result_dict[key] = hex_value
                 elif color_type == "to_rgb":
                     result_dict[key] = f"rgb{rgb}"
                 else:
-                    raise ValueError("Valid value for color_type: ['to_hex', 'to_rgb']")
+                    msg = "Valid value for color_type: ['to_hex', 'to_rgb']"
+                    raise ValueError(msg)
             elif len(parts) != 2:
+                msg = "No tuple, please make sure the dictionary has the right structure!"
                 raise ValueError(
-                    "No tuple, please make sure the dictionary has the right structure!"
+                    msg,
                 )
 
     return result_dict
@@ -181,9 +179,7 @@ def get_geological_time(row):
         list: A list of combined geological time scale.
     """
     combined_scales = [
-        scale
-        for scale in [row["eon"], row["era"], row["period"], row["epoch"], row["age"]]
-        if pd.notna(scale)
+        scale for scale in [row["eon"], row["era"], row["period"], row["epoch"], row["age"]] if pd.notna(scale)
     ]
     rock_layer_name = row["rock_layer"]
 
@@ -212,20 +208,17 @@ def create_stratigraphic_table(site_strata, strata_props_descriptions):
     ids_descriptions = [""]
 
     for strata_names in site_strata:
-
         root = "Stratigraphic_Chart"
 
         for i in range(len(strata_names)):
             id_name = "-".join(
-                strata_names[: i + 1]
+                strata_names[: i + 1],
             )  # combining the name again using '-'
             if id_name not in ids:
                 ids.append(id_name)
                 try:
                     stratigraphy_colors.append(hex_colors[id_name])
-                except (
-                    KeyError
-                ):  # if the id_name is not within the international chronostratigraphic chart, then use
+                except KeyError:  # if the id_name is not within the international chronostratigraphic chart, then use
                     # its parents color.
                     stratigraphy_colors.append(stratigraphy_colors[-1])
 
@@ -250,7 +243,7 @@ def create_stratigraphic_table(site_strata, strata_props_descriptions):
             hovertext=ids_descriptions,
             textinfo="label+text",
             sort=False,
-        )
+        ),
     )
 
     stratigraphy_colors_dict = dict(zip(ids, stratigraphy_colors))
@@ -275,9 +268,7 @@ def filter_table_df(filter, property_df):
 
         if operator in ("eq", "ne", "lt", "le", "gt", "ge"):
             # these operators match pandas series operator method names
-            update_property_df = update_property_df.loc[
-                getattr(update_property_df[col_name], operator)(filter_value)
-            ]
+            update_property_df = update_property_df.loc[getattr(update_property_df[col_name], operator)(filter_value)]
         elif operator == "contains":
             filter_value = [value.strip() for value in filter_value.split(",")]
             filtered_masks = get_tagged_data_mask(property_df, col_name, filter_value)
@@ -285,9 +276,7 @@ def filter_table_df(filter, property_df):
         elif operator == "datestartswith":
             # this is a simplification of the front-end filtering logic,
             # only works with complete fields in standard format
-            update_property_df = update_property_df.loc[
-                update_property_df[col_name].str.startswith(filter_value)
-            ]
+            update_property_df = update_property_df.loc[update_property_df[col_name].str.startswith(filter_value)]
 
     return update_property_df
 
@@ -299,8 +288,8 @@ def load_vtkdata(
     clicked_layer_name,
     initial_call=False,
 ):
-    """
-    Load the vtk data for the 3D structural geomodel of the selected site.
+    """Load the vtk data for the 3D structural geomodel of the selected site.
+
     Args:
         site_name (str): name of the selected site.
         sites_material_props_dict (dict): a dictionary that contains the material properties for each site.
@@ -371,7 +360,7 @@ site_dropdown = dbc.Card(
                 placeholder="Select a site name",
                 clearable=False,
             ),
-        ]
+        ],
     ),
 )
 site_geomodel = dbc.Card(
@@ -389,11 +378,14 @@ site_geomodel = dbc.Card(
             ],
             style={"height": "calc(100vh - 316px)"},
         ),
-    ]
+    ],
 )
 
 export_geomodel_button = dbc.Button(
-    "Export Geomodel", id="btn_export_geomodel", outline=True, color="secondary"
+    "Export Geomodel",
+    id="btn_export_geomodel",
+    outline=True,
+    color="secondary",
 )
 export_geomodel_dropdown = dcc.Dropdown(
     options=[
@@ -409,8 +401,8 @@ export_geomodel = dbc.Card(
                 dbc.Col(export_geomodel_button, width=6),
                 dbc.Col(export_geomodel_dropdown, width=6),
             ],
-        )
-    ]
+        ),
+    ],
 )
 
 default_merge_butttons = dbc.Card(
@@ -465,7 +457,7 @@ export_data_button_dropdown = dbc.Card(
                     ),
                 ),
             ],
-        )
+        ),
     ],
     color="white",
     outline=True,
@@ -480,7 +472,7 @@ lithostratigraphy_button = dbc.Card(
             ],
             justify="between",
         ),
-    ]
+    ],
 )
 
 lithostratigraphy = dbc.Card(
@@ -514,7 +506,7 @@ lithostratigraphy = dbc.Card(
                                 "position": "absolute",
                                 "margin-left": "40px",
                             },
-                        )
+                        ),
                     ],
                     style={"display": "none"},
                 ),
@@ -660,25 +652,26 @@ def load_stratum_table(
         datatable_data = None
         clicked_layer_name = click_data["points"][0]["label"]
         site_strata_df = pd.DataFrame.from_records(
-            sites_material_props_dict[site_name]["site_props"]
+            sites_material_props_dict[site_name]["site_props"],
         )
         site_strata_names_list = list(site_strata_df["rock_layer"])
 
         # set the condition of site_name == site_name_previous to make sure the properties table
         # is loaded when site_name is updated.
         if (
-            clicked_layer_name in site_strata_names_list
-            and site_name == site_name_previous
+            clicked_layer_name in site_strata_names_list and site_name == site_name_previous
         ):  # if properties for the layer exist
             # load the properties table
             clicked_layer_df = load_rock_property(
                 [
-                    os.path.join(files("smart_data_hub"), site_strata_df.loc[
-                        site_strata_df["rock_layer"] == clicked_layer_name,
-                        "property_path",
-                    ].iloc[0])
-                    
-                ]
+                    os.path.join(
+                        files("smart_data_hub"),
+                        site_strata_df.loc[
+                            site_strata_df["rock_layer"] == clicked_layer_name,
+                            "property_path",
+                        ].iloc[0],
+                    ),
+                ],
             )
             lithologies = site_strata_df.loc[
                 site_strata_df["rock_layer"] == clicked_layer_name,
@@ -690,9 +683,7 @@ def load_stratum_table(
             update_property_df = clicked_layer_df.copy()
             # columns to display
             columns_n = list(update_property_df.columns)
-            none_columns = update_property_df.columns[
-                update_property_df.isnull().all()
-            ].tolist()
+            none_columns = update_property_df.columns[update_property_df.isnull().all()].tolist()
             to_remove_columns = [
                 "variable_name",
                 "variable_unit_str",
@@ -701,11 +692,7 @@ def load_stratum_table(
             columns_display = [
                 cn
                 for cn in columns_n
-                if cn
-                not in (
-                    ["site", "rock_layer"]
-                    + [col for col in none_columns if col in to_remove_columns]
-                )
+                if cn not in (["site", "rock_layer"] + [col for col in none_columns if col in to_remove_columns])
             ]
 
             datatable_columns = [{"name": i, "id": i} for i in columns_display]
@@ -750,19 +737,15 @@ def filter_table(datatable_data, filter):
 def confirm_add_default(add_default_clicks, datatable_data):
     # convert to pandas DataFrame
     datatable_data_pd_confirm_default = str2list(
-        pd.DataFrame.from_records(datatable_data)
+        pd.DataFrame.from_records(datatable_data),
     ).copy()
     # --- find missing properties --- #
     added_properties = find_missing_properties(datatable_data_pd_confirm_default)
 
     if added_properties:
-        confirm_message = (
-            f"{', '.join(added_properties)} will be added with default values."
-        )
+        confirm_message = f"{', '.join(added_properties)} will be added with default values."
     else:
-        confirm_message = (
-            "All properties already have values. No default values will be added."
-        )
+        confirm_message = "All properties already have values. No default values will be added."
 
     return True, confirm_message
 
@@ -780,10 +763,11 @@ def confirm_add_default(add_default_clicks, datatable_data):
 def add_default(datatable_data, add_default_clicks, filter, lithologies):
     # convert to pandas DataFrame and add default values
     datatable_data_pd_add_default = str2list(
-        pd.DataFrame.from_records(datatable_data)
+        pd.DataFrame.from_records(datatable_data),
     ).copy()
     update_property_df_add_default = add_default_df(
-        datatable_data_pd_add_default, lithologies
+        datatable_data_pd_add_default,
+        lithologies,
     ).copy()
 
     # convert back to datatable format
@@ -811,9 +795,7 @@ def confirm_merge_add(merge_data_clicks, datatable_data):
     remain_properties = list(datatable_data_merge_pd_id["property"])
     len_diff = len(remain_properties) - len(set(remain_properties))
     if missing_sampled_data or (len_diff > 0):
-        confirm_message = (
-            "Merge data and add a truncated normal distribution for each property."
-        )
+        confirm_message = "Merge data and add a truncated normal distribution for each property."
     else:
         confirm_message = "Merging data is not needed, as data is already merged, or no uncertainty is missing."
 
@@ -847,7 +829,8 @@ def merge_data(datatable_data, merge_data_clicks, filter):
 
 
 @app.callback(
-    Output("properties_table", "style"), Input("datatable-interactivity", "data")
+    Output("properties_table", "style"),
+    Input("datatable-interactivity", "data"),
 )
 def display_properties_table(datatable_data):
     if datatable_data is None:
@@ -888,7 +871,8 @@ def export_props_data(btn_export_data, datatable_data, export_file_type, click_d
     ].map(preserve_value_type)
     # Keep the sample_size as integer
     data_df["sample_size"] = pd.to_numeric(
-        data_df["sample_size"], errors="coerce"
+        data_df["sample_size"],
+        errors="coerce",
     ).astype("Int64")
     # Replace both np.nan and empty strings with None
     data_df = data_df.replace({np.nan: None, "": None})
@@ -919,7 +903,10 @@ def export_props_data(btn_export_data, datatable_data, export_file_type, click_d
     State("site_name_previous", "data"),
 )
 def display_geomodel(
-    site_name, sites_material_props_dict, click_data, site_name_previous
+    site_name,
+    sites_material_props_dict,
+    click_data,
+    site_name_previous,
 ):
     if site_name is None:  # initial interface
         return None
@@ -956,10 +943,12 @@ def display_geomodel(
     prevent_initial_call=True,
 )
 def export_geomodel(btn_export_geomodel, export_model_type, site_name):
-    
+
     if export_model_type == "VTK":
         geo_model = generate_geomodel_for_site(
-            site_name, refinement=4, resolution=[50, 50, 50]
+            site_name,
+            refinement=4,
+            resolution=[50, 50, 50],
         )
         # export the regular grid of the model
 
@@ -967,7 +956,7 @@ def export_geomodel(btn_export_geomodel, export_model_type, site_name):
 
         if not os.path.exists(save_output_folder_path):
             os.makedirs(save_output_folder_path)
-        
+
         export_gempy2grid(
             geo_model,
             save_output_folder_path,
@@ -988,4 +977,4 @@ if __name__ == "__main__":
         initial_call=True,
     )
 
-    app.run(debug=True)
+    app.run(debug=False)

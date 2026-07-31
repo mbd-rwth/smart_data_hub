@@ -1,13 +1,18 @@
-import numpy as np
-import pandas as pd
 import uuid
 import scipy
 from uuid import UUID
-import scipy.stats as stats
-from scipy.stats import norm, truncnorm, lognorm, beta, uniform
-from smart_data_hub.property2dataframe import preserve_value_type
+import numpy as np
+import pandas as pd
+from scipy import stats
+from scipy.stats import beta
+from scipy.stats import lognorm
+from scipy.stats import norm
+from scipy.stats import truncnorm
+from scipy.stats import uniform
+from smart_data_hub.generate_id import get_entry_str
+from smart_data_hub.generate_id import sdh_namespace
 from smart_data_hub.hydraulic2intrinic import hydraulic2intrinic
-from smart_data_hub.generate_id import sdh_namespace, get_entry_str
+from smart_data_hub.property2dataframe import preserve_value_type
 
 
 # --- Create masks based on different inputs ---#
@@ -20,16 +25,13 @@ def value_empty_mask(input_pd_df):
     Returns:
         pd.Series: A Boolean series indicating which data is empty.
     """
-
-    is_empty_mask = (
+    return (
         input_pd_df["value"].isna()
         & input_pd_df["value_std"].isna()
         & input_pd_df["value_min"].isna()
         & input_pd_df["value_max"].isna()
         & input_pd_df["sampled_data"].isna()
     )
-
-    return is_empty_mask
 
 
 def value_invalid_mask(input_pd_df):
@@ -41,13 +43,8 @@ def value_invalid_mask(input_pd_df):
     Returns:
         pd.Series: A Boolean Series indicating which data is invalid.
     """
-
     # The value is not provided, but the standard deviation is given.
-    invalid_mask_1 = (
-        input_pd_df["value"].isna()
-        & input_pd_df["value_std"].notna()
-        & input_pd_df["sampled_data"].isna()
-    )
+    invalid_mask_1 = input_pd_df["value"].isna() & input_pd_df["value_std"].notna() & input_pd_df["sampled_data"].isna()
     # Only the minimum value is provided
     invalid_mask_2 = (
         input_pd_df["value"].isna()
@@ -86,9 +83,7 @@ def value_invalid_mask(input_pd_df):
         | (has_min & has_max & (value_min > value_max))  # value_min > value_max
     )
 
-    is_invalid_mask = invalid_mask_1 | invalid_mask_2 | invalid_mask_3 | mask
-
-    return is_invalid_mask
+    return invalid_mask_1 | invalid_mask_2 | invalid_mask_3 | mask
 
 
 def value_pdf_mask(input_pd_df):
@@ -100,9 +95,7 @@ def value_pdf_mask(input_pd_df):
     Returns:
         pd.Series: A Boolean series indicating which data entries have a corresponding probability distribution.
     """
-    is_pdf_mask = input_pd_df["sampled_data"].notna() & (
-        (input_pd_df["type"] == "scalar")
-    )
+    is_pdf_mask = input_pd_df["sampled_data"].notna() & (input_pd_df["type"] == "scalar")
     invalid = value_invalid_mask(input_pd_df)
 
     return is_pdf_mask & (~invalid)
@@ -117,14 +110,13 @@ def value_uniform_mask(input_pd_df):
     Returns:
         pd.Series: A Boolean series indicating which data is uniform.
     """
-
     is_uniform_mask = (
         input_pd_df["value"].isna()
         & input_pd_df["value_min"].notna()
         & input_pd_df["value_max"].notna()
         & input_pd_df["value_std"].isna()
         & input_pd_df["sampled_data"].isna()
-        & ((input_pd_df["type"] == "scalar"))
+        & (input_pd_df["type"] == "scalar")
     )
     invalid = value_invalid_mask(input_pd_df)
 
@@ -146,7 +138,7 @@ def value_truncnorm_mask(input_pd_df):
         & input_pd_df["value_max"].notna()
         & input_pd_df["value_std"].notna()
         & input_pd_df["sampled_data"].isna()
-        & ((input_pd_df["type"] == "scalar"))
+        & (input_pd_df["type"] == "scalar")
     )
 
     is_truncnorm_mask_porosity = (
@@ -156,7 +148,7 @@ def value_truncnorm_mask(input_pd_df):
         & input_pd_df["value_std"].notna()
         & input_pd_df["sampled_data"].isna()
         & (input_pd_df["property"] == "porosity")
-        & ((input_pd_df["type"] == "scalar"))
+        & (input_pd_df["type"] == "scalar")
     )
     invalid = value_invalid_mask(input_pd_df)
 
@@ -172,14 +164,13 @@ def value_lognorm_mask(input_pd_df):
     Returns:
         pd.Series: A Boolean series indicating which data is log-normal.
     """
-
     is_lognorm_mask1 = (
         input_pd_df["value"].notna()
         & input_pd_df["value_min"].isna()
         & input_pd_df["value_max"].isna()
         & input_pd_df["value_std"].notna()
         & input_pd_df["sampled_data"].isna()
-        & ((input_pd_df["type"] == "scalar"))
+        & (input_pd_df["type"] == "scalar")
     )
 
     is_lognorm_mask2 = (
@@ -188,7 +179,7 @@ def value_lognorm_mask(input_pd_df):
         & input_pd_df["value_max"].notna()
         & input_pd_df["value_std"].notna()
         & input_pd_df["sampled_data"].isna()
-        & ((input_pd_df["type"] == "scalar"))
+        & (input_pd_df["type"] == "scalar")
     )
 
     is_lognorm_mask3 = (
@@ -198,7 +189,7 @@ def value_lognorm_mask(input_pd_df):
         & input_pd_df["value_std"].notna()
         & input_pd_df["sampled_data"].isna()
         & (input_pd_df["property"] != "porosity")
-        & ((input_pd_df["type"] == "scalar"))
+        & (input_pd_df["type"] == "scalar")
     )
 
     is_lognorm_mask4 = (
@@ -208,7 +199,7 @@ def value_lognorm_mask(input_pd_df):
         & input_pd_df["value_std"].isna()
         & input_pd_df["sampled_data"].isna()
         & (input_pd_df["property"] != "porosity")
-        & ((input_pd_df["type"] == "scalar"))
+        & (input_pd_df["type"] == "scalar")
     )
 
     is_lognorm_mask5 = (
@@ -217,7 +208,7 @@ def value_lognorm_mask(input_pd_df):
         & input_pd_df["value_max"].notna()
         & input_pd_df["value_std"].isna()
         & input_pd_df["sampled_data"].isna()
-        & ((input_pd_df["type"] == "scalar"))
+        & (input_pd_df["type"] == "scalar")
     )
 
     is_lognorm_mask_single = (
@@ -226,7 +217,7 @@ def value_lognorm_mask(input_pd_df):
         & input_pd_df["value_max"].isna()
         & input_pd_df["value_std"].isna()
         & input_pd_df["sampled_data"].isna()
-        & ((input_pd_df["type"] == "scalar"))
+        & (input_pd_df["type"] == "scalar")
     )
 
     invalid = value_invalid_mask(input_pd_df)
@@ -250,14 +241,13 @@ def value_PERT_mask(input_pd_df):
     Returns:
         pd.Series: A Boolean series indicating which data is PERT.
     """
-
     is_PERT_mask = (
         input_pd_df["value"].notna()
         & input_pd_df["value_min"].notna()
         & input_pd_df["value_max"].notna()
         & input_pd_df["value_std"].isna()
         & input_pd_df["sampled_data"].isna()
-        & ((input_pd_df["type"] == "scalar"))
+        & (input_pd_df["type"] == "scalar")
     )
 
     is_PERT_mask_porosity = (
@@ -267,7 +257,7 @@ def value_PERT_mask(input_pd_df):
         & input_pd_df["value_std"].isna()
         & input_pd_df["sampled_data"].isna()
         & (input_pd_df["property"] == "porosity")
-        & ((input_pd_df["type"] == "scalar"))
+        & (input_pd_df["type"] == "scalar")
     )
 
     invalid = value_invalid_mask(input_pd_df)
@@ -292,18 +282,22 @@ def format_number_adaptive(number):
     if abs(number) < 0.0001:
         return float(f"{number:.2e}")
     # Keep three significant digits
-    elif abs(number) < 0.1:
+    if abs(number) < 0.1:
         return float(f"{number:.3g}")
-    elif abs(number) < 100000:
+    if abs(number) < 100000:
         # Round to two decimal places
         return float(f"{number:.2f}")
-    else:
-        return float(f"{number:.2e}")
+    return float(f"{number:.2e}")
 
 
 # --- Generate different distributions based on the input parameters---#
 def generate_truncnorm(
-    value, value_std, value_min, value_max, as_string=False, **kwargs
+    value,
+    value_std,
+    value_min,
+    value_max,
+    as_string=False,
+    **kwargs,
 ):
     """Generate a truncated normal distribution based on the given parameters.
 
@@ -314,6 +308,7 @@ def generate_truncnorm(
         value_max (float): The maximum value of the original dataset.
         as_string (bool): If True, return a string representation of the truncated normal distribution. If False, return a frozen distribution object. Default is False.
         **kwargs: Extra keyword arguments accepted for compatibility and ignored.
+
     Returns:
         scipy.stats._distn_infrastructure.rv_continuous_frozen | str: A truncated normal distribution object if `as_string` is False, otherwise a string representation.
     """
@@ -406,7 +401,6 @@ def generate_norm(value, value_std, as_string=False, **kwargs):
     Returns:
         scipy.stats._distn_infrastructure.rv_continuous_frozen | str: A normal distribution object if `as_string` is False, otherwise a string representation.
     """
-
     norm_std = value_std
     norm_mean = value
 
@@ -465,54 +459,55 @@ def generate_samples(
         input_df_group["value_std"],
         input_df_group["value_min"],
         input_df_group["value_max"],
+        strict=False,
     ):
         if sample_size is None or np.isnan(sample_size):
             sample_size = 1000000
         if df_pdf_type == "is_pdf_df":
             # if the scipy.stats.rvs or numpy array is provided
-            if isinstance(sampled_data, str):
-                samples = eval(sampled_data)
-            else:
-                samples = np.array(sampled_data)
+            samples = eval(sampled_data) if isinstance(sampled_data, str) else np.array(sampled_data)
         elif df_pdf_type == "is_uniform_df":
             uniform_samples = generate_uniform(value_min, value_max).rvs(
-                size=sample_size, random_state=random_state
+                size=sample_size,
+                random_state=random_state,
             )
             samples = uniform_samples
         elif df_pdf_type == "is_truncnorm_df":
-
-            if (value_max is None) and (
-                property_name == "porosity"
+            if (
+                (value_max is None) and (property_name == "porosity")
             ):  # if the property is porosity, condition isproperty_name == "porosity" not necessary, just for safety check
                 value_max = 1.0
 
             truncnorm_samples = generate_truncnorm(
-                value, value_std, value_min, value_max
+                value,
+                value_std,
+                value_min,
+                value_max,
             ).rvs(size=sample_size, random_state=random_state)
             samples = truncnorm_samples
         elif df_pdf_type == "is_lognorm_df":
-            if pd.isna(value_std): # check both None and NaN
+            if pd.isna(value_std):  # check both None and NaN
                 value_std = value * dict_property_cv[property_name]
             if value == 0.0 and value_std == 0.0:
                 lognorm_samples = np.zeros(sample_size)
             else:
                 lognorm_samples = generate_lognorm(value, value_std, value_min).rvs(
-                    size=sample_size, random_state=random_state
+                    size=sample_size,
+                    random_state=random_state,
                 )
             samples = lognorm_samples
         elif df_pdf_type == "is_PERT_df":
-
-            if (value_max is None) and (
-                property_name == "porosity"
-            ):  # if the property is porosity
+            if (value_max is None) and (property_name == "porosity"):  # if the property is porosity
                 value_max = 1.0
 
             PERT_samples = generate_PERT(value, value_min, value_max).rvs(
-                size=sample_size, random_state=random_state
+                size=sample_size,
+                random_state=random_state,
             )
             samples = PERT_samples
         else:
-            raise ValueError(f"The df_pdf_type {df_pdf_type} is not recognized!")
+            msg = f"The df_pdf_type {df_pdf_type} is not recognized!"
+            raise ValueError(msg)
 
         # Keep porosity samples with value <= 1
         if property_name == "porosity":
@@ -541,7 +536,6 @@ def get_sample_statistics(input_property_group):
                The tuple is in the following order:
                (samples_mean, samples_std, samples_min, samples_max)
     """
-
     # Generate samples for each distribution type
     sample_combined = []
 
@@ -618,7 +612,7 @@ def generate_unit(property_name):
     elif property_name == "thermal_conductivity":
         unit_str = "W/m/K"
         unit_base = [1, 1, -3, -1, 0, 0, 0]
-    elif property_name == "p_wave_velocity" or property_name == "s_wave_velocity":
+    elif property_name in {"p_wave_velocity", "s_wave_velocity"}:
         unit_str = "m/s"
         unit_base = [0, 1, -1, 0, 0, 0, 0]
     elif property_name == "intrinsic_permeability":
@@ -628,7 +622,8 @@ def generate_unit(property_name):
         unit_str = "ohmm"
         unit_base = [1, 3, -3, 0, -2, 0, 0]
     else:
-        raise TypeError(f"The property name {property_name} is not recognized!")
+        msg = f"The property name {property_name} is not recognized!"
+        raise TypeError(msg)
 
     return unit_str, unit_base
 
@@ -660,7 +655,6 @@ def merge_property_value(
     Returns:
         pd.DataFrame: DataFrame containing merged property values, summary statistics, distribution parameters, and metadata for each property.
     """
-
     # Replace np.nan with None
     input_property = input_property.replace({np.nan: None, "": None})
     # Preserve float for scalar and string for expression and dictionary
@@ -711,17 +705,11 @@ def merge_property_value(
         is_pdf_df = input_property_group[is_pdf_mask].copy()
         # If only one dataset is provided by a probability distribution, then the merge process is unnecessary
         if (input_property_group.shape[0] == 1) and (not is_pdf_df.empty):
-
             merged_property = pd.concat(
-                [
-                    property_df
-                    for property_df in [merged_property, input_property_group]
-                    if not property_df.empty
-                ],
+                [property_df for property_df in [merged_property, input_property_group] if not property_df.empty],
                 ignore_index=True,
             )
         else:
-
             # Get statistics from the combined samples
             (
                 samples_mean,
@@ -742,38 +730,33 @@ def merge_property_value(
                 samples_min, samples_max, sampling_rvs = None, None, None
                 description_dist = "All values are identical. All samples are"
 
+            elif (sampling_functions_by_property) and (property_name in sampling_functions_by_property):
+                # use desired sampling functions
+
+                sampling_function = sampling_functions_by_property[property_name]
+                sampling_rvs = (
+                    sampling_function(as_string=True, **sample_statistics_config)
+                    + f".rvs(size={sample_size}, random_state=21)"
+                )
+                # get distribution description according to the sampling function
+                description_dist = distribution_descriptions.get(
+                    sampling_function,
+                    "A distribution",
+                )
+
             else:
-                if (sampling_functions_by_property) and (
-                    property_name in sampling_functions_by_property
-                ):
-                    # use desired sampling functions
-
-                    sampling_function = sampling_functions_by_property[property_name]
-                    sampling_rvs = (
-                        sampling_function(as_string=True, **sample_statistics_config)
-                        + f".rvs(size={sample_size}, random_state=21)"
-                    )
-                    # get distribution description according to the sampling function
-                    description_dist = distribution_descriptions.get(
-                        sampling_function, "A distribution"
-                    )
-
-                else:
-                    # use truncated normal distribution as default sampling function
-                    sampling_rvs = (
-                        generate_truncnorm(as_string=True, **sample_statistics_config)
-                        + f".rvs(size={sample_size}, random_state=21)"
-                    )
-                    # get distribution description for truncated normal distribution
-                    description_dist = distribution_descriptions[generate_truncnorm]
+                # use truncated normal distribution as default sampling function
+                sampling_rvs = (
+                    generate_truncnorm(as_string=True, **sample_statistics_config)
+                    + f".rvs(size={sample_size}, random_state=21)"
+                )
+                # get distribution description for truncated normal distribution
+                description_dist = distribution_descriptions[generate_truncnorm]
 
             # Get meta information
             ids_list = list(input_property_group["ID"])
             ids_combined = ",".join(sorted(ids_list, key=UUID))
-            if len(ids_list) > 1:
-                print_before_id = "combined datasets with ids:"
-            else:
-                print_before_id = "dataset with id:"
+            print_before_id = "combined datasets with ids:" if len(ids_list) > 1 else "dataset with id:"
 
             number_of_datasets = input_property_group.shape[0]
 
@@ -798,20 +781,21 @@ def merge_property_value(
                 "simplified_lithology": None,
                 "ID": None,
             }
-            if (source_type == "default") or (source_type == "merged"):
-
+            if source_type in {"default", "merged"}:
                 property_dict["description"] = (
                     f"{description_dist} fitted from {number_of_datasets} {print_before_id} {ids_combined}."
                 )
 
                 property_dict["ID"] = str(
                     uuid.uuid5(
-                        SDH_NAMESPACE, get_entry_str(property_dict, property_name)
-                    )
+                        SDH_NAMESPACE,
+                        get_entry_str(property_dict, property_name),
+                    ),
                 )
             else:
+                msg = f"The allowed source_type entries are 'default' and 'merged'. The source_type '{source_type}' is not recognized!"
                 raise ValueError(
-                    f"The allowed source_type entries are 'default' and 'merged'. The source_type '{source_type}' is not recognized!"
+                    msg,
                 )
 
             # Create a new row with the merged property values
@@ -828,7 +812,6 @@ def merge_property_value(
             )
 
     if (not input_property_nonscalar.empty) and (source_type == "merged"):
-
         merged_property = pd.concat(
             [
                 property_df
@@ -845,9 +828,20 @@ def merge_property_value(
 
     # Drop unnecessary columns where all values are None
     minimum_required_columns = {
-        "property", "source", "type",
-        "value", "value_min", "value_max", "value_std", "sample_size",
-        "sampled_data", "unit_str", "unit_base", "description", "ID"}
+        "property",
+        "source",
+        "type",
+        "value",
+        "value_min",
+        "value_max",
+        "value_std",
+        "sample_size",
+        "sampled_data",
+        "unit_str",
+        "unit_base",
+        "description",
+        "ID",
+    }
 
     # Columns where every value is None/NaN
     empty_columns = merged_property.columns[merged_property.isna().all()]

@@ -1,8 +1,8 @@
-import scipy.stats as stats
 import numpy as np
 import pandas as pd
-from smart_data_hub.property2dataframe import combine_rock_site_property
+from scipy import stats
 from smart_data_hub.hydraulic2intrinic import hydraulic2intrinic
+from smart_data_hub.property2dataframe import combine_rock_site_property
 
 
 def value_best_mask(input_pd_df):
@@ -14,10 +14,7 @@ def value_best_mask(input_pd_df):
     Returns:
         pd.Series: A Boolean series indicating which data contains the best estimate value.
     """
-
-    is_best_mask = input_pd_df["value"].notna()
-
-    return is_best_mask
+    return input_pd_df["value"].notna()
 
 
 def value_range_mask(input_pd_df):
@@ -29,15 +26,13 @@ def value_range_mask(input_pd_df):
     Returns:
         pd.Series: A Boolean series indicating which data is given by a range.
     """
-    is_range_mask = (
+    return (
         input_pd_df["value"].isna()
         & input_pd_df["value_min"].notna()
         & input_pd_df["value_max"].notna()
         & input_pd_df["value_std"].isna()
         & input_pd_df["sampled_data"].isna()
     )
-
-    return is_range_mask
 
 
 def property_CV():
@@ -46,7 +41,6 @@ def property_CV():
     Returns:
         dict: A dictionary containing the CV for each property.
     """
-
     merged_df = combine_rock_site_property()
 
     # take only the scalar type values
@@ -60,9 +54,7 @@ def property_CV():
 
     is_range_mask = value_range_mask(merged_df)
     merged_df_uniform = merged_df[is_range_mask].copy()
-    merged_df_uniform["value"] = (
-        merged_df_uniform["value_min"] + merged_df_uniform["value_max"]
-    ) / 2.0
+    merged_df_uniform["value"] = (merged_df_uniform["value_min"] + merged_df_uniform["value_max"]) / 2.0
 
     # merge the best estimate and half range values
     merged_df = pd.concat([merged_df_best, merged_df_uniform], ignore_index=True)
@@ -73,9 +65,7 @@ def property_CV():
         property_mask = merged_df["property"] == property
         property_df = merged_df[property_mask].copy()
         # take data within one standard deviation of the mean
-        property_df = property_df[
-            np.abs(stats.zscore(list(property_df["value"]))) < 1
-        ].copy()
+        property_df = property_df[np.abs(stats.zscore(list(property_df["value"]))) < 1].copy()
 
         combined_values = property_df["value"]
 

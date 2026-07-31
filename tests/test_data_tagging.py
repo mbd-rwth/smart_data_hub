@@ -1,7 +1,7 @@
-from smart_data_hub.data_tagging import filter_tagged_data
 import pandas as pd
 import pytest
 from pandas.testing import assert_frame_equal
+from smart_data_hub.data_tagging import filter_tagged_data
 
 
 @pytest.fixture

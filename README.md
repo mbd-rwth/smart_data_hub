@@ -17,13 +17,6 @@ cd smart_data_hub
 python -m pip install .
 ```
 
-OR
-
-1. Download the zip file or clone the repository:
-2. Create a conda environment using ``environment.yml`` and running the following command ``conda env create -f environment.yml``, 
-3. Activate the environment with ``conda activate smart_data_hub``.
-
-
 ## Data Hub Architecture
 The data-hub consists of a dataset integrated with a Graphic User Interface (GUI).
 1. **Dataset**: It provides material properties along with their uncertainty margins and sensible defaults 

@@ -1,5 +1,6 @@
 import os
 
+
 def get_path_in_dir(directory):
     """Return list of file paths in a directory (recursively)."""
     directory = os.fspath(directory) if hasattr(directory, "__fspath__") else str(directory)

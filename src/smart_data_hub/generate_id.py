@@ -1,8 +1,6 @@
 import uuid
 from importlib.resources import files
 from ruamel.yaml import YAML
-import os
-from pathlib import Path
 from smart_data_hub.load_path import get_path_in_dir
 
 # Preserve quotes and save None to null in YAML
@@ -25,7 +23,7 @@ def sdh_namespace():
 
 
 def get_list_from_sequence(value):
-    """helper function to convert a string or None to a list.
+    """Helper function to convert a string or None to a list.
 
     Args:
         value (str, None, list): the input value to convert.
@@ -36,15 +34,14 @@ def get_list_from_sequence(value):
     Returns:
         list : the converted list.
     """
-
     if isinstance(value, str):
         return [value]
-    elif value is None:
+    if value is None:
         return []
-    elif isinstance(value, list):
+    if isinstance(value, list):
         return value
-    else:
-        raise ValueError("Input value must be a string, None, or a list.")
+    msg = "Input value must be a string, None, or a list."
+    raise ValueError(msg)
 
 
 def normalize_str(val):
@@ -75,16 +72,12 @@ def flatten_entry_dict(property_entry, property_name):
     Returns:
         dict: The flattened entry dictionary.
     """
-
     if property_entry.get("probability_distribution"):
         pdf_info = property_entry.get("probability_distribution")
     else:
         pdf_info = property_entry
-    if property_entry.get("tag"):
-        tag_info = property_entry.get("tag")
-    else:
-        tag_info = property_entry
-    flatten_dict = {
+    tag_info = property_entry.get("tag") or property_entry
+    return {
         "property": property_name,
         "type": property_entry["type"],
         "source": property_entry["source"],
@@ -101,16 +94,9 @@ def flatten_entry_dict(property_entry, property_name):
         "variable_unit_base": property_entry.get("variable_unit_base"),
         "description": property_entry["description"],
         "agency": (", ".join(get_list_from_sequence(tag_info.get("agency"))) or None),
-        "location": (
-            ", ".join(get_list_from_sequence(tag_info.get("location"))) or None
-        ),
-        "simplified_lithology": (
-            ", ".join(get_list_from_sequence(tag_info.get("simplified_lithology")))
-            or None
-        ),
+        "location": (", ".join(get_list_from_sequence(tag_info.get("location"))) or None),
+        "simplified_lithology": (", ".join(get_list_from_sequence(tag_info.get("simplified_lithology"))) or None),
     }
-
-    return flatten_dict
 
 
 def get_entry_str(property_entry, property_name):
@@ -123,24 +109,19 @@ def get_entry_str(property_entry, property_name):
     Returns:
         str: The combined entry string.
     """
-
     flatten_entry = flatten_entry_dict(property_entry, property_name)
-    combined_entry_str = ", ".join(
-        normalize_str(str(entry_str)) for entry_str in flatten_entry.values()
-    )
-    return combined_entry_str
+    return ", ".join(normalize_str(str(entry_str)) for entry_str in flatten_entry.values())
 
 
-def generate_property_id(yaml_file_path):
+def generate_property_id(yaml_file_path) -> None:
     """Check for missing ID and generate a unique ID for each data in the YAML file.
 
     Args:
         yaml_file_path (str): The path to the YAML file.
     """
-
     SDH_NAMESPACE = sdh_namespace()
 
-    with open(yaml_file_path, "r", encoding="utf-8") as f:
+    with open(yaml_file_path, encoding="utf-8") as f:
         data = yaml.load(f)
 
     missing_ID = False
@@ -154,8 +135,9 @@ def generate_property_id(yaml_file_path):
                     missing_ID = True
                     property_entry["tag"]["ID"] = str(
                         uuid.uuid5(
-                            SDH_NAMESPACE, get_entry_str(property_entry, property_name)
-                        )
+                            SDH_NAMESPACE,
+                            get_entry_str(property_entry, property_name),
+                        ),
                     )
     # Save the updated YAML back
     if missing_ID:
@@ -163,15 +145,12 @@ def generate_property_id(yaml_file_path):
             yaml.dump(data, f)
 
 
-def generate_id_for_all():
-    """Generate IDs for all YAML files in the rock_property directory"""
-
+def generate_id_for_all() -> None:
+    """Generate IDs for all YAML files in the rock_property directory."""
     # load YAML file paths from the rock_property directory
     property_path = files("smart_data_hub") / "dataset" / "rock_property"
     property_file_paths = get_path_in_dir(property_path)
-    yaml_property_paths = [
-        path for path in property_file_paths if path.endswith(".yaml")
-    ]
+    yaml_property_paths = [path for path in property_file_paths if path.endswith(".yaml")]
 
     # Generate IDs for each data in all YAML files if IDs are missing
     for yaml_file_path in yaml_property_paths:

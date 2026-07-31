@@ -1,9 +1,6 @@
-import os
-import pandas as pd
-import numpy as np
-from pathlib import Path
 from importlib.resources import files
-
+import numpy as np
+import pandas as pd
 from smart_data_hub.property2dataframe import load_rock_property
 
 
@@ -16,13 +13,12 @@ def load_default_df(lithologies):
     Returns:
         pd.DataFrame: Default rock property DataFrame.
     """
-    # load default rock property from yaml files 
+    # load default rock property from yaml files
     add_default_yaml_list = [
         files("smart_data_hub") / "dataset" / "rock_property" / "default" / f"{lithology}.yaml"
         for lithology in lithologies
     ]
-    default_df = load_rock_property(add_default_yaml_list)
-    return default_df
+    return load_rock_property(add_default_yaml_list)
 
 
 def get_matching_default_df(lithologies, missing_prop_names):
@@ -35,16 +31,13 @@ def get_matching_default_df(lithologies, missing_prop_names):
     Returns:
         pd.DataFrame: DataFrame containing the matching default properties
     """
-
     if missing_prop_names == []:
         return pd.DataFrame()
 
     # load default rock property from yaml files
     default_df = load_default_df(lithologies)
     # extract the rows with that matching with the missing properties
-    matching_default_df = default_df[default_df["property"].isin(missing_prop_names)]
-
-    return matching_default_df
+    return default_df[default_df["property"].isin(missing_prop_names)]
 
 
 def find_missing_properties(property_df):
@@ -56,37 +49,29 @@ def find_missing_properties(property_df):
     Returns:
         list: List of missing property names.
     """
-
-    required_property_names = set(
-        [
-            "density",
-            "porosity",
-            "intrinsic_permeability",
-            "p_wave_velocity",
-            "s_wave_velocity",
-            "specific_heat_capacity",
-            "thermal_conductivity",
-            "electrical_resistivity",
-        ]
-    )
+    required_property_names = {
+        "density",
+        "porosity",
+        "intrinsic_permeability",
+        "p_wave_velocity",
+        "s_wave_velocity",
+        "specific_heat_capacity",
+        "thermal_conductivity",
+        "electrical_resistivity",
+    }
 
     if property_df.empty:
         return list(required_property_names)
     no_id_props = list(property_df.loc[property_df["ID"].isna()]["property"])
     # drop the missing id properties from the original DataFrame
-    removed_missing_id_property_df = property_df[
-        ~property_df["property"].isin(no_id_props)
-    ]
+    removed_missing_id_property_df = property_df[~property_df["property"].isin(no_id_props)]
 
     # find the missing properties
     all_properties = list(removed_missing_id_property_df["property"].unique())
     if "hydraulic_conductivity" in all_properties:
-        all_properties[all_properties.index("hydraulic_conductivity")] = (
-            "intrinsic_permeability"
-        )
-   
-    missing_props = list(required_property_names - set(all_properties))
-    return missing_props
+        all_properties[all_properties.index("hydraulic_conductivity")] = "intrinsic_permeability"
+
+    return list(required_property_names - set(all_properties))
 
 
 def add_default_df(property_df, lithologies):
@@ -99,29 +84,20 @@ def add_default_df(property_df, lithologies):
     Returns:
         pd.DataFrame: DataFrame with default properties added
     """
-
     if property_df.empty:
         return load_default_df(lithologies)
 
     no_id_props = list(property_df.loc[property_df["ID"].isna()]["property"])
     # drop the missing id properties from the original DataFrame
-    removed_missing_id_property_df = property_df[
-        ~property_df["property"].isin(no_id_props)
-    ]
+    removed_missing_id_property_df = property_df[~property_df["property"].isin(no_id_props)]
 
     missing_prop_names = find_missing_properties(property_df).copy()
 
     matching_default_df = get_matching_default_df(lithologies, missing_prop_names)
 
     add_default_property_df = pd.concat(
-        [
-            df
-            for df in [removed_missing_id_property_df, matching_default_df]
-            if not df.empty
-        ],
+        [df for df in [removed_missing_id_property_df, matching_default_df] if not df.empty],
         ignore_index=True,
     )
     # Replace np.nan with None
-    add_default_property_df = add_default_property_df.replace({np.nan: None, "": None})
-
-    return add_default_property_df
+    return add_default_property_df.replace({np.nan: None, "": None})

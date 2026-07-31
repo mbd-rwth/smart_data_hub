@@ -1,5 +1,5 @@
-import scipy.constants as sc
 import numpy as np
+import scipy.constants as sc
 
 
 def convert_value(type, convert_ratio, value):
@@ -13,16 +13,14 @@ def convert_value(type, convert_ratio, value):
     Returns:
         dict, str, float, None: The converted value.
     """
-
     if type == "dictionary":
         return {k: float(v) * convert_ratio for k, v in value.items()}
-    elif type == "expression":
+    if type == "expression":
         return f"{convert_ratio}*({value})"
-    else:
-        try:
-            return value * convert_ratio
-        except TypeError:  # If value is None
-            return value
+    try:
+        return value * convert_ratio
+    except TypeError:  # If value is None
+        return value
 
 
 def hydraulic2intrinic(input_df):
@@ -34,7 +32,6 @@ def hydraulic2intrinic(input_df):
     Returns:
         pd.DataFrame: The modified DataFrame with intrinsic permeability values.
     """
-
     input_df_h2i = input_df.copy()
 
     water_vis = 0.001
@@ -51,20 +48,20 @@ def hydraulic2intrinic(input_df):
     )
     # Convert value based on its type using the conversion ratio
     input_df_h2i.loc[mask, ["value"]] = input_df_h2i.loc[mask, ["value", "type"]].apply(
-        lambda row: convert_value(row["type"], convert_ratio, row["value"]), axis=1
+        lambda row: convert_value(row["type"], convert_ratio, row["value"]),
+        axis=1,
     )
     input_df_h2i.loc[mask, ["sampled_data"]] = input_df_h2i.loc[
-        mask, ["sampled_data"]
+        mask,
+        ["sampled_data"],
     ].map(
         lambda sampled_data: (
             sampled_data  # if null
             if sampled_data is None
             else (
-                f"{convert_ratio}*({sampled_data})"
-                if isinstance(sampled_data, str)
-                else convert_ratio * sampled_data
+                f"{convert_ratio}*({sampled_data})" if isinstance(sampled_data, str) else convert_ratio * sampled_data
             )
-        )
+        ),
     )
 
     # Change the property name, unit_str, and unit_base to be consistent with intrinsic permeability
@@ -72,6 +69,4 @@ def hydraulic2intrinic(input_df):
     input_df_h2i.loc[mask, ["unit_str"]] = "m^2"
     input_df_h2i.loc[mask, ["unit_base"]] = "[0, 2, 0, 0, 0, 0, 0]"
     # Replace np.nan with None
-    input_df_h2i = input_df_h2i.replace({np.nan: None})
-
-    return input_df_h2i
+    return input_df_h2i.replace({np.nan: None})

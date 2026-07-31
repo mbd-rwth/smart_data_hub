@@ -1,27 +1,25 @@
-from smart_data_hub.merge_method import (
-    format_number_adaptive,
-    generate_PERT,
-    generate_lognorm,
-    generate_samples,
-    generate_truncnorm,
-    generate_uniform,
-    get_sample_statistics,
-    hydraulic2intrinic,
-    merge_property_value,
-    preserve_value_type,
-    value_PERT_mask,
-    value_empty_mask,
-    value_invalid_mask,
-    value_lognorm_mask,
-    value_pdf_mask,
-    value_truncnorm_mask,
-    value_uniform_mask,
-)
-
+import uuid
+import numpy as np
 import pandas as pd
 import pytest
-import numpy as np
 import scipy.constants as sc
+from smart_data_hub.merge_method import format_number_adaptive
+from smart_data_hub.merge_method import generate_lognorm
+from smart_data_hub.merge_method import generate_PERT
+from smart_data_hub.merge_method import generate_samples
+from smart_data_hub.merge_method import generate_truncnorm
+from smart_data_hub.merge_method import generate_uniform
+from smart_data_hub.merge_method import get_sample_statistics
+from smart_data_hub.merge_method import hydraulic2intrinic
+from smart_data_hub.merge_method import merge_property_value
+from smart_data_hub.merge_method import preserve_value_type
+from smart_data_hub.merge_method import value_empty_mask
+from smart_data_hub.merge_method import value_invalid_mask
+from smart_data_hub.merge_method import value_lognorm_mask
+from smart_data_hub.merge_method import value_pdf_mask
+from smart_data_hub.merge_method import value_PERT_mask
+from smart_data_hub.merge_method import value_truncnorm_mask
+from smart_data_hub.merge_method import value_uniform_mask
 
 SAMPLE_SIZE = 10000000
 RANDOM_STATE = 21
@@ -73,7 +71,9 @@ def test_masks_df():
     value_std = 100
     value_min = 1200
     value_max = 4000
-    sampled_data = f"scipy.stats.norm(loc={value}, scale={value_std}).rvs(size={SAMPLE_SIZE}, random_state={RANDOM_STATE})"
+    sampled_data = (
+        f"scipy.stats.norm(loc={value}, scale={value_std}).rvs(size={SAMPLE_SIZE}, random_state={RANDOM_STATE})"
+    )
     # parameters for porosity
     value_rho = 0.35
     value_std_rho = 0.1
@@ -84,7 +84,9 @@ def test_masks_df():
     value_min_hc = 1e-8
     value_max_hc = 1e-6
 
-    sampled_data_hc = f"scipy.stats.norm(loc={value_hc}, scale={value_std_hc}).rvs(size={SAMPLE_SIZE}, random_state={RANDOM_STATE})"
+    sampled_data_hc = (
+        f"scipy.stats.norm(loc={value_hc}, scale={value_std_hc}).rvs(size={SAMPLE_SIZE}, random_state={RANDOM_STATE})"
+    )
     type_scalar = "scalar"
     type_expression = "expression"
     type_dict = "dictionary"
@@ -629,7 +631,7 @@ def test_masks_df():
             "type",
         ],
     )
-    test_masks_df["ID"] = np.array(np.arange(0, len(test_masks_df)), dtype=str)
+    test_masks_df["ID"] = [str(uuid.uuid4()) for _ in range(len(test_masks_df))]
     test_masks_df = test_masks_df.replace({np.nan: None})
 
     test_masks_df[["value", "value_min", "value_max", "value_std"]] = test_masks_df[
@@ -637,20 +639,17 @@ def test_masks_df():
     ].map(preserve_value_type)
     # Keep the sample_size as integer
     test_masks_df["sample_size"] = pd.to_numeric(
-        test_masks_df["sample_size"], errors="coerce"
+        test_masks_df["sample_size"],
+        errors="coerce",
     ).astype("Int64")
     # Convert list to numpy array
     test_masks_df["sampled_data"] = test_masks_df["sampled_data"].map(
         lambda sampled_data: (
-            np.array(sampled_data, dtype=np.float64)
-            if isinstance(sampled_data, list)
-            else sampled_data
-        )
+            np.array(sampled_data, dtype=np.float64) if isinstance(sampled_data, list) else sampled_data
+        ),
     )
     # Replace np.nan with None
-    test_masks_df = test_masks_df.replace({np.nan: None})
-
-    return test_masks_df
+    return test_masks_df.replace({np.nan: None})
 
 
 @pytest.mark.parametrize(
@@ -720,7 +719,7 @@ def test_generate_pert_statistics(velocity_parameters):
 
     expected_mean = (p["value_min"] + 4 * p["value"] + p["value_max"]) / 6
     expected_std = np.sqrt(
-        (p["value"] - p["value_min"]) * (p["value_max"] - p["value"]) / 7
+        (p["value"] - p["value_min"]) * (p["value_max"] - p["value"]) / 7,
     )
 
     assert samples.min() >= p["value_min"]
@@ -733,7 +732,8 @@ def test_generate_lognorm_statistics(velocity_parameters):
     p = velocity_parameters
 
     samples = generate_lognorm(p["value"], p["value_std"], p["value_min"]).rvs(
-        size=SAMPLE_SIZE, random_state=RANDOM_STATE
+        size=SAMPLE_SIZE,
+        random_state=RANDOM_STATE,
     )
 
     expected_mean = p["value"]
@@ -791,7 +791,7 @@ def test_generate_samples(
     velocity_sampled_data_df = test_masks_df[is_sampled_data_mask & velocity_mask]
     velocity_sampled_data_df_samples = generate_samples(
         velocity_sampled_data_df,
-        list(set(velocity_sampled_data_df["assumed_pdf"]))[0],
+        next(iter(set(velocity_sampled_data_df["assumed_pdf"]))),
         random_state=RANDOM_STATE,
     )
 
@@ -803,7 +803,7 @@ def test_generate_samples(
     hc_sampled_data_df = test_masks_df[is_sampled_data_mask & hc_mask]
     hc_sampled_data_df_samples = generate_samples(
         hc_sampled_data_df,
-        list(set(hc_sampled_data_df["assumed_pdf"]))[0],
+        next(iter(set(hc_sampled_data_df["assumed_pdf"]))),
         random_state=RANDOM_STATE,
     )
 
@@ -816,7 +816,7 @@ def test_generate_samples(
     velocity_uniform_df = test_masks_df[is_uniform_mask & velocity_mask]
     velocity_uniform_df_samples = generate_samples(
         velocity_uniform_df,
-        list(set(velocity_uniform_df["assumed_pdf"]))[0],
+        next(iter(set(velocity_uniform_df["assumed_pdf"]))),
         random_state=RANDOM_STATE,
     )
 
@@ -825,8 +825,7 @@ def test_generate_samples(
     assert abs(np.mean(velocity_uniform_df_samples) - (value_min + value_max) / 2) < tol
     assert (
         abs(
-            np.std(velocity_uniform_df_samples)
-            - np.sqrt((value_max - value_min) ** 2 / 12)
+            np.std(velocity_uniform_df_samples) - np.sqrt((value_max - value_min) ** 2 / 12),
         )
         < tol
     )
@@ -834,19 +833,16 @@ def test_generate_samples(
     hc_uniform_df = test_masks_df[is_uniform_mask & hc_mask]
     hc_uniform_df_samples = generate_samples(
         hc_uniform_df,
-        list(set(hc_uniform_df["assumed_pdf"]))[0],
+        next(iter(set(hc_uniform_df["assumed_pdf"]))),
         random_state=RANDOM_STATE,
     )
 
     assert np.min(hc_uniform_df_samples) >= value_min_hc
     assert np.max(hc_uniform_df_samples) <= value_max_hc
-    assert (
-        abs(np.mean(hc_uniform_df_samples) - (value_min_hc + value_max_hc) / 2) < tol_hc
-    )
+    assert abs(np.mean(hc_uniform_df_samples) - (value_min_hc + value_max_hc) / 2) < tol_hc
     assert (
         abs(
-            np.std(hc_uniform_df_samples)
-            - np.sqrt((value_max_hc - value_min_hc) ** 2 / 12)
+            np.std(hc_uniform_df_samples) - np.sqrt((value_max_hc - value_min_hc) ** 2 / 12),
         )
         < tol_hc
     )
@@ -855,7 +851,7 @@ def test_generate_samples(
     velocity_truncnorm_df = test_masks_df[is_truncnorm_mask & velocity_mask]
     velocity_truncnorm_df_samples = generate_samples(
         velocity_truncnorm_df,
-        list(set(velocity_truncnorm_df["assumed_pdf"]))[0],
+        next(iter(set(velocity_truncnorm_df["assumed_pdf"]))),
         random_state=RANDOM_STATE,
     )
 
@@ -869,7 +865,7 @@ def test_generate_samples(
     porosity_truncnorm_df = test_masks_df[is_truncnorm_mask & porosity_mask]
     porosity_truncnorm_df_samples = generate_samples(
         porosity_truncnorm_df,
-        list(set(porosity_truncnorm_df["assumed_pdf"]))[0],
+        next(iter(set(porosity_truncnorm_df["assumed_pdf"]))),
         random_state=RANDOM_STATE,
     )
 
@@ -883,7 +879,7 @@ def test_generate_samples(
     hc_truncnorm_df = test_masks_df[is_truncnorm_mask & hc_mask]
     hc_truncnorm_df_samples = generate_samples(
         hc_truncnorm_df,
-        list(set(hc_truncnorm_df["assumed_pdf"]))[0],
+        next(iter(set(hc_truncnorm_df["assumed_pdf"]))),
         random_state=RANDOM_STATE,
     )
 
@@ -899,52 +895,49 @@ def test_generate_samples(
     velocity_lognorm_df = test_masks_df[is_lognorm_mask & velocity_mask]
     velocity_lognorm_df_samples = generate_samples(
         velocity_lognorm_df,
-        list(set(velocity_lognorm_df["assumed_pdf"]))[0],
+        next(iter(set(velocity_lognorm_df["assumed_pdf"]))),
         random_state=RANDOM_STATE,
     )
 
     assert np.min(velocity_lognorm_df_samples) >= 0.0
     assert (
         np.std(velocity_lognorm_df_samples)
-        < value
-        * 0.13030  # multiple with the coefficient of variation (CV) for S-wave velocity
+        < value * 0.13030  # multiple with the coefficient of variation (CV) for S-wave velocity
     )  # samples were filtered within three standard deviation of the mean
     assert abs(np.mean(velocity_lognorm_df_samples) - value) < tol
 
     porosity_lognorm_df = test_masks_df[is_lognorm_mask & porosity_mask]
     porosity_lognorm_df_samples = generate_samples(
         porosity_lognorm_df,
-        list(set(porosity_lognorm_df["assumed_pdf"]))[0],
+        next(iter(set(porosity_lognorm_df["assumed_pdf"]))),
         random_state=RANDOM_STATE,
     )
 
     assert np.min(porosity_lognorm_df_samples) >= 0.0
     assert (
         np.std(porosity_lognorm_df_samples)
-        < value_rho
-        * 0.27030  # multiple with the coefficient of variation (CV) for S-wave velocity
+        < value_rho * 0.27030  # multiple with the coefficient of variation (CV) for S-wave velocity
     )  # samples were filtered within three standard deviation of the mean
     assert abs(np.mean(porosity_lognorm_df_samples) - value_rho) < tol_rho
 
     ip_lognorm_df = test_masks_df[is_lognorm_mask & ip_mask]
     ip_lognorm_df_samples = generate_samples(
         ip_lognorm_df,
-        list(set(ip_lognorm_df["assumed_pdf"]))[0],
+        next(iter(set(ip_lognorm_df["assumed_pdf"]))),
         random_state=RANDOM_STATE,
     )
 
     assert np.min(ip_lognorm_df_samples) >= 0.0
     assert (
         np.std(ip_lognorm_df_samples)
-        < value_ip
-        * 4.18875  # multiple with the coefficient of variation (CV) for S-wave velocity
+        < value_ip * 4.18875  # multiple with the coefficient of variation (CV) for S-wave velocity
     )  # samples were filtered within three standard deviation of the mean
     assert abs(np.mean(ip_lognorm_df_samples) - value_ip) < value_ip * 4.18875
 
     hc_lognorm_df = test_masks_df[is_lognorm_mask & hc_mask]
     hc_lognorm_df_samples = generate_samples(
         hc_lognorm_df,
-        list(set(hc_lognorm_df["assumed_pdf"]))[0],
+        next(iter(set(hc_lognorm_df["assumed_pdf"]))),
         random_state=RANDOM_STATE,
     )
 
@@ -960,20 +953,16 @@ def test_generate_samples(
     velocity_PERT_df = test_masks_df[is_PERT_mask & velocity_mask]
     velocity_PERT_df_samples = generate_samples(
         velocity_PERT_df,
-        list(set(velocity_PERT_df["assumed_pdf"]))[0],
+        next(iter(set(velocity_PERT_df["assumed_pdf"]))),
         random_state=RANDOM_STATE,
     )
 
     assert np.min(velocity_PERT_df_samples) >= value_min
     assert np.max(velocity_PERT_df_samples) <= value_max
-    assert (
-        abs(np.mean(velocity_PERT_df_samples) - (value_min + 4 * value + value_max) / 6)
-        < tol
-    )
+    assert abs(np.mean(velocity_PERT_df_samples) - (value_min + 4 * value + value_max) / 6) < tol
     assert (
         abs(
-            np.std(velocity_PERT_df_samples)
-            - np.sqrt((value - value_min) * (value_max - value) / 7)
+            np.std(velocity_PERT_df_samples) - np.sqrt((value - value_min) * (value_max - value) / 7),
         )
         < tol
     )
@@ -981,7 +970,7 @@ def test_generate_samples(
     porosity_PERT_df = test_masks_df[is_PERT_mask & porosity_mask]
     porosity_PERT_df_samples = generate_samples(
         porosity_PERT_df,
-        list(set(porosity_PERT_df["assumed_pdf"]))[0],
+        next(iter(set(porosity_PERT_df["assumed_pdf"]))),
         random_state=RANDOM_STATE,
     )
 
@@ -989,15 +978,13 @@ def test_generate_samples(
     assert np.max(porosity_PERT_df_samples) <= value_max_rho
     assert (
         abs(
-            np.mean(porosity_PERT_df_samples)
-            - (value_min_rho + 4 * value_rho + value_max_rho) / 6
+            np.mean(porosity_PERT_df_samples) - (value_min_rho + 4 * value_rho + value_max_rho) / 6,
         )
         < tol_rho
     )
     assert (
         abs(
-            np.std(porosity_PERT_df_samples)
-            - np.sqrt((value_rho - value_min_rho) * (value_max_rho - value_rho) / 7)
+            np.std(porosity_PERT_df_samples) - np.sqrt((value_rho - value_min_rho) * (value_max_rho - value_rho) / 7),
         )
         < tol_rho
     )
@@ -1005,18 +992,17 @@ def test_generate_samples(
     hc_PERT_df = test_masks_df[is_PERT_mask & hc_mask]
     hc_PERT_df_samples = generate_samples(
         hc_PERT_df,
-        list(set(hc_PERT_df["assumed_pdf"]))[0],
+        next(iter(set(hc_PERT_df["assumed_pdf"]))),
         random_state=RANDOM_STATE,
     )
 
     assert np.min(hc_PERT_df_samples) >= value_min_hc
     assert np.max(hc_PERT_df_samples) <= value_max_hc
     assert abs(
-        np.mean(hc_PERT_df_samples) - (value_min_hc + 4 * value_hc + value_max_hc) / 6
+        np.mean(hc_PERT_df_samples) - (value_min_hc + 4 * value_hc + value_max_hc) / 6,
     ) < np.std(hc_PERT_df_samples)
     assert abs(
-        np.std(hc_PERT_df_samples)
-        - np.sqrt((value_hc - value_min_hc) * (value_max_hc - value_hc) / 7)
+        np.std(hc_PERT_df_samples) - np.sqrt((value_hc - value_min_hc) * (value_max_hc - value_hc) / 7),
     ) < np.std(hc_PERT_df_samples)
 
     # compare the statistics from get_sample_statistics and previously generated samples
@@ -1081,18 +1067,13 @@ def test_generate_samples(
 
 
 def select_case_samples(df, property_name, assumed_pdf):
-    selected = df.loc[
-        (df["property"] == property_name) & (df["assumed_pdf"] == assumed_pdf)
-    ].copy()
+    selected = df.loc[(df["property"] == property_name) & (df["assumed_pdf"] == assumed_pdf)].copy()
 
-    assert not selected.empty, (
-        f"No test input found for property={property_name!r}, "
-        f"assumed_pdf={assumed_pdf!r}"
-    )
+    assert not selected.empty, f"No test input found for property={property_name!r}, assumed_pdf={assumed_pdf!r}"
 
     samples = generate_samples(
         selected,
-        list(set(selected["assumed_pdf"]))[0],
+        next(iter(set(selected["assumed_pdf"]))),
         random_state=RANDOM_STATE,
     )
 
@@ -1104,13 +1085,13 @@ def test_merge_property_value(test_masks_df):
     # compare the statistics from merge_property_value and previously generated samples
     # test the custom sampled data
     velocity_sampled_data_df, velocity_sampled_data_df_samples = select_case_samples(
-        df=test_masks_df, property_name="s_wave_velocity", assumed_pdf="is_pdf_df"
+        df=test_masks_df,
+        property_name="s_wave_velocity",
+        assumed_pdf="is_pdf_df",
     )
     merged_velocity_sampled_data_df = merge_property_value(velocity_sampled_data_df)
     assert np.allclose(
-        merged_velocity_sampled_data_df[
-            ["value", "value_std", "value_min", "value_max"]
-        ].values[0],
+        merged_velocity_sampled_data_df[["value", "value_std", "value_min", "value_max"]].values[0],
         np.array(samples_statistics(velocity_sampled_data_df_samples)),
     )
     # test conversion from hydraulic conductivity to intrinsic permeability
@@ -1125,9 +1106,7 @@ def test_merge_property_value(test_masks_df):
     )
     merged_hc_sampled_data_df = merge_property_value(hc_sampled_data_df)
     assert np.allclose(
-        merged_hc_sampled_data_df[
-            ["value", "value_std", "value_min", "value_max"]
-        ].values[0],
+        merged_hc_sampled_data_df[["value", "value_std", "value_min", "value_max"]].values[0],
         samples_statistics(hc_sampled_data_df_samples * convert_ratio),
     )
 
@@ -1138,9 +1117,7 @@ def test_merge_property_value(test_masks_df):
     )
     merged_hc_truncnorm_df = merge_property_value(hc_truncnorm_df)
     assert np.allclose(
-        merged_hc_truncnorm_df[["value", "value_std", "value_min", "value_max"]].values[
-            0
-        ],
+        merged_hc_truncnorm_df[["value", "value_std", "value_min", "value_max"]].values[0],
         samples_statistics(hc_truncnorm_df_samples * convert_ratio),
     )
 
@@ -1148,7 +1125,8 @@ def test_merge_property_value(test_masks_df):
     hc_mask = test_masks_df["property"] == "hydraulic_conductivity"
     hc_nonscalar_df = test_masks_df.loc[(test_masks_df["type"] != "scalar") & (hc_mask)]
     hc_truncnorm_nonscalar_df = pd.concat(
-        [hc_truncnorm_df, hc_nonscalar_df], ignore_index=True
+        [hc_truncnorm_df, hc_nonscalar_df],
+        ignore_index=True,
     )
 
     additional_cols = pd.DataFrame(
@@ -1162,19 +1140,19 @@ def test_merge_property_value(test_masks_df):
             "variable_unit_str": [None, None, None, None],
             "description": [None, None, None, None],
             "simplified_lithology": [None, None, None, None],
-        }
+        },
     )
     hc_truncnorm_nonscalar_df = pd.concat(
-        [hc_truncnorm_nonscalar_df, additional_cols], axis=1
+        [hc_truncnorm_nonscalar_df, additional_cols],
+        axis=1,
     )
 
     merged_hc_truncnorm_nonscalar_df = merge_property_value(hc_truncnorm_nonscalar_df)
     assert merged_hc_truncnorm_nonscalar_df.iloc[0].equals(
-        merged_hc_truncnorm_df.iloc[0]
+        merged_hc_truncnorm_df.iloc[0],
     )
 
     ip_nonscalar_df = hydraulic2intrinic(hc_nonscalar_df).copy()
     assert (
-        ip_nonscalar_df["value"].values.tolist()
-        == merged_hc_truncnorm_nonscalar_df.iloc[1:3]["value"].values.tolist()
+        ip_nonscalar_df["value"].values.tolist() == merged_hc_truncnorm_nonscalar_df.iloc[1:3]["value"].values.tolist()
     )
