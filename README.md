@@ -30,15 +30,15 @@ Use `export_data.py` to extract data for a specific site and model configuration
 | Field | Description                                                                                                                                                                                                                                                                                              |
 |---|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `site_name` | Identifier for the candidate site (e.g., `DE_South_Claystone`).                                                                                                                                                                                                                                          |
-| `tag_dict` | Dictionary of tags used to filter the source dataset. Keys are tag types (e.g., `location`, `agency`, `simplified_lithology`); values are lists of tag names to match.                                                                                                                                   |
 | `sampling_functions_by_property` | Maps a property name to the probability distribution function used when sampling/merging its values. Supported functions: `generate_lognorm`, `generate_PERT`, `generate_truncnorm`, `generate_uniform`, `generate_norm`. If a property is not listed here, a default sampling function is used instead. |
 
 ##### Optional fields
 
-| Field | Description | Default behavior if omitted |
-|---|---|---|
-| `merge_unit_rock_prop` | Groups multiple detailed rock unit/sequence names into a single merged rock unit. Keys are the merged unit name; values are lists of the original rock unit names to combine under that name. | If no merging is provided — apply the provided merged rock units |
-| `merge_unit_depth` | Defines the top/bottom depth (in meters) for each merged rock unit boundary, used to build the site's stratigraphic geometry. | If no depth is provided - apply the provided depths for merged units |
+| Field                  | Description                                                                                                                                                                                   | Default behavior if omitted                                          |
+|------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
+| `tag_dict`             | Dictionary of tags used to filter the source dataset. Keys are tag types (e.g., `location`, `agency`, `simplified_lithology`); values are lists of tag names to match.                        | None                                                                 |
+| `merge_unit_rock_prop` | Groups multiple detailed rock unit/sequence names into a single merged rock unit. Keys are the merged unit name; values are lists of the original rock unit names to combine under that name. | If no merging is provided — apply the provided merged rock units     |
+| `merge_unit_depth`     | Defines the top/bottom depth (in meters) for each merged rock unit boundary, used to build the site's stratigraphic geometry.                                                                 | If no depth is provided - apply the provided depths for merged units |
 
 
 **Note:** `merge_unit_rock_prop` and `merge_unit_depth` are typically used together — `merge_unit_rock_prop` defines *which* rock units to combine, while `merge_unit_depth` defines *where* (at what depth) each merged unit's boundaries lie.
@@ -63,39 +63,63 @@ python smart_data_hub.export_data --config path/to/site_config.yaml \
 
 #### Example
 ```yaml
-site_name: DE_South_Claystone
-
-site_scenario_name: DE_South_Claystone_Germany  # used as the output folder name for saved YAML files
+site_name: DE_Crystalline
 
 tag_dict:
-  location:
-    - Germany
+  location: 
+    - Baden-Wuerttemberg
 
-sampling_functions_by_property:  # supports: generate_lognorm, generate_PERT, generate_truncnorm, generate_uniform, generate_norm
+# optional 
+sampling_functions_by_property: # we support generate_lognorm, generate_PERT, generate_truncnorm, generate_uniform, generate_norm
   electrical_resistivity: generate_lognorm
   intrinsic_permeability: generate_lognorm
 
-
+# optional
 merge_unit_rock_prop:
   Quaternary: [Quaternary]
-  Tertiary: [Tertiary]
-  Jurassic_Upper: [Jurassic_Upper]
-  Jurassic_Middle: [Jurassic_Middle_sequence1, Jurassic_Middle_sequence2]
-  Host_rock: [Opalinus_Clay]
-  Jurassic_Lower: [Jurassic_Lower_sequence1, Jurassic_Lower_sequence2]
-  Keuper: [Keuper_sequence1, Keuper_sequence2, Keuper_sequence3]
-  Muschelkalk: [Muschelkalk_Upper, Muschelkalk_Middle, Muschelkalk_Lower]
+  Muschelkalk: [Muschelkalk]
+  Buntsandstein: [Buntsandstein]
+  Zechstein: [Zechstein_Rocksalt, Zechstein_Potash, Zechstein_Anhydrite]
+  Host_rock: [Granite]
+  basement: [Granite]
 
-merge_unit_depth:
-  Quaternary_top: 580.0
-  Quaternary_bottom: 515.0
-  Tertiary_bottom: 475.0
-  Jurassic_Upper_bottom: 0.0
-  Jurassic_Middle_bottom: -85.0
-  Opalinus_Clay_bottom: -200.0
-  Jurassic_Lower_bottom: -280.0
-  Keuper_bottom: -450.0
-  Muschelkalk_bottom: -575.0
+# optional
+merge_unit_depth: 
+  Quaternary_top:
+    value: 0.0
+    value_min: -10.0
+    value_max: 10.0
+    sampling_function: generate_uniform
+  Quaternary_bottom: 
+    value: -50.0
+    value_min: -60.0
+    value_max: -40.0
+    sampling_function: generate_uniform
+  Muschelkalk_bottom: 
+    value: -100.0
+    value_min: -110.0
+    value_max: -90.0
+    sampling_function: generate_uniform
+  Buntsandstein_bottom: 
+    value: -400.0
+    value_min: -415.0
+    value_max: -385.0
+    sampling_function: generate_uniform
+  Zechstein_bottom: 
+    value: -1000.0
+    value_min: -1025.0
+    value_max: -975.0
+    sampling_function: generate_uniform
+  Host_rock_bottom: 
+    value: -1175.0
+    value_min: -1200.0
+    value_max: -1150.0
+    sampling_function: generate_uniformm
+  basement_bottom: 
+    value: -1800.0
+    value_min: -1900.0
+    value_max: -1700.0
+    sampling_function: generate_uniform
 ```
 
 ##### Running the script
