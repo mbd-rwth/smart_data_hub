@@ -121,9 +121,9 @@ def default_depth_for_merged_rock_units():
                                'Albian_bottom': 
                                {'value': -100.0, 'value_min': -110.0, 'value_max': -90.0, 'sampling_function': 'generate_uniform'}, 
                                'Aptian_bottom': 
-                               {'value': -400.0, 'value_min': -425.0, 'value_max': -375.0, 'sampling_function': 'generate_uniform'}, 
+                               {'value': -400.0, 'value_min': -415.0, 'value_max': -385.0, 'sampling_function': 'generate_uniform'}, 
                                'Host_rock_bottom': 
-                               {'value': -575.0, 'value_min': -600.0, 'value_max': -550.0, 'sampling_function': 'generate_uniform'}, 
+                               {'value': -525.0, 'value_min': -535.0, 'value_max': -510.0, 'sampling_function': 'generate_uniform'}, 
                                'Valanginian_Wealden_bottom': 
                                {'value': -650.0, 'value_min': -675.0, 'value_max': -625.0, 'sampling_function': 'generate_uniform'}, 
                                'Jurassic_Upper_bottom': 
