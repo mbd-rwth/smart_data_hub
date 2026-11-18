@@ -20,12 +20,18 @@ from smart_data_hub.add_default import add_default_df
 from smart_data_hub.data_tagging import filter_tagged_data
 from smart_data_hub.dataframe2yaml import export2yaml
 from smart_data_hub.merge_method import merge_property_value
-from smart_data_hub.merge_method import generate_lognorm, generate_PERT, generate_truncnorm, generate_uniform
+from smart_data_hub.merge_method import (
+    generate_lognorm,
+    generate_PERT,
+    generate_truncnorm,
+    generate_uniform,
+)
 from smart_data_hub.merge_method import format_number_adaptive
 from smart_data_hub.property2dataframe import combine_rock_site_property
 from smart_data_hub.generate_id import sdh_namespace
 from smart_data_hub.generate_id import get_entry_str
 from smart_data_hub.dataframe2yaml import convert_to_flow_sequence
+
 
 def default_merge_rock_unit():
     """The default method for merging site units.
@@ -38,12 +44,19 @@ def default_merge_rock_unit():
             "Quaternary": ["Quaternary"],
             "Tertiary": ["Tertiary"],
             "Jurassic_Upper": ["Jurassic_Upper"],
-            "Jurassic_Middle": ["Jurassic_Middle_sequence1", "Jurassic_Middle_sequence2"],
+            "Jurassic_Middle": [
+                "Jurassic_Middle_sequence1",
+                "Jurassic_Middle_sequence2",
+            ],
             "Host_rock": ["Opalinus_Clay"],
             "Jurassic_Lower": ["Jurassic_Lower_sequence1", "Jurassic_Lower_sequence2"],
             "Keuper": ["Keuper_sequence1", "Keuper_sequence2", "Keuper_sequence3"],
-            "Muschelkalk": ["Muschelkalk_Upper", "Muschelkalk_Middle", "Muschelkalk_Lower"],
-            "basement": ["Muschelkalk_Lower"]
+            "Muschelkalk": [
+                "Muschelkalk_Upper",
+                "Muschelkalk_Middle",
+                "Muschelkalk_Lower",
+            ],
+            "basement": ["Muschelkalk_Lower"],
         },
         "DE_North_Claystone": {
             "Quaternary": ["Quaternary"],
@@ -57,7 +70,7 @@ def default_merge_rock_unit():
             "Keuper": ["Keuper"],
             "Buntsandstein_Muschelkalk": ["Buntsandstein_Muschelkalk", "Muschelkalk"],
             "Zechstein": ["Zechstein"],
-            "basement": ["Zechstein"]
+            "basement": ["Zechstein"],
         },
         "DE_Rocksalt": {
             "Quaternary": ["Quaternary"],
@@ -74,15 +87,19 @@ def default_merge_rock_unit():
                 "Stassfurt_Anhydrite_Carbonate",
             ],
             "Rotliegend": ["Rotliegend"],
-            "basement": ["Rotliegend"]
+            "basement": ["Rotliegend"],
         },
         "DE_Crystalline": {
             "Quaternary": ["Quaternary"],
             "Muschelkalk": ["Muschelkalk"],
             "Buntsandstein": ["Buntsandstein"],
-            "Zechstein": ["Zechstein_Rocksalt", "Zechstein_Potash", "Zechstein_Anhydrite"],
+            "Zechstein": [
+                "Zechstein_Rocksalt",
+                "Zechstein_Potash",
+                "Zechstein_Anhydrite",
+            ],
             "Host_rock": ["Granite"],
-            "basement": ["Granite"]
+            "basement": ["Granite"],
         },
     }
 
@@ -94,109 +111,237 @@ def default_depth_for_merged_rock_units():
         dict: default depth of merged units.
     """
     return {
-        "DE_South_Claystone": {'Quaternary_top': 
-                               {'value': 580, 'value_min': 560, 'value_max': 570, 'sampling_function': 'generate_uniform'}, 
-                               'Quaternary_bottom': 
-                               {'value': 515, 'value_min': 505, 'value_max': 525, 'sampling_function': 'generate_uniform'}, 
-                               'Tertiary_bottom': 
-                               {'value': 475, 'value_min': 465, 'value_max': 485, 'sampling_function': 'generate_uniform'}, 
-                               'Jurassic_Upper_bottom': 
-                               {'value': 0.0, 'value_min': -10.0, 'value_max': 10.0, 'sampling_function': 'generate_uniform'}, 
-                               'Jurassic_Middle_bottom': 
-                               {'value': -85.0, 'value_min': -60.0, 'value_max': -110.0, 'sampling_function': 'generate_uniform'}, 
-                               'Host_rock_bottom': 
-                               {'value': -260.0, 'value_min': -285.0, 'value_max': -235.0, 'sampling_function': 'generate_uniform'}, 
-                               'Jurassic_Lower_bottom': 
-                               {'value': -400.0, 'value_min': -425.0, 'value_max': -375.0, 'sampling_function': 'generate_uniform'},  
-                               'Keuper_bottom': 
-                               {'value': -575.0, 'value_min': -600.0, 'value_max': -550.0, 'sampling_function': 'generate_uniform'},
-                               'Muschelkalk_bottom': 
-                               {'value': -800.0, 'value_min': -825.0, 'value_max': -775.0, 'sampling_function': 'generate_uniform'}, 
-                               'basement_bottom': 
-                               {'value': -1000.0, 'value_min': -1025.0, 'value_max': -975.0, 'sampling_function': 'generate_uniform'}},
-        "DE_North_Claystone": {'Quaternary_top': 
-                               {'value': 0.0, 'value_min': -10.0, 'value_max': 10.0, 'sampling_function': 'generate_uniform'}, 
-                               'Quaternary_bottom': 
-                               {'value': -50.0, 'value_min': -60.0, 'value_max': -40.0, 'sampling_function': 'generate_uniform'}, 
-                               'Albian_bottom': 
-                               {'value': -100.0, 'value_min': -110.0, 'value_max': -90.0, 'sampling_function': 'generate_uniform'}, 
-                               'Aptian_bottom': 
-                               {'value': -400.0, 'value_min': -415.0, 'value_max': -385.0, 'sampling_function': 'generate_uniform'}, 
-                               'Host_rock_bottom': 
-                               {'value': -525.0, 'value_min': -535.0, 'value_max': -510.0, 'sampling_function': 'generate_uniform'}, 
-                               'Valanginian_Wealden_bottom': 
-                               {'value': -650.0, 'value_min': -675.0, 'value_max': -625.0, 'sampling_function': 'generate_uniform'}, 
-                               'Jurassic_Upper_bottom': 
-                               {'value': -800.0, 'value_min': -825.0, 'value_max': -775.0, 'sampling_function': 'generate_uniform'}, 
-                               'Jurassic_Middle_bottom': 
-                               {'value': -900.0, 'value_min': -925.0, 'value_max': -875.0, 'sampling_function': 'generate_uniform'}, 
-                               'Jurassic_Lower_bottom': 
-                               {'value': -1000.0, 'value_min': -1025.0, 'value_max': -975.0, 'sampling_function': 'generate_uniform'}, 
-                               'Keuper_bottom': 
-                               {'value': -1100.0, 'value_min': -1125.0, 'value_max': -1100.0, 'sampling_function': 'generate_uniform'}, 
-                               'Buntsandstein_Muschelkalk_bottom': 
-                               {'value': -1500.0, 'value_min': -1525.0, 'value_max': -1475.0, 'sampling_function': 'generate_uniform'}, 
-                               'Zechstein_bottom': 
-                               {'value': -1600.0, 'value_min': -1625.0, 'value_max': -1575.0, 'sampling_function': 'generate_uniform'}, 
-                               'basement_bottom': 
-                               {'value': -1800.0, 'value_min': -1900.0, 'value_max': -1700.0, 'sampling_function': 'generate_uniform'}},
-        "DE_Rocksalt": {'Quaternary_top': {'value': 0.0,
-                                        'value_min': -10.0,
-                                        'value_max': 10.0,
-                                        'sampling_function': 'generate_uniform'},
-                                        'Quaternary_bottom': {'value': -50.0,
-                                        'value_min': -60.0,
-                                        'value_max': -40.0,
-                                        'sampling_function': 'generate_uniform'},
-                                        'Tertiary_bottom': {'value': -220.0,
-                                        'value_min': -245.0,
-                                        'value_max': -195.0,
-                                        'sampling_function': 'generate_uniform'},
-                                        'Buntsandstein_bottom': {'value': -1215.0,
-                                        'value_min': -1240.0,
-                                        'value_max': -1190.0,
-                                        'sampling_function': 'generate_uniform'},
-                                        'Host_rock_bottom': {'value': -1390.0,
-                                        'value_min': -1415.0,
-                                        'value_max': -1365.0,
-                                        'sampling_function': 'generate_uniform'},
-                                        'Rotliegend_bottom': {'value': -1500.0,
-                                        'value_min': -1525.0,
-                                        'value_max': -1475.0,
-                                        'sampling_function': 'generate_uniform'},
-                                        'basement_bottom': {'value': -1800.0,
-                                        'value_min': -1900.0,
-                                        'value_max': -1700.0,
-                                        'sampling_function': 'generate_uniform'}},
-        "DE_Crystalline": {'Quaternary_top': {'value': 0.0,
-                            'value_min': -10.0,
-                            'value_max': 10.0,
-                            'sampling_function': 'generate_uniform'},
-                            'Quaternary_bottom': {'value': -50.0,
-                            'value_min': -60.0,
-                            'value_max': -40.0,
-                            'sampling_function': 'generate_uniform'},
-                            'Muschelkalk_bottom': {'value': -100.0,
-                            'value_min': -110.0,
-                            'value_max': -90.0,
-                            'sampling_function': 'generate_uniform'},
-                            'Buntsandstein_bottom': {'value': -400.0,
-                            'value_min': -415.0,
-                            'value_max': -385.0,
-                            'sampling_function': 'generate_uniform'},
-                            'Zechstein_bottom': {'value': -1000.0,
-                            'value_min': -1025.0,
-                            'value_max': -975.0,
-                            'sampling_function': 'generate_uniform'},
-                            'Host_rock_bottom': {'value': -1175.0,
-                            'value_min': -1200.0,
-                            'value_max': -1150.0,
-                            'sampling_function': 'generate_uniformm'},
-                            'basement_bottom': {'value': -1800.0,
-                            'value_min': -1900.0,
-                            'value_max': -1700.0,
-                            'sampling_function': 'generate_uniform'}}
-                                }
+        "DE_South_Claystone": {
+            "Quaternary_top": {
+                "value": 580,
+                "value_min": 560,
+                "value_max": 570,
+                "sampling_function": "generate_uniform",
+            },
+            "Quaternary_bottom": {
+                "value": 515,
+                "value_min": 505,
+                "value_max": 525,
+                "sampling_function": "generate_uniform",
+            },
+            "Tertiary_bottom": {
+                "value": 475,
+                "value_min": 465,
+                "value_max": 485,
+                "sampling_function": "generate_uniform",
+            },
+            "Jurassic_Upper_bottom": {
+                "value": 0.0,
+                "value_min": -10.0,
+                "value_max": 10.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Jurassic_Middle_bottom": {
+                "value": -85.0,
+                "value_min": -60.0,
+                "value_max": -110.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Host_rock_bottom": {
+                "value": -260.0,
+                "value_min": -285.0,
+                "value_max": -235.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Jurassic_Lower_bottom": {
+                "value": -400.0,
+                "value_min": -425.0,
+                "value_max": -375.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Keuper_bottom": {
+                "value": -575.0,
+                "value_min": -600.0,
+                "value_max": -550.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Muschelkalk_bottom": {
+                "value": -800.0,
+                "value_min": -825.0,
+                "value_max": -775.0,
+                "sampling_function": "generate_uniform",
+            },
+            "basement_bottom": {
+                "value": -1000.0,
+                "value_min": -1025.0,
+                "value_max": -975.0,
+                "sampling_function": "generate_uniform",
+            },
+        },
+        "DE_North_Claystone": {
+            "Quaternary_top": {
+                "value": 0.0,
+                "value_min": -10.0,
+                "value_max": 10.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Quaternary_bottom": {
+                "value": -50.0,
+                "value_min": -60.0,
+                "value_max": -40.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Albian_bottom": {
+                "value": -100.0,
+                "value_min": -110.0,
+                "value_max": -90.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Aptian_bottom": {
+                "value": -400.0,
+                "value_min": -415.0,
+                "value_max": -385.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Host_rock_bottom": {
+                "value": -525.0,
+                "value_min": -535.0,
+                "value_max": -510.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Valanginian_Wealden_bottom": {
+                "value": -650.0,
+                "value_min": -675.0,
+                "value_max": -625.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Jurassic_Upper_bottom": {
+                "value": -800.0,
+                "value_min": -825.0,
+                "value_max": -775.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Jurassic_Middle_bottom": {
+                "value": -900.0,
+                "value_min": -925.0,
+                "value_max": -875.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Jurassic_Lower_bottom": {
+                "value": -1000.0,
+                "value_min": -1025.0,
+                "value_max": -975.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Keuper_bottom": {
+                "value": -1100.0,
+                "value_min": -1125.0,
+                "value_max": -1100.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Buntsandstein_Muschelkalk_bottom": {
+                "value": -1500.0,
+                "value_min": -1525.0,
+                "value_max": -1475.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Zechstein_bottom": {
+                "value": -1600.0,
+                "value_min": -1625.0,
+                "value_max": -1575.0,
+                "sampling_function": "generate_uniform",
+            },
+            "basement_bottom": {
+                "value": -1800.0,
+                "value_min": -1900.0,
+                "value_max": -1700.0,
+                "sampling_function": "generate_uniform",
+            },
+        },
+        "DE_Rocksalt": {
+            "Quaternary_top": {
+                "value": 0.0,
+                "value_min": -10.0,
+                "value_max": 10.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Quaternary_bottom": {
+                "value": -50.0,
+                "value_min": -60.0,
+                "value_max": -40.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Tertiary_bottom": {
+                "value": -220.0,
+                "value_min": -245.0,
+                "value_max": -195.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Buntsandstein_bottom": {
+                "value": -1215.0,
+                "value_min": -1240.0,
+                "value_max": -1190.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Host_rock_bottom": {
+                "value": -1390.0,
+                "value_min": -1415.0,
+                "value_max": -1365.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Rotliegend_bottom": {
+                "value": -1500.0,
+                "value_min": -1525.0,
+                "value_max": -1475.0,
+                "sampling_function": "generate_uniform",
+            },
+            "basement_bottom": {
+                "value": -1800.0,
+                "value_min": -1900.0,
+                "value_max": -1700.0,
+                "sampling_function": "generate_uniform",
+            },
+        },
+        "DE_Crystalline": {
+            "Quaternary_top": {
+                "value": 0.0,
+                "value_min": -10.0,
+                "value_max": 10.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Quaternary_bottom": {
+                "value": -50.0,
+                "value_min": -60.0,
+                "value_max": -40.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Muschelkalk_bottom": {
+                "value": -100.0,
+                "value_min": -110.0,
+                "value_max": -90.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Buntsandstein_bottom": {
+                "value": -400.0,
+                "value_min": -415.0,
+                "value_max": -385.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Zechstein_bottom": {
+                "value": -1000.0,
+                "value_min": -1025.0,
+                "value_max": -975.0,
+                "sampling_function": "generate_uniform",
+            },
+            "Host_rock_bottom": {
+                "value": -1175.0,
+                "value_min": -1200.0,
+                "value_max": -1150.0,
+                "sampling_function": "generate_uniformm",
+            },
+            "basement_bottom": {
+                "value": -1800.0,
+                "value_min": -1900.0,
+                "value_max": -1700.0,
+                "sampling_function": "generate_uniform",
+            },
+        },
+    }
 
 
 def export_site_merged_rock_units_yaml(
@@ -229,17 +374,27 @@ def export_site_merged_rock_units_yaml(
             # filter the data based on tags
             df4 = filter_tagged_data(df3, tag_dict)
         # add default data based on the litholgies for the merged rock unit
-        lithologies = list({lith for liths_ls in df3["layer_simplified_lithology"] for lith in liths_ls})
+        lithologies = list(
+            {
+                lith
+                for liths_ls in df3["layer_simplified_lithology"]
+                for lith in liths_ls
+            }
+        )
         df5 = add_default_df(df4, lithologies)
         # merge the rock property data for the merged unit
         df6 = merge_property_value(
-            df5, source_type="merged", sampling_functions_by_property=sampling_functions_by_property,
+            df5,
+            source_type="merged",
+            sampling_functions_by_property=sampling_functions_by_property,
         )
 
         export2yaml(df6, f"{path_to_save_rock_yaml}/{merge_unit}.yaml")
 
 
-def export_site_merged_yaml(site_name, merge_unit_rock_prop, path_to_save_site_yaml) -> None:
+def export_site_merged_yaml(
+    site_name, merge_unit_rock_prop, path_to_save_site_yaml
+) -> None:
     """Build and export a merged YAML file describing a geological site's layers.
 
     Args:
@@ -288,35 +443,53 @@ def export_site_depth_yaml(merge_unit_depth, path_to_save_site_geometry) -> None
         merge_unit_depth (dict[str, float]): Mapping of merged unit to the depth.
         path_to_save_site_geometry (str): Directory path where the resulting YAML file will be saved.
     """
-   
+
     all_sampled_depth_date = {}
     for rock_interface, depth_data in merge_unit_depth.items():
-        sampling_function = eval(depth_data['sampling_function'])
-        sampling_dist = sampling_function(as_string=True, **depth_data)
-        samples_string = sampling_dist + '.rvs(size=1000000, random_state=21)'
-        samples = eval(samples_string)
+        sampling_function = eval(depth_data["sampling_function"])
+        sampling_dist_str = sampling_function(as_string=True, **depth_data)
+        samples_string = sampling_dist_str + ".rvs(size=1000000, random_state=21)"
+
+        sampling_dist = sampling_function(as_string=False, **depth_data)
+        dist_min, dist_max = sampling_dist.support()
 
         sampled_depth_date = {}
-        sampled_depth_date['source'] = 'merged'
-        sampled_depth_date['type'] = 'scalar'
-        sampled_depth_date['value'] = format_number_adaptive(np.mean(samples))
-        sampled_depth_date['value_min'] = format_number_adaptive(np.min(samples))
-        sampled_depth_date['value_max'] = format_number_adaptive(np.max(samples))
-        sampled_depth_date['value_std'] = format_number_adaptive(np.std(samples))
-        sampled_depth_date['probability_distribution'] = {}
-        sampled_depth_date['probability_distribution']['sample_size'] = int(1000000)
-        sampled_depth_date['probability_distribution']['sampled_data'] = samples_string
-        sampled_depth_date['unit_str'] = 'm'
-        sampled_depth_date['unit_base'] = convert_to_flow_sequence([0, 1, 0, 0, 0, 0, 0])
-        sampled_depth_date['description'] = f"A uniform distribution fitted from the given data values."
-        sampled_depth_date['tag'] = {'ID': None}
-        
+        sampled_depth_date["source"] = "merged"
+        sampled_depth_date["type"] = "scalar"
+        sampled_depth_date["value"] = format_number_adaptive(
+            depth_data.get("value", sampling_dist.mean())
+        )
+        sampled_depth_date["value_min"] = format_number_adaptive(
+            depth_data.get("value_min", dist_min)
+        )
+        sampled_depth_date["value_max"] = format_number_adaptive(
+            depth_data.get("value_max", dist_max)
+        )
+        sampled_depth_date["value_std"] = format_number_adaptive(
+            depth_data.get("value_std", sampling_dist.std())
+        )
+        sampled_depth_date["probability_distribution"] = {}
+        sampled_depth_date["probability_distribution"]["sample_size"] = int(1000000)
+        sampled_depth_date["probability_distribution"]["sampled_data"] = samples_string
+        sampled_depth_date["unit_str"] = "m"
+        sampled_depth_date["unit_base"] = convert_to_flow_sequence(
+            [0, 1, 0, 0, 0, 0, 0]
+        )
+        sampled_depth_date["description"] = (
+            f"A uniform distribution fitted from the given data values."
+        )
+        sampled_depth_date["tag"] = {"ID": None}
+
         SDH_NAMESPACE = sdh_namespace()
-        sampled_depth_date['tag']["ID"] = str(uuid.uuid5(SDH_NAMESPACE, get_entry_str(sampled_depth_date, rock_interface)))
+        sampled_depth_date["tag"]["ID"] = str(
+            uuid.uuid5(SDH_NAMESPACE, get_entry_str(sampled_depth_date, rock_interface))
+        )
 
         all_sampled_depth_date[rock_interface] = [sampled_depth_date]
 
-    with open(os.path.join(path_to_save_site_geometry, "rock_interface.yaml"), "w") as f:
+    with open(
+        os.path.join(path_to_save_site_geometry, "rock_interface.yaml"), "w"
+    ) as f:
         yaml.safe_dump(all_sampled_depth_date, f, sort_keys=False)
 
 
@@ -331,7 +504,12 @@ def parse_args():
         description="Read a site configuration YAML file.",
     )
 
-    parser.add_argument("--config", type=str, required=True, help="Path to the site configuration YAML file.")
+    parser.add_argument(
+        "--config",
+        type=str,
+        required=True,
+        help="Path to the site configuration YAML file.",
+    )
     parser.add_argument(
         "--path_to_save_rock_yaml",
         type=str,
@@ -397,7 +575,12 @@ def validate_config(config) -> None:
         raise ValueError(msg)
 
 
-def build_site_config(config_path, path_to_save_rock_yaml, path_to_save_site_yaml, path_to_save_site_geometry):
+def build_site_config(
+    config_path,
+    path_to_save_rock_yaml,
+    path_to_save_site_yaml,
+    path_to_save_site_geometry,
+):
     """Load and validate, a site configuration file. Save rock, site, geometry data with output paths given via CLI.
 
     Args:
@@ -414,10 +597,15 @@ def build_site_config(config_path, path_to_save_rock_yaml, path_to_save_site_yam
 
     site_name = raw_config["site_name"]
 
-    sampling_functions_by_property_dict = raw_config.get("sampling_functions_by_property")
+    sampling_functions_by_property_dict = raw_config.get(
+        "sampling_functions_by_property"
+    )
 
     if sampling_functions_by_property_dict is not None:
-        sampling_functions_by_property = {prop: eval(func) for prop, func in raw_config["sampling_functions_by_property"].items()}
+        sampling_functions_by_property = {
+            prop: eval(func)
+            for prop, func in raw_config["sampling_functions_by_property"].items()
+        }
     else:
         sampling_functions_by_property = None
 
@@ -425,8 +613,12 @@ def build_site_config(config_path, path_to_save_rock_yaml, path_to_save_site_yam
         "site_name": raw_config["site_name"],
         "tag_dict": raw_config.get("tag_dict"),
         "sampling_functions_by_property": sampling_functions_by_property,
-        "merge_unit_rock_prop": raw_config.get("merge_unit_rock_prop", default_merge_rock_unit()[site_name]),
-        "merge_unit_depth": raw_config.get("merge_unit_depth", default_depth_for_merged_rock_units()[site_name]),
+        "merge_unit_rock_prop": raw_config.get(
+            "merge_unit_rock_prop", default_merge_rock_unit()[site_name]
+        ),
+        "merge_unit_depth": raw_config.get(
+            "merge_unit_depth", default_depth_for_merged_rock_units()[site_name]
+        ),
         "path_to_save_rock_yaml": path_to_save_rock_yaml,
         "path_to_save_site_yaml": path_to_save_site_yaml,
         "path_to_save_site_geometry": path_to_save_site_geometry,
@@ -445,7 +637,11 @@ def main() -> None:
     except (FileNotFoundError, ValueError):
         sys.exit(1)
 
-    for path_key in ["path_to_save_rock_yaml", "path_to_save_site_yaml", "path_to_save_site_geometry"]:
+    for path_key in [
+        "path_to_save_rock_yaml",
+        "path_to_save_site_yaml",
+        "path_to_save_site_geometry",
+    ]:
         Path(site_config[path_key]).mkdir(parents=True, exist_ok=True)
 
     site_name = site_config["site_name"]
@@ -459,7 +655,11 @@ def main() -> None:
     path_to_save_site_geometry = site_config["path_to_save_site_geometry"]
 
     export_site_merged_rock_units_yaml(
-        site_name, merge_unit_rock_prop, tag_dict, sampling_functions_by_property, path_to_save_rock_yaml,
+        site_name,
+        merge_unit_rock_prop,
+        tag_dict,
+        sampling_functions_by_property,
+        path_to_save_rock_yaml,
     )
     export_site_merged_yaml(site_name, merge_unit_rock_prop, path_to_save_site_yaml)
     export_site_depth_yaml(merge_unit_depth, path_to_save_site_geometry)
